@@ -42,7 +42,7 @@ Eight UTF-8 XML packs contain 23,558 unique record/option/piece IDs. Question co
 | SQL/RLS/game flows | 41 groups passed with real PostgreSQL semantics in PGlite, including full 20-team Duo, Squad and 20-player Solo |
 | Edge bounded request parser | Passed |
 | Debug build + lint | Passed; zero lint errors, 39 warnings |
-| Optimized release APK | Version 1.0.1 built successfully, unsigned; AAB was verified on the preceding revision |
+| Optimized release APK | Version 1.0.2 built successfully, unsigned; AAB was verified on the preceding revision |
 | Native packaging | ZIP and all packaged ELF load segments passed 16 KB alignment checks |
 | Hosted verification | Email login, own profile/level/admin, store, leaderboard, anonymous denial and service-only restrictions passed |
 | Actual Android hosted navigation | Mr.onyx login, header, Store and Leaderboards verified |
@@ -55,15 +55,15 @@ Snapshots use schema/version gates, server time anchored to monotonic client tim
 
 The master mockup and visual checklist were inspected. Auth in both themes, modes, profile, Arabic questions/flags, offline image art and SQL-derived HUD captures were reviewed at the 1080 × 2340 target. Rounded navy panels, cyan/purple accents, green/red feedback and gold rewards are applied. User-supplied logos and original bounded SVG art are used; illustrative mockup usernames/prices were not imported. See `VISUAL_QA_RESULTS.md` for evidence and limits.
 
-## Version 1.0.1 artwork and puzzle update
+## Version 1.0.2 artwork, puzzle and shared background update
 
 Applied the owner’s supplied scene and mockup artwork selectively: four mode shields, three currency icons, two empty-state illustrations and an additional puzzle image. New Duo puzzles show the full image at 60% opacity beneath a regular 12×8 grid. Both 1536×1024 originals produce 96 exact 128×128 PNG pieces each with the adapted reference cutter; byte-for-byte reconstruction tests pass. Six new localized records and migration 030 were deployed after separate owner approval, preserving all 3,855 previous published records and active deadlines. Hosted checksum/function/content verification passed.
 
-Splash uses a randomly selected packaged scene, transparent logo and loading progress tied to artwork/account initialization. Home uses a scene at 75% opacity. Selection happens once per app launch and remains stable through navigation. Each folder currently contains one image, so visible variation requires additional supplied images. Bitmap decoding and caching are bounded, and missing artwork has a safe fallback.
+Splash uses a randomly selected packaged scene, transparent logo and loading progress tied to artwork/account initialization. Every app page uses the selected scene from `assets/screen/home` at 75% opacity, including auth, profile, settings, rooms and gameplay. The owner clarified that the folder name does not limit the scene to the Home route. Selection happens once per app launch and remains stable through navigation. Each folder currently contains one image, so visible variation requires additional supplied images. Bitmap decoding and caching are bounded, and missing artwork has a safe fallback.
 
 Visual review covered the splash, grid board, updated badges, both home themes and the installed normal app with Mr.onyx still signed in. A transparent-Scaffold text-color regression found during screenshot review was fixed, then the five affected navigation tests passed again. Pixel assertions verify both opacity values and full-color placed pieces. No tests were disabled. Final debug/optimized-release assembly, JVM tests and lint pass; lint has zero errors and 39 warnings. Debug APK signature, ZIP CRC, all 192 tiles, both scenes, secret exclusion, absence of test fixtures and four native ELF/ZIP 16 KB alignment checks pass.
 
-Installable phone test build: `deliverables/BrainyBrawl-1.0.1.apk`, 30,170,598 bytes, Android 8.0/API 26+, package `com.brainybrawl.app`, version code 2. SHA-256: `69d0829e16fbeab11b0a5a33cc1aeec19812054af87fb320fd1105fb50508be7`. This is development-signed, not a Play release. The normal emulator app was updated without clearing account data and relaunched successfully.
+Installable phone test build: `deliverables/BrainyBrawl-1.0.2.apk`, 30,170,598 bytes, Android 8.0/API 26+, package `com.brainybrawl.app`, version code 3. SHA-256: `594f88414231623d91cdff6560ee588b3d22a406c9e54369966341d45050bec1`. This is development-signed, not a Play release. The normal emulator app was updated without clearing account data and relaunched successfully.
 
 ## Remaining decisions and genuine release blockers
 
@@ -82,6 +82,6 @@ Repository root: `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`.
 - `CHANGED_FILES_MANIFEST.md`: session-relative added/modified/deleted paths and hashes.
 - `BrainyBrawl_CHANGED_FILES.zip`: only files changed from the initial SHA-256 inventory at HEAD 502bd53 plus the manifest. No Git/build outputs, local.properties, .env, signing keys, caches, QA screenshots or machine configuration.
 - Local-only evidence: `.local/visual-qa/`, `.local/instrumentation-final.log`, `.local/final-build.log`, `.local/backend/verification.json`.
-- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.1.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
+- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.2.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
 
 The requested local Git commit is recorded separately in the final response; nothing is pushed.

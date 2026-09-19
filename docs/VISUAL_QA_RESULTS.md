@@ -71,3 +71,9 @@ Inspected `.local/visual-qa/assets/splash.png`, `puzzle.png`, `modes.png`, `home
 The new puzzle board matches the written 12×8 grid (rather than counting cells in the illustrative screenshot), shows the complete lake image at 60% opacity and displays unaltered square thumbnail art. Instrumentation verifies three guide pixels and the full-opacity first placed tile. The local PNG reconstruction test verifies every source pixel across all 192 pieces. Existing published irregular puzzles remain supported only for older matches/content compatibility; new Duo starts select grid records and 180 seconds.
 
 The normal application was installed in place and launched with the existing Mr.onyx account, new currency art, readable status/header and supplied home background. Full physical-device and live simultaneous-client testing remain the release gates already recorded above.
+
+## Version 1.0.2 shared background clarification
+
+Removed the home-route restriction and the opaque destination gradients. The same selected scene stays behind authentication, modes, profile, friends, settings, store, rooms and gameplay. Header and cards retain theme-aware surfaces. Navigation captures now assert the shared scene is present; six affected navigation/account checks passed. Screenshot review found muted light-theme auth descriptions needed backing, so they now have compact themed surfaces. The five navigation cases were rerun after that adjustment. This UI-only change needs no further production deployment.
+
+The final shared-background revision passed the full 27-test emulator suite, 63 JVM tests, debug/optimized-release builds and lint (zero errors, 39 warnings). APK 1.0.2 passed signature, private-credential exclusion, artwork integrity and native alignment checks, then was installed in place and launched on the normal emulator.

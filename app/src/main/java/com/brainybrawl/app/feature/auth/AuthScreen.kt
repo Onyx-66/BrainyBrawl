@@ -1,6 +1,8 @@
 package com.brainybrawl.app.feature.auth
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -31,9 +33,10 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
         AuthForm.RECOVER -> R.string.recover_password
         AuthForm.CHANGE_PASSWORD -> R.string.change_password
     }
+    val caption=Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.surface.copy(alpha=.94f),RoundedCornerShape(8.dp)).padding(8.dp)
     if(!changePassword)Text(stringResource(R.string.auth_welcome),style=MaterialTheme.typography.headlineLarge)
     if(changePassword||form==AuthForm.RECOVER)Text(stringResource(title),style=MaterialTheme.typography.headlineMedium)
-    Text(stringResource(R.string.auth_description),Modifier.fillMaxWidth(),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+    Text(stringResource(R.string.auth_description),caption,style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
         androidx.compose.material3.Surface(shape=androidx.compose.foundation.shape.RoundedCornerShape(28.dp),color=MaterialTheme.colorScheme.surface,modifier=Modifier.fillMaxWidth()) {
             Column(Modifier.padding(20.dp),verticalArrangement=Arrangement.spacedBy(14.dp)) {
                 val fields=OutlinedTextFieldDefaults.colors(focusedContainerColor=MaterialTheme.colorScheme.surfaceVariant,
@@ -78,7 +81,7 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
                 ProviderButton(stringResource(R.string.google),"G",{viewModel.oauth(AuthProvider.GOOGLE)},enabled&&viewModel.providerEnabled(AuthProvider.GOOGLE),Modifier.weight(1f).fillMaxHeight())
                 ProviderButton(stringResource(R.string.discord),"D",{viewModel.oauth(AuthProvider.DISCORD)},enabled&&viewModel.providerEnabled(AuthProvider.DISCORD),Modifier.weight(1f).fillMaxHeight())
             }
-            if(!viewModel.providerEnabled(AuthProvider.GOOGLE)||!viewModel.providerEnabled(AuthProvider.DISCORD))Text(stringResource(R.string.providers_later),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+            if(!viewModel.providerEnabled(AuthProvider.GOOGLE)||!viewModel.providerEnabled(AuthProvider.DISCORD))Text(stringResource(R.string.providers_later),caption,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
             if(!local)TextButton(onClick={form=AuthForm.RECOVER;password=""}) { Text(stringResource(R.string.recover_password)) }
         }
         BrawlButton(stringResource(R.string.play_offline),offline,Modifier.fillMaxWidth(),tone=ActionTone.POSITIVE)

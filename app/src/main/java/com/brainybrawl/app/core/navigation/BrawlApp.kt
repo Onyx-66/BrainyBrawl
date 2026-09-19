@@ -15,7 +15,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
@@ -120,11 +120,11 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         val settingsLabel=stringResource(R.string.settings)
         val profileLabel=stringResource(R.string.profile)
         Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)){
-        if(route==Destination.HOME.name)ScreenBackdrop(screenArt.home,.75f)
-        Scaffold(containerColor = if(route==Destination.HOME.name)Color.Transparent else MaterialTheme.colorScheme.background,
+        ScreenBackdrop(screenArt.home,.75f,Modifier.testTag("app-scene-background"))
+        Scaffold(containerColor = Color.Transparent,
             contentColor=MaterialTheme.colorScheme.onBackground,
             topBar = {
-                Row(Modifier.fillMaxWidth().then(if(route==Destination.HOME.name)Modifier.background(MaterialTheme.colorScheme.background.copy(alpha=.9f))else Modifier).statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
+                Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background.copy(alpha=.9f)).statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween) {
                     Row(Modifier.weight(1f),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
                         val identity=auth as? AuthState.SignedIn
@@ -151,8 +151,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
             NavHost(nav, Destination.AUTH.name, Modifier.padding(padding).imePadding()) {
                 Destination.entries.forEach { destination ->
                     composable(destination.name) {
-                        Column(Modifier.fillMaxSize().then(if(destination==Destination.HOME)Modifier else Modifier.background(Brush.verticalGradient(listOf(
-                            MaterialTheme.colorScheme.background, MaterialTheme.colorScheme.surface.copy(alpha = .4f)))))
+                        Column(Modifier.fillMaxSize()
                             .verticalScroll(rememberScrollState()).padding(20.dp),
                             verticalArrangement = Arrangement.spacedBy(when(destination){Destination.GAME->8.dp;Destination.AUTH,Destination.PROFILE->10.dp;else->16.dp})) {
                             when(destination) {

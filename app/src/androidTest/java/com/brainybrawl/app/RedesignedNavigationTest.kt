@@ -21,6 +21,7 @@ class RedesignedNavigationTest {
         return rule.activity.createConfigurationContext(config).getString(id)
     }
     private fun capture(name:String){
+        rule.onNodeWithTag("app-scene-background").assertIsDisplayed()
         val file=java.io.File(rule.activity.getExternalFilesDir(null),"redesign-$name.png")
         java.io.FileOutputStream(file).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
     }

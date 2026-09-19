@@ -162,3 +162,5 @@ pages and deployment approval remain the existing owner-controlled gates.
 ## Owner artwork and puzzle update — September 19, 2026
 
 RESOLVED: New puzzles use a regular 12-column × 8-row grid, 96 exact square PNG cuts, a 60%-opacity full-image guide, and 180 seconds. This owner instruction replaces the earlier irregular-pieces/120-second requirement. Existing published IDs and in-flight rounds retain their original contract. Splash and home choose from their respective packaged image folders once per app launch; home uses 75% opacity. See `../PUZZLE_BACKGROUND_UPDATE.md` for migration scope.
+
+Owner clarification: the selected `assets/screen/home` image is shared across ALL app destinations at 75% opacity. The folder name does not limit it to the Home screen. Splash continues to use `assets/screen/splash`.
