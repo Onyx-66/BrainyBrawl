@@ -1,691 +1,275 @@
-# Brainy Brawl --- AI-Agent Build Prompts v3
-
-## Mission
-
-Build Brainy Brawl so the final Android app is functionally faithful to
-the GDD/build pack **and visually converges on**:
-
-`mockups/UI_MASTER_REFERENCE.png`
-
-The mockup is a visual target, not a source for invented gameplay rules.
-
-## Visual reference contract --- mandatory
-
-The project includes a visual master reference at:
-`mockups/UI_MASTER_REFERENCE.png`
-
-### What the reference controls
-
-Use the reference as the primary **visual target** for: - overall screen
-composition; - information hierarchy; - button placement patterns; -
-navigation placement; - card proportions; - spacing rhythm; - dark blue
-panel treatment; - saturated accent colors; - rounded corners; - bold,
-friendly typography; - icon treatment; - HUD placement; - player/team
-cards; - timers/progress indicators; - modal/popup treatment; -
-victory/defeat/reward presentation.
-
-The reference targets a **Samsung Galaxy A56-style 1080 × 2340 px, 20:9
-portrait frame**. Compose layouts responsively, but use that frame for
-visual review and screenshot baselines.
-
-### What the reference does NOT control
-
-The reference is not allowed to override: - GDD gameplay rules; - exact
-round counts/timers/scoring; - server-authoritative behavior; -
-security/RLS requirements; - localization requirements; - accessibility
-requirements; - unresolved product decisions.
-
-The GDD-derived instruction files remain authoritative for behavior. If
-the mockup and a written product rule conflict, implement the written
-product rule and preserve the mockup's visual language where possible.
-
-### Visual implementation rules
-
--   Do not replace the reference with a generic Material 3 look.
--   Material 3 is an implementation foundation only; Brainy Brawl's
-    custom design tokens must drive the visible result.
--   Do not introduce arbitrary new colors per screen. Use semantic
-    design tokens.
--   Do not invent new navigation patterns when an equivalent pattern
-    exists in the reference.
--   Keep primary actions visually prominent, secondary actions distinct,
-    and destructive actions red.
--   Keep gameplay controls thumb-reachable and visually stable across
-    rounds.
--   Use the same component for the same semantic purpose across screens.
--   Use real assets where supplied; do not create fake logos, fake store
-    products, or fake player data as production content.
--   Visual placeholders are acceptable in development only when clearly
-    marked and replaceable by stable asset/content IDs.
--   Every screen should be reviewable at 1080 × 2340 without clipping,
-    overlap, or unreadable text.
--   Test long French and Arabic strings; RTL must mirror layout without
-    breaking the reference hierarchy.
-
-### Reference screen inventory
-
-The master board is a visual target for these families: 1. Splash /
-launch 2. Login 3. Sign up 4. Home / Landing 5. Profile 6. Friends 7.
-Store 8. Settings 9. Mode selection 10. Loadout selection 11. Lobby 12.
-1v1 Question Round 13. 1v1 Image Guess 14. Duo 96-piece puzzle 15. Squad
-Precision Tap 16. Squad Speed Sort 17. Theme selection/draft 18. Solo
-Online search/game shell 19. Results / Victory / Defeat 20. Matchmaking
-/ Countdown 21. Correct / Wrong answer states 22. Reaction overlay 23.
-Reconnecting 24. Flame reward 25. Shared design-system components
-
-When implementing a screen not explicitly pictured, infer only the
-**visual language and component grammar**, not new product behavior.
-
-## Mandatory global agent contract
-
-Every agent MUST:
-
-1.  Inspect the current repository before editing.
-2.  Read every instruction file named by the prompt.
-3.  Read `17_DECISION_REGISTER.md`.
-4.  For UI work, inspect `mockups/UI_MASTER_REFERENCE.png` before
-    coding.
-5.  Treat written GDD-derived requirements as authoritative for
-    behavior.
-6.  Treat the mockup as authoritative for visual language/layout where
-    behavior does not conflict.
-7.  Never silently invent an unresolved product rule.
-8.  If a required product decision is missing, mark it `OPEN_DECISION`,
-    stop at that decision boundary, and do not guess.
-9.  Make the smallest coherent change required.
-10. Preserve existing architecture and working behavior.
-11. Do not add libraries/services without a documented technical reason.
-12. Never commit secrets or privileged Supabase credentials.
-13. Never place a Supabase `service_role`/privileged key in Android
-    code, resources, logs, Git, or APK.
-14. Never trust client-provided competitive scores, winners, deadlines,
-    Flame awards, balances, or leaderboard values.
-15. Keep competitive authority on the server.
-16. Keep domain logic independent of Compose.
-17. Keep raw Supabase Realtime subscriptions out of Composables.
-18. Use localization keys for all user-facing strings.
-19. Preserve Light/Dark and RTL support.
-20. Add loading, empty, error, retry, and reconnect states where
-    applicable.
-21. Add/update tests for business rules and failure cases.
-22. Never weaken/delete tests to make a build pass.
-23. Do not automatically deploy/publish or alter production data.
-24. Do not make unrelated product/design changes.
-25. After UI work, compare affected screens at 1080 × 2340 and fix
-    avoidable visual drift.
+# PROMPTS --- Brainy Brawl Complete One-Session Codex Build
+
+This is an ordered implementation plan for **one Codex session**. Codex
+must execute all phases continuously against the supplied current
+Android project root.
+
+## Global rules
+
+-   Inspect the actual repository first; never assume it is a clean
+    template.
+-   Read all instruction `.md` files in `docs/ai-build-pack/` before
+    broad implementation.
+-   Read `17_DECISION_REGISTER.md`.
+-   Inspect `mockups/UI_MASTER_REFERENCE.png` before UI work.
+-   GDD-derived written product/gameplay requirements are authoritative.
+-   The mockup is authoritative for visual language/layout where it does
+    not conflict with written behavior.
+-   Never silently invent unresolved product rules; record
+    `OPEN_DECISION`.
+-   Kotlin + Jetpack Compose.
+-   Supabase backend.
+-   Domain/game rules independent of Compose.
+-   Realtime subscriptions owned by data/repository layer, not
+    Composables.
+-   Server-authoritative competitive state, scoring, deadlines, winners,
+    Flames, balances, and leaderboard writes.
+-   Never expose Supabase service-role/privileged credentials.
+-   Never commit secrets.
+-   No free-text chat at launch.
+-   All user-facing strings use localization.
+-   Preserve Light/Dark and Arabic RTL.
+-   Test loading/empty/error/reconnect states.
+-   Never weaken/delete tests to make a build green.
+-   Do not publish/deploy production.
+-   Do not make unrelated rewrites.
+-   Runtime/source content is XML, one file per game/mini-game type.
+-   No XLSX parsing in Android runtime.
+-   Do not create a giant all-games XML.
+-   Verify major UI screens at 1080 × 2340 / 20:9 against the master
+    board.
 
-## Required report after every prompt
+## Required content files
 
-Return: - Implemented - Files changed - Tests executed + results -
-Build/lint result - Visual QA result (for UI work) - Database
-migrations/functions changed - Security considerations - Known
-limitations / `OPEN_DECISION`s - Exact next dependency
+``` text
+content/
+  question_round.xml
+  image_guess.xml
+  collaborative_puzzle.xml
+  precision_tap.xml
+  roll_the_dice.xml
+  word_scramble.xml
+  speed_sort.xml
+  reactions.xml
+```
 
-## Human approval gates
+## Ordered phases
 
-Stop for human approval before: - resolving an `OPEN_DECISION`; -
-changing a confirmed GDD rule; - adding a paid third-party service; -
-destructive shared/production DB changes; - release signing changes; -
-production deployment/publication; - breaking public API changes.
+### 01 --- Repository/architecture audit
 
-------------------------------------------------------------------------
+Read all docs, inspect the current project, reconcile actual code with
+the architecture and decision register. Do not invent product rules.
 
-# Phase 0 --- Architecture and foundation
+### 02 --- Android foundation
 
-## Prompt 01 --- Establish the engineering contract
+Implement/repair Kotlin/Compose foundation, dependencies, package/module
+boundaries, environment config, tests, lint, and CI as appropriate.
 
-Read: - `00_README.md` - `01_ARCHITECTURE.md` -
-`17_DECISION_REGISTER.md` - `18_MOCKUPS_REFERENCE.md`
+### 03 --- Design system
 
-Inspect the real repository.
+Implement the visual system to converge on the master board: navy
+surfaces, saturated accents, semantic green/red/gold actions, rounded
+cards/buttons, bold friendly typography, top resource bar, bottom
+navigation, player cards, timers, progress, gameplay controls, dialogs,
+result states.
 
-Produce/update an implementation map covering: - module/package
-boundaries; - Compose/UI/domain/data separation; - Supabase
-responsibilities; - server-authoritative responsibilities; - Realtime
-ownership; - offline/cache; - content/XLSX pipeline; - security; -
-testing; - dependency order; - visual-reference integration.
+### 04 --- Supabase schema
 
-Cross-check documents for contradictions. Preserve `OPEN_DECISION`s.
+Create versioned migrations for confirmed profiles, social,
+rooms/lobbies, matches/phases, submissions/events, economy,
+inventory/cosmetics, content references, leaderboards, and
+audit/security structures.
 
-Do not implement gameplay or invent product rules.
+### 05 --- RLS/security
 
-**Acceptance:** architecture is documented, visual reference is
-explicitly part of UI implementation, and unresolved product decisions
-remain unresolved.
+Default-deny RLS and tests. Prevent unauthorized access, score/result
+manipulation, reward/Flame manipulation, balance manipulation, and
+rewriting completed results.
 
-------------------------------------------------------------------------
+### 06 --- Authoritative server functions
 
-## Prompt 02 --- Build the Android foundation
+Implement confirmed match start, phase transitions, deadlines,
+submission validation, scoring, tiebreaks, finalization, and Flame
+awards with idempotency/replay protection.
 
-Read `02_PROJECT_FOUNDATION.md` and Prompt 01 output.
+### 07 --- XML content pipeline
 
-Implement only the Android foundation: - Kotlin/Compose; - approved
-dependency setup; - package structure; - environment/config; - baseline
-tests; - lint/static analysis; - CI; - safe Supabase client boundary if
-required.
+Implement XML validation/import/repository. Convert useful workbook seed
+data into the separate XML files while preserving stable IDs. No Excel
+runtime dependency.
 
-Do not implement feature screens, gameplay, store behavior, or
-multiplayer.
+### 08 --- Authentication
 
-**Acceptance:** debug build, tests, and lint pass; no secrets are
-committed.
+Email/password, verification, recovery, session restore, Google/Discord
+OAuth, secure Android callbacks/deep links.
 
-------------------------------------------------------------------------
+### 09 --- Home/navigation
 
-## Prompt 03 --- Build the Brainy Brawl design system
+Launch, auth transitions, Home/Landing, Start Game, Modes, Store,
+Friends, Profile, Settings, navigation. Match master-board visual
+hierarchy and placement.
 
-Read: - `03_DESIGN_SYSTEM_UI.md` - `18_MOCKUPS_REFERENCE.md`
+### 10 --- Profile/friends/safety
 
-Implement the complete reusable design system.
+Profile, permanent 8-digit Player ID, friends/requests, block/report,
+preset quick reactions. No free-text chat.
 
-The visual result must match the master reference: - deep navy
-background; - dark blue panels/cards; - saturated purple/blue/cyan
-accents; - green positive actions; - red destructive actions; -
-yellow/gold rewards; - rounded cards/buttons; - bold friendly
-typography; - compact mobile-game HUD; - consistent iconography; -
-bottom navigation and top resource patterns.
+### 11 --- Economy/store
 
-Implement component states and a showcase screen.
+Gold, Gems, Flames, inventory, cosmetics, Flame Vault, two-item loadout.
+Client cannot mint Flames/balances. Do not invent unresolved IAP/Battle
+Pass/ad rules.
 
-Verify Light/Dark and RTL.
+### 12 --- Rooms/lobbies
 
-**Acceptance:** screenshots at 1080 × 2340 visibly follow the master
-board's component grammar and no generic Material styling leaks through
-as the dominant look.
+Private-by-default rooms, join/leave, matchmaking toggle, public 1v1
+quick match, friend invites, Duo/Squad teams, names, ready state,
+presence, reconnect membership. Match master-board lobby/loadout
+visuals.
 
-------------------------------------------------------------------------
+### 13 --- Typed Realtime
 
-# Phase 1 --- Backend contract
+Versioned typed events, authoritative snapshots, duplicate handling,
+unknown-event handling, repository-owned subscriptions, ViewModel state,
+reconnect recovery.
 
-## Prompt 04 --- Design Supabase schema
+### 14 --- Game engine
 
-Read `16_SUPABASE_BACKEND_SECURITY.md`, `17_DECISION_REGISTER.md`, and
-relevant mode docs.
+Platform-independent match/phase state machine, deadlines, submissions,
+scoring, transitions, finalization, recovery.
 
-Create normalized migrations for confirmed requirements: -
-profiles/player IDs; - friends/blocks/reports; - rooms/lobbies; -
-matches/phases; - submissions/score events; -
-currencies/inventory/cosmetics; - content references; -
-leaderboards/statistics; - audit/security fields.
+### 15 --- Question Round
 
-Use constraints, foreign keys, indexes, and appropriate enums.
+Implement documented 1v1 rules: 15 rounds, question-only 10s, five
+options, 20s answer window, first valid correct +1. Load content from
+XML.
 
-Do not invent unresolved mode schedules, IAP pricing, Battle Pass rules,
-ads economy, or production licensing.
+### 16 --- Image Guess
 
-**Acceptance:** migrations apply to a fresh development DB and
-unresolved decisions remain explicit.
+Image/theme/specification, 10 answer choices, hidden point values,
+exactly 4 selections, 30s, reveal/explanation. Match master-board
+composition.
 
-------------------------------------------------------------------------
+### 17 --- Precision Tap
 
-## Prompt 05 --- Implement RLS and authorization tests
+Rotating target/hot-zone, hit scoring, streak bonus, increasing
+difficulty, deterministic tests, reference visual treatment.
 
-Read `16_SUPABASE_BACKEND_SECURITY.md`.
+### 18 --- Collaborative Puzzle
 
-Implement default-deny RLS and tests proving users cannot: - read/write
-other users' private data; - submit for another player; - alter
-authoritative score events; - award Flames; - alter
-balances/inventory; - rewrite completed results.
+Duo 96-piece/12×8 conceptual puzzle, irregular/variable blocks,
+left/right assignments, snapping/correct placement, live teammate
+cursor/attempt visualization, compact synchronization, reconnect
+recovery.
 
-**Acceptance:** unauthorized operations fail in automated tests.
+### 19 --- Word Scramble
 
-------------------------------------------------------------------------
+Content-driven scramble, timer, accepted-answer ordering, duplicate
+protection, documented scoring.
 
-## Prompt 06 --- Implement authoritative match functions
+### 20 --- Speed Sort
 
-Implement server-side functions for: - match start; - phase
-transitions; - submission validation; - authoritative deadlines; -
-scoring; - tiebreaks; - finalization; - Flame awards.
+Item stream, category buckets, drag/drop, correct +1, wrong 0, timeout
+streak reset, relay support.
 
-Require idempotency, replay protection, server timestamps, and
-transactional updates.
+### 21 --- 1v1 end-to-end
 
-**Acceptance:** duplicate/reordered requests cannot duplicate rewards or
-rewrite results.
+Public quick match/friend invite, lobby, Question Round, Image Guess,
+results, Flame reward.
 
-------------------------------------------------------------------------
+### 22 --- Offline
 
-## Prompt 07 --- Build content import validation
+Offline Question Round and Image Guess using local XML, no networking,
+no Flame, all-time best/session score-ratio logging.
 
-Read `13_CONTENT_PIPELINE_XLSX.md` and inspect
-`Brainy_Brawl_Content.xlsx`.
+### 23 --- Duo
 
-Build validation/import tooling for: - duplicate IDs; - wrong answer
-counts; - invalid correct-answer flags; - broken references; -
-unsupported locales; - malformed placeholders; - invalid mini-game
-configs; - unapproved production content.
+Puzzle, rank calculation, theme draft, rank-dependent turns, bottom-four
+elimination, top-six Word Scramble finale, ranking, Flame rewards.
 
-Runtime code must not hard-code production questions/reactions/mini-game
-content.
+### 24 --- Squad
 
-**Acceptance:** invalid fixtures fail with actionable diagnostics; valid
-content imports.
+Precision Tap relay, Speed Sort relay, 20-question theme draft, ranking,
+Flame reward.
 
-------------------------------------------------------------------------
+### 25 --- Solo Online
 
-# Phase 2 --- App shell and social
+Build the documented shell/reusable integration. If the final Solo
+schedule is unspecified, record `OPEN_DECISION`; do not invent it.
 
-## Prompt 08 --- Implement authentication
+### 26 --- Leaderboards
 
-Read `04_AUTH_HOME_NAVIGATION.md`.
+Global/Friends-only and Weekly/All-Time views for documented modes, with
+current-user rank visibility.
 
-Implement: - email/password; - verification; - recovery/change
-password; - logout; - session restoration; - Google OAuth; - Discord
-OAuth; - secure Android callback/deep-link handling.
+### 27 --- Settings/localization/RTL
 
-Use safe configuration boundaries.
+Documented settings, English/French/Arabic, RTL, theme/audio/vibration,
+contact/legal destinations.
 
-**Acceptance:** auth lifecycle is robust and no privileged credential
-reaches the client.
+### 28 --- Reactions
 
-------------------------------------------------------------------------
+Localized preset reactions/overlays without blocking gameplay.
 
-## Prompt 09 --- Implement home/navigation to match the master board
+### 29 --- Security audit
 
-Read `04_AUTH_HOME_NAVIGATION.md`, `03_DESIGN_SYSTEM_UI.md`, and
-`18_MOCKUPS_REFERENCE.md`.
+Audit Android, RLS, functions, Realtime, scoring, Flames, balances,
+purchase verification, account deletion.
 
-Build: - launch/loading; - landing/home; - navigation graph; -
-placeholder destinations for Store, Profile, Friends, Start Game,
-Settings.
+### 30 --- Multiplayer reliability
 
-Use the master board as the visual target for: - top resource area; -
-cards; - CTA placement; - bottom navigation; - spacing; - color
-semantics.
+Disconnect/reconnect, duplicate events, delays, backgrounding, clock
+drift, missed events, transition recovery.
 
-Do not invent new product sections.
+### 31 --- Performance + visual fidelity
 
-**Acceptance:** 1080 × 2340 screenshot is visually consistent with the
-master board.
+Profile launch/navigation/recomposition/image loading/Realtime/puzzle
+rendering/memory. Capture major screens at 1080 × 2340 and compare to
+the master board.
 
-------------------------------------------------------------------------
+### 32 --- Content QA
 
-## Prompt 10 --- Implement profile/friends/safety
+Validate every XML file, IDs, counts, references, localization, asset
+references, schema versions, and approval metadata.
 
-Read `05_PROFILE_FRIENDS_SAFETY.md`.
+### 33 --- Full regression
 
-Implement: - profile; - permanent 8-digit Player ID; - friend
-requests/search; - friend list; - block/report; - preset quick
-reactions.
+Unit, integration, UI, security/RLS, multiplayer, offline,
+localization/RTL, reconnect, and content tests.
 
-No free-text chat.
+### 34 --- Release preparation
 
-Match the reference's player cards, tabs, buttons, avatars, and
-navigation grammar.
+Prepare release configuration, privacy/data-safety inputs, account
+deletion, legal links, configured purchase verification, crash
+reporting, store assets, age-rating inputs, staged rollout checklist. Do
+not publish.
 
-**Acceptance:** behavior and visual structure are correct; blocked
-interactions are server-enforced.
+### 35 --- Final review
 
-------------------------------------------------------------------------
+Review complete implementation against all docs, decision register, XML
+contract, and master UI board. Fix justified defects without silently
+changing product rules.
 
-# Phase 3 --- Economy and multiplayer shell
+## End-of-session artifact
 
-## Prompt 11 --- Implement economy/store
+Create `CHANGED_FILES_MANIFEST.md`.
 
-Read `06_STORE_ECONOMY.md`.
+Then create:
 
-Implement: - Gold; - Gems; - Flames; - inventory; - cosmetics; - Flame
-Vault; - two-item loadout.
+`BrainyBrawl_CHANGED_FILES.zip`
 
-Match the reference store/card/currency visual language.
+The ZIP must contain **only added/modified files relative to the
+starting repository**, plus the manifest, preserving project-relative
+paths.
 
-Do not invent IAP prices, Battle Pass, or ads rules.
+Do not include: - unchanged files; - `.git/`; - `.gradle/`; - build
+outputs; - IDE caches; - `local.properties`; - keystores/signing keys; -
+secrets; - machine-specific files.
 
-**Acceptance:** client cannot modify balances or buy Flames.
+List deleted files in the manifest so the user can reconcile deletions.
 
-------------------------------------------------------------------------
+## Final report
 
-## Prompt 12 --- Implement rooms/lobbies
-
-Read `07_LOBBY_MATCHMAKING_REALTIME.md`.
-
-Implement: - private-by-default rooms; - create/join/leave; -
-matchmaking toggle; - public 1v1 quick match; - friend invite; -
-Duo/Squad team formation; - team names; - ready states; - presence; -
-reconnect membership.
-
-Match the reference lobby and loadout composition.
-
-**Acceptance:** reconnect does not duplicate players.
-
-------------------------------------------------------------------------
-
-## Prompt 13 --- Implement typed Realtime event layer
-
-Build a typed/versioned event layer: - compact payloads; - event
-IDs/versioning; - duplicate handling; - unknown-event handling; -
-authoritative snapshots; - repository-owned subscriptions; - Flow to
-ViewModels.
-
-Do not subscribe directly from Composables.
-
-**Acceptance:** missed/duplicate events recover cleanly.
-
-------------------------------------------------------------------------
-
-# Phase 4 --- Game engine and mini-games
-
-## Prompt 14 --- Implement platform-independent game engine
-
-Read `08_GAME_ENGINE_SCORING.md`.
-
-Implement: - match state machine; - phase IDs; - deadlines; -
-submissions; - scoring; - transitions; - results; - tiebreak
-abstraction; - reconnect/recovery.
-
-No Compose dependency.
-
-**Acceptance:** extensive domain tests pass without Android UI.
-
-------------------------------------------------------------------------
-
-## Prompt 15 --- Implement Question Round
-
-Read `12_MINIGAMES.md` and relevant mode docs.
-
-Implement the documented Question Round exactly: - content-driven; - 15
-rounds for 1v1; - question-only period of 10 seconds; - 5 answer
-options; - 20-second answer period; - first valid correct answer gets +1
-in 1v1.
-
-Use the reference for visual placement of question, answer cards, timer,
-round counter, score/player HUD.
-
-Do not hard-code questions.
-
-**Acceptance:** server-authoritative online timing/scoring and
-deterministic offline behavior.
-
-------------------------------------------------------------------------
-
-## Prompt 16 --- Implement Image Guess
-
-Implement: - image + theme + specification; - 10 possible answers; -
-hidden point values; - exactly 4 selections; - 30-second limit; -
-reveal/explanation.
-
-Match reference composition: image card, answer grid, round counter,
-timer, selected state, reveal state.
-
-**Acceptance:** impossible selection states are prevented; scoring uses
-authoritative content.
-
-------------------------------------------------------------------------
-
-## Prompt 17 --- Implement Precision Tap
-
-Implement rotating target/hot-zone interaction, successful hits, streak
-bonus, and increasing difficulty.
-
-Match the reference's circular target composition and bottom
-timer/progress treatment.
-
-Add deterministic test seeds.
-
-**Acceptance:** domain tests cover hit/miss/streak/difficulty; input
-remains responsive.
-
-------------------------------------------------------------------------
-
-## Prompt 18 --- Implement Collaborative Puzzle
-
-Implement Duo's 96-piece conceptual 12×8 puzzle with
-irregular/variable-sized blocks, left/right assignment, snapping,
-correct placement, live teammate cursor/attempt visualization, compact
-sync, and reconnect recovery.
-
-Use the reference board as the visual target for puzzle HUD and tile
-presentation, but do not turn it into uniform square tiles if that
-conflicts with the written requirement.
-
-**Acceptance:** simulated clients converge on the same authoritative
-board state.
-
-------------------------------------------------------------------------
-
-## Prompt 19 --- Implement Word Scramble
-
-Implement content-driven shuffled answers, configurable timer,
-first-correct full score, later-correct reduced score, duplicate
-protection, and server acceptance ordering.
-
-Match the reference's compact round HUD and answer area.
-
-**Acceptance:** device clocks cannot decide answer order.
-
-------------------------------------------------------------------------
-
-## Prompt 20 --- Implement Speed Sort
-
-Implement stream generation, category buckets, drag/drop, correct +1,
-wrong 0, timeout streak reset, and relay support.
-
-Match the reference's category cards and bottom action/timer area.
-
-Definitions remain in content data.
-
-**Acceptance:** offline and online domain rules match.
-
-------------------------------------------------------------------------
-
-# Phase 5 --- Complete game modes
-
-## Prompt 21 --- Build 1v1 end-to-end
-
-Read `09_MODES_1V1_OFFLINE.md`.
-
-Connect: - public quick match; - friend invite; - lobby; - Question
-Round; - Image Guess; - results; - Flame reward.
-
-Match the master board's 1v1 mode card, loadout, lobby, gameplay, and
-results visual patterns.
-
-**Acceptance:** two clients complete a full match with identical
-authoritative results.
-
-------------------------------------------------------------------------
-
-## Prompt 22 --- Build Offline end-to-end
-
-Implement offline Question and Image Guess with local approved
-content/cache, no networking, no Flame, all-time best, and session
-score-ratio logging.
-
-Match online visual language while clearly communicating Offline.
-
-**Acceptance:** networking can be disabled and the mode still works.
-
-------------------------------------------------------------------------
-
-## Prompt 23 --- Build Duo end-to-end
-
-Read `10_MODES_DUO.md`.
-
-Connect: - collaborative puzzle; - rank calculation; - theme draft; -
-rank-dependent turns; - bottom-four elimination; - top-six Word Scramble
-finale; - ranking; - Flame rewards.
-
-Match the reference's team/player/puzzle/draft/result visual grammar.
-
-**Acceptance:** all rank-dependent rules are server-enforced.
-
-------------------------------------------------------------------------
-
-## Prompt 24 --- Build Squad end-to-end
-
-Read `11_MODES_SQUAD_SOLO.md`.
-
-Connect: - Precision Tap relay; - Speed Sort relay; - 20-question theme
-draft; - final ranking; - Flame reward.
-
-Match the reference's game-mode cards and mini-game compositions.
-
-**Acceptance:** team score is reproducible from authoritative events.
-
-------------------------------------------------------------------------
-
-## Prompt 25 --- Build Solo Online shell and decision gate
-
-Build the Solo Online shell and reusable mini-game integration.
-
-Do not invent the final Solo Online schedule if the GDD does not specify
-it.
-
-Mark the missing schedule `OPEN_DECISION`.
-
-Match the reference's Solo search/game-shell visual language.
-
-**Acceptance:** final schedule can be added through configuration
-without rewriting the engine.
-
-------------------------------------------------------------------------
-
-# Phase 6 --- Product surfaces
-
-## Prompt 26 --- Implement leaderboards
-
-Implement Global/Friends-only and Weekly/All-Time filters for documented
-modes.
-
-Match reference leaderboard rows, tabs, avatars, rank styling, and
-current-user emphasis.
-
-Always show the user's own rank even outside the visible range.
-
-**Acceptance:** backend-authoritative rankings and correct pagination.
-
-------------------------------------------------------------------------
-
-## Prompt 27 --- Implement settings/localization/RTL
-
-Read `14_LOCALIZATION_RTL.md`.
-
-Implement: - Music; - Sound; - Vibration; - Language; - Theme; - Contact
-Us; - Terms; - Privacy Policy; - English/French/Arabic; - RTL.
-
-Match the reference settings list and toggle treatment.
-
-**Acceptance:** all strings localized and Arabic layout mirrors
-correctly.
-
-------------------------------------------------------------------------
-
-## Prompt 28 --- Implement reactions
-
-Implement documented reaction triggers and localized reaction strings.
-
-Match the reference's short overlay style.
-
-Reactions must not block gameplay or steal input.
-
-**Acceptance:** overlays auto-dismiss in the documented range and remain
-readable in all languages.
-
-------------------------------------------------------------------------
-
-# Phase 7 --- QA and release
-
-## Prompt 29 --- Security audit
-
-Audit Android, RLS, Edge Functions, Realtime, scoring, Flame awards,
-balances, purchase verification, and account deletion.
-
-Attempt unauthorized reads/writes, replay, duplicate rewards, score
-tampering, and timestamp manipulation.
-
-Fix valid vulnerabilities without weakening tests.
-
-**Acceptance:** no client can award itself currency/Flames or alter
-competitive results.
-
-------------------------------------------------------------------------
-
-## Prompt 30 --- Multiplayer reliability audit
-
-Test: - disconnect/reconnect; - duplicate events; - delayed clients; -
-backgrounding; - clock drift; - missed events; - transitions during
-reconnect; - host departure where applicable.
-
-Fix convergence/recovery issues without changing rules.
-
-**Acceptance:** authoritative state remains recoverable.
-
-------------------------------------------------------------------------
-
-## Prompt 31 --- Performance and visual fidelity audit
-
-Profile: - cold launch; - navigation; - Compose recomposition; - image
-loading; - Realtime traffic; - puzzle rendering; - large-room
-behavior; - memory.
-
-For every major UI screen, capture 1080 × 2340 screenshots and compare
-with the master reference.
-
-Fix measurable performance and visual drift without changing product
-rules.
-
-**Acceptance:** before/after metrics are documented and major screens
-visually converge on the reference.
-
-------------------------------------------------------------------------
-
-## Prompt 32 --- Content QA
-
-Validate: - XLSX; - imports; - answer counts; - explanations; - image
-metadata; - localization; - reactions; - asset references; -
-approval/licensing metadata.
-
-Do not invent licensing claims or sources.
-
-**Acceptance:** release build references only approved content.
-
-------------------------------------------------------------------------
-
-## Prompt 33 --- Full regression
-
-Run: - unit; - integration; - UI; - RLS/security; - multiplayer; -
-offline; - localization/RTL; - purchase; - reconnect/recovery; - visual
-regression where available.
-
-Fix failures rather than weakening tests.
-
-**Acceptance:** reproducible green release-candidate report, or explicit
-release blockers.
-
-------------------------------------------------------------------------
-
-## Prompt 34 --- Google Play release preparation
-
-Prepare: - release signing; - build variants; - privacy/data safety
-inputs; - account deletion; - Terms/Privacy links; - IAP verification; -
-crash reporting; - store assets; - age-rating declarations; - staged
-rollout checklist.
-
-Do not publish automatically.
-
-**Acceptance:** release candidate is ready for human review.
-
-------------------------------------------------------------------------
-
-## Prompt 35 --- Final architecture, product, and visual review
-
-Review the complete repository against: - GDD-derived requirements; -
-all instruction files; - `17_DECISION_REGISTER.md`; -
-`18_MOCKUPS_REFERENCE.md`; - `mockups/UI_MASTER_REFERENCE.png`; -
-`Brainy_Brawl_Content.xlsx`.
-
-Check for: - architectural drift; - generic Material UI replacing the
-custom visual system; - incorrect button colors; - inconsistent button
-placement; - inconsistent cards/navigation/HUD; - hard-coded content; -
-hard-coded strings; - client-authoritative competitive logic; - insecure
-RLS; - leaked secrets; - missing RTL; - missing loading/error/reconnect
-states; - performance hazards; - incorrect gameplay rules.
-
-Make only justified fixes. Do not silently resolve product decisions.
-
-Produce: - implementation status; - visual-fidelity status; - remaining
-defects; - remaining `OPEN_DECISION`s; - security status; - test
-status; - release blockers.
-
-**Acceptance:** the final app is both functionally faithful to the GDD
-and visually consistent with the supplied master reference.
+State: - implementation summary; - build/test/lint status; - Supabase
+changes; - XML content files; - UI/visual QA status; - security
+status; - remaining `OPEN_DECISION`s/limitations; - exact ZIP path.

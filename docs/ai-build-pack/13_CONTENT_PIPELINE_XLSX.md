@@ -1,135 +1,119 @@
-# 13 --- Content Database & XLSX Import Pipeline
+# 13 --- Content Pipeline: XML Per Game/Mini-Game
 
-## Objective
+## Runtime/source format
 
-Make the XLSX the authoring source for game content while keeping
-runtime access safe, fast, and localizable.
+The project uses **individual XML files**, one per game/mini-game
+content type.
 
-## Workbook
+The previous Excel workbook is reference/authoring/migration input only.
+It is **not** an Android runtime format.
 
-Use `Brainy_Brawl_Content.xlsx`.
+## Required repository content directory
 
-Sheets: - README - Questions - ImageGuess - Puzzles - PuzzlePieces -
-PrecisionTap - WordScramble - SpeedSort - Reactions - ModesConfig -
-EconomyItems - LocalizationKeys
+``` text
+content/
+├── question_round.xml
+├── image_guess.xml
+├── collaborative_puzzle.xml
+├── precision_tap.xml
+├── roll_the_dice.xml
+├── word_scramble.xml
+├── speed_sort.xml
+└── reactions.xml
+```
 
-## Rules
+Do not create one giant XML containing every game.
 
-Every content row needs a stable unique ID.
+## XML requirements
 
-Production content must include: - locale; - status (`DRAFT`, `REVIEW`,
-`APPROVED`, `RETIRED`); - author/source metadata where applicable; -
-theme/category; - difficulty; - explanation where relevant; - media
-asset key where relevant.
+All files must: - be UTF-8; - declare schema/content version; - use
+stable IDs; - contain locale metadata; - contain explicit approval
+status; - contain no secrets or executable code; - reference
+images/audio using stable asset references; - contain
+content/configuration, not authoritative online match state.
 
-Never use row number as an ID.
+Use `DEV_SAMPLE` for seed records unless genuine production approval
+metadata exists. Never fabricate licensing/attribution claims.
 
-## Import pipeline
+### `question_round.xml`
 
-1.  Validate workbook.
-2.  Detect duplicate IDs.
-3.  Validate required columns.
-4.  Validate foreign keys.
-5.  Validate answer counts.
-6.  Validate exactly-one correct answer for Question rows.
-7.  Validate exactly-four selections are possible for ImageGuess.
-8.  Validate hidden point values.
-9.  Validate mini-game configuration ranges.
-10. Validate localization keys.
-11. Produce a machine-readable import report.
-12. Import approved content only.
+Stable ID, theme/category, question, exactly five options, exactly one
+correct option, optional explanation, difficulty, locale, approval
+status.
 
-## Media
+### `image_guess.xml`
 
-Image rows reference an `asset_key`, not a local absolute path. Storage
-should contain versioned assets and metadata.
+Stable ID, image asset reference, theme, specification, exactly ten
+choices, hidden point values, exactly four selections allowed,
+explanation, difficulty, approval/source metadata.
 
-For image trivia, keep `source_url`, `license`, and `attribution` fields
-where applicable.
+### `collaborative_puzzle.xml`
 
-## Localization
+Stable ID, 12×8/96 conceptual pieces, image asset reference,
+irregular/variable block metadata where required, placement/orientation
+data, validation metadata.
 
-English is the master/reference language. French and Arabic use the same
-keys. Arabic requires RTL-aware rendering.
+### `precision_tap.xml`
 
-## Deliverables
+Stable ID, target/hot-zone parameters, timing/difficulty profile, streak
+configuration, approved variants.
 
--   Workbook validator.
--   Import script/tool.
--   Database seed/import process.
--   Error report.
--   Example approved content.
+### `roll_the_dice.xml`
 
-## Important
+Stable ID, 20-slot roulette/wheel configuration, labels/assets,
+authoritative resolution metadata.
 
-The GDD does not provide a complete production trivia database or image
-asset library. The workbook therefore contains a schema plus seed/demo
-records. Production content must be reviewed and licensed before
-release.
+### `word_scramble.xml`
 
-## Visual reference contract --- mandatory
+Stable ID, source word/phrase, category/theme, accepted answer, optional
+aliases, difficulty, locale, approval status.
 
-The project includes a visual master reference at:
-`mockups/UI_MASTER_REFERENCE.png`
+### `speed_sort.xml`
 
-### What the reference controls
+Stable ID, item label, category, asset reference where needed,
+difficulty, locale, approval status.
 
-Use the reference as the primary **visual target** for: - overall screen
-composition; - information hierarchy; - button placement patterns; -
-navigation placement; - card proportions; - spacing rhythm; - dark blue
-panel treatment; - saturated accent colors; - rounded corners; - bold,
-friendly typography; - icon treatment; - HUD placement; - player/team
-cards; - timers/progress indicators; - modal/popup treatment; -
-victory/defeat/reward presentation.
+### `reactions.xml`
 
-The reference targets a **Samsung Galaxy A56-style 1080 × 2340 px, 20:9
-portrait frame**. Compose layouts responsively, but use that frame for
-visual review and screenshot baselines.
+Stable ID, category, localization key, trigger context,
+moderation/approval status.
 
-### What the reference does NOT control
+## Validation
 
-The reference is not allowed to override: - GDD gameplay rules; - exact
-round counts/timers/scoring; - server-authoritative behavior; -
-security/RLS requirements; - localization requirements; - accessibility
-requirements; - unresolved product decisions.
+Implement deterministic validation and run it in CI. Fail on malformed
+XML, duplicate IDs, missing required fields, wrong answer counts,
+multiple/no correct answers, invalid puzzle piece counts, broken
+references, unsupported locales, invalid placeholders, missing approval
+metadata, or incompatible schema versions.
 
-The GDD-derived instruction files remain authoritative for behavior. If
-the mockup and a written product rule conflict, implement the written
-product rule and preserve the mockup's visual language where possible.
+## Android architecture
 
-### Visual implementation rules
+``` text
+content/*.xml
+   ↓
+validator
+   ↓
+ContentRepository
+   ↓
+domain/use cases
+   ↓
+ViewModel
+   ↓
+Compose
+```
 
--   Do not replace the reference with a generic Material 3 look.
--   Material 3 is an implementation foundation only; Brainy Brawl's
-    custom design tokens must drive the visible result.
--   Do not introduce arbitrary new colors per screen. Use semantic
-    design tokens.
--   Do not invent new navigation patterns when an equivalent pattern
-    exists in the reference.
--   Keep primary actions visually prominent, secondary actions distinct,
-    and destructive actions red.
--   Keep gameplay controls thumb-reachable and visually stable across
-    rounds.
--   Use the same component for the same semantic purpose across screens.
--   Use real assets where supplied; do not create fake logos, fake store
-    products, or fake player data as production content.
--   Visual placeholders are acceptable in development only when clearly
-    marked and replaceable by stable asset/content IDs.
--   Every screen should be reviewable at 1080 × 2340 without clipping,
-    overlap, or unreadable text.
--   Test long French and Arabic strings; RTL must mirror layout without
-    breaking the reference hierarchy.
+Composables must not parse XML.
 
-### Reference screen inventory
+Online scoring/match state remains server-authoritative.
 
-The master board is a visual target for these families: 1. Splash /
-launch 2. Login 3. Sign up 4. Home / Landing 5. Profile 6. Friends 7.
-Store 8. Settings 9. Mode selection 10. Loadout selection 11. Lobby 12.
-1v1 Question Round 13. 1v1 Image Guess 14. Duo 96-piece puzzle 15. Squad
-Precision Tap 16. Squad Speed Sort 17. Theme selection/draft 18. Solo
-Online search/game shell 19. Results / Victory / Defeat 20. Matchmaking
-/ Countdown 21. Correct / Wrong answer states 22. Reaction overlay 23.
-Reconnecting 24. Flame reward 25. Shared design-system components
+## Migration
 
-When implementing a screen not explicitly pictured, infer only the
-**visual language and component grammar**, not new product behavior.
+If useful, convert the existing reference workbook into the individual
+XML files while preserving stable IDs. Do not add an Excel parser to the
+Android runtime.
+
+## Definition of done
+
+Every required XML exists, each content type has its own file,
+validation is automated, IDs are stable, and no XLSX runtime dependency
+exists.
