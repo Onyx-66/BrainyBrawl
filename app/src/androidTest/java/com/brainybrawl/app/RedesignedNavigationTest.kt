@@ -23,7 +23,7 @@ class RedesignedNavigationTest {
     private fun capture(name:String){
         rule.onNodeWithTag("app-scene-background").assertIsDisplayed()
         val file=java.io.File(rule.activity.getExternalFilesDir(null),"redesign-$name.png")
-        java.io.FileOutputStream(file).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
+        java.io.FileOutputStream(file).use{(if(name=="language-dropdown")rule.onNodeWithTag("language-menu")else rule.onRoot()).captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
     }
     @org.junit.Before fun awaitStartup(){
         rule.waitUntil(15_000){rule.onAllNodes(androidx.compose.ui.test.hasText(rule.activity.getString(R.string.play_offline))).fetchSemanticsNodes().isNotEmpty()}
@@ -32,6 +32,8 @@ class RedesignedNavigationTest {
         rule.onNodeWithText(text(R.string.email)).assertIsDisplayed()
         capture("auth")
         rule.onNodeWithText(text(R.string.play_offline)).performScrollTo().performClick()
+        capture("offline-menu")
+        rule.onNodeWithText(text(R.string.back_to_modes)).performScrollTo().performClick()
         capture("modes")
         rule.onNodeWithText(text(R.string.home)).performClick()
         val heading=rule.onNodeWithText(text(R.string.welcome)).captureToImage().asAndroidBitmap()
@@ -48,15 +50,19 @@ class RedesignedNavigationTest {
         rule.runOnIdle{app.container.settings.update(UserSettings())}
         rule.onNodeWithText(text(R.string.profile)).performClick()
         rule.onNodeWithText(text(R.string.email)).assertIsDisplayed()
-        rule.onNodeWithText(text(R.string.google)).performScrollTo().assertIsNotEnabled()
+        rule.onNodeWithText(text(R.string.provider_google)).performScrollTo().assertIsNotEnabled()
         rule.onNodeWithText(text(R.string.providers_later)).performScrollTo().assertIsDisplayed()
-        rule.onNodeWithText(text(R.string.discord)).performScrollTo().assertIsNotEnabled()
+        rule.onNodeWithText(text(R.string.provider_discord)).performScrollTo().assertIsNotEnabled()
         rule.onNodeWithText(text(R.string.register)).performScrollTo().performClick()
         rule.onNodeWithText(text(R.string.username)).performScrollTo().assertIsDisplayed()
     }
     @Test fun languageDropdownShowsFlagsAndAppliesFrenchAndArabic(){
         rule.onNodeWithContentDescription(text(R.string.settings)).performClick()
         rule.onNodeWithText("🇬🇧  English").performScrollTo().performClick()
+        val anchor=rule.onNodeWithTag("language-anchor").fetchSemanticsNode().boundsInRoot
+        val menu=rule.onNodeWithTag("language-menu").fetchSemanticsNode().boundsInRoot
+        org.junit.Assert.assertEquals(anchor.width,menu.width,2f)
+        capture("language-dropdown")
         rule.onNodeWithText("🇫🇷  Français").performClick()
         rule.onNodeWithText("🇫🇷  Français").assertIsDisplayed()
         capture("settings-fr")
@@ -90,6 +96,25 @@ class RedesignedNavigationTest {
         rule.onNodeWithText(confirm).performScrollTo().assertIsEnabled().performClick()
         rule.onNodeWithText(text(R.string.next_question)).performScrollTo().assertIsEnabled().performClick()
         rule.onAllNodes(choices).assertCountEquals(10)
+    }
+    @Test fun modesOpenDedicatedActionsAndOfflineOffersPlayablePuzzle(){
+        rule.onNodeWithText(text(R.string.play_offline)).performScrollTo().performClick()
+        rule.onNodeWithText(text(R.string.offline_puzzle)).assertIsDisplayed()
+        rule.onNodeWithText(text(R.string.back_to_modes)).performScrollTo().performClick()
+        rule.onNodeWithText(text(R.string.duo)).performClick()
+        rule.onNodeWithText(text(R.string.create_private)).assertIsDisplayed()
+        rule.onNodeWithText(text(R.string.join_a_room)).assertIsDisplayed()
+        rule.onAllNodesWithText(text(R.string.duel)).assertCountEquals(0)
+        capture("mode-options")
+        rule.onNodeWithText(text(R.string.back_to_modes)).performScrollTo().performClick()
+        rule.onNodeWithText(text(R.string.offline)).performScrollTo().performClick()
+        rule.onNodeWithText(text(R.string.offline_puzzle)).performClick()
+        rule.waitUntil(10_000){rule.onAllNodesWithTag("puzzle-board").fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithTag("puzzle-board").assertIsDisplayed()
+        rule.onNodeWithText(text(R.string.choose_puzzle_slot)).performScrollTo().assertIsEnabled()
+        capture("offline-puzzle")
+        rule.onNodeWithText(text(R.string.leave_offline)).performScrollTo().performClick()
+        rule.onNodeWithText(text(R.string.offline_questions)).assertIsDisplayed()
     }
     @Test fun authCardFollowsBothThemes(){
         rule.runOnIdle{app.container.settings.update(UserSettings(dark=true))}

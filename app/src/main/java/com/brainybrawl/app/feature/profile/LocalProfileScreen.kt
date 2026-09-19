@@ -17,19 +17,10 @@ import com.brainybrawl.app.feature.offline.OfflineStatistics
     val state by accounts.state.collectAsStateWithLifecycle()
     val user=state.current?:return
     Text(stringResource(R.string.profile),style=MaterialTheme.typography.headlineMedium)
-    BrawlPanel(Modifier.fillMaxWidth()){
-        Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)){
-            ProfileAvatar(avatars,user.id,user.username,Modifier.size(76.dp))
-            Column{Text(user.username,style=MaterialTheme.typography.headlineSmall);Text(stringResource(R.string.device_account),style=MaterialTheme.typography.labelMedium)}
-        }
-        PhotoPicker(avatars,true)
-    }
-    BrawlPanel(Modifier.fillMaxWidth()){
-        Text(user.email)
-        Text(stringResource(R.string.local_profile_description))
-        Text(namedString(R.string.player_level,"level" to 1))
-        Text(namedString(R.string.offline_best,"score" to stats.read().best))
-    }
+    PlayerCard(avatars,user.id,user.username,1,local=true)
+    AccountDetailsCard(user.email,listOf("email"))
+    ProfileStatPair(stringResource(R.string.player_level_label) to "1",stringResource(R.string.practice_best) to stats.read().best.toString())
+    BrawlPanel(Modifier.fillMaxWidth()){Text(stringResource(R.string.account_sync_info))}
     ActionBento(listOf(
         BentoAction(stringResource(R.string.friends),NavSymbol.PROFILE,friends),
         BentoAction(stringResource(R.string.connect_online),NavSymbol.GAMES,connect),

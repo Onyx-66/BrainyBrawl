@@ -30,15 +30,15 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
     points.forEachIndexed{index,p->if(index==0)moveTo(p.x*width,p.y*height)else lineTo(p.x*width,p.y*height)};close()
 }
 @Composable fun PuzzleGame(board:PuzzleBoardView,asset:String?,seat:Int,userId:String?,enabled:Boolean,
-    onPlace:(String,String,Int)->Unit,onCursor:(Float,Float)->Unit){
-    Text(stringResource(R.string.collaborative_puzzle),style=MaterialTheme.typography.headlineSmall)
-    Text(stringResource(R.string.puzzle_instruction))
+    onPlace:(String,String,Int)->Unit,onCursor:(Float,Float)->Unit,solo:Boolean=false){
+    Text(stringResource(if(solo)R.string.offline_puzzle else R.string.collaborative_puzzle),style=MaterialTheme.typography.headlineSmall)
+    Text(stringResource(if(solo)R.string.offline_puzzle_instruction else R.string.puzzle_instruction))
     if(asset==null){Text(stringResource(R.string.image_unavailable));return}
     val artwork by rememberArtwork(asset)
     val bitmap=(artwork as? ArtworkState.Ready)?.bitmap
     if(bitmap==null){if(artwork==ArtworkState.Failed)Text(stringResource(R.string.image_unavailable))else LinearProgressIndicator(Modifier.fillMaxWidth());return}
     val image=remember(bitmap){bitmap.asImageBitmap()}
-    val ordered=remember(board.pieces,asset,userId){board.pieces.filter{it.side==if(seat==0)"LEFT" else "RIGHT"}.shuffled(kotlin.random.Random((asset+userId).hashCode()))}
+    val ordered=remember(board.pieces,asset,userId,solo){board.pieces.filter{solo||it.side==if(seat==0)"LEFT" else "RIGHT"}.shuffled(kotlin.random.Random((asset+userId).hashCode()))}
     val remaining=ordered.filter{tile->board.placements.none{it.pieceId==tile.id}}
     var selected by remember(asset){mutableStateOf<String?>(null)}
     var rotation by remember(selected){mutableIntStateOf(0)}

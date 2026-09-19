@@ -9,10 +9,11 @@ sealed interface AuthState {
     data class SignedIn(val userId: String, val email: String?,val local:Boolean=false) : AuthState
 }
 enum class AuthProvider { GOOGLE, DISCORD }
-enum class AuthNotice { NONE, BACKEND_REQUIRED, VERIFY_EMAIL, RECOVERY_SENT, PASSWORD_RESET_READY, PASSWORD_UPDATED, INVALID_INPUT, NETWORK_ERROR, REQUEST_FAILED, CALLBACK_REJECTED }
+enum class AuthNotice { NONE, BACKEND_REQUIRED, VERIFY_EMAIL, RECOVERY_SENT, PASSWORD_RESET_READY, PASSWORD_UPDATED, INVALID_INPUT, NETWORK_ERROR, REAUTH_REQUIRED, REQUEST_FAILED, CALLBACK_REJECTED }
 interface AuthRepository {
     val onlineConfigured:Boolean get()=state.value!=AuthState.Unconfigured
     val state: StateFlow<AuthState>
+    suspend fun ensureOnline():AuthNotice = if((state.value as? AuthState.SignedIn)?.local==false)AuthNotice.NONE else AuthNotice.REAUTH_REQUIRED
     suspend fun loginLocal(email:String,password:String):AuthNotice=AuthNotice.REQUEST_FAILED
     suspend fun registerLocal(username:String,email:String,password:String):AuthNotice=AuthNotice.REQUEST_FAILED
     suspend fun login(email: String, password: String): AuthNotice

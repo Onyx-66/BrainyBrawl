@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 
-enum class NavSymbol { HOME,GAMES,IMAGE,STORE,PROFILE,TROPHY,SETTINGS }
+enum class NavSymbol { HOME,GAMES,IMAGE,STORE,PROFILE,TROPHY,SETTINGS,PUZZLE,OFFLINE }
 @Composable fun NavigationSymbol(symbol:NavSymbol){
     val color=LocalContentColor.current
     Canvas(Modifier.size(24.dp)){
@@ -18,6 +18,15 @@ enum class NavSymbol { HOME,GAMES,IMAGE,STORE,PROFILE,TROPHY,SETTINGS }
         fun point(x:Float,y:Float)=Offset(x*scale,y*scale)
         val stroke=Stroke(2*scale)
         when(symbol){
+            NavSymbol.PUZZLE->{
+                drawRoundRect(color,point(3f,3f),Size(18*scale,18*scale),androidx.compose.ui.geometry.CornerRadius(2*scale),style=stroke)
+                drawLine(color,point(12f,3f),point(12f,21f),2*scale);drawLine(color,point(3f,12f),point(21f,12f),2*scale)
+                drawCircle(color,2.5f*scale,point(12f,7f),style=stroke)
+            }
+            NavSymbol.OFFLINE->{
+                drawRoundRect(color,point(6f,2f),Size(12*scale,20*scale),androidx.compose.ui.geometry.CornerRadius(2*scale),style=stroke)
+                drawLine(color,point(3f,5f),point(21f,19f),2*scale);drawLine(color,point(10f,19f),point(14f,19f),2*scale)
+            }
             NavSymbol.IMAGE->{
                 drawRoundRect(color,point(2f,3f),Size(20*scale,18*scale),androidx.compose.ui.geometry.CornerRadius(2*scale),style=stroke)
                 drawCircle(color,2*scale,point(8f,8f))

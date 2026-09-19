@@ -13,3 +13,5 @@
 
 - Selected mode badges, currency symbols, empty-store/ranking art, and Orbital Garden puzzle: owner-supplied `assets_mockups` pack. The pack describes these as original artwork. Selected source names and hashes are recorded in `assets/SELECTED_MOCKUP_ASSETS.json`; none of its sample product data is shipped.
 - Alpine lake puzzle and splash/home scenes: supplied by the project owner. Originals are preserved in `assets/puzzles` and `assets/screen`. Puzzle PNG tiles are exact, unresized crops made with `tools/puzzle_image_cutter.py`, adapted from the owner-supplied reference script.
+
+- Compact provider-button reference: [Divyank-Gupta-g / happy-robin-54](https://uiverse.io/Divyank-Gupta-g/happy-robin-54), supplied by the owner. Native Compose layout and Canvas provider marks are implemented locally; no web component code was copied. Google/Discord marks identify their respective authentication providers, not Brainy Brawl branding.

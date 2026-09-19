@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.testTag
 import com.brainybrawl.app.R
 
 data class BentoAction(val label:String,val symbol:NavSymbol,val click:()->Unit)
@@ -29,12 +31,14 @@ data class BentoAction(val label:String,val symbol:NavSymbol,val click:()->Unit)
 }
 @Composable fun LanguageDropdown(current:String,onSelect:(String)->Unit){
  var open by remember{mutableStateOf(false)}
+ var anchorWidth by remember{mutableIntStateOf(0)}
+ val density=androidx.compose.ui.platform.LocalDensity.current
  val languages=listOf(Triple("en","🇬🇧",R.string.language_english),Triple("fr","🇫🇷",R.string.language_french),Triple("ar","🇸🇦",R.string.language_arabic))
  val selected=languages.single{it.first==current}
  Box(Modifier.fillMaxWidth()){
-  OutlinedButton({open=true},Modifier.fillMaxWidth().heightIn(min=56.dp),shape=RoundedCornerShape(16.dp)){
+  OutlinedButton({open=true},Modifier.fillMaxWidth().onSizeChanged{anchorWidth=it.width}.testTag("language-anchor").heightIn(min=56.dp),shape=RoundedCornerShape(16.dp),colors=ButtonDefaults.outlinedButtonColors(containerColor=MaterialTheme.colorScheme.surface,contentColor=MaterialTheme.colorScheme.onSurface)){
    Text(selected.second+"  "+stringResource(selected.third),Modifier.weight(1f));Text("▾")
   }
-  DropdownMenu(open,{open=false}){languages.forEach{(code,flag,label)->DropdownMenuItem(text={Text(flag+"  "+stringResource(label))},onClick={open=false;onSelect(code)})}}
+  DropdownMenu(open,{open=false},modifier=Modifier.width(with(density){anchorWidth.toDp()}).testTag("language-menu"),containerColor=MaterialTheme.colorScheme.surface,tonalElevation=0.dp){languages.forEach{(code,flag,label)->DropdownMenuItem(text={Text(flag+"  "+stringResource(label))},onClick={open=false;onSelect(code)})}}
  }
 }

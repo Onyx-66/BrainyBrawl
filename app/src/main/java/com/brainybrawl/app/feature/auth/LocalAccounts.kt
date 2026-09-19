@@ -58,6 +58,21 @@ class LocalAccounts(private val vault:LocalAccountVault){
             save(db.copy(current=account.id));AuthNotice.NONE
         }
     }
+    /** Called only after the remote service authenticated these credentials. */
+    suspend fun rememberVerifiedLogin(email:String,password:String){
+        initialize();lock.withLock{
+            val address=normalize(email)
+            val existing=db.accounts.find{it.email==address}
+            val salt=ByteArray(16).also{SecureRandom().nextBytes(it)}
+            val verifier=Base64.getEncoder().encodeToString(derive(password,salt))
+            val base=address.substringBefore('@').filter{it.isLetterOrDigit()&&it.code<128}.take(16).padEnd(3,'_')
+            var name=base;var suffix=1
+            while(db.accounts.any{it.id!=existing?.id&&it.username.equals(name,true)}){name=base+suffix++}
+            val account=StoredAccount(existing?.id?:"local_"+UUID.randomUUID(),existing?.username?:name,address,Base64.getEncoder().encodeToString(salt),verifier)
+            require(existing!=null||db.accounts.size<32)
+            save(db.copy(accounts=db.accounts.filterNot{it.id==account.id}+account,current=account.id))
+        }
+    }
     suspend fun deleteCurrent(expectedId:String){initialize();lock.withLock{
         val id=requireNotNull(db.current)
         require(id==expectedId)
@@ -87,31 +102,4 @@ class LocalAccounts(private val vault:LocalAccountVault){
         require(item.owner==db.current)
         save(db.copy(queue=db.queue.map{if(it.id==item.id&&it.owner==item.owner)item else it}))
     }}
-}
-
-class HybridAuthRepository(private val remote:AuthRepository,val localAccounts:LocalAccounts,scope:CoroutineScope):AuthRepository{
-    override val onlineConfigured get()=remote.onlineConfigured
-    override val state=combine(remote.state,localAccounts.state){remoteState,local->
-        when{
-            !local.ready->AuthState.Loading
-            remoteState is AuthState.SignedIn->remoteState
-            local.current!=null->AuthState.SignedIn(local.current.id,local.current.email,local=true)
-            else->remoteState
-        }
-    }.stateIn(scope,SharingStarted.Eagerly,AuthState.Loading)
-    init{scope.launch{try{localAccounts.initialize()}catch(e:CancellationException){throw e}catch(_:Exception){localAccounts.storageFailed()}}}
-    private suspend fun safe(block:suspend()->AuthNotice)=try{block()}catch(e:CancellationException){throw e}catch(_:Exception){AuthNotice.REQUEST_FAILED}
-    override suspend fun loginLocal(email:String,password:String)=safe{localAccounts.login(email,password)}
-    override suspend fun registerLocal(username:String,email:String,password:String)=safe{localAccounts.register(username,email,password)}
-    override suspend fun login(email:String,password:String)=if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.login(email,password)
-    override suspend fun register(username:String,email:String,password:String)=if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.register(username,email,password)
-    override suspend fun recover(email:String)=if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.recover(email)
-    override suspend fun changePassword(password:String)=if((state.value as? AuthState.SignedIn)?.local==true)safe{localAccounts.changePassword(password)}else remote.changePassword(password)
-    override suspend fun oauth(provider:AuthProvider)=if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.oauth(provider)
-    override suspend fun callback(uri:String)=remote.callback(uri)
-    override suspend fun logout():AuthNotice{
-        val result=if(remote.state.value is AuthState.SignedIn)remote.logout()else AuthNotice.NONE
-        if(result==AuthNotice.NONE)return safe{localAccounts.logout();AuthNotice.NONE}
-        return result
-    }
 }

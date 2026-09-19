@@ -164,3 +164,10 @@ pages and deployment approval remain the existing owner-controlled gates.
 RESOLVED: New puzzles use a regular 12-column × 8-row grid, 96 exact square PNG cuts, a 60%-opacity full-image guide, and 180 seconds. This owner instruction replaces the earlier irregular-pieces/120-second requirement. Existing published IDs and in-flight rounds retain their original contract. Splash and home choose from their respective packaged image folders once per app launch; home uses 75% opacity. See `../PUZZLE_BACKGROUND_UPDATE.md` for migration scope.
 
 Owner clarification: the selected `assets/screen/home` image is shared across ALL app destinations at 75% opacity. The folder name does not limit it to the Home screen. Splash continues to use `assets/screen/splash`.
+
+
+## Owner account and navigation correction — September 19, 2026
+
+RESOLVED: All created accounts use one online/offline-capable flow. An account created without internet is registered locally and connected through real Supabase authentication when possible. Existing server verification and authorization remain enforced; a local identity cannot issue competitive RPCs. Legacy one-way password records require re-entry once, not a second account. Google/Discord remain deferred by the owner's earlier instruction.
+
+RESOLVED: Mode cards open dedicated Create private room / Join a room pages. Offline is a peer mode card with Question Round, Image Guess and new single-player Puzzle choices. Offline Puzzle uses all 96 pieces, 180 seconds, one practice point per correct distinct placement and no Flames; no new online schedule or production migration is required. See `../ACCOUNT_MODES_UPDATE.md`.

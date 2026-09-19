@@ -263,4 +263,27 @@
     <string name="confirm_action">Confirm</string>
     <string name="offline_images">Guess from Image</string>
     <string name="providers_later">Google and Discord sign-in will be available later. Use email to get started.</string>
+    <string name="offline_puzzle">Puzzle</string>
+    <string name="offline_puzzle_instruction">Fit all 96 pieces before the timer ends. Choose a piece, then tap its position on the board.</string>
+    <string name="puzzle_complete">Puzzle complete!</string>
+    <string name="offline_modes_description">Questions, images and puzzles · no internet needed</string>
+    <string name="join_a_room">Join a room</string>
+    <string name="mode_options">How do you want to play?</string>
+    <string name="finish_account_connection">Sign in once to finish connecting your saved account.</string>
+    <string name="account_connection">Account connection</string>
+    <string name="account_connecting">Connecting your account…</string>
+    <string name="account_ready">Ready for online play</string>
+    <string name="offline_connection">No internet connection. Offline games are available.</string>
+    <string name="account_sync_info">This account works online and offline. Connect to sync it with the game server.</string>
+    <string name="player_card">Player card</string>
+    <string name="account_details">Account details</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="account_email_label">Email address</string>
+    <string name="connection_label">Connection</string>
+    <string name="practice_best">Practice best</string>
+    <string name="no_account_email">Provider account</string>
+    <string name="player_level_label">Level</string>
+    <string name="played_label">Games played</string>
+    <string name="wins_label">Wins</string>
+    <string name="signin_methods">Sign-in methods</string>
 </resources>

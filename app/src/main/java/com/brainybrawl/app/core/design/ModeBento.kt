@@ -42,3 +42,16 @@ import com.brainybrawl.app.feature.lobby.OnlineMode
     val resource=listOf(R.drawable.bb_badge_duel,R.drawable.bb_badge_duo,R.drawable.bb_badge_squad,R.drawable.bb_badge_solo)[index]
     androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(resource),null,Modifier.size(68.dp))
 }
+
+@Composable fun OfflineModeCard(onClick:()->Unit){
+    val shape=RoundedCornerShape(24.dp)
+    Row(Modifier.fillMaxWidth().clip(shape).background(Brush.linearGradient(listOf(Color(0xFF146374),Color(0xFF10213E))))
+        .border(1.dp,Color(0xFF55D6FF).copy(alpha=.4f),shape).clickable(onClick=onClick).padding(22.dp),
+        verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(18.dp)){
+        androidx.compose.runtime.CompositionLocalProvider(LocalContentColor provides Color(0xFF55D6FF)){NavigationSymbol(NavSymbol.OFFLINE)}
+        Column(verticalArrangement=Arrangement.spacedBy(6.dp)){
+            Text(stringResource(R.string.offline),style=MaterialTheme.typography.titleLarge,color=Color.White)
+            Text(stringResource(R.string.offline_modes_description),style=MaterialTheme.typography.labelMedium,color=Color(0xFFBBD0EA))
+        }
+    }
+}

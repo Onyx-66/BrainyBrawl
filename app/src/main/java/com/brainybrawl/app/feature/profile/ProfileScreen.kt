@@ -39,31 +39,24 @@ fun ProfileScreen(model: PlayerViewModel, avatars:AvatarRepository,password: () 
         is PlayerDataState.Ready -> {
             val profile=current.data.profile
             var username by rememberSaveable(profile.username) { mutableStateOf(profile.username) }
-            BrawlPanel(Modifier.fillMaxWidth()){
-                Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)){
-                    ProfileAvatar(avatars,profile.id,profile.username,Modifier.size(76.dp))
-                    Column{Text(profile.username,style=MaterialTheme.typography.headlineSmall);Text(namedString(R.string.player_level,"level" to current.data.level),color=Gold);Text(namedString(R.string.player_number,"number" to profile.number.toString()),style=MaterialTheme.typography.labelMedium)}
-                }
-                PhotoPicker(avatars,false)
-            }
+            PlayerCard(avatars,profile.id,profile.username,current.data.level,profile.number.toLong())
             CurrencyBar(current.data)
-            BrawlPanel(Modifier.fillMaxWidth()) {
-                current.data.email?.let{Text(namedString(R.string.account_email,"email" to it))}
-                Text(stringResource(R.string.connected_accounts),style=MaterialTheme.typography.titleMedium)
-                current.data.providers.forEach{provider->Text(stringResource(when(provider){"google"->R.string.provider_google;"discord"->R.string.provider_discord;else->R.string.email}))}
-            }
+            AccountDetailsCard(current.data.email,current.data.providers)
             current.data.modeStats.forEach{stats->BrawlPanel(Modifier.fillMaxWidth()){
                 Text(stringResource(when(stats.mode){"duo"->R.string.duo;"squad"->R.string.squad;"solo"->R.string.solo;else->R.string.duel}),style=MaterialTheme.typography.titleMedium)
                 Text(namedString(R.string.games_played,"count" to stats.played))
                 Text(namedString(R.string.games_won,"count" to stats.wins))
                 Text(namedString(R.string.mode_best,"score" to stats.best))
             }}
-            BrawlPanel(Modifier.fillMaxWidth()) {
-                Text(namedString(R.string.games_played,"count" to current.data.played.toString()))
-                Text(namedString(R.string.games_won,"count" to current.data.wins.toString()))
+            ProfileStatPair(stringResource(R.string.played_label) to current.data.played.toString(),stringResource(R.string.wins_label) to current.data.wins.toString())
+            var editing by rememberSaveable{mutableStateOf(false)}
+            BrawlPanel(Modifier.fillMaxWidth()){
+                TextButton({editing=!editing}){Text(stringResource(R.string.edit_profile))}
+                if(editing){
+                    OutlinedTextField(username,{username=it},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.username))},singleLine=true)
+                    BrawlButton(stringResource(R.string.save),{model.rename(username);editing=false},Modifier.fillMaxWidth(),enabled=!ui.busy&&AuthValidation.username(username))
+                }
             }
-            OutlinedTextField(username,{username=it},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.username))},singleLine=true)
-            BrawlButton(stringResource(R.string.save),{model.rename(username)},Modifier.fillMaxWidth(),enabled=!ui.busy && AuthValidation.username(username))
             Text(stringResource(R.string.inventory),style=MaterialTheme.typography.titleLarge)
             if(current.data.inventory.isEmpty()) Text(stringResource(R.string.empty_inventory))
             current.data.inventory.forEach { cosmetic ->

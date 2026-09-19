@@ -39,7 +39,14 @@ class AppContainer(context: Context) {
         override suspend fun read()=encrypted.readLocalAccounts()
         override suspend fun write(value:String)=encrypted.writeLocalAccounts(value)
     })
-    val auth=com.brainybrawl.app.feature.auth.HybridAuthRepository(SupabaseAuthRepository(supabase,scope),localAccounts,scope)
+    val connectivity=com.brainybrawl.app.core.network.ConnectivityMonitor(applicationContext,scope)
+    val auth=com.brainybrawl.app.feature.auth.HybridAuthRepository(SupabaseAuthRepository(supabase,scope),localAccounts,scope,connectivity.online,
+        object:com.brainybrawl.app.feature.auth.PendingAccountStore{
+            private val encrypted=EncryptedAuthStore(applicationContext)
+            private val json=kotlinx.serialization.json.Json{ignoreUnknownKeys=true}
+            override suspend fun read()=encrypted.readPendingAccount()?.let{json.decodeFromString<com.brainybrawl.app.feature.auth.PendingAccountConnection>(it)}
+            override suspend fun write(value:com.brainybrawl.app.feature.auth.PendingAccountConnection?)=encrypted.writePendingAccount(value?.let{json.encodeToString(com.brainybrawl.app.feature.auth.PendingAccountConnection.serializer(),it)})
+        })
     val avatars=com.brainybrawl.app.feature.profile.AvatarRepository(applicationContext,supabase,auth)
     val players=SupabasePlayerRepository(supabase)
     val store=com.brainybrawl.app.feature.store.SupabaseStoreRepository(supabase,applicationContext)
@@ -47,6 +54,9 @@ class AppContainer(context: Context) {
     val matches=com.brainybrawl.app.feature.match.SupabaseMatchRepository(supabase)
     val rooms=com.brainybrawl.app.feature.lobby.SupabaseRoomRepository(supabase)
     val socialQueue=com.brainybrawl.app.feature.friends.LocalSocialCoordinator(localAccounts,auth,players,rooms)
-    val offlineStatistics=com.brainybrawl.app.feature.offline.OfflineStatistics(applicationContext){(auth.state.value as? com.brainybrawl.app.feature.auth.AuthState.SignedIn)?.userId?:"guest"}
+    val offlineStatistics=com.brainybrawl.app.feature.offline.OfflineStatistics(applicationContext){
+        val signedIn=auth.state.value as? com.brainybrawl.app.feature.auth.AuthState.SignedIn
+        localAccounts.state.value.current?.takeIf{signedIn?.email.equals(it.email,true)}?.id?:signedIn?.userId?:"guest"
+    }
     val content=XmlContentRepository(applicationContext.assets::open,BuildConfig.DEBUG)
 }

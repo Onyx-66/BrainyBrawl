@@ -263,4 +263,27 @@
     <string name="confirm_action">تأكيد</string>
     <string name="offline_images">خمن من الصورة</string>
     <string name="providers_later">سيتوفر تسجيل الدخول عبر Google وDiscord لاحقًا. يمكنك البدء باستخدام البريد الإلكتروني.</string>
+    <string name="offline_puzzle">الأحجية</string>
+    <string name="offline_puzzle_instruction">ضع القطع الـ96 قبل انتهاء الوقت. اختر قطعة ثم اضغط على مكانها في اللوحة.</string>
+    <string name="puzzle_complete">اكتملت الأحجية!</string>
+    <string name="offline_modes_description">أسئلة وصور وأحاجٍ · دون إنترنت</string>
+    <string name="join_a_room">الانضمام إلى غرفة</string>
+    <string name="mode_options">كيف تريد أن تلعب؟</string>
+    <string name="finish_account_connection">سجّل الدخول لإكمال ربط حسابك المحفوظ.</string>
+    <string name="account_connection">اتصال الحساب</string>
+    <string name="account_connecting">جارٍ توصيل حسابك…</string>
+    <string name="account_ready">جاهز للعب عبر الإنترنت</string>
+    <string name="offline_connection">لا يوجد اتصال بالإنترنت. يمكنك اللعب دون اتصال.</string>
+    <string name="account_sync_info">يعمل هذا الحساب عبر الإنترنت ودون اتصال. اتصل لمزامنته مع خادم اللعبة.</string>
+    <string name="player_card">بطاقة اللاعب</string>
+    <string name="account_details">معلومات الحساب</string>
+    <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="account_email_label">البريد الإلكتروني</string>
+    <string name="connection_label">الاتصال</string>
+    <string name="practice_best">أفضل نتيجة تدريب</string>
+    <string name="no_account_email">حساب موفر الدخول</string>
+    <string name="player_level_label">المستوى</string>
+    <string name="played_label">المباريات الملعوبة</string>
+    <string name="wins_label">الانتصارات</string>
+    <string name="signin_methods">طرق تسجيل الدخول</string>
 </resources>

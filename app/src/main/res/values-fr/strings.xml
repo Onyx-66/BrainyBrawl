@@ -263,4 +263,27 @@
     <string name="confirm_action">Confirmer</string>
     <string name="offline_images">Deviner l’image</string>
     <string name="providers_later">La connexion Google et Discord sera disponible plus tard. Commencez avec votre e-mail.</string>
+    <string name="offline_puzzle">Puzzle</string>
+    <string name="offline_puzzle_instruction">Placez les 96 pièces avant la fin du temps. Choisissez une pièce, puis touchez sa place sur le plateau.</string>
+    <string name="puzzle_complete">Puzzle terminé !</string>
+    <string name="offline_modes_description">Questions, images et puzzles · sans connexion</string>
+    <string name="join_a_room">Rejoindre un salon</string>
+    <string name="mode_options">Comment voulez-vous jouer ?</string>
+    <string name="finish_account_connection">Connectez-vous pour terminer la connexion de votre compte enregistré.</string>
+    <string name="account_connection">Connexion du compte</string>
+    <string name="account_connecting">Connexion de votre compte…</string>
+    <string name="account_ready">Prêt à jouer en ligne</string>
+    <string name="offline_connection">Pas de connexion Internet. Les jeux hors ligne restent disponibles.</string>
+    <string name="account_sync_info">Ce compte fonctionne en ligne et hors ligne. Connectez-vous pour le synchroniser avec le serveur.</string>
+    <string name="player_card">Carte de joueur</string>
+    <string name="account_details">Informations du compte</string>
+    <string name="edit_profile">Modifier le profil</string>
+    <string name="account_email_label">Adresse e-mail</string>
+    <string name="connection_label">Connexion</string>
+    <string name="practice_best">Record entraînement</string>
+    <string name="no_account_email">Compte du fournisseur</string>
+    <string name="player_level_label">Niveau</string>
+    <string name="played_label">Parties jouées</string>
+    <string name="wins_label">Victoires</string>
+    <string name="signin_methods">Méthodes de connexion</string>
 </resources>

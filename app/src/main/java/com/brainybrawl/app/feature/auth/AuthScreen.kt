@@ -20,7 +20,7 @@ import com.brainybrawl.app.core.design.*
 fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Boolean = false,onlineOnly:Boolean=false) {
     val state by viewModel.ui.collectAsStateWithLifecycle()
     var form by rememberSaveable(changePassword) { mutableStateOf(if(changePassword) AuthForm.CHANGE_PASSWORD else AuthForm.LOGIN) }
-    var local by rememberSaveable(onlineOnly){mutableStateOf(!onlineOnly&&!viewModel.onlineConfigured)}
+    val local=false
     var username by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     // Passwords deliberately never enter saved instance state or a ViewModel property.
@@ -50,14 +50,6 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
                         }
                     }
                 }
-                if(!changePassword&&!onlineOnly){
-                    Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically){
-                        Checkbox(local,{local=it;viewModel.consumeNotice()})
-                        Text(stringResource(R.string.device_account))
-                    }
-                    if(local)Text(stringResource(R.string.device_account_description),style=MaterialTheme.typography.bodySmall)
-                }
-
                 if(form==AuthForm.REGISTER) OutlinedTextField(username,{username=it},Modifier.fillMaxWidth(),
                 label={Text(stringResource(R.string.username))},singleLine=true,enabled=enabled,colors=fields,shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
                 if(form!=AuthForm.CHANGE_PASSWORD) OutlinedTextField(email,{email=it},Modifier.fillMaxWidth(),
@@ -78,11 +70,11 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
     if(!changePassword) {
         if(form==AuthForm.LOGIN) {
             Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
-                ProviderButton(stringResource(R.string.google),"G",{viewModel.oauth(AuthProvider.GOOGLE)},enabled&&viewModel.providerEnabled(AuthProvider.GOOGLE),Modifier.weight(1f).fillMaxHeight())
-                ProviderButton(stringResource(R.string.discord),"D",{viewModel.oauth(AuthProvider.DISCORD)},enabled&&viewModel.providerEnabled(AuthProvider.DISCORD),Modifier.weight(1f).fillMaxHeight())
+                ProviderButton(stringResource(R.string.provider_google),AuthProvider.GOOGLE,{viewModel.oauth(AuthProvider.GOOGLE)},enabled&&viewModel.providerEnabled(AuthProvider.GOOGLE),Modifier.weight(1f).fillMaxHeight())
+                ProviderButton(stringResource(R.string.provider_discord),AuthProvider.DISCORD,{viewModel.oauth(AuthProvider.DISCORD)},enabled&&viewModel.providerEnabled(AuthProvider.DISCORD),Modifier.weight(1f).fillMaxHeight())
             }
             if(!viewModel.providerEnabled(AuthProvider.GOOGLE)||!viewModel.providerEnabled(AuthProvider.DISCORD))Text(stringResource(R.string.providers_later),caption,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
-            if(!local)TextButton(onClick={form=AuthForm.RECOVER;password=""}) { Text(stringResource(R.string.recover_password)) }
+            TextButton(onClick={form=AuthForm.RECOVER;password=""},colors=ButtonDefaults.textButtonColors(contentColor=MaterialTheme.colorScheme.onSurface),modifier=Modifier.background(MaterialTheme.colorScheme.surface,RoundedCornerShape(12.dp))) { Text(stringResource(R.string.recover_password)) }
         }
         BrawlButton(stringResource(R.string.play_offline),offline,Modifier.fillMaxWidth(),tone=ActionTone.POSITIVE)
     }
@@ -95,16 +87,15 @@ private fun AuthNotice.label(): Int = when(this) {
     AuthNotice.INVALID_INPUT -> R.string.invalid_auth_input
     AuthNotice.NETWORK_ERROR -> R.string.network_error
     AuthNotice.CALLBACK_REJECTED -> R.string.callback_rejected
+    AuthNotice.REAUTH_REQUIRED -> R.string.finish_account_connection
     else -> R.string.auth_failed
 }
 
-@Composable private fun ProviderButton(label:String,symbol:String,onClick:()->Unit,enabled:Boolean,modifier:Modifier=Modifier){
-    Button(onClick,modifier.heightIn(min=84.dp),enabled=enabled,
-        shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
-        colors=ButtonDefaults.buttonColors(containerColor=MaterialTheme.colorScheme.surfaceVariant,contentColor=MaterialTheme.colorScheme.onSurface,disabledContainerColor=MaterialTheme.colorScheme.surface,disabledContentColor=MaterialTheme.colorScheme.onSurfaceVariant)){
-        Column(verticalArrangement=Arrangement.spacedBy(8.dp)){
-            Text(symbol,style=MaterialTheme.typography.titleLarge,color=MaterialTheme.colorScheme.secondary)
-            Text(label,style=MaterialTheme.typography.labelLarge)
-        }
+@Composable private fun ProviderButton(label:String,provider:AuthProvider,onClick:()->Unit,enabled:Boolean,modifier:Modifier=Modifier){
+    OutlinedButton(onClick,modifier.heightIn(min=56.dp),enabled=enabled,
+        colors=ButtonDefaults.outlinedButtonColors(containerColor=MaterialTheme.colorScheme.surface,contentColor=MaterialTheme.colorScheme.onSurface,
+            disabledContainerColor=MaterialTheme.colorScheme.surface,disabledContentColor=MaterialTheme.colorScheme.onSurfaceVariant),
+        shape=RoundedCornerShape(16.dp),border=androidx.compose.foundation.BorderStroke(1.dp,MaterialTheme.colorScheme.outline.copy(alpha=.45f))){
+        ProviderMark(provider);Spacer(Modifier.width(10.dp));Text(label,style=MaterialTheme.typography.titleSmall)
     }
 }

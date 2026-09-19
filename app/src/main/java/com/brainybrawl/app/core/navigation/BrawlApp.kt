@@ -41,7 +41,7 @@ import com.brainybrawl.app.core.localization.namedString
 
 /** No tokens, passwords or user objects ever enter the navigation back stack. */
 enum class Destination(val label: Int) {
-    HOME(R.string.home), MODES(R.string.modes), STORE(R.string.store),
+    HOME(R.string.home), MODES(R.string.modes), MODE_OPTIONS(R.string.mode_options), OFFLINE_MODES(R.string.offline), OFFLINE_PUZZLE(R.string.offline_puzzle), STORE(R.string.store),
     PROFILE(R.string.profile), FRIENDS(R.string.friends), SETTINGS(R.string.settings),
     CONNECT_AUTH(R.string.connect_online), SHOWCASE(R.string.design_system), AUTH(R.string.login), PASSWORD(R.string.change_password), LOADOUT(R.string.loadout), LOBBY(R.string.lobby), GAME(R.string.modes), OFFLINE(R.string.offline), OFFLINE_IMAGES(R.string.offline_images), LEADERBOARDS(R.string.leaderboards)
 }
@@ -55,6 +55,8 @@ fun BrawlApp(authViewModel: AuthViewModel) {
     val playerState by playerModel.profile.collectAsStateWithLifecycle()
     val localState by container.localAccounts.state.collectAsStateWithLifecycle()
     val online=(auth as? AuthState.SignedIn)?.local==false
+    val internet by container.connectivity.online.collectAsStateWithLifecycle()
+    val connectionNotice by container.auth.connection.collectAsStateWithLifecycle()
     val storeModel:StoreViewModel=viewModel(factory=StoreViewModel.factory(container.store,container.auth))
     val roomModel:RoomViewModel=viewModel(factory=RoomViewModel.factory(container.rooms,container.auth))
     val roomConnection by roomModel.connection.collectAsStateWithLifecycle()
@@ -62,6 +64,8 @@ fun BrawlApp(authViewModel: AuthViewModel) {
     val matchModel:MatchViewModel=viewModel(factory=MatchViewModel.factory(container.matches,container.auth))
     val offlineModel:OfflineViewModel=viewModel(factory=OfflineViewModel.factory(container.content,container.offlineStatistics))
     val offlineImages:OfflineImageViewModel=viewModel(factory=OfflineImageViewModel.factory(container.content,container.offlineStatistics))
+    val offlinePuzzle:OfflinePuzzleViewModel=viewModel(factory=OfflinePuzzleViewModel.factory(container.content,container.offlineStatistics))
+    var pendingRoomAction by rememberSaveable{mutableStateOf<Boolean?>(null)}
     val roomActions by roomModel.actions.collectAsStateWithLifecycle()
     val socialUi by playerModel.social.collectAsStateWithLifecycle()
     var selectedMode by rememberSaveable { mutableStateOf(OnlineMode.DUEL) }
@@ -96,27 +100,41 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         val nav = rememberNavController()
         val entry by nav.currentBackStackEntryAsState()
         val route = entry?.destination?.route ?: Destination.AUTH.name
-        var previousAccount by remember{mutableStateOf<String?>(null)}
+        var previousIdentity by remember{mutableStateOf<AuthState.SignedIn?>(null)}
         LaunchedEffect(auth,authUi.notice,offlineSession,entry?.destination?.route) {
             if(entry==null) return@LaunchedEffect
-            val account=(auth as? AuthState.SignedIn)?.userId
-            if(previousAccount!=null&&previousAccount!=account){
-                activeMatch=null;offlineSession=false;offlineModel.stop();offlineImages.stop()
-                previousAccount=account
+            val identity=auth as? AuthState.SignedIn
+            val account=identity?.userId
+            val promotion=previousIdentity?.local==true&&identity?.local==false&&previousIdentity?.email!=null&&previousIdentity?.email.equals(identity.email,true)
+            if(previousIdentity!=null&&previousIdentity?.userId!=account&&!promotion){
+                activeMatch=null;offlineSession=false;offlineModel.stop();offlineImages.stop();offlinePuzzle.stop();pendingRoomAction=null
+                previousIdentity=identity
                 nav.navigate(if(account==null)Destination.AUTH.name else Destination.HOME.name){popUpTo(nav.graph.id){inclusive=false};launchSingleTop=true}
                 return@LaunchedEffect
             }
-            previousAccount=account
+            previousIdentity=identity
             if(auth is AuthState.SignedIn) {
                 if(authUi.notice==AuthNotice.PASSWORD_RESET_READY){
                     nav.navigate(Destination.PASSWORD.name){popUpTo(nav.graph.id){inclusive=false};launchSingleTop=true}
                     authViewModel.consumeNotice()
                 } else if(nav.currentDestination?.route==Destination.AUTH.name) nav.navigate(Destination.HOME.name) { popUpTo(Destination.AUTH.name) { inclusive=true }; launchSingleTop=true }
+                else if(identity?.local==false&&pendingRoomAction==null&&nav.currentDestination?.route==Destination.CONNECT_AUTH.name) nav.navigate(Destination.PROFILE.name){popUpTo(Destination.CONNECT_AUTH.name){inclusive=true};launchSingleTop=true}
             } else if(auth!=AuthState.Loading && !offlineSession && route!=Destination.AUTH.name && route!=Destination.SETTINGS.name) {
                 nav.navigate(Destination.AUTH.name) { popUpTo(nav.graph.id) { inclusive=false }; launchSingleTop=true }
             }
         }
         fun go(destination: Destination) { nav.navigate(destination.name) { launchSingleTop = true } }
+        LaunchedEffect(pendingRoomAction,online,internet){
+            if(pendingRoomAction!=null&&online&&internet){
+                quickMatch=pendingRoomAction!!;pendingRoomAction=null;storeModel.refresh();go(Destination.LOADOUT)
+            }
+        }
+        LaunchedEffect(route){if(route !in setOf(Destination.MODE_OPTIONS.name,Destination.CONNECT_AUTH.name))pendingRoomAction=null}
+        fun enterRoom(join:Boolean){
+            pendingRoomAction=join
+            if(auth !is AuthState.SignedIn){go(Destination.CONNECT_AUTH);return}
+            if(!online||!internet)authViewModel.connectOnline()
+        }
         val settingsLabel=stringResource(R.string.settings)
         val profileLabel=stringResource(R.string.profile)
         Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)){
@@ -137,7 +155,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                     IconButton(onClick={go(Destination.SETTINGS)},modifier=Modifier.semantics{contentDescription=settingsLabel}) { NavigationSymbol(NavSymbol.SETTINGS) }
                 }
             }, bottomBar = {
-                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.GAME.name) NavigationBar(containerColor = MaterialTheme.colorScheme.surface,tonalElevation=0.dp) {
+                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.OFFLINE_PUZZLE.name && route != Destination.GAME.name) NavigationBar(containerColor = MaterialTheme.colorScheme.surface,tonalElevation=0.dp) {
                     listOf(Destination.HOME, Destination.MODES, Destination.STORE, Destination.PROFILE).forEach { dest ->
                         NavigationBarItem(selected = route == dest.name, onClick = { go(dest) },
                             colors=NavigationBarItemDefaults.colors(selectedIconColor=Cyan,selectedTextColor=Cyan,
@@ -156,11 +174,11 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                             verticalArrangement = Arrangement.spacedBy(when(destination){Destination.GAME->8.dp;Destination.AUTH,Destination.PROFILE->10.dp;else->16.dp})) {
                             when(destination) {
                                 Destination.CONNECT_AUTH -> AuthScreen(authViewModel,{go(Destination.MODES)},onlineOnly=true)
-                                Destination.AUTH -> AuthScreen(authViewModel, { offlineSession=true;go(Destination.MODES) })
+                                Destination.AUTH -> AuthScreen(authViewModel, { offlineSession=true;go(Destination.OFFLINE_MODES) })
                                 Destination.PASSWORD -> AuthScreen(authViewModel, {}, changePassword=true)
                                 Destination.PROFILE -> {
                                     val signedIn=auth as? AuthState.SignedIn
-                                    if(signedIn==null) AuthScreen(authViewModel,{offlineSession=true;go(Destination.MODES)})
+                                    if(signedIn==null) AuthScreen(authViewModel,{offlineSession=true;go(Destination.OFFLINE_MODES)})
                                     else if(signedIn.local) LocalProfileScreen(container.localAccounts,container.offlineStatistics,container.avatars,{go(Destination.CONNECT_AUTH)},{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{authViewModel.logout()})
                                     else ProfileScreen(playerModel,container.avatars,{go(Destination.PASSWORD)},{offlineSession=false;authViewModel.logout()})
                                     if(signedIn!=null)AccountPrivacy(container,signedIn)
@@ -170,13 +188,14 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     if(localState.current!=null && (!online || localState.current?.email.equals((auth as? AuthState.SignedIn)?.email,true)))
                                         LocalFriendsScreen(container.localAccounts,container.socialQueue,online,{go(Destination.CONNECT_AUTH)})
                                 }
-                                Destination.STORE -> if(online)StoreScreen(storeModel,true,playerModel::refresh) else OnlineFeatureGate(auth is AuthState.SignedIn){go(Destination.CONNECT_AUTH)}
+                                Destination.STORE -> if(online)StoreScreen(storeModel,true,playerModel::refresh) else AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
                                 Destination.LOADOUT -> LoadoutScreen(storeModel,{roomModel.create(selectedMode,quickMatch);go(Destination.LOBBY)})
                                 Destination.LOBBY -> LobbyScreen(roomModel,(auth as? AuthState.SignedIn)?.userId,socialUi.snapshot.friends,
                                     {activeMatch=it;go(Destination.GAME)},{go(Destination.MODES)})
-                                Destination.LEADERBOARDS -> if(online)LeaderboardScreen(leaderboardModel,true) else OnlineFeatureGate(auth is AuthState.SignedIn){go(Destination.CONNECT_AUTH)}
-                                Destination.OFFLINE_IMAGES -> OfflineImageScreen(offlineImages){go(Destination.MODES)}
-                                Destination.OFFLINE -> OfflineScreen(offlineModel,{go(Destination.MODES)})
+                                Destination.LEADERBOARDS -> if(online)LeaderboardScreen(leaderboardModel,true) else AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
+                                Destination.OFFLINE_IMAGES -> OfflineImageScreen(offlineImages){go(Destination.OFFLINE_MODES)}
+                                Destination.OFFLINE -> OfflineScreen(offlineModel,{go(Destination.OFFLINE_MODES)})
+                                Destination.OFFLINE_PUZZLE -> OfflinePuzzleScreen(offlinePuzzle){go(Destination.OFFLINE_MODES)}
                                 Destination.GAME -> {
                                     MatchScreen(matchModel,activeMatch,{playerModel.refresh();go(Destination.MODES)})
                                     (roomConnection as? RoomConnection.Live)?.snapshot?.takeIf{it.room.status=="playing"&&it.matchId==activeMatch}?.let{
@@ -184,6 +203,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     }
                                 }
                                 Destination.HOME -> {
+                                    if(auth is AuthState.SignedIn&&!online)AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
                                     (playerState as? PlayerDataState.Ready)?.data?.let { CurrencyBar(it) }
                                     Text(stringResource(R.string.welcome),style=MaterialTheme.typography.headlineLarge.copy(shadow=androidx.compose.ui.graphics.Shadow(Color(0xFF061228),androidx.compose.ui.geometry.Offset(0f,2f),8f)),color=Color.White)
                                     GameHero{go(Destination.MODES)}
@@ -201,33 +221,33 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                 Destination.MODES -> {
                                     Text(stringResource(R.string.choose_mode),style=MaterialTheme.typography.headlineMedium)
                                     if(roomConnection!=RoomConnection.Empty)BrawlButton(stringResource(R.string.rejoin_room),{go(Destination.LOBBY)},Modifier.fillMaxWidth())
-                                    var expandedMode by rememberSaveable{mutableStateOf<OnlineMode?>(null)}
-                                    ModeBento(expandedMode){expandedMode=if(expandedMode==it)null else it}
-                                    expandedMode?.let { mode ->
-                                        BrawlPanel(Modifier.fillMaxWidth()){
-                                            if(!online)Text(stringResource(R.string.online_account_required))
-                                            ActionBento(listOf(
-                                                BentoAction(stringResource(R.string.create_private),NavSymbol.HOME){
-                                                    if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
-                                                    else{selectedMode=mode;quickMatch=false;storeModel.refresh();go(Destination.LOADOUT)}
-                                                },
-                                                BentoAction(stringResource(if(mode==OnlineMode.DUEL)R.string.quick_match else R.string.find_public_room),NavSymbol.GAMES){
-                                                    if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
-                                                    else{selectedMode=mode;quickMatch=true;storeModel.refresh();go(Destination.LOADOUT)}
-                                                }))
-                                        }
-                                    }
-                                    BrawlPanel(Modifier.fillMaxWidth()){
-                                        Text(stringResource(R.string.offline),style=MaterialTheme.typography.titleLarge)
-                                        Text(stringResource(R.string.offline_language_note),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                                        ActionBento(listOf(
-                                            BentoAction(stringResource(R.string.offline_questions),NavSymbol.GAMES){offlineModel.start(settings.language);go(Destination.OFFLINE)},
-                                            BentoAction(stringResource(R.string.offline_images),NavSymbol.IMAGE){offlineImages.start(settings.language);go(Destination.OFFLINE_IMAGES)}))
-                                    }
+                                    ModeBento(null){selectedMode=it;go(Destination.MODE_OPTIONS)}
+                                    OfflineModeCard{go(Destination.OFFLINE_MODES)}
+                                }
+                                Destination.MODE_OPTIONS -> {
+                                    Text(stringResource(when(selectedMode){OnlineMode.DUEL->R.string.duel;OnlineMode.DUO->R.string.duo;OnlineMode.SQUAD->R.string.squad;OnlineMode.SOLO->R.string.solo}),style=MaterialTheme.typography.headlineMedium)
+                                    Text(stringResource(R.string.mode_options))
+                                    ActionBento(listOf(
+                                        BentoAction(stringResource(R.string.create_private),NavSymbol.HOME){enterRoom(false)},
+                                        BentoAction(stringResource(R.string.join_a_room),NavSymbol.GAMES){enterRoom(true)}))
+                                    AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,
+                                        {authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
                                     if(online){
                                         BrawlButton(stringResource(R.string.refresh_invites),roomModel::refreshInvites,Modifier.fillMaxWidth())
                                         roomActions.invites.forEach{invite->BrawlButton(namedString(R.string.join_invite,"name" to invite.sender),{roomModel.join(invite.roomId);go(Destination.LOBBY)},Modifier.fillMaxWidth())}
                                     }
+                                    BrawlButton(stringResource(R.string.back_to_modes),{pendingRoomAction=null;go(Destination.MODES)})
+                                }
+                                Destination.OFFLINE_MODES -> {
+                                    Text(stringResource(R.string.offline),style=MaterialTheme.typography.headlineMedium)
+                                    BrawlPanel(Modifier.fillMaxWidth()){
+                                        Text(stringResource(R.string.offline_no_flames))
+                                        ActionBento(listOf(
+                                            BentoAction(stringResource(R.string.offline_questions),NavSymbol.GAMES){offlineModel.start(settings.language);go(Destination.OFFLINE)},
+                                            BentoAction(stringResource(R.string.offline_images),NavSymbol.IMAGE){offlineImages.start(settings.language);go(Destination.OFFLINE_IMAGES)},
+                                            BentoAction(stringResource(R.string.offline_puzzle),NavSymbol.PUZZLE){offlinePuzzle.start(settings.language);go(Destination.OFFLINE_PUZZLE)}))
+                                    }
+                                    BrawlButton(stringResource(R.string.back_to_modes),{go(Destination.MODES)})
                                 }
                                 Destination.SETTINGS -> {
                                     LegalLinks()

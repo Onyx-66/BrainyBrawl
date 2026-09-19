@@ -29,6 +29,9 @@ class SupabaseAuthRepository(private val client: SupabaseClient?, scope: Corouti
         if (client == null) return AuthNotice.REQUEST_FAILED
         return try { action() } catch (e: CancellationException) { throw e }
         catch (_: IOException) { Diagnostics.record(ProductEvent.AUTH_FAILURE);AuthNotice.NETWORK_ERROR }
+        catch (e:io.github.jan.supabase.auth.exception.AuthRestException) {
+            if(e.error=="email_not_confirmed")AuthNotice.VERIFY_EMAIL else AuthNotice.REQUEST_FAILED
+        }
         catch (_: Exception) { Diagnostics.record(ProductEvent.AUTH_FAILURE);AuthNotice.REQUEST_FAILED }
     }
     override suspend fun login(email: String, password: String): AuthNotice {
@@ -38,8 +41,8 @@ class SupabaseAuthRepository(private val client: SupabaseClient?, scope: Corouti
     override suspend fun register(username: String, email: String, password: String): AuthNotice {
         if (!AuthValidation.username(username) || !AuthValidation.email(email) || !AuthValidation.password(password)) return AuthNotice.INVALID_INPUT
         return request {
-            client!!.auth.signUpWith(Email) { this.email=email.trim(); this.password=password; data=buildJsonObject { put("username",username) } }
-            AuthNotice.VERIFY_EMAIL
+            client!!.auth.signUpWith(Email,redirectUrl=CALLBACK) { this.email=email.trim(); this.password=password; data=buildJsonObject { put("username",username) } }
+            if(client.auth.currentSessionOrNull()!=null)AuthNotice.NONE else AuthNotice.VERIFY_EMAIL
         }
     }
     override suspend fun recover(email: String): AuthNotice {

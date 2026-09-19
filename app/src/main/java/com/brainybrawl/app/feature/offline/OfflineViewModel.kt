@@ -19,7 +19,7 @@ data class OfflineUi(val loading:Boolean=false,val failed:Boolean=false,val game
 class OfflineStatistics(context:Context,private val owner:()->String={"guest"}) {
     private val preferences=context.getSharedPreferences("offline_question_statistics",Context.MODE_PRIVATE)
     fun clear(account:String){
-        val edit=preferences.edit();listOf(account,"images:$account").forEach{owner->listOf("best","earned","possible","last_session").forEach{edit.remove(key(it,owner))}};check(edit.commit())
+        val edit=preferences.edit();listOf(account,"images:$account","puzzles:$account").forEach{owner->listOf("best","earned","possible","last_session").forEach{edit.remove(key(it,owner))}};check(edit.commit())
     }
     fun currentOwner()=owner()
     private fun key(name:String,account:String)=if(account=="guest")name else "$account:$name"

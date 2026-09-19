@@ -57,6 +57,10 @@ class EncryptedAuthStore(context: Context) : SessionManager, CodeVerifierCache {
     }
     suspend fun readLocalAccounts():String?=withContext(Dispatchers.IO){mutex.withLock{read("local_accounts")}}
     suspend fun writeLocalAccounts(value:String)=withContext(Dispatchers.IO){mutex.withLock{write("local_accounts",value)}}
+    suspend fun readPendingAccount():String?=withContext(Dispatchers.IO){mutex.withLock{read("pending_account")}}
+    suspend fun writePendingAccount(value:String?)=withContext(Dispatchers.IO){mutex.withLock{
+        if(value==null)check(preferences.edit().remove("pending_account").commit())else write("pending_account",value)
+    }}
     override suspend fun saveSession(session: UserSession) = withContext(Dispatchers.IO) {
         mutex.withLock { write("session", json.encodeToString(UserSession.serializer(), session)) }
     }

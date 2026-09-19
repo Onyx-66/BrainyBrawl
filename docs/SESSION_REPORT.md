@@ -7,8 +7,8 @@ The Android game and authorized hosted backend are implemented and buildable; re
 One Android module, Kotlin/Compose feature UI, independent domain/content rules and repository boundaries, encrypted account/session storage and typed Supabase snapshots. Existing working implementation was extended, not replaced with a local multiplayer simulation.
 
 - Dark/light themes, supplied launcher/transparent branding, distinct mode icons, bento modes/account/room actions, username/level/photo header and settings icon. Login/create-account segmented form follows the selected theme. Google/Discord are deliberately disabled/deferred by the owner; email/password registration, login, recovery/change-password interfaces and PKCE integration remain available.
-- Device accounts register/login without a backend. Per-account offline scores and photos persist securely. Friend/invitation requests can be queued offline and explicitly delivered after connecting the matching server account. Profile/friends/search/previews/block/report flows are implemented; unrestricted chat is absent.
-- A real Mr.onyx server account with private admin membership was provisioned. The installed normal app signed into it, loaded the username/level and opened Store/Leaderboards correctly. Device sign-in gates now explain why a server connection is needed instead of claiming the user is simply logged out.
+- One account flow registers/logs in online or offline. Accounts created offline automatically attempt real Supabase authentication when internet returns; existing legacy accounts require password re-entry once. Verified email logins also cache an offline verifier. Per-account offline scores and photos persist securely. Friend/invitation requests can be queued offline and explicitly delivered after connecting the matching server account. Profile/friends/search/previews/block/report flows are implemented; unrestricted chat is absent.
+- A real Mr.onyx server account with private admin membership was provisioned. The installed normal app signed into it, loaded the username/level and opened Store/Leaderboards correctly. Connection panels report internet, verification or reauthentication requirements instead of imposing a permanent device-account restriction.
 - Private profile-photo picker/upload, EXIF orientation correction, bounded decoding, 512-pixel JPEG output and source metadata removal. Header shows the account photo or its initial. Fixed an ActivityResultRegistryOwner loss caused by the localized context, which previously crashed the profile picker screen.
 - Ledger-authoritative Gold/Gems/Flames, idempotent purchase/loadout RPCs, level 1 plus one level per ten lifetime earned Flames. Store catalog remains empty pending commercial rules. Zero-boost starts now work; two-item selections still require owned approved boosts. Flames cannot be purchased.
 - Home/navigation, leaders by mode/period/friends, language dropdown with flags, English/French/Arabic resources, Tajawal Arabic typography, RTL, preset localized reactions and bounded diagnostics.
@@ -21,7 +21,7 @@ One Android module, Kotlin/Compose feature UI, independent domain/content rules 
 | Duo | 180-second 12×8 / 96-piece collaborative puzzle, fifteen theme drafts, five scrambles; every team continues, small rooms cycle present chooser ranks, every correct designated team +1, two winning Flames |
 | Squad | Four 20-second Precision Tap turns, 90-second Speed Sort relay, twenty server-random theme/answerer drafts, team results and four winning Flames |
 | Solo Online | 2–20 players; 20s simultaneous Precision Tap, 90s individual common-stream Speed Sort, fifteen questions (10s read +20s answer, every correct player +1), no eliminations, cumulative leader, server dice for tied leaders, exactly one winner Flame |
-| Offline | Immediate five-choice/typed Question Round, 45 seconds; five-round Image Guess with ten choices, exactly four confirmations and 30 seconds; per-account best scores, no Flames |
+| Offline | A chooser opens immediate five-choice/typed Question Round (45 seconds), Image Guess (ten choices, four selections, 30 seconds) or a 96-piece Puzzle (180 seconds); per-account practice bests, no Flames |
 
 All seven mini-games have implemented domain/server/UI paths: Question Round, Image Guess, Precision Tap, Collaborative Puzzle, Word Scramble, Speed Sort and the 20-slot Roll the Dice. Correct-only hidden Image Guess points implement the owner's decision. Server receipts conceal question correctness/weights until the deadline. Competitive results, clocks, eligibility and rewards are never accepted from client claims.
 
@@ -35,14 +35,14 @@ Eight UTF-8 XML packs contain 23,558 unique record/option/piece IDs. Question co
 
 | Check | Result |
 | --- | --- |
-| JVM tests | 63 passed, zero failures/errors/skips |
-| Emulator instrumentation | 27 passed on API 37 at 1080 × 2340; isolated QA package preserves normal account data |
+| JVM tests | 72 passed, zero failures/errors/skips |
+| Emulator instrumentation | 29 passed on API 37 at 1080 × 2340; 11 affected checks passed again after final auth/navigation fixes; isolated QA package preserves normal account data |
 | Python tests | 24 passed |
 | Production XML validation | Eight files / 3,861 records / 23,558 IDs passed |
 | SQL/RLS/game flows | 41 groups passed with real PostgreSQL semantics in PGlite, including full 20-team Duo, Squad and 20-player Solo |
 | Edge bounded request parser | Passed |
-| Debug build + lint | Passed; zero lint errors, 39 warnings |
-| Optimized release APK | Version 1.0.2 built successfully, unsigned; AAB was verified on the preceding revision |
+| Debug build + lint | Passed; zero lint errors, 52 warnings |
+| Optimized release APK | Version 1.0.3 built successfully, unsigned; AAB was verified on an earlier revision |
 | Native packaging | ZIP and all packaged ELF load segments passed 16 KB alignment checks |
 | Hosted verification | Email login, own profile/level/admin, store, leaderboard, anonymous denial and service-only restrictions passed |
 | Actual Android hosted navigation | Mr.onyx login, header, Store and Leaderboards verified |
@@ -65,6 +65,18 @@ Visual review covered the splash, grid board, updated badges, both home themes a
 
 Installable phone test build: `deliverables/BrainyBrawl-1.0.2.apk`, 30,170,598 bytes, Android 8.0/API 26+, package `com.brainybrawl.app`, version code 3. SHA-256: `594f88414231623d91cdff6560ee588b3d22a406c9e54369966341d45050bec1`. This is development-signed, not a Play release. The normal emulator app was updated without clearing account data and relaunched successfully.
 
+## Version 1.0.3 account, navigation and practice update
+
+Online mode cards now lead to their own Create private room / Join a room page. Offline is a peer mode card with Questions, Image Guess and the new all-96-piece solo Puzzle. Profile has a framed player card, gold level badge, separated email/sign-in methods and paired stats. Google/Discord buttons are compact native logo/name buttons; recovery text has readable theme backing. The opaque language menu matches its anchor width, verified within two pixels. Shared scene backgrounds remain on all pages.
+
+Account creation uses one online/offline-capable flow. A device-bound encrypted, owner-checked pending credential envelope permits automatic connection after offline creation; it is erased after successful authentication or logout and rejected after seven days. Normal offline records use PBKDF2 verifiers. Password changes require the configured server and refresh the offline verifier after success. Explicit backup/device-transfer exclusions protect authentication storage. No client-side role, Flame or competitive-score trust was introduced. See `ACCOUNT_MODES_UPDATE.md` for behavior and security details.
+
+Hosted Auth settings were read, not changed: email registration is enabled, email confirmation is required, and Google/Discord remain disabled under the owner's deferral. The app removes the account-type restriction; it cannot treat internet access as proof of verified identity. Registration can practice immediately and connect after confirmation. No production migration is needed for this UI/local-practice update.
+
+The full 29-test emulator run passed, followed by 11 affected checks after final password/navigation changes. All 72 JVM and 24 Python tests pass; eight XML packs validate. The first popup screenshot capture selected two Compose roots; the helper was corrected to capture the actual menu, and the original width assertion plus all tests pass. No assertion was weakened. Lint has zero errors and 52 warnings (dependency updates, unused resources, icon fallback and existing style/preferences suggestions). Current screenshots are under `.local/visual-qa/account-modes`.
+
+Installable version 1.0.3: `deliverables/BrainyBrawl-1.0.3.apk`, 30,248,642 bytes, version code 4, SHA-256 `1086eb172fcde30119fc97c4080a507af8eab43382aed07bba93aeb13c1c7e54`. Debug and optimized unsigned release assembly pass. The installable development-signed APK passes v2 signature, ZIP CRC, private-credential exclusion, both packaged scenes, all 192 exact puzzle tiles and four native ELF/ZIP 16 KB alignment checks. It was installed in place and relaunched on emulator-5554 with Mr.onyx still signed in; the new actual hosted player card and email/method panel were visually inspected. Physical-device installation remains for the owner's manual test.
+
 ## Remaining decisions and genuine release blockers
 
 - Google/Discord setup is explicitly deferred by the owner; both tiles explain their status.
@@ -82,6 +94,6 @@ Repository root: `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`.
 - `CHANGED_FILES_MANIFEST.md`: session-relative added/modified/deleted paths and hashes.
 - `BrainyBrawl_CHANGED_FILES.zip`: only files changed from the initial SHA-256 inventory at HEAD 502bd53 plus the manifest. No Git/build outputs, local.properties, .env, signing keys, caches, QA screenshots or machine configuration.
 - Local-only evidence: `.local/visual-qa/`, `.local/instrumentation-final.log`, `.local/final-build.log`, `.local/backend/verification.json`.
-- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.2.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
+- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.3.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
 
 The requested local Git commit is recorded separately in the final response; nothing is pushed.
