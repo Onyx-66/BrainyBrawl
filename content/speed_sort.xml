@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="speed_sort" schemaVersion="1" contentVersion="1">
+  <item id="SORT_0001" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">Elephant</field>
+    <field name="correct_bucket">Mammal</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0002" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">Dolphin</field>
+    <field name="correct_bucket">Mammal</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0003" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">Crocodile</field>
+    <field name="correct_bucket">Reptile</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0004" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">Lizard</field>
+    <field name="correct_bucket">Reptile</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0005" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Bird</field>
+    <field name="item_text">Eagle</field>
+    <field name="correct_bucket">Bird</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0006" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Animal Class</field>
+    <field name="bucket_label">Fish</field>
+    <field name="item_text">Shark</field>
+    <field name="correct_bucket">Fish</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0007" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Historical Date</field>
+    <field name="bucket_label">Before 1900</field>
+    <field name="item_text">French Revolution</field>
+    <field name="correct_bucket">Before 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Medium</field>
+  </item>
+  <item id="SORT_0008" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">Historical Date</field>
+    <field name="bucket_label">After 1900</field>
+    <field name="item_text">Moon landing</field>
+    <field name="correct_bucket">After 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0009" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">True False</field>
+    <field name="bucket_label">True</field>
+    <field name="item_text">Water freezes at 0°C under standard conditions</field>
+    <field name="correct_bucket">True</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+  <item id="SORT_0010" locale="en" status="DEV_SAMPLE">
+    <field name="set_theme">True False</field>
+    <field name="bucket_label">False</field>
+    <field name="item_text">The Sun is a planet</field>
+    <field name="correct_bucket">False</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+  </item>
+</content>

@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="word_scramble" schemaVersion="1" contentVersion="1">
+  <item id="SCR_0001" locale="en" status="DEV_SAMPLE">
+    <field name="theme">History</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">PYRAMID</field>
+    <field name="shuffled_letters">MYAPIDR</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>PYRAMID</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0002" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Science</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">JUPITER</field>
+    <field name="shuffled_letters">PITJERU</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>JUPITER</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0003" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Architecture</field>
+    <field name="difficulty">Medium</field>
+    <field name="answer">LIGHTHOUSE</field>
+    <field name="shuffled_letters">HOUSETILGH</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>LIGHTHOUSE</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0004" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Nature</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">SHARK</field>
+    <field name="shuffled_letters">KRAHS</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>SHARK</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0005" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Geography</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">VOLCANO</field>
+    <field name="shuffled_letters">CANOVOL</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>VOLCANO</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0006" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Geography</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">COMPASS</field>
+    <field name="shuffled_letters">SSPOMAC</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>COMPASS</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0007" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Geography</field>
+    <field name="difficulty">Medium</field>
+    <field name="answer">HIMALAYAS</field>
+    <field name="shuffled_letters">AYLAMIASH</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>HIMALAYAS</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0008" locale="en" status="DEV_SAMPLE">
+    <field name="theme">History</field>
+    <field name="difficulty">Medium</field>
+    <field name="answer">GUTENBERG</field>
+    <field name="shuffled_letters">TENGBERUG</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>GUTENBERG</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0009" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Science</field>
+    <field name="difficulty">Easy</field>
+    <field name="answer">SATURN</field>
+    <field name="shuffled_letters">TURNSA</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>SATURN</answer>
+    </acceptedAnswers>
+  </item>
+  <item id="SCR_0010" locale="en" status="DEV_SAMPLE">
+    <field name="theme">History</field>
+    <field name="difficulty">Medium</field>
+    <field name="answer">POMPEII</field>
+    <field name="shuffled_letters">MOPPIEI</field>
+    <field name="time_limit_seconds">10</field>
+    <field name="full_points">10</field>
+    <field name="reduced_points">6</field>
+    <acceptedAnswers>
+      <answer>POMPEII</answer>
+    </acceptedAnswers>
+  </item>
+</content>

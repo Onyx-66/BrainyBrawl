@@ -1,0 +1,185 @@
+{
+  "board": {
+    "kind": "precision_tap",
+    "config": {
+      "speed_increment": "1",
+      "width_increment": "1",
+      "hot_zone_degrees": "30",
+      "max_hot_zone_degrees": "90",
+      "rotation_degrees_per_second": "1"
+    },
+    "players": [
+      {
+        "score": 0,
+        "streak": 0,
+        "user_id": "aaaaaaaa-0000-4000-8000-000000000144",
+        "position": 0,
+        "round_id": "d30f35c4-a4d6-4e3f-b03b-936b5f48a6f7",
+        "anchor_at": "2026-09-19T12:45:20.849+00:00",
+        "zone_start": 176,
+        "last_hit_pass": null
+      },
+      {
+        "score": 0,
+        "streak": 0,
+        "user_id": "aaaaaaaa-0000-4000-8000-000000000145",
+        "position": 0,
+        "round_id": "d30f35c4-a4d6-4e3f-b03b-936b5f48a6f7",
+        "anchor_at": "2026-09-19T12:45:40.849+00:00",
+        "zone_start": 189,
+        "last_hit_pass": null
+      },
+      {
+        "score": 0,
+        "streak": 0,
+        "user_id": "aaaaaaaa-0000-4000-8000-000000000146",
+        "position": 0,
+        "round_id": "d30f35c4-a4d6-4e3f-b03b-936b5f48a6f7",
+        "anchor_at": "2026-09-19T12:46:00.849+00:00",
+        "zone_start": 112,
+        "last_hit_pass": null
+      },
+      {
+        "score": 0,
+        "streak": 0,
+        "user_id": "aaaaaaaa-0000-4000-8000-000000000147",
+        "position": 0,
+        "round_id": "d30f35c4-a4d6-4e3f-b03b-936b5f48a6f7",
+        "anchor_at": "2026-09-19T12:46:20.849+00:00",
+        "zone_start": 197,
+        "last_hit_pass": null
+      }
+    ]
+  },
+  "draft": null,
+  "match": {
+    "id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9",
+    "mode": "squad",
+    "status": "active",
+    "room_id": "526eadc5-b198-485d-a257-c71f23976db4",
+    "version": 2,
+    "created_at": "2026-09-19T12:45:21.842+00:00",
+    "active_round": 0,
+    "completed_at": null
+  },
+  "teams": [
+    {
+      "id": "16f82fa5-578b-44df-9a31-811927e9a9bf",
+      "name": "Flow_144's Team"
+    },
+    {
+      "id": "f6a1117c-4fc9-4182-8fa3-4259020759b2",
+      "name": "Flow_148's Team"
+    }
+  ],
+  "rounds": [
+    {
+      "id": "d30f35c4-a4d6-4e3f-b03b-936b5f48a6f7",
+      "kind": "precision_tap",
+      "reveal": null,
+      "status": "active",
+      "content": {
+        "speed_increment": "1",
+        "width_increment": "1",
+        "hot_zone_degrees": "30",
+        "max_hot_zone_degrees": "90",
+        "rotation_degrees_per_second": "1"
+      },
+      "ordinal": 0,
+      "deadline": "2026-09-19T12:46:44.846+00:00",
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9",
+      "phase_id": "0e2f52fe-a3dc-498f-ab20-96b58846c095",
+      "starts_at": "2026-09-19T12:45:20.849+00:00",
+      "content_id": "test_precision",
+      "submission": null,
+      "answer_opens_at": "2026-09-19T12:45:20.849+00:00"
+    }
+  ],
+  "results": [],
+  "starts_at": "2026-09-19T12:45:20.849+00:00",
+  "tie_rolls": [],
+  "team_state": {
+    "stage": 0,
+    "locale": "en",
+    "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9",
+    "question": 0,
+    "ranked_teams": []
+  },
+  "server_time": "2026-09-19T12:45:21.851+00:00",
+  "participants": [
+    {
+      "name": "Flow_144",
+      "seat": 0,
+      "score": 0,
+      "team_id": "16f82fa5-578b-44df-9a31-811927e9a9bf",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000144",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_145",
+      "seat": 1,
+      "score": 0,
+      "team_id": "16f82fa5-578b-44df-9a31-811927e9a9bf",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000145",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_146",
+      "seat": 2,
+      "score": 0,
+      "team_id": "16f82fa5-578b-44df-9a31-811927e9a9bf",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000146",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_147",
+      "seat": 3,
+      "score": 0,
+      "team_id": "16f82fa5-578b-44df-9a31-811927e9a9bf",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000147",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_148",
+      "seat": 0,
+      "score": 0,
+      "team_id": "f6a1117c-4fc9-4182-8fa3-4259020759b2",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000148",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_149",
+      "seat": 1,
+      "score": 0,
+      "team_id": "f6a1117c-4fc9-4182-8fa3-4259020759b2",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000149",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_150",
+      "seat": 2,
+      "score": 0,
+      "team_id": "f6a1117c-4fc9-4182-8fa3-4259020759b2",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000150",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    },
+    {
+      "name": "Flow_151",
+      "seat": 3,
+      "score": 0,
+      "team_id": "f6a1117c-4fc9-4182-8fa3-4259020759b2",
+      "user_id": "aaaaaaaa-0000-4000-8000-000000000151",
+      "eligible": true,
+      "match_id": "3a72bc6a-1cdf-4c61-af9c-34a22f029ed9"
+    }
+  ],
+  "team_rankings": [],
+  "schema_version": 1
+}

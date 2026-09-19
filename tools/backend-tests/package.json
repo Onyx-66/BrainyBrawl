@@ -1,0 +1,11 @@
+{
+  "name": "brainybrawl-backend-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node security.test.mjs && node edge-body.test.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.3.14"
+  }
+}

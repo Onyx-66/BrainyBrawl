@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="image_guess" schemaVersion="1" contentVersion="1">
+  <item id="IMG_EN_0001" locale="en" status="DEV_SAMPLE">
+    <field name="theme">History</field>
+    <field name="specification">17th century</field>
+    <field name="asset_key">asset_history_ship_001</field>
+    <field name="prompt">Which historical subject is represented?</field>
+    <field name="option_1">Sailing ship</field>
+    <field name="option_2">Steam locomotive</field>
+    <field name="option_3">Roman villa</field>
+    <field name="option_4">Castle</field>
+    <field name="option_5">Airship</field>
+    <field name="option_6">Submarine</field>
+    <field name="option_7">Cathedral</field>
+    <field name="option_8">Farmhouse</field>
+    <field name="option_9">Warplane</field>
+    <field name="option_10">Observatory</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
+    <field name="source_url" />
+    <field name="license" />
+    <field name="attribution" />
+    <field name="asset_ref">assets/images/asset_history_ship_001.svg</field>
+    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">OPEN_DECISION</field>
+    <choices>
+      <choice id="IMG_EN_0001_O1" correct="true" points="10">Sailing ship</choice>
+      <choice id="IMG_EN_0001_O2" correct="false" points="8">Steam locomotive</choice>
+      <choice id="IMG_EN_0001_O3" correct="false" points="7">Roman villa</choice>
+      <choice id="IMG_EN_0001_O4" correct="false" points="6">Castle</choice>
+      <choice id="IMG_EN_0001_O5" correct="false" points="5">Airship</choice>
+      <choice id="IMG_EN_0001_O6" correct="false" points="4">Submarine</choice>
+      <choice id="IMG_EN_0001_O7" correct="false" points="3">Cathedral</choice>
+      <choice id="IMG_EN_0001_O8" correct="false" points="2">Farmhouse</choice>
+      <choice id="IMG_EN_0001_O9" correct="false" points="1">Warplane</choice>
+      <choice id="IMG_EN_0001_O10" correct="false" points="1">Observatory</choice>
+    </choices>
+  </item>
+  <item id="IMG_EN_0002" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Nature</field>
+    <field name="specification">Marine Life</field>
+    <field name="asset_key">asset_whale_001</field>
+    <field name="prompt">Which animal is shown?</field>
+    <field name="option_1">Blue whale</field>
+    <field name="option_2">Dolphin</field>
+    <field name="option_3">Shark</field>
+    <field name="option_4">Orca</field>
+    <field name="option_5">Manatee</field>
+    <field name="option_6">Seal</field>
+    <field name="option_7">Walrus</field>
+    <field name="option_8">Tuna</field>
+    <field name="option_9">Ray</field>
+    <field name="option_10">Octopus</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
+    <field name="source_url" />
+    <field name="license" />
+    <field name="attribution" />
+    <field name="asset_ref">assets/images/asset_whale_001.svg</field>
+    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">OPEN_DECISION</field>
+    <choices>
+      <choice id="IMG_EN_0002_O1" correct="true" points="10">Blue whale</choice>
+      <choice id="IMG_EN_0002_O2" correct="false" points="8">Dolphin</choice>
+      <choice id="IMG_EN_0002_O3" correct="false" points="7">Shark</choice>
+      <choice id="IMG_EN_0002_O4" correct="false" points="6">Orca</choice>
+      <choice id="IMG_EN_0002_O5" correct="false" points="5">Manatee</choice>
+      <choice id="IMG_EN_0002_O6" correct="false" points="4">Seal</choice>
+      <choice id="IMG_EN_0002_O7" correct="false" points="3">Walrus</choice>
+      <choice id="IMG_EN_0002_O8" correct="false" points="2">Tuna</choice>
+      <choice id="IMG_EN_0002_O9" correct="false" points="1">Ray</choice>
+      <choice id="IMG_EN_0002_O10" correct="false" points="1">Octopus</choice>
+    </choices>
+  </item>
+  <item id="IMG_EN_0003" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Architecture</field>
+    <field name="specification">Landmarks</field>
+    <field name="asset_key">asset_lighthouse_001</field>
+    <field name="prompt">Which structure is shown?</field>
+    <field name="option_1">Lighthouse</field>
+    <field name="option_2">Castle tower</field>
+    <field name="option_3">Windmill</field>
+    <field name="option_4">Bridge</field>
+    <field name="option_5">Observatory</field>
+    <field name="option_6">Bell tower</field>
+    <field name="option_7">Water tower</field>
+    <field name="option_8">Dam</field>
+    <field name="option_9">Pagoda</field>
+    <field name="option_10">Fort</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
+    <field name="source_url" />
+    <field name="license" />
+    <field name="attribution" />
+    <field name="asset_ref">assets/images/asset_lighthouse_001.svg</field>
+    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">OPEN_DECISION</field>
+    <choices>
+      <choice id="IMG_EN_0003_O1" correct="true" points="10">Lighthouse</choice>
+      <choice id="IMG_EN_0003_O2" correct="false" points="8">Castle tower</choice>
+      <choice id="IMG_EN_0003_O3" correct="false" points="7">Windmill</choice>
+      <choice id="IMG_EN_0003_O4" correct="false" points="6">Bridge</choice>
+      <choice id="IMG_EN_0003_O5" correct="false" points="5">Observatory</choice>
+      <choice id="IMG_EN_0003_O6" correct="false" points="4">Bell tower</choice>
+      <choice id="IMG_EN_0003_O7" correct="false" points="3">Water tower</choice>
+      <choice id="IMG_EN_0003_O8" correct="false" points="2">Dam</choice>
+      <choice id="IMG_EN_0003_O9" correct="false" points="1">Pagoda</choice>
+      <choice id="IMG_EN_0003_O10" correct="false" points="1">Fort</choice>
+    </choices>
+  </item>
+  <item id="IMG_EN_0004" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Geography</field>
+    <field name="specification">Desert</field>
+    <field name="asset_key">asset_desert_001</field>
+    <field name="prompt">Which environment is represented?</field>
+    <field name="option_1">Sand desert</field>
+    <field name="option_2">Tropical rainforest</field>
+    <field name="option_3">Tundra</field>
+    <field name="option_4">Coral reef</field>
+    <field name="option_5">Temperate forest</field>
+    <field name="option_6">Wetland</field>
+    <field name="option_7">Savanna</field>
+    <field name="option_8">Alpine meadow</field>
+    <field name="option_9">Mangrove</field>
+    <field name="option_10">Taiga</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
+    <field name="source_url" />
+    <field name="license" />
+    <field name="attribution" />
+    <field name="asset_ref">assets/images/asset_desert_001.svg</field>
+    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">OPEN_DECISION</field>
+    <choices>
+      <choice id="IMG_EN_0004_O1" correct="true" points="10">Sand desert</choice>
+      <choice id="IMG_EN_0004_O2" correct="false" points="8">Tropical rainforest</choice>
+      <choice id="IMG_EN_0004_O3" correct="false" points="7">Tundra</choice>
+      <choice id="IMG_EN_0004_O4" correct="false" points="6">Coral reef</choice>
+      <choice id="IMG_EN_0004_O5" correct="false" points="5">Temperate forest</choice>
+      <choice id="IMG_EN_0004_O6" correct="false" points="4">Wetland</choice>
+      <choice id="IMG_EN_0004_O7" correct="false" points="3">Savanna</choice>
+      <choice id="IMG_EN_0004_O8" correct="false" points="2">Alpine meadow</choice>
+      <choice id="IMG_EN_0004_O9" correct="false" points="1">Mangrove</choice>
+      <choice id="IMG_EN_0004_O10" correct="false" points="1">Taiga</choice>
+    </choices>
+  </item>
+  <item id="IMG_EN_0005" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Science</field>
+    <field name="specification">Space</field>
+    <field name="asset_key">asset_space_001</field>
+    <field name="prompt">Which celestial object is shown?</field>
+    <field name="option_1">Planet</field>
+    <field name="option_2">Moon</field>
+    <field name="option_3">Comet</field>
+    <field name="option_4">Galaxy</field>
+    <field name="option_5">Asteroid</field>
+    <field name="option_6">Star cluster</field>
+    <field name="option_7">Nebula</field>
+    <field name="option_8">Satellite</field>
+    <field name="option_9">Black hole</field>
+    <field name="option_10">Space station</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
+    <field name="source_url" />
+    <field name="license" />
+    <field name="attribution" />
+    <field name="asset_ref">assets/images/asset_space_001.svg</field>
+    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">OPEN_DECISION</field>
+    <choices>
+      <choice id="IMG_EN_0005_O1" correct="true" points="10">Planet</choice>
+      <choice id="IMG_EN_0005_O2" correct="false" points="8">Moon</choice>
+      <choice id="IMG_EN_0005_O3" correct="false" points="7">Comet</choice>
+      <choice id="IMG_EN_0005_O4" correct="false" points="6">Galaxy</choice>
+      <choice id="IMG_EN_0005_O5" correct="false" points="5">Asteroid</choice>
+      <choice id="IMG_EN_0005_O6" correct="false" points="4">Star cluster</choice>
+      <choice id="IMG_EN_0005_O7" correct="false" points="3">Nebula</choice>
+      <choice id="IMG_EN_0005_O8" correct="false" points="2">Satellite</choice>
+      <choice id="IMG_EN_0005_O9" correct="false" points="1">Black hole</choice>
+      <choice id="IMG_EN_0005_O10" correct="false" points="1">Space station</choice>
+    </choices>
+  </item>
+</content>

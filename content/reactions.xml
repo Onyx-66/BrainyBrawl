@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="reactions" schemaVersion="1" contentVersion="1">
+  <item id="REACTION_EN_001" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Excellent!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_001</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_002" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Perfect!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_002</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_003" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">On Fire!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_003</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_004" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Unstoppable!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_004</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_005" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Great!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_005</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_006" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Nice!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_006</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_007" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Correct!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_007</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_008" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Well Done!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_008</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_009" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">So Close...</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_009</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_010" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">Almost!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_010</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_011" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">Just Missed It!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_011</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_012" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">So Near!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_012</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_013" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Oops!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_013</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_014" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Not Quite...</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_014</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_015" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Try Again!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_015</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_016" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Missed It!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_016</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_017" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Lightning Fast!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_017</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_018" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Quickest Draw!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_018</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_019" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Speed Demon!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_019</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_020" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Too Fast!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_020</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_021" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Great Teamwork!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_021</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_022" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">In Sync!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_022</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_023" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Perfect Combo!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_023</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_024" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Nice Coordination!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_024</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_025" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Climbing Up!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_025</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_026" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Watch Out!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_026</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_027" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Falling Behind!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_027</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_028" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">New Rank!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_028</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_029" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Victory!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_029</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_030" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">You Win!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_030</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_031" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Good Game</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_031</field>
+    <field name="category">preset</field>
+  </item>
+  <item id="REACTION_EN_032" locale="en" status="DEV_SAMPLE">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">So Close — Try Again!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_032</field>
+    <field name="category">preset</field>
+  </item>
+</content>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="precision_tap" schemaVersion="1" contentVersion="1">
+  <item id="PTAP_DEFAULT" locale="global" status="DEV_SAMPLE">
+    <field name="difficulty">standard</field>
+    <field name="turn_seconds">20</field>
+    <field name="base_points">1</field>
+    <field name="streak_bonus_at_2">1</field>
+    <field name="streak_bonus_at_3">2</field>
+    <field name="initial_speed_multiplier">1</field>
+    <field name="speed_growth">1</field>
+    <field name="hot_zone_growth">1</field>
+    <field name="notes">Configurable; client animation only; server validates event sequence.</field>
+    <field name="original_status">APPROVED</field>
+    <field name="rotation_degrees_per_second">120</field>
+    <field name="hot_zone_degrees">35</field>
+    <field name="speed_increment">12</field>
+    <field name="width_increment">2</field>
+    <field name="max_hot_zone_degrees">90</field>
+    <field name="streak_rule">hit_awards_current_streak</field>
+  </item>
+  <item id="PTAP_EASY" locale="global" status="DEV_SAMPLE">
+    <field name="difficulty">easy</field>
+    <field name="turn_seconds">20</field>
+    <field name="base_points">1</field>
+    <field name="streak_bonus_at_2">1</field>
+    <field name="streak_bonus_at_3">2</field>
+    <field name="initial_speed_multiplier">1</field>
+    <field name="speed_growth">1</field>
+    <field name="hot_zone_growth">1</field>
+    <field name="notes">Starter profile.</field>
+    <field name="original_status">DRAFT</field>
+    <field name="rotation_degrees_per_second">120</field>
+    <field name="hot_zone_degrees">35</field>
+    <field name="speed_increment">12</field>
+    <field name="width_increment">2</field>
+    <field name="max_hot_zone_degrees">90</field>
+    <field name="streak_rule">hit_awards_current_streak</field>
+  </item>
+</content>

@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="collaborative_puzzle" schemaVersion="1" contentVersion="1">
+  <item id="PUZ_0001" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Marine Adventure</field>
+    <field name="asset_key">asset_puzzle_lighthouse_001</field>
+    <field name="piece_count">96</field>
+    <field name="columns">12</field>
+    <field name="rows">8</field>
+    <field name="time_limit_seconds">120</field>
+    <field name="layout_type">irregular_blocks</field>
+    <field name="player_split">left_right</field>
+    <field name="notes">Replace asset after licensing.</field>
+    <field name="asset_ref">assets/images/asset_puzzle_lighthouse_001.svg</field>
+    <field name="geometry_source">Development tessellation; workbook placement IDs preserved</field>
+    <pieces>
+      <piece id="PUZ_0001_P001" slot="PUZ_0001_S001" row="0" column="0" side="LEFT" rotation="0" polygon="0.00000,0.00000 0.07000,0.00000 0.07000,0.11300 0.00000,0.13700" />
+      <piece id="PUZ_0001_P002" slot="PUZ_0001_S002" row="0" column="1" side="LEFT" rotation="0" polygon="0.07000,0.00000 0.16000,0.00000 0.16000,0.13700 0.07000,0.11300" />
+      <piece id="PUZ_0001_P003" slot="PUZ_0001_S003" row="0" column="2" side="LEFT" rotation="0" polygon="0.16000,0.00000 0.24000,0.00000 0.24000,0.11300 0.16000,0.13700" />
+      <piece id="PUZ_0001_P004" slot="PUZ_0001_S004" row="0" column="3" side="LEFT" rotation="0" polygon="0.24000,0.00000 0.34000,0.00000 0.34000,0.13700 0.24000,0.11300" />
+      <piece id="PUZ_0001_P005" slot="PUZ_0001_S005" row="0" column="4" side="LEFT" rotation="0" polygon="0.34000,0.00000 0.42000,0.00000 0.42000,0.11300 0.34000,0.13700" />
+      <piece id="PUZ_0001_P006" slot="PUZ_0001_S006" row="0" column="5" side="LEFT" rotation="0" polygon="0.42000,0.00000 0.50000,0.00000 0.50000,0.13700 0.42000,0.11300" />
+      <piece id="PUZ_0001_P007" slot="PUZ_0001_S007" row="0" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.00000 0.58000,0.00000 0.58000,0.11300 0.50000,0.13700" />
+      <piece id="PUZ_0001_P008" slot="PUZ_0001_S008" row="0" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.00000 0.66000,0.00000 0.66000,0.13700 0.58000,0.11300" />
+      <piece id="PUZ_0001_P009" slot="PUZ_0001_S009" row="0" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.00000 0.76000,0.00000 0.76000,0.11300 0.66000,0.13700" />
+      <piece id="PUZ_0001_P010" slot="PUZ_0001_S010" row="0" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.00000 0.84000,0.00000 0.84000,0.13700 0.76000,0.11300" />
+      <piece id="PUZ_0001_P011" slot="PUZ_0001_S011" row="0" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.00000 0.93000,0.00000 0.93000,0.11300 0.84000,0.13700" />
+      <piece id="PUZ_0001_P012" slot="PUZ_0001_S012" row="0" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.00000 1.00000,0.00000 1.00000,0.13700 0.93000,0.11300" />
+      <piece id="PUZ_0001_P013" slot="PUZ_0001_S013" row="1" column="0" side="LEFT" rotation="0" polygon="0.00000,0.13700 0.07000,0.11300 0.07000,0.26200 0.00000,0.23800" />
+      <piece id="PUZ_0001_P014" slot="PUZ_0001_S014" row="1" column="1" side="LEFT" rotation="0" polygon="0.07000,0.11300 0.16000,0.13700 0.16000,0.23800 0.07000,0.26200" />
+      <piece id="PUZ_0001_P015" slot="PUZ_0001_S015" row="1" column="2" side="LEFT" rotation="0" polygon="0.16000,0.13700 0.24000,0.11300 0.24000,0.26200 0.16000,0.23800" />
+      <piece id="PUZ_0001_P016" slot="PUZ_0001_S016" row="1" column="3" side="LEFT" rotation="0" polygon="0.24000,0.11300 0.34000,0.13700 0.34000,0.23800 0.24000,0.26200" />
+      <piece id="PUZ_0001_P017" slot="PUZ_0001_S017" row="1" column="4" side="LEFT" rotation="0" polygon="0.34000,0.13700 0.42000,0.11300 0.42000,0.26200 0.34000,0.23800" />
+      <piece id="PUZ_0001_P018" slot="PUZ_0001_S018" row="1" column="5" side="LEFT" rotation="0" polygon="0.42000,0.11300 0.50000,0.13700 0.50000,0.23800 0.42000,0.26200" />
+      <piece id="PUZ_0001_P019" slot="PUZ_0001_S019" row="1" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.13700 0.58000,0.11300 0.58000,0.26200 0.50000,0.23800" />
+      <piece id="PUZ_0001_P020" slot="PUZ_0001_S020" row="1" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.11300 0.66000,0.13700 0.66000,0.23800 0.58000,0.26200" />
+      <piece id="PUZ_0001_P021" slot="PUZ_0001_S021" row="1" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.13700 0.76000,0.11300 0.76000,0.26200 0.66000,0.23800" />
+      <piece id="PUZ_0001_P022" slot="PUZ_0001_S022" row="1" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.11300 0.84000,0.13700 0.84000,0.23800 0.76000,0.26200" />
+      <piece id="PUZ_0001_P023" slot="PUZ_0001_S023" row="1" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.13700 0.93000,0.11300 0.93000,0.26200 0.84000,0.23800" />
+      <piece id="PUZ_0001_P024" slot="PUZ_0001_S024" row="1" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.11300 1.00000,0.13700 1.00000,0.23800 0.93000,0.26200" />
+      <piece id="PUZ_0001_P025" slot="PUZ_0001_S025" row="2" column="0" side="LEFT" rotation="0" polygon="0.00000,0.23800 0.07000,0.26200 0.07000,0.36300 0.00000,0.38700" />
+      <piece id="PUZ_0001_P026" slot="PUZ_0001_S026" row="2" column="1" side="LEFT" rotation="0" polygon="0.07000,0.26200 0.16000,0.23800 0.16000,0.38700 0.07000,0.36300" />
+      <piece id="PUZ_0001_P027" slot="PUZ_0001_S027" row="2" column="2" side="LEFT" rotation="0" polygon="0.16000,0.23800 0.24000,0.26200 0.24000,0.36300 0.16000,0.38700" />
+      <piece id="PUZ_0001_P028" slot="PUZ_0001_S028" row="2" column="3" side="LEFT" rotation="0" polygon="0.24000,0.26200 0.34000,0.23800 0.34000,0.38700 0.24000,0.36300" />
+      <piece id="PUZ_0001_P029" slot="PUZ_0001_S029" row="2" column="4" side="LEFT" rotation="0" polygon="0.34000,0.23800 0.42000,0.26200 0.42000,0.36300 0.34000,0.38700" />
+      <piece id="PUZ_0001_P030" slot="PUZ_0001_S030" row="2" column="5" side="LEFT" rotation="0" polygon="0.42000,0.26200 0.50000,0.23800 0.50000,0.38700 0.42000,0.36300" />
+      <piece id="PUZ_0001_P031" slot="PUZ_0001_S031" row="2" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.23800 0.58000,0.26200 0.58000,0.36300 0.50000,0.38700" />
+      <piece id="PUZ_0001_P032" slot="PUZ_0001_S032" row="2" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.26200 0.66000,0.23800 0.66000,0.38700 0.58000,0.36300" />
+      <piece id="PUZ_0001_P033" slot="PUZ_0001_S033" row="2" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.23800 0.76000,0.26200 0.76000,0.36300 0.66000,0.38700" />
+      <piece id="PUZ_0001_P034" slot="PUZ_0001_S034" row="2" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.26200 0.84000,0.23800 0.84000,0.38700 0.76000,0.36300" />
+      <piece id="PUZ_0001_P035" slot="PUZ_0001_S035" row="2" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.23800 0.93000,0.26200 0.93000,0.36300 0.84000,0.38700" />
+      <piece id="PUZ_0001_P036" slot="PUZ_0001_S036" row="2" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.26200 1.00000,0.23800 1.00000,0.38700 0.93000,0.36300" />
+      <piece id="PUZ_0001_P037" slot="PUZ_0001_S037" row="3" column="0" side="LEFT" rotation="0" polygon="0.00000,0.38700 0.07000,0.36300 0.07000,0.51200 0.00000,0.48800" />
+      <piece id="PUZ_0001_P038" slot="PUZ_0001_S038" row="3" column="1" side="LEFT" rotation="0" polygon="0.07000,0.36300 0.16000,0.38700 0.16000,0.48800 0.07000,0.51200" />
+      <piece id="PUZ_0001_P039" slot="PUZ_0001_S039" row="3" column="2" side="LEFT" rotation="0" polygon="0.16000,0.38700 0.24000,0.36300 0.24000,0.51200 0.16000,0.48800" />
+      <piece id="PUZ_0001_P040" slot="PUZ_0001_S040" row="3" column="3" side="LEFT" rotation="0" polygon="0.24000,0.36300 0.34000,0.38700 0.34000,0.48800 0.24000,0.51200" />
+      <piece id="PUZ_0001_P041" slot="PUZ_0001_S041" row="3" column="4" side="LEFT" rotation="0" polygon="0.34000,0.38700 0.42000,0.36300 0.42000,0.51200 0.34000,0.48800" />
+      <piece id="PUZ_0001_P042" slot="PUZ_0001_S042" row="3" column="5" side="LEFT" rotation="0" polygon="0.42000,0.36300 0.50000,0.38700 0.50000,0.48800 0.42000,0.51200" />
+      <piece id="PUZ_0001_P043" slot="PUZ_0001_S043" row="3" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.38700 0.58000,0.36300 0.58000,0.51200 0.50000,0.48800" />
+      <piece id="PUZ_0001_P044" slot="PUZ_0001_S044" row="3" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.36300 0.66000,0.38700 0.66000,0.48800 0.58000,0.51200" />
+      <piece id="PUZ_0001_P045" slot="PUZ_0001_S045" row="3" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.38700 0.76000,0.36300 0.76000,0.51200 0.66000,0.48800" />
+      <piece id="PUZ_0001_P046" slot="PUZ_0001_S046" row="3" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.36300 0.84000,0.38700 0.84000,0.48800 0.76000,0.51200" />
+      <piece id="PUZ_0001_P047" slot="PUZ_0001_S047" row="3" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.38700 0.93000,0.36300 0.93000,0.51200 0.84000,0.48800" />
+      <piece id="PUZ_0001_P048" slot="PUZ_0001_S048" row="3" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.36300 1.00000,0.38700 1.00000,0.48800 0.93000,0.51200" />
+      <piece id="PUZ_0001_P049" slot="PUZ_0001_S049" row="4" column="0" side="LEFT" rotation="0" polygon="0.00000,0.48800 0.07000,0.51200 0.07000,0.61300 0.00000,0.63700" />
+      <piece id="PUZ_0001_P050" slot="PUZ_0001_S050" row="4" column="1" side="LEFT" rotation="0" polygon="0.07000,0.51200 0.16000,0.48800 0.16000,0.63700 0.07000,0.61300" />
+      <piece id="PUZ_0001_P051" slot="PUZ_0001_S051" row="4" column="2" side="LEFT" rotation="0" polygon="0.16000,0.48800 0.24000,0.51200 0.24000,0.61300 0.16000,0.63700" />
+      <piece id="PUZ_0001_P052" slot="PUZ_0001_S052" row="4" column="3" side="LEFT" rotation="0" polygon="0.24000,0.51200 0.34000,0.48800 0.34000,0.63700 0.24000,0.61300" />
+      <piece id="PUZ_0001_P053" slot="PUZ_0001_S053" row="4" column="4" side="LEFT" rotation="0" polygon="0.34000,0.48800 0.42000,0.51200 0.42000,0.61300 0.34000,0.63700" />
+      <piece id="PUZ_0001_P054" slot="PUZ_0001_S054" row="4" column="5" side="LEFT" rotation="0" polygon="0.42000,0.51200 0.50000,0.48800 0.50000,0.63700 0.42000,0.61300" />
+      <piece id="PUZ_0001_P055" slot="PUZ_0001_S055" row="4" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.48800 0.58000,0.51200 0.58000,0.61300 0.50000,0.63700" />
+      <piece id="PUZ_0001_P056" slot="PUZ_0001_S056" row="4" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.51200 0.66000,0.48800 0.66000,0.63700 0.58000,0.61300" />
+      <piece id="PUZ_0001_P057" slot="PUZ_0001_S057" row="4" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.48800 0.76000,0.51200 0.76000,0.61300 0.66000,0.63700" />
+      <piece id="PUZ_0001_P058" slot="PUZ_0001_S058" row="4" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.51200 0.84000,0.48800 0.84000,0.63700 0.76000,0.61300" />
+      <piece id="PUZ_0001_P059" slot="PUZ_0001_S059" row="4" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.48800 0.93000,0.51200 0.93000,0.61300 0.84000,0.63700" />
+      <piece id="PUZ_0001_P060" slot="PUZ_0001_S060" row="4" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.51200 1.00000,0.48800 1.00000,0.63700 0.93000,0.61300" />
+      <piece id="PUZ_0001_P061" slot="PUZ_0001_S061" row="5" column="0" side="LEFT" rotation="0" polygon="0.00000,0.63700 0.07000,0.61300 0.07000,0.76200 0.00000,0.73800" />
+      <piece id="PUZ_0001_P062" slot="PUZ_0001_S062" row="5" column="1" side="LEFT" rotation="0" polygon="0.07000,0.61300 0.16000,0.63700 0.16000,0.73800 0.07000,0.76200" />
+      <piece id="PUZ_0001_P063" slot="PUZ_0001_S063" row="5" column="2" side="LEFT" rotation="0" polygon="0.16000,0.63700 0.24000,0.61300 0.24000,0.76200 0.16000,0.73800" />
+      <piece id="PUZ_0001_P064" slot="PUZ_0001_S064" row="5" column="3" side="LEFT" rotation="0" polygon="0.24000,0.61300 0.34000,0.63700 0.34000,0.73800 0.24000,0.76200" />
+      <piece id="PUZ_0001_P065" slot="PUZ_0001_S065" row="5" column="4" side="LEFT" rotation="0" polygon="0.34000,0.63700 0.42000,0.61300 0.42000,0.76200 0.34000,0.73800" />
+      <piece id="PUZ_0001_P066" slot="PUZ_0001_S066" row="5" column="5" side="LEFT" rotation="0" polygon="0.42000,0.61300 0.50000,0.63700 0.50000,0.73800 0.42000,0.76200" />
+      <piece id="PUZ_0001_P067" slot="PUZ_0001_S067" row="5" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.63700 0.58000,0.61300 0.58000,0.76200 0.50000,0.73800" />
+      <piece id="PUZ_0001_P068" slot="PUZ_0001_S068" row="5" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.61300 0.66000,0.63700 0.66000,0.73800 0.58000,0.76200" />
+      <piece id="PUZ_0001_P069" slot="PUZ_0001_S069" row="5" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.63700 0.76000,0.61300 0.76000,0.76200 0.66000,0.73800" />
+      <piece id="PUZ_0001_P070" slot="PUZ_0001_S070" row="5" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.61300 0.84000,0.63700 0.84000,0.73800 0.76000,0.76200" />
+      <piece id="PUZ_0001_P071" slot="PUZ_0001_S071" row="5" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.63700 0.93000,0.61300 0.93000,0.76200 0.84000,0.73800" />
+      <piece id="PUZ_0001_P072" slot="PUZ_0001_S072" row="5" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.61300 1.00000,0.63700 1.00000,0.73800 0.93000,0.76200" />
+      <piece id="PUZ_0001_P073" slot="PUZ_0001_S073" row="6" column="0" side="LEFT" rotation="0" polygon="0.00000,0.73800 0.07000,0.76200 0.07000,0.86300 0.00000,0.88700" />
+      <piece id="PUZ_0001_P074" slot="PUZ_0001_S074" row="6" column="1" side="LEFT" rotation="0" polygon="0.07000,0.76200 0.16000,0.73800 0.16000,0.88700 0.07000,0.86300" />
+      <piece id="PUZ_0001_P075" slot="PUZ_0001_S075" row="6" column="2" side="LEFT" rotation="0" polygon="0.16000,0.73800 0.24000,0.76200 0.24000,0.86300 0.16000,0.88700" />
+      <piece id="PUZ_0001_P076" slot="PUZ_0001_S076" row="6" column="3" side="LEFT" rotation="0" polygon="0.24000,0.76200 0.34000,0.73800 0.34000,0.88700 0.24000,0.86300" />
+      <piece id="PUZ_0001_P077" slot="PUZ_0001_S077" row="6" column="4" side="LEFT" rotation="0" polygon="0.34000,0.73800 0.42000,0.76200 0.42000,0.86300 0.34000,0.88700" />
+      <piece id="PUZ_0001_P078" slot="PUZ_0001_S078" row="6" column="5" side="LEFT" rotation="0" polygon="0.42000,0.76200 0.50000,0.73800 0.50000,0.88700 0.42000,0.86300" />
+      <piece id="PUZ_0001_P079" slot="PUZ_0001_S079" row="6" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.73800 0.58000,0.76200 0.58000,0.86300 0.50000,0.88700" />
+      <piece id="PUZ_0001_P080" slot="PUZ_0001_S080" row="6" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.76200 0.66000,0.73800 0.66000,0.88700 0.58000,0.86300" />
+      <piece id="PUZ_0001_P081" slot="PUZ_0001_S081" row="6" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.73800 0.76000,0.76200 0.76000,0.86300 0.66000,0.88700" />
+      <piece id="PUZ_0001_P082" slot="PUZ_0001_S082" row="6" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.76200 0.84000,0.73800 0.84000,0.88700 0.76000,0.86300" />
+      <piece id="PUZ_0001_P083" slot="PUZ_0001_S083" row="6" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.73800 0.93000,0.76200 0.93000,0.86300 0.84000,0.88700" />
+      <piece id="PUZ_0001_P084" slot="PUZ_0001_S084" row="6" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.76200 1.00000,0.73800 1.00000,0.88700 0.93000,0.86300" />
+      <piece id="PUZ_0001_P085" slot="PUZ_0001_S085" row="7" column="0" side="LEFT" rotation="0" polygon="0.00000,0.88700 0.07000,0.86300 0.07000,1.00000 0.00000,1.00000" />
+      <piece id="PUZ_0001_P086" slot="PUZ_0001_S086" row="7" column="1" side="LEFT" rotation="0" polygon="0.07000,0.86300 0.16000,0.88700 0.16000,1.00000 0.07000,1.00000" />
+      <piece id="PUZ_0001_P087" slot="PUZ_0001_S087" row="7" column="2" side="LEFT" rotation="0" polygon="0.16000,0.88700 0.24000,0.86300 0.24000,1.00000 0.16000,1.00000" />
+      <piece id="PUZ_0001_P088" slot="PUZ_0001_S088" row="7" column="3" side="LEFT" rotation="0" polygon="0.24000,0.86300 0.34000,0.88700 0.34000,1.00000 0.24000,1.00000" />
+      <piece id="PUZ_0001_P089" slot="PUZ_0001_S089" row="7" column="4" side="LEFT" rotation="0" polygon="0.34000,0.88700 0.42000,0.86300 0.42000,1.00000 0.34000,1.00000" />
+      <piece id="PUZ_0001_P090" slot="PUZ_0001_S090" row="7" column="5" side="LEFT" rotation="0" polygon="0.42000,0.86300 0.50000,0.88700 0.50000,1.00000 0.42000,1.00000" />
+      <piece id="PUZ_0001_P091" slot="PUZ_0001_S091" row="7" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.88700 0.58000,0.86300 0.58000,1.00000 0.50000,1.00000" />
+      <piece id="PUZ_0001_P092" slot="PUZ_0001_S092" row="7" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.86300 0.66000,0.88700 0.66000,1.00000 0.58000,1.00000" />
+      <piece id="PUZ_0001_P093" slot="PUZ_0001_S093" row="7" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.88700 0.76000,0.86300 0.76000,1.00000 0.66000,1.00000" />
+      <piece id="PUZ_0001_P094" slot="PUZ_0001_S094" row="7" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.86300 0.84000,0.88700 0.84000,1.00000 0.76000,1.00000" />
+      <piece id="PUZ_0001_P095" slot="PUZ_0001_S095" row="7" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.88700 0.93000,0.86300 0.93000,1.00000 0.84000,1.00000" />
+      <piece id="PUZ_0001_P096" slot="PUZ_0001_S096" row="7" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.86300 1.00000,0.88700 1.00000,1.00000 0.93000,1.00000" />
+    </pieces>
+  </item>
+  <item id="PUZ_0002" locale="en" status="DEV_SAMPLE">
+    <field name="theme">Ocean Life</field>
+    <field name="asset_key">asset_puzzle_whale_001</field>
+    <field name="piece_count">96</field>
+    <field name="columns">12</field>
+    <field name="rows">8</field>
+    <field name="time_limit_seconds">120</field>
+    <field name="layout_type">irregular_blocks</field>
+    <field name="player_split">left_right</field>
+    <field name="notes">Replace asset after licensing.</field>
+    <field name="asset_ref">assets/images/asset_puzzle_whale_001.svg</field>
+    <field name="geometry_source">Development tessellation; workbook placement IDs preserved</field>
+    <pieces>
+      <piece id="PUZ_0002_P001" slot="PUZ_0002_S001" row="0" column="0" side="LEFT" rotation="0" polygon="0.00000,0.00000 0.07000,0.00000 0.07000,0.11300 0.00000,0.13700" />
+      <piece id="PUZ_0002_P002" slot="PUZ_0002_S002" row="0" column="1" side="LEFT" rotation="0" polygon="0.07000,0.00000 0.16000,0.00000 0.16000,0.13700 0.07000,0.11300" />
+      <piece id="PUZ_0002_P003" slot="PUZ_0002_S003" row="0" column="2" side="LEFT" rotation="0" polygon="0.16000,0.00000 0.24000,0.00000 0.24000,0.11300 0.16000,0.13700" />
+      <piece id="PUZ_0002_P004" slot="PUZ_0002_S004" row="0" column="3" side="LEFT" rotation="0" polygon="0.24000,0.00000 0.34000,0.00000 0.34000,0.13700 0.24000,0.11300" />
+      <piece id="PUZ_0002_P005" slot="PUZ_0002_S005" row="0" column="4" side="LEFT" rotation="0" polygon="0.34000,0.00000 0.42000,0.00000 0.42000,0.11300 0.34000,0.13700" />
+      <piece id="PUZ_0002_P006" slot="PUZ_0002_S006" row="0" column="5" side="LEFT" rotation="0" polygon="0.42000,0.00000 0.50000,0.00000 0.50000,0.13700 0.42000,0.11300" />
+      <piece id="PUZ_0002_P007" slot="PUZ_0002_S007" row="0" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.00000 0.58000,0.00000 0.58000,0.11300 0.50000,0.13700" />
+      <piece id="PUZ_0002_P008" slot="PUZ_0002_S008" row="0" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.00000 0.66000,0.00000 0.66000,0.13700 0.58000,0.11300" />
+      <piece id="PUZ_0002_P009" slot="PUZ_0002_S009" row="0" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.00000 0.76000,0.00000 0.76000,0.11300 0.66000,0.13700" />
+      <piece id="PUZ_0002_P010" slot="PUZ_0002_S010" row="0" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.00000 0.84000,0.00000 0.84000,0.13700 0.76000,0.11300" />
+      <piece id="PUZ_0002_P011" slot="PUZ_0002_S011" row="0" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.00000 0.93000,0.00000 0.93000,0.11300 0.84000,0.13700" />
+      <piece id="PUZ_0002_P012" slot="PUZ_0002_S012" row="0" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.00000 1.00000,0.00000 1.00000,0.13700 0.93000,0.11300" />
+      <piece id="PUZ_0002_P013" slot="PUZ_0002_S013" row="1" column="0" side="LEFT" rotation="0" polygon="0.00000,0.13700 0.07000,0.11300 0.07000,0.26200 0.00000,0.23800" />
+      <piece id="PUZ_0002_P014" slot="PUZ_0002_S014" row="1" column="1" side="LEFT" rotation="0" polygon="0.07000,0.11300 0.16000,0.13700 0.16000,0.23800 0.07000,0.26200" />
+      <piece id="PUZ_0002_P015" slot="PUZ_0002_S015" row="1" column="2" side="LEFT" rotation="0" polygon="0.16000,0.13700 0.24000,0.11300 0.24000,0.26200 0.16000,0.23800" />
+      <piece id="PUZ_0002_P016" slot="PUZ_0002_S016" row="1" column="3" side="LEFT" rotation="0" polygon="0.24000,0.11300 0.34000,0.13700 0.34000,0.23800 0.24000,0.26200" />
+      <piece id="PUZ_0002_P017" slot="PUZ_0002_S017" row="1" column="4" side="LEFT" rotation="0" polygon="0.34000,0.13700 0.42000,0.11300 0.42000,0.26200 0.34000,0.23800" />
+      <piece id="PUZ_0002_P018" slot="PUZ_0002_S018" row="1" column="5" side="LEFT" rotation="0" polygon="0.42000,0.11300 0.50000,0.13700 0.50000,0.23800 0.42000,0.26200" />
+      <piece id="PUZ_0002_P019" slot="PUZ_0002_S019" row="1" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.13700 0.58000,0.11300 0.58000,0.26200 0.50000,0.23800" />
+      <piece id="PUZ_0002_P020" slot="PUZ_0002_S020" row="1" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.11300 0.66000,0.13700 0.66000,0.23800 0.58000,0.26200" />
+      <piece id="PUZ_0002_P021" slot="PUZ_0002_S021" row="1" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.13700 0.76000,0.11300 0.76000,0.26200 0.66000,0.23800" />
+      <piece id="PUZ_0002_P022" slot="PUZ_0002_S022" row="1" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.11300 0.84000,0.13700 0.84000,0.23800 0.76000,0.26200" />
+      <piece id="PUZ_0002_P023" slot="PUZ_0002_S023" row="1" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.13700 0.93000,0.11300 0.93000,0.26200 0.84000,0.23800" />
+      <piece id="PUZ_0002_P024" slot="PUZ_0002_S024" row="1" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.11300 1.00000,0.13700 1.00000,0.23800 0.93000,0.26200" />
+      <piece id="PUZ_0002_P025" slot="PUZ_0002_S025" row="2" column="0" side="LEFT" rotation="0" polygon="0.00000,0.23800 0.07000,0.26200 0.07000,0.36300 0.00000,0.38700" />
+      <piece id="PUZ_0002_P026" slot="PUZ_0002_S026" row="2" column="1" side="LEFT" rotation="0" polygon="0.07000,0.26200 0.16000,0.23800 0.16000,0.38700 0.07000,0.36300" />
+      <piece id="PUZ_0002_P027" slot="PUZ_0002_S027" row="2" column="2" side="LEFT" rotation="0" polygon="0.16000,0.23800 0.24000,0.26200 0.24000,0.36300 0.16000,0.38700" />
+      <piece id="PUZ_0002_P028" slot="PUZ_0002_S028" row="2" column="3" side="LEFT" rotation="0" polygon="0.24000,0.26200 0.34000,0.23800 0.34000,0.38700 0.24000,0.36300" />
+      <piece id="PUZ_0002_P029" slot="PUZ_0002_S029" row="2" column="4" side="LEFT" rotation="0" polygon="0.34000,0.23800 0.42000,0.26200 0.42000,0.36300 0.34000,0.38700" />
+      <piece id="PUZ_0002_P030" slot="PUZ_0002_S030" row="2" column="5" side="LEFT" rotation="0" polygon="0.42000,0.26200 0.50000,0.23800 0.50000,0.38700 0.42000,0.36300" />
+      <piece id="PUZ_0002_P031" slot="PUZ_0002_S031" row="2" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.23800 0.58000,0.26200 0.58000,0.36300 0.50000,0.38700" />
+      <piece id="PUZ_0002_P032" slot="PUZ_0002_S032" row="2" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.26200 0.66000,0.23800 0.66000,0.38700 0.58000,0.36300" />
+      <piece id="PUZ_0002_P033" slot="PUZ_0002_S033" row="2" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.23800 0.76000,0.26200 0.76000,0.36300 0.66000,0.38700" />
+      <piece id="PUZ_0002_P034" slot="PUZ_0002_S034" row="2" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.26200 0.84000,0.23800 0.84000,0.38700 0.76000,0.36300" />
+      <piece id="PUZ_0002_P035" slot="PUZ_0002_S035" row="2" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.23800 0.93000,0.26200 0.93000,0.36300 0.84000,0.38700" />
+      <piece id="PUZ_0002_P036" slot="PUZ_0002_S036" row="2" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.26200 1.00000,0.23800 1.00000,0.38700 0.93000,0.36300" />
+      <piece id="PUZ_0002_P037" slot="PUZ_0002_S037" row="3" column="0" side="LEFT" rotation="0" polygon="0.00000,0.38700 0.07000,0.36300 0.07000,0.51200 0.00000,0.48800" />
+      <piece id="PUZ_0002_P038" slot="PUZ_0002_S038" row="3" column="1" side="LEFT" rotation="0" polygon="0.07000,0.36300 0.16000,0.38700 0.16000,0.48800 0.07000,0.51200" />
+      <piece id="PUZ_0002_P039" slot="PUZ_0002_S039" row="3" column="2" side="LEFT" rotation="0" polygon="0.16000,0.38700 0.24000,0.36300 0.24000,0.51200 0.16000,0.48800" />
+      <piece id="PUZ_0002_P040" slot="PUZ_0002_S040" row="3" column="3" side="LEFT" rotation="0" polygon="0.24000,0.36300 0.34000,0.38700 0.34000,0.48800 0.24000,0.51200" />
+      <piece id="PUZ_0002_P041" slot="PUZ_0002_S041" row="3" column="4" side="LEFT" rotation="0" polygon="0.34000,0.38700 0.42000,0.36300 0.42000,0.51200 0.34000,0.48800" />
+      <piece id="PUZ_0002_P042" slot="PUZ_0002_S042" row="3" column="5" side="LEFT" rotation="0" polygon="0.42000,0.36300 0.50000,0.38700 0.50000,0.48800 0.42000,0.51200" />
+      <piece id="PUZ_0002_P043" slot="PUZ_0002_S043" row="3" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.38700 0.58000,0.36300 0.58000,0.51200 0.50000,0.48800" />
+      <piece id="PUZ_0002_P044" slot="PUZ_0002_S044" row="3" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.36300 0.66000,0.38700 0.66000,0.48800 0.58000,0.51200" />
+      <piece id="PUZ_0002_P045" slot="PUZ_0002_S045" row="3" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.38700 0.76000,0.36300 0.76000,0.51200 0.66000,0.48800" />
+      <piece id="PUZ_0002_P046" slot="PUZ_0002_S046" row="3" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.36300 0.84000,0.38700 0.84000,0.48800 0.76000,0.51200" />
+      <piece id="PUZ_0002_P047" slot="PUZ_0002_S047" row="3" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.38700 0.93000,0.36300 0.93000,0.51200 0.84000,0.48800" />
+      <piece id="PUZ_0002_P048" slot="PUZ_0002_S048" row="3" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.36300 1.00000,0.38700 1.00000,0.48800 0.93000,0.51200" />
+      <piece id="PUZ_0002_P049" slot="PUZ_0002_S049" row="4" column="0" side="LEFT" rotation="0" polygon="0.00000,0.48800 0.07000,0.51200 0.07000,0.61300 0.00000,0.63700" />
+      <piece id="PUZ_0002_P050" slot="PUZ_0002_S050" row="4" column="1" side="LEFT" rotation="0" polygon="0.07000,0.51200 0.16000,0.48800 0.16000,0.63700 0.07000,0.61300" />
+      <piece id="PUZ_0002_P051" slot="PUZ_0002_S051" row="4" column="2" side="LEFT" rotation="0" polygon="0.16000,0.48800 0.24000,0.51200 0.24000,0.61300 0.16000,0.63700" />
+      <piece id="PUZ_0002_P052" slot="PUZ_0002_S052" row="4" column="3" side="LEFT" rotation="0" polygon="0.24000,0.51200 0.34000,0.48800 0.34000,0.63700 0.24000,0.61300" />
+      <piece id="PUZ_0002_P053" slot="PUZ_0002_S053" row="4" column="4" side="LEFT" rotation="0" polygon="0.34000,0.48800 0.42000,0.51200 0.42000,0.61300 0.34000,0.63700" />
+      <piece id="PUZ_0002_P054" slot="PUZ_0002_S054" row="4" column="5" side="LEFT" rotation="0" polygon="0.42000,0.51200 0.50000,0.48800 0.50000,0.63700 0.42000,0.61300" />
+      <piece id="PUZ_0002_P055" slot="PUZ_0002_S055" row="4" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.48800 0.58000,0.51200 0.58000,0.61300 0.50000,0.63700" />
+      <piece id="PUZ_0002_P056" slot="PUZ_0002_S056" row="4" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.51200 0.66000,0.48800 0.66000,0.63700 0.58000,0.61300" />
+      <piece id="PUZ_0002_P057" slot="PUZ_0002_S057" row="4" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.48800 0.76000,0.51200 0.76000,0.61300 0.66000,0.63700" />
+      <piece id="PUZ_0002_P058" slot="PUZ_0002_S058" row="4" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.51200 0.84000,0.48800 0.84000,0.63700 0.76000,0.61300" />
+      <piece id="PUZ_0002_P059" slot="PUZ_0002_S059" row="4" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.48800 0.93000,0.51200 0.93000,0.61300 0.84000,0.63700" />
+      <piece id="PUZ_0002_P060" slot="PUZ_0002_S060" row="4" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.51200 1.00000,0.48800 1.00000,0.63700 0.93000,0.61300" />
+      <piece id="PUZ_0002_P061" slot="PUZ_0002_S061" row="5" column="0" side="LEFT" rotation="0" polygon="0.00000,0.63700 0.07000,0.61300 0.07000,0.76200 0.00000,0.73800" />
+      <piece id="PUZ_0002_P062" slot="PUZ_0002_S062" row="5" column="1" side="LEFT" rotation="0" polygon="0.07000,0.61300 0.16000,0.63700 0.16000,0.73800 0.07000,0.76200" />
+      <piece id="PUZ_0002_P063" slot="PUZ_0002_S063" row="5" column="2" side="LEFT" rotation="0" polygon="0.16000,0.63700 0.24000,0.61300 0.24000,0.76200 0.16000,0.73800" />
+      <piece id="PUZ_0002_P064" slot="PUZ_0002_S064" row="5" column="3" side="LEFT" rotation="0" polygon="0.24000,0.61300 0.34000,0.63700 0.34000,0.73800 0.24000,0.76200" />
+      <piece id="PUZ_0002_P065" slot="PUZ_0002_S065" row="5" column="4" side="LEFT" rotation="0" polygon="0.34000,0.63700 0.42000,0.61300 0.42000,0.76200 0.34000,0.73800" />
+      <piece id="PUZ_0002_P066" slot="PUZ_0002_S066" row="5" column="5" side="LEFT" rotation="0" polygon="0.42000,0.61300 0.50000,0.63700 0.50000,0.73800 0.42000,0.76200" />
+      <piece id="PUZ_0002_P067" slot="PUZ_0002_S067" row="5" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.63700 0.58000,0.61300 0.58000,0.76200 0.50000,0.73800" />
+      <piece id="PUZ_0002_P068" slot="PUZ_0002_S068" row="5" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.61300 0.66000,0.63700 0.66000,0.73800 0.58000,0.76200" />
+      <piece id="PUZ_0002_P069" slot="PUZ_0002_S069" row="5" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.63700 0.76000,0.61300 0.76000,0.76200 0.66000,0.73800" />
+      <piece id="PUZ_0002_P070" slot="PUZ_0002_S070" row="5" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.61300 0.84000,0.63700 0.84000,0.73800 0.76000,0.76200" />
+      <piece id="PUZ_0002_P071" slot="PUZ_0002_S071" row="5" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.63700 0.93000,0.61300 0.93000,0.76200 0.84000,0.73800" />
+      <piece id="PUZ_0002_P072" slot="PUZ_0002_S072" row="5" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.61300 1.00000,0.63700 1.00000,0.73800 0.93000,0.76200" />
+      <piece id="PUZ_0002_P073" slot="PUZ_0002_S073" row="6" column="0" side="LEFT" rotation="0" polygon="0.00000,0.73800 0.07000,0.76200 0.07000,0.86300 0.00000,0.88700" />
+      <piece id="PUZ_0002_P074" slot="PUZ_0002_S074" row="6" column="1" side="LEFT" rotation="0" polygon="0.07000,0.76200 0.16000,0.73800 0.16000,0.88700 0.07000,0.86300" />
+      <piece id="PUZ_0002_P075" slot="PUZ_0002_S075" row="6" column="2" side="LEFT" rotation="0" polygon="0.16000,0.73800 0.24000,0.76200 0.24000,0.86300 0.16000,0.88700" />
+      <piece id="PUZ_0002_P076" slot="PUZ_0002_S076" row="6" column="3" side="LEFT" rotation="0" polygon="0.24000,0.76200 0.34000,0.73800 0.34000,0.88700 0.24000,0.86300" />
+      <piece id="PUZ_0002_P077" slot="PUZ_0002_S077" row="6" column="4" side="LEFT" rotation="0" polygon="0.34000,0.73800 0.42000,0.76200 0.42000,0.86300 0.34000,0.88700" />
+      <piece id="PUZ_0002_P078" slot="PUZ_0002_S078" row="6" column="5" side="LEFT" rotation="0" polygon="0.42000,0.76200 0.50000,0.73800 0.50000,0.88700 0.42000,0.86300" />
+      <piece id="PUZ_0002_P079" slot="PUZ_0002_S079" row="6" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.73800 0.58000,0.76200 0.58000,0.86300 0.50000,0.88700" />
+      <piece id="PUZ_0002_P080" slot="PUZ_0002_S080" row="6" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.76200 0.66000,0.73800 0.66000,0.88700 0.58000,0.86300" />
+      <piece id="PUZ_0002_P081" slot="PUZ_0002_S081" row="6" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.73800 0.76000,0.76200 0.76000,0.86300 0.66000,0.88700" />
+      <piece id="PUZ_0002_P082" slot="PUZ_0002_S082" row="6" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.76200 0.84000,0.73800 0.84000,0.88700 0.76000,0.86300" />
+      <piece id="PUZ_0002_P083" slot="PUZ_0002_S083" row="6" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.73800 0.93000,0.76200 0.93000,0.86300 0.84000,0.88700" />
+      <piece id="PUZ_0002_P084" slot="PUZ_0002_S084" row="6" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.76200 1.00000,0.73800 1.00000,0.88700 0.93000,0.86300" />
+      <piece id="PUZ_0002_P085" slot="PUZ_0002_S085" row="7" column="0" side="LEFT" rotation="0" polygon="0.00000,0.88700 0.07000,0.86300 0.07000,1.00000 0.00000,1.00000" />
+      <piece id="PUZ_0002_P086" slot="PUZ_0002_S086" row="7" column="1" side="LEFT" rotation="0" polygon="0.07000,0.86300 0.16000,0.88700 0.16000,1.00000 0.07000,1.00000" />
+      <piece id="PUZ_0002_P087" slot="PUZ_0002_S087" row="7" column="2" side="LEFT" rotation="0" polygon="0.16000,0.88700 0.24000,0.86300 0.24000,1.00000 0.16000,1.00000" />
+      <piece id="PUZ_0002_P088" slot="PUZ_0002_S088" row="7" column="3" side="LEFT" rotation="0" polygon="0.24000,0.86300 0.34000,0.88700 0.34000,1.00000 0.24000,1.00000" />
+      <piece id="PUZ_0002_P089" slot="PUZ_0002_S089" row="7" column="4" side="LEFT" rotation="0" polygon="0.34000,0.88700 0.42000,0.86300 0.42000,1.00000 0.34000,1.00000" />
+      <piece id="PUZ_0002_P090" slot="PUZ_0002_S090" row="7" column="5" side="LEFT" rotation="0" polygon="0.42000,0.86300 0.50000,0.88700 0.50000,1.00000 0.42000,1.00000" />
+      <piece id="PUZ_0002_P091" slot="PUZ_0002_S091" row="7" column="6" side="RIGHT" rotation="0" polygon="0.50000,0.88700 0.58000,0.86300 0.58000,1.00000 0.50000,1.00000" />
+      <piece id="PUZ_0002_P092" slot="PUZ_0002_S092" row="7" column="7" side="RIGHT" rotation="0" polygon="0.58000,0.86300 0.66000,0.88700 0.66000,1.00000 0.58000,1.00000" />
+      <piece id="PUZ_0002_P093" slot="PUZ_0002_S093" row="7" column="8" side="RIGHT" rotation="0" polygon="0.66000,0.88700 0.76000,0.86300 0.76000,1.00000 0.66000,1.00000" />
+      <piece id="PUZ_0002_P094" slot="PUZ_0002_S094" row="7" column="9" side="RIGHT" rotation="0" polygon="0.76000,0.86300 0.84000,0.88700 0.84000,1.00000 0.76000,1.00000" />
+      <piece id="PUZ_0002_P095" slot="PUZ_0002_S095" row="7" column="10" side="RIGHT" rotation="0" polygon="0.84000,0.88700 0.93000,0.86300 0.93000,1.00000 0.84000,1.00000" />
+      <piece id="PUZ_0002_P096" slot="PUZ_0002_S096" row="7" column="11" side="RIGHT" rotation="0" polygon="0.93000,0.86300 1.00000,0.88700 1.00000,1.00000 0.93000,1.00000" />
+    </pieces>
+  </item>
+</content>

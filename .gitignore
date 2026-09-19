@@ -13,3 +13,16 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Local verification and session artifacts
+**/node_modules/
+.kotlin/
+.local/
+*.jks
+*.keystore
+.env
+.env.*
+!config.example.properties
+BrainyBrawl_CHANGED_FILES.zip
+
+**/__pycache__/

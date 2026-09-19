@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content kind="roll_the_dice" schemaVersion="1" contentVersion="1">
+  <item id="ROLL_DEV_20" locale="global" status="DEV_SAMPLE">
+    <field name="resolution">server_crypto_random_reroll_ties</field>
+    <slots>
+      <slot id="ROLL_DEV_20_1" value="1" />
+      <slot id="ROLL_DEV_20_2" value="2" />
+      <slot id="ROLL_DEV_20_3" value="3" />
+      <slot id="ROLL_DEV_20_4" value="4" />
+      <slot id="ROLL_DEV_20_5" value="5" />
+      <slot id="ROLL_DEV_20_6" value="6" />
+      <slot id="ROLL_DEV_20_7" value="7" />
+      <slot id="ROLL_DEV_20_8" value="8" />
+      <slot id="ROLL_DEV_20_9" value="9" />
+      <slot id="ROLL_DEV_20_10" value="10" />
+      <slot id="ROLL_DEV_20_11" value="11" />
+      <slot id="ROLL_DEV_20_12" value="12" />
+      <slot id="ROLL_DEV_20_13" value="13" />
+      <slot id="ROLL_DEV_20_14" value="14" />
+      <slot id="ROLL_DEV_20_15" value="15" />
+      <slot id="ROLL_DEV_20_16" value="16" />
+      <slot id="ROLL_DEV_20_17" value="17" />
+      <slot id="ROLL_DEV_20_18" value="18" />
+      <slot id="ROLL_DEV_20_19" value="19" />
+      <slot id="ROLL_DEV_20_20" value="20" />
+    </slots>
+  </item>
+</content>
