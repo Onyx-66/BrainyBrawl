@@ -1,0 +1,82 @@
+{
+  "board": {
+    "kind": "precision_tap",
+    "config": {
+      "speed_increment": "1",
+      "width_increment": "1",
+      "hot_zone_degrees": "30",
+      "max_hot_zone_degrees": "90",
+      "rotation_degrees_per_second": "1"
+    },
+    "players": [
+      {
+        "score": 0,
+        "streak": 0,
+        "user_id": "bbbbbbbb-0000-4000-8000-000000000173",
+        "position": 0,
+        "round_id": "01d8b7cd-a774-46b3-b626-961b6ec85202",
+        "anchor_at": "2026-09-19T18:52:26.406+00:00",
+        "zone_start": 317,
+        "last_hit_pass": null
+      }
+    ]
+  },
+  "match": {
+    "id": "05795c54-6309-4f89-a70d-4a758c4af287",
+    "mode": "solo",
+    "status": "active",
+    "room_id": "55983228-76ba-4681-b7ac-55d4b2fbacf2",
+    "version": 2,
+    "created_at": "2026-09-19T18:52:38.398+00:00",
+    "active_round": 0,
+    "completed_at": null
+  },
+  "rounds": [
+    {
+      "id": "01d8b7cd-a774-46b3-b626-961b6ec85202",
+      "kind": "precision_tap",
+      "reveal": null,
+      "status": "active",
+      "content": {
+        "speed_increment": "1",
+        "width_increment": "1",
+        "hot_zone_degrees": "30",
+        "max_hot_zone_degrees": "90",
+        "rotation_degrees_per_second": "1"
+      },
+      "ordinal": 0,
+      "deadline": "2026-09-19T18:52:46.406+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "b7fb9020-caa1-4a8b-b58a-ef0c79582b3c",
+      "starts_at": "2026-09-19T18:52:26.406+00:00",
+      "content_id": "test_precision",
+      "submission": null,
+      "answer_opens_at": "2026-09-19T18:52:36.406+00:00"
+    }
+  ],
+  "results": [],
+  "starts_at": "2026-09-19T18:52:26.406+00:00",
+  "tie_rolls": [],
+  "server_time": "2026-09-19T18:52:38.408+00:00",
+  "participants": [
+    {
+      "name": "Solo_173",
+      "seat": 0,
+      "score": 0,
+      "team_id": null,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000173",
+      "eligible": true,
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287"
+    },
+    {
+      "name": "Solo_174",
+      "seat": 0,
+      "score": 0,
+      "team_id": null,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000174",
+      "eligible": true,
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287"
+    }
+  ],
+  "schema_version": 1
+}

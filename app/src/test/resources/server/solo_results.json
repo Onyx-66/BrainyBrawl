@@ -1,0 +1,792 @@
+{
+  "match": {
+    "id": "05795c54-6309-4f89-a70d-4a758c4af287",
+    "mode": "solo",
+    "status": "results",
+    "room_id": "55983228-76ba-4681-b7ac-55d4b2fbacf2",
+    "version": 53,
+    "created_at": "2026-09-19T18:52:38.398+00:00",
+    "active_round": 16,
+    "completed_at": "2026-09-19T18:52:38.735+00:00"
+  },
+  "rounds": [
+    {
+      "id": "01d8b7cd-a774-46b3-b626-961b6ec85202",
+      "kind": "precision_tap",
+      "reveal": {},
+      "status": "results",
+      "content": {
+        "speed_increment": "1",
+        "width_increment": "1",
+        "hot_zone_degrees": "30",
+        "max_hot_zone_degrees": "90",
+        "rotation_degrees_per_second": "1"
+      },
+      "ordinal": 0,
+      "deadline": "2026-09-19T18:52:37.423+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "b7fb9020-caa1-4a8b-b58a-ef0c79582b3c",
+      "starts_at": "2026-09-19T18:52:26.406+00:00",
+      "content_id": "test_precision",
+      "submission": null,
+      "answer_opens_at": "2026-09-19T18:52:36.406+00:00"
+    },
+    {
+      "id": "85ae066f-0892-404f-b224-94f4a71b0172",
+      "kind": "speed_sort",
+      "reveal": {
+        "bucket": "A"
+      },
+      "status": "results",
+      "content": {
+        "label": "a",
+        "theme": "test"
+      },
+      "ordinal": 1,
+      "deadline": "2026-09-19T18:52:37.448+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "91c31cda-0fc7-4d5a-bb27-d2b05e53817f",
+      "starts_at": "2026-09-19T18:52:26.427+00:00",
+      "content_id": "test_sort_a",
+      "submission": null,
+      "answer_opens_at": "2026-09-19T18:52:36.427+00:00"
+    },
+    {
+      "id": "95d2f7f4-076a-4bdb-9f0c-10b1aba3b4da",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 2,
+      "deadline": "2026-09-19T18:52:37.466+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.455+00:00",
+      "content_id": "test_content_12",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "20bc3158-a21e-4cbe-aa33-37b225a4d54f"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.455+00:00"
+    },
+    {
+      "id": "c645c378-9ff7-4ba8-85e9-c557267de6ee",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 3,
+      "deadline": "2026-09-19T18:52:37.488+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.474+00:00",
+      "content_id": "test_content_5",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "b37f9717-1eee-4964-963c-7f90a67bd104"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.474+00:00"
+    },
+    {
+      "id": "87fb3089-53d2-4686-ad4d-fa0a3e3dc464",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 4,
+      "deadline": "2026-09-19T18:52:37.507+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.492+00:00",
+      "content_id": "flow_question_2",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "77df76b7-faac-4600-9d7c-19803bcf8430"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.492+00:00"
+    },
+    {
+      "id": "ef39cf6b-513e-4156-b12f-ee0d360128c9",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 5,
+      "deadline": "2026-09-19T18:52:37.542+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.511+00:00",
+      "content_id": "test_content_0",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "35b38e4c-c744-483d-bdf2-249727c72ffb"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.511+00:00"
+    },
+    {
+      "id": "836c780b-bacb-4a53-a2aa-eb78a4d94bf5",
+      "kind": "question_round",
+      "reveal": {
+        "accepted_answers": [
+          "heart",
+          "cœur",
+          "قلب"
+        ],
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 6,
+      "deadline": "2026-09-19T18:52:37.585+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.557+00:00",
+      "content_id": "test_content_1",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "9d5e736d-bb52-445a-96f4-482e14a93d64"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.557+00:00"
+    },
+    {
+      "id": "48e3eab6-b247-436c-9071-d35d8e4e4e79",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 7,
+      "deadline": "2026-09-19T18:52:37.61+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.594+00:00",
+      "content_id": "flow_question_0",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "24347aa0-726c-4be6-bad4-8c4ec847b348"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.594+00:00"
+    },
+    {
+      "id": "030df547-452d-4435-980f-0f0e1cd1559c",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 8,
+      "deadline": "2026-09-19T18:52:37.632+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.616+00:00",
+      "content_id": "test_content_9",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "3dff60ba-c93b-4128-b75d-b86ef1a66fe1"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.616+00:00"
+    },
+    {
+      "id": "799638ab-4e0a-4217-b83e-1c3c448ca6cb",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 9,
+      "deadline": "2026-09-19T18:52:37.646+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.638+00:00",
+      "content_id": "test_content_4",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "5b1bf791-a9fe-4a8a-9d16-2ce0b9a63725"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.638+00:00"
+    },
+    {
+      "id": "23a9404c-7b23-4b9c-b1dd-956d614f5b06",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 10,
+      "deadline": "2026-09-19T18:52:37.662+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.652+00:00",
+      "content_id": "test_content_6",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "3b27ca05-c0cc-4acb-ae21-820af10d694a"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.652+00:00"
+    },
+    {
+      "id": "913f98b0-bd0c-4f2b-b7af-1d46b030ad0c",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 11,
+      "deadline": "2026-09-19T18:52:37.678+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.669+00:00",
+      "content_id": "flow_question_1",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "9750c4f5-e3f1-4778-97d7-4d992997dca8"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.669+00:00"
+    },
+    {
+      "id": "616c72e9-806b-40e7-a70c-7aa2013dd1b0",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 12,
+      "deadline": "2026-09-19T18:52:37.689+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.682+00:00",
+      "content_id": "test_content_8",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "74ea16f0-c913-4627-abfb-de00bec1aad9"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.682+00:00"
+    },
+    {
+      "id": "d077c06c-469f-444a-a771-1b1cedfa59ac",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 13,
+      "deadline": "2026-09-19T18:52:37.7+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.692+00:00",
+      "content_id": "test_content_13",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "85746062-0582-4dd2-8cd2-6512e0bde798"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.692+00:00"
+    },
+    {
+      "id": "cd07be80-8274-4dd1-9414-ec7741231255",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 14,
+      "deadline": "2026-09-19T18:52:37.71+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.703+00:00",
+      "content_id": "test_content_2",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "e4dacb6d-6299-42e0-a966-8bbf30bafbd7"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.703+00:00"
+    },
+    {
+      "id": "59844aac-e297-4538-8533-89e3f17dbca8",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 15,
+      "deadline": "2026-09-19T18:52:37.721+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.713+00:00",
+      "content_id": "flow_question_3",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "fe7f10c7-f02d-44eb-930f-f704cf0c28c4"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.713+00:00"
+    },
+    {
+      "id": "8a32acfd-9025-4950-b4cc-84403d818d17",
+      "kind": "question_round",
+      "reveal": {
+        "correct_option_id": "o0"
+      },
+      "status": "results",
+      "content": {
+        "theme": "test",
+        "options": [
+          {
+            "id": "o0",
+            "label": "Test option 0"
+          },
+          {
+            "id": "o1",
+            "label": "Test option 1"
+          },
+          {
+            "id": "o2",
+            "label": "Test option 2"
+          },
+          {
+            "id": "o3",
+            "label": "Test option 3"
+          },
+          {
+            "id": "o4",
+            "label": "Test option 4"
+          }
+        ]
+      },
+      "ordinal": 16,
+      "deadline": "2026-09-19T18:52:37.732+00:00",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "phase_id": "4098b31a-185b-4e57-a964-db11307b3433",
+      "starts_at": "2026-09-19T18:52:26.724+00:00",
+      "content_id": "test_content_14",
+      "submission": {
+        "action": {
+          "option_id": "o0"
+        },
+        "receipt": "2d4f25cd-b6a6-423d-8190-4723ab57c283"
+      },
+      "answer_opens_at": "2026-09-19T18:52:36.724+00:00"
+    }
+  ],
+  "results": [
+    {
+      "rank": 1,
+      "score": 18,
+      "winner": true,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000173",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "created_at": "2026-09-19T18:52:38.733+00:00"
+    },
+    {
+      "rank": 2,
+      "score": 17,
+      "winner": false,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000174",
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287",
+      "created_at": "2026-09-19T18:52:38.733+00:00"
+    }
+  ],
+  "starts_at": "2026-09-19T18:52:26.406+00:00",
+  "tie_rolls": [],
+  "server_time": "2026-09-19T18:52:38.737+00:00",
+  "participants": [
+    {
+      "name": "Solo_173",
+      "seat": 0,
+      "score": 18,
+      "team_id": null,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000173",
+      "eligible": true,
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287"
+    },
+    {
+      "name": "Solo_174",
+      "seat": 0,
+      "score": 17,
+      "team_id": null,
+      "user_id": "bbbbbbbb-0000-4000-8000-000000000174",
+      "eligible": true,
+      "match_id": "05795c54-6309-4f89-a70d-4a758c4af287"
+    }
+  ],
+  "schema_version": 1
+}

@@ -8,6 +8,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brainybrawl.app.R
 import com.brainybrawl.app.core.design.*
@@ -47,12 +48,21 @@ import com.brainybrawl.app.core.localization.namedString
             val reading=state.now<game.window.opensAt
             val remaining=(if(reading)game.window.opensAt-state.now else game.window.remaining(state.now)).coerceAtLeast(0)
             TimerBar(namedString(if(reading)R.string.reading_seconds else R.string.answer_seconds,"seconds" to (remaining+999)/1000),
-                remaining.toFloat()/if(reading)10_000 else 20_000)
+                remaining.toFloat()/45_000)
         }
         CompositionLocalProvider(LocalLayoutDirection provides contentDirection){
-        if(state.now>=game.window.opensAt || game.revealed)game.question.options.forEach { option ->
-            AnswerOption(option.label,game.selected==option.id,!game.revealed,{model.answer(option.id)},result=if(game.revealed){if(option.correct)true else if(game.selected==option.id)false else null}else null)
+        game.question.options.chunked(2).forEach { row ->
+            Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
+                row.forEach { option ->
+                    AnswerOption(option.label,game.selected==option.id,!game.revealed,{model.answer(option.id)},modifier=Modifier.weight(1f).fillMaxHeight(),result=if(game.revealed){if(option.correct)true else if(game.selected==option.id)false else null}else null)
+                }
+            }
         }
+        }
+        if(!game.revealed){
+            var reply by remember(game.index){mutableStateOf("")}
+            OutlinedTextField(reply,{reply=it.take(200)},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.answer_any_language))},singleLine=true)
+            BrawlButton(stringResource(R.string.submit_answer),{model.answerText(reply)},Modifier.fillMaxWidth(),enabled=reply.isNotBlank())
         }
         if(game.revealed) {
             FeedbackPanel(stringResource(if(game.selected==null)R.string.time_expired else if(game.question.options.any{it.id==game.selected&&it.correct})R.string.correct_answer else R.string.wrong_answer),

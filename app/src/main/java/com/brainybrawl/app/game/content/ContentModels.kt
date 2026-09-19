@@ -10,7 +10,7 @@ data class ContentMeta(val id: String, val locale: String, val approval: Approva
 sealed interface GameContent { val meta: ContentMeta }
 data class QuestionOption(val id: String, val label: String, val correct: Boolean)
 data class QuestionContent(override val meta: ContentMeta, val theme: String, val prompt: String,
-    val options: List<QuestionOption>, val explanation: String) : GameContent
+    val options: List<QuestionOption>, val explanation: String,val acceptedAnswers:Set<String> = emptySet()) : GameContent
 
 enum class ImageScoringPolicy { ALL_SELECTED, CORRECT_ONLY }
 data class ImageChoice(val id: String, val label: String, val points: Int, val correct: Boolean)

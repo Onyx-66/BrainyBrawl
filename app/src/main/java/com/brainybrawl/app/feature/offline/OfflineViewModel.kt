@@ -18,6 +18,9 @@ data class OfflineUi(val loading:Boolean=false,val failed:Boolean=false,val game
     val now:Long=0,val stats:OfflineStats=OfflineStats(),val saved:Boolean=false)
 class OfflineStatistics(context:Context,private val owner:()->String={"guest"}) {
     private val preferences=context.getSharedPreferences("offline_question_statistics",Context.MODE_PRIVATE)
+    fun clear(account:String){
+        val edit=preferences.edit();listOf(account,"images:$account").forEach{owner->listOf("best","earned","possible","last_session").forEach{edit.remove(key(it,owner))}};check(edit.commit())
+    }
     fun currentOwner()=owner()
     private fun key(name:String,account:String)=if(account=="guest")name else "$account:$name"
     fun read(account:String=owner())=OfflineStats(preferences.getInt(key("best",account),0),preferences.getLong(key("earned",account),0),preferences.getLong(key("possible",account),0))
@@ -45,7 +48,7 @@ class OfflineViewModel(private val content:ContentRepository,private val statist
         mutable.value=OfflineUi(loading=true)
         ticker=viewModelScope.launch {
             try {
-                val questions=content.load(ContentKind.QUESTION,locale).filterIsInstance<QuestionContent>().shuffled().take(15)
+                val questions=content.questionSample(locale,15)
                 require(questions.isNotEmpty())
                 mutable.value=OfflineUi(game=OfflineQuestions(questions,startedAt=SystemClock.elapsedRealtime()),
                     now=SystemClock.elapsedRealtime(),stats=withContext(Dispatchers.IO){statistics.read(sessionOwner)})
@@ -67,6 +70,7 @@ class OfflineViewModel(private val content:ContentRepository,private val statist
         }
     }
     fun answer(id:String){mutable.update{it.copy(game=it.game?.answer(id,SystemClock.elapsedRealtime()))}}
+    fun answerText(text:String){mutable.update{it.copy(game=it.game?.answerText(text,SystemClock.elapsedRealtime()))}}
     fun next(){mutable.update{it.copy(game=it.game?.next(SystemClock.elapsedRealtime()),now=SystemClock.elapsedRealtime())}}
     fun stop(){ticker?.cancel();mutable.value=OfflineUi()}
     companion object {

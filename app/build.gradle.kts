@@ -7,6 +7,7 @@ plugins {
 }
 
 fun publicConfig(name: String): String {
+    if(providers.gradleProperty("isolatedQa").orNull=="true" && name.startsWith("SUPABASE_"))return "\"\""
     val localPublic = rootProject.file(".env").takeIf { it.isFile }?.readLines()?.firstOrNull { it.startsWith("$name=") }?.substringAfter('=')?.trim().orEmpty()
     val value = providers.environmentVariable(name).orElse(providers.gradleProperty(name)).getOrElse(localPublic)
     require(!value.startsWith("sb_secret_")) { "Only publishable client credentials are allowed" }
@@ -26,13 +27,15 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.brainybrawl.app"
+        applicationId = if(providers.gradleProperty("isolatedQa").orNull=="true")"com.brainybrawl.app.qa" else "com.brainybrawl.app"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GOOGLE_AUTH_ENABLED", publicConfig("GOOGLE_AUTH_ENABLED"))
+        buildConfigField("String", "DISCORD_AUTH_ENABLED", publicConfig("DISCORD_AUTH_ENABLED"))
         buildConfigField("String", "PRIVACY_POLICY_URL", publicConfig("PRIVACY_POLICY_URL"))
         buildConfigField("String", "TERMS_URL", publicConfig("TERMS_URL"))
         buildConfigField("String", "SUPABASE_URL", publicConfig("SUPABASE_URL"))
@@ -69,6 +72,7 @@ android {
 
 dependencies {
     implementation(libs.androidsvg)
+    implementation(libs.androidx.exifinterface)
     implementation(libs.navigation.compose)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
@@ -79,6 +83,7 @@ dependencies {
     implementation(libs.supabase.postgrest)
     implementation(libs.supabase.realtime)
     implementation(libs.supabase.functions)
+    implementation(libs.supabase.storage)
     implementation(libs.ktor.okhttp)
     testImplementation(libs.coroutines.test)
     implementation(platform(libs.androidx.compose.bom))
@@ -109,6 +114,24 @@ abstract class PrepareContentAssets : DefaultTask() {
             from(artDirectory) { include("**/*.svg"); into("assets") }
             into(outputDirectory)
         }
+        // Small locale packs keep opening an offline round fast on real phones.
+        val factory=javax.xml.parsers.DocumentBuilderFactory.newInstance()
+        val source=factory.newDocumentBuilder().parse(contentDirectory.file("question_round.xml").get().asFile)
+        val items=source.documentElement.getElementsByTagName("item")
+        val index=mutableListOf<String>()
+        listOf("en","fr","ar").forEach { locale ->
+            (0 until items.length).map { items.item(it) as org.w3c.dom.Element }
+                .filter { it.getAttribute("locale")==locale }.chunked(50).forEachIndexed { number, batch ->
+                    val document=factory.newDocumentBuilder().newDocument()
+                    val root=document.createElement("content")
+                    root.setAttribute("kind","question_round");root.setAttribute("schemaVersion","1");root.setAttribute("contentVersion",source.documentElement.getAttribute("contentVersion"))
+                    document.appendChild(root);batch.forEach { root.appendChild(document.importNode(it,true)) }
+                    val file="questions_${locale}_${number}.xml"
+                    javax.xml.transform.TransformerFactory.newInstance().newTransformer().transform(javax.xml.transform.dom.DOMSource(document),javax.xml.transform.stream.StreamResult(outputDirectory.file("content/$file").get().asFile))
+                    index.add("$locale\t$file\t${batch.size}")
+                }
+        }
+        outputDirectory.file("content/questions-index.tsv").get().asFile.writeText(index.joinToString("\n"))
     }
 }
 val syncContentAssets = tasks.register<PrepareContentAssets>("syncContentAssets") {

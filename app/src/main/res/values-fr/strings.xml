@@ -98,11 +98,11 @@
     <string name="owned">Possédé</string>
     <string name="purchase">Acheter</string>
     <string name="confirm_purchase">Confirmer cet achat</string>
-    <string name="flames_skill_only">Les Flammes se gagnent en remportant des parties 1 contre 1, Duo ou Escouade. Elles ne peuvent pas être achetées.</string>
+    <string name="flames_skill_only">Les Flammes se gagnent en remportant des parties 1 contre 1, Duo, Escouade ou Solo en ligne. Elles ne peuvent pas être achetées.</string>
     <string name="purchase_retry">Actualisez votre solde et votre inventaire avant de réessayer. Une demande répétée ne peut pas vous facturer deux fois.</string>
     <string name="loadout">Choisir vos bonus</string>
-    <string name="choose_two_boosts">Sélectionnez exactement deux bonus possédés.</string>
-    <string name="no_boosts">Vous ne disposez pas encore de deux bonus.</string>
+    <string name="choose_two_boosts">Les bonus sont facultatifs. Continuez sans bonus ou équipez deux bonus possédés.</string>
+    <string name="no_boosts">Aucun bonus disponible. Vous pouvez jouer sans bonus.</string>
     <string name="lobby">Salon</string>
     <string name="reconnecting">Reconnexion…</string>
     <string name="reconnecting_description">Restauration du salon. Les commandes seront disponibles après la reconnexion.</string>
@@ -230,7 +230,7 @@
     <string name="squad_description">Équipes de 4</string>
     <string name="solo_description">Chacun pour soi · 20 joueurs maximum</string>
     <string name="online_account_required">Connectez-vous pour rejoindre vos amis et jouer en ligne.</string>
-    <string name="offline_language_note">Questions en anglais. Jouez sans compte ni connexion.</string>
+    <string name="offline_language_note">Entraînez-vous dans votre langue : cinq choix ou une réponse écrite. Vous avez 45 secondes.</string>
     <string name="play_english_questions">Jouer aux questions en anglais</string>
     <string name="device_account">Compte sur cet appareil</string>
     <string name="device_account_description">Créez ou utilisez un compte sur cet appareil, même sans internet.</string>
@@ -246,4 +246,21 @@
     <string name="queue_sent">Envoyé</string>
     <string name="queue_waiting">En attente</string>
     <string name="dismiss">Fermer</string>
+    <string name="answer_any_language">Ou répondez en anglais, français ou arabe</string>
+    <string name="device_signed_in">Votre compte local est connecté</string>
+    <string name="online_feature_explanation">Les classements et achats nécessitent un compte en ligne vérifié. Connectez-vous aux serveurs du jeu. Votre progression hors ligne reste sauvegardée.</string>
+    <string name="auth_welcome">À vous de jouer.</string>
+    <string name="show_password">Afficher</string>
+    <string name="hide_password">Masquer</string>
+    <string name="upload_photo">Choisir une photo</string>
+    <string name="photo_saved">Photo enregistrée sur cet appareil</string>
+    <string name="photo_synced">Photo de profil envoyée</string>
+    <string name="photo_sync_pending">Enregistrée ici. Envoi en attente ; réessayez une fois connecté.</string>
+    <string name="delete_account">Supprimer le compte</string>
+    <string name="delete_local_explanation">Supprimer ce compte local, sa photo, son historique et ses invitations en attente ? Les autres comptes sont conservés. Cette action est irréversible.</string>
+    <string name="delete_online_explanation">Demander la suppression de votre compte en ligne et des données personnelles associées. La demande sera traitée par l’administrateur.</string>
+    <string name="deletion_requested">Votre demande de suppression a été reçue.</string>
+    <string name="confirm_action">Confirmer</string>
+    <string name="offline_images">Deviner l’image</string>
+    <string name="providers_later">La connexion Google et Discord sera disponible plus tard. Commencez avec votre e-mail.</string>
 </resources>

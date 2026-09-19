@@ -28,6 +28,21 @@ class LocalAccountsTest {
         assertEquals(item,accounts.state.value.queue.single())
         accounts.cancel(item.id);assertTrue(accounts.state.value.queue.isEmpty())
     }
+    @Test fun deletionRemovesOnlyConfirmedIdentityAndItsQueue()=runBlocking{
+        val vault=Vault();val accounts=LocalAccounts(vault)
+        accounts.register("First","first@example.invalid","ExamplePass123")
+        val first=accounts.state.value.current!!.id
+        accounts.enqueue("FirstFriend","friend");accounts.logout()
+        accounts.register("Second","second@example.invalid","ExamplePass123")
+        val second=accounts.state.value.current!!.id
+        accounts.enqueue("SecondFriend","friend")
+        try{accounts.deleteCurrent(first);fail("Stale identity must not delete another account")}catch(_:IllegalArgumentException){}
+        accounts.deleteCurrent(second);assertNull(accounts.state.value.current)
+        assertFalse(vault.value!!.contains("SecondFriend"))
+        assertEquals(AuthNotice.REQUEST_FAILED,accounts.login("Second","ExamplePass123"))
+        assertEquals(AuthNotice.NONE,accounts.login("First","ExamplePass123"))
+        assertEquals("FirstFriend",accounts.state.value.queue.single().target)
+    }
     @Test fun passwordChangesInvalidatePreviousVerifier()=runBlocking{
         val accounts=LocalAccounts(Vault());accounts.register("First","first@example.invalid","ExamplePass123")
         assertEquals(AuthNotice.PASSWORD_UPDATED,accounts.changePassword("NewPassword123"));accounts.logout()

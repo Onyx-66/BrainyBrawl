@@ -41,8 +41,8 @@ class GameRulesTest {
     }
     @Test fun flamesOnlyForConfirmedCompetitiveWinners() {
         GameMode.entries.forEach{mode->assertEquals(0,ModeRules.flames(mode,false))}
-        assertEquals(0,ModeRules.flames(GameMode.OFFLINE,true));assertEquals(0,ModeRules.flames(GameMode.SOLO,true))
-        listOf(GameMode.DUEL,GameMode.DUO,GameMode.SQUAD).forEach{assertEquals(1,ModeRules.flames(it,true))}
+        assertEquals(0,ModeRules.flames(GameMode.OFFLINE,true))
+        listOf(GameMode.DUEL,GameMode.DUO,GameMode.SQUAD,GameMode.SOLO).forEach{assertEquals(1,ModeRules.flames(it,true))}
     }
     @Test fun precisionRewardsStreakAndDoesNotRewardRepeatedCrossing() {
         val config=PrecisionContent(meta,360.0,30.0,0.0,2.0,90.0)

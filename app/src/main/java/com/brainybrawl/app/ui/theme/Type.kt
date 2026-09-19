@@ -8,7 +8,7 @@ import com.brainybrawl.app.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Poppins matches the reference typography; Android provides fallback Arabic glyphs.
+// Bundled Poppins and Tajawal families avoid platform-dependent Arabic fallback.
 // Bundled under SIL OFL: assets/licenses/Poppins-OFL.txt.
 private val BrawlFont=FontFamily(Font(R.font.poppins_regular),Font(R.font.poppins_bold,FontWeight.Bold),Font(R.font.poppins_extrabold,FontWeight.ExtraBold))
 val Typography = Typography(
@@ -23,3 +23,10 @@ val Typography = Typography(
     bodyMedium = TextStyle(fontFamily = BrawlFont, fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 21.sp),
     labelLarge = TextStyle(fontFamily = BrawlFont, fontWeight = FontWeight.Bold, fontSize = 15.sp, lineHeight = 20.sp)
 )
+
+private val ArabicFont=FontFamily(Font(R.font.tajawal_regular),Font(R.font.tajawal_bold,FontWeight.Bold),Font(R.font.tajawal_extrabold,FontWeight.ExtraBold))
+val ArabicTypography=Typography.copy(
+ headlineLarge=Typography.headlineLarge.copy(fontFamily=ArabicFont),headlineMedium=Typography.headlineMedium.copy(fontFamily=ArabicFont),headlineSmall=Typography.headlineSmall.copy(fontFamily=ArabicFont),
+ titleLarge=Typography.titleLarge.copy(fontFamily=ArabicFont),titleMedium=Typography.titleMedium.copy(fontFamily=ArabicFont),titleSmall=Typography.titleSmall.copy(fontFamily=ArabicFont),
+ bodyLarge=Typography.bodyLarge.copy(fontFamily=ArabicFont),bodyMedium=Typography.bodyMedium.copy(fontFamily=ArabicFont),bodySmall=Typography.bodySmall.copy(fontFamily=ArabicFont),
+ labelLarge=Typography.labelLarge.copy(fontFamily=ArabicFont),labelMedium=Typography.labelMedium.copy(fontFamily=ArabicFont),labelSmall=Typography.labelSmall.copy(fontFamily=ArabicFont))

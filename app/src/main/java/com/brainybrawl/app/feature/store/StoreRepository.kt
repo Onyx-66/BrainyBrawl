@@ -39,7 +39,7 @@ class SupabaseStoreRepository(private val client: SupabaseClient?,context: Conte
         check(pending.edit().remove(storageKey).commit())
     }
     override suspend fun loadout(items:List<String>) {
-        require(items.size==2 && items.toSet().size==2)
+        require(items.isEmpty() || (items.size==2 && items.toSet().size==2))
         requireNotNull(client).postgrest.rpc("set_loadout",buildJsonObject { put("p_items",JsonArray(items.map(::JsonPrimitive))) })
     }
 }

@@ -42,7 +42,7 @@ def package(baseline):
       '', 'Changes include Kotlin/Compose feature layers, server-authoritative SQL/RLS,',
       'typed realtime recovery, XML content and validation, localized UI, test coverage,',
       'CI/release configuration and safe public configuration examples.',
-      'No production deployment, credentials or signing material is included.',
+      'Authorized backend deployment is documented in the session report. Credentials and signing material are excluded.',
       '', '## Added files', '']
     lines += [f'- `{name}`' for name in added] or ['None.']
     lines += ['', '## Modified files', '']

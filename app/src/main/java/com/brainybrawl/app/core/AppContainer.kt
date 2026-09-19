@@ -30,7 +30,7 @@ class AppContainer(context: Context) {
             scheme="brainybrawl"; host="auth"
             defaultRedirectUrl=SupabaseAuthRepository.CALLBACK
         }
-        install(Postgrest);install(Realtime);install(Functions)
+        install(Postgrest);install(Realtime);install(Functions);install(io.github.jan.supabase.storage.Storage)
     } else null
     val settings=com.brainybrawl.app.feature.settings.SettingsRepository(applicationContext)
     val localAccounts=com.brainybrawl.app.feature.auth.LocalAccounts(object:com.brainybrawl.app.feature.auth.LocalAccountVault{
@@ -39,6 +39,7 @@ class AppContainer(context: Context) {
         override suspend fun write(value:String)=encrypted.writeLocalAccounts(value)
     })
     val auth=com.brainybrawl.app.feature.auth.HybridAuthRepository(SupabaseAuthRepository(supabase,scope),localAccounts,scope)
+    val avatars=com.brainybrawl.app.feature.profile.AvatarRepository(applicationContext,supabase,auth)
     val players=SupabasePlayerRepository(supabase)
     val store=com.brainybrawl.app.feature.store.SupabaseStoreRepository(supabase,applicationContext)
     val leaderboards=com.brainybrawl.app.feature.leaderboard.SupabaseLeaderboardRepository(supabase)

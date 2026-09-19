@@ -141,3 +141,19 @@ pages and deployment approval remain the existing owner-controlled gates.
 - Owner requested offline-capable device accounts, queued social invitations, supplied branding, bento modes and username/level header. Implemented separately from Supabase identity; offline practice still cannot award competitive Flames.
 - OPEN_DECISION LEVEL_CURVE: owner requested Flame-based levels without thresholds. Current adjustable implementation is level = 1 + floor(lifetime earned match-win Flames / 10), with no decrease after spending. Await owner confirmation of the curve; unrelated features remain available.
 - Online activation and server administrator provisioning require target-project settings and approval. Administrator credentials are in ignored `.env`, never in this register or the APK.
+
+
+## Owner follow-up: localized practice and account photos (2026-09-19)
+
+- Offline Question Round now exposes choices immediately and gives 45 seconds per answer, per the owner's manual-test request. This supersedes the old reading-only stage for offline practice; the previously approved competitive 20-second team answer windows are unchanged.
+- The supported languages remain English, French and Arabic. Authored parallel content and explicit answer aliases are accepted across languages, with accent/Arabic-diacritic and Arabic-digit normalization. This does not introduce runtime translation, fuzzy matching, or a client-trusted online score.
+- Account photos are optional, selected through the system photo picker. Local accounts store them privately on-device; online accounts upload to owner-restricted private Storage.
+- The new question pack has 1,200 original, independently arithmetic-checked numeracy/logic concepts, each in three languages. This is not 3,600 different trivia concepts or approval of the remaining sample mini-game packs.
+- Online deletion requests can be recorded now. Retention, irreversible cleanup and a public web request flow remain OPEN_DECISION/release gates.
+
+## Owner resolutions and delegated Solo schedule — 2026-09-19
+
+- Image Guess: only correct selected choices earn their hidden points. Wrong choices earn zero. Four selections and the 30-second deadline remain required.
+- Launch boosts: an empty loadout is permitted; a selected loadout must still contain exactly two distinct owned/approved boosts. Effects, starter grants and commercial pricing remain unresolved and are not invented.
+- Solo Online: owner delegated the rule decision. The final schedule is recorded in `11_MODES_SQUAD_SOLO.md`: 2–20 players, 20s simultaneous Precision Tap, 90s individual Speed Sort, 15 questions (10s read +20s answer), every correct player +1, no elimination, one winner Flame, server dice for tied leaders. This supersedes the earlier Solo OPEN_DECISION.
+- Shared/production setup was explicitly approved for the supplied project. Schema/content/admin deployment is tracked in `../PRODUCTION_DEPLOYMENT_REVIEW.md`; this does not authorize Play submission or invent legal/retention terms.

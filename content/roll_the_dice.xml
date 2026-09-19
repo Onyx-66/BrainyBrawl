@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <content kind="roll_the_dice" schemaVersion="1" contentVersion="1">
-  <item id="ROLL_DEV_20" locale="global" status="DEV_SAMPLE">
+  <item id="ROLL_DEV_20" locale="global" status="APPROVED">
     <field name="resolution">server_crypto_random_reroll_ties</field>
     <slots>
       <slot id="ROLL_DEV_20_1" value="1" />
@@ -24,5 +24,6 @@
       <slot id="ROLL_DEV_20_19" value="19" />
       <slot id="ROLL_DEV_20_20" value="20" />
     </slots>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
 </content>

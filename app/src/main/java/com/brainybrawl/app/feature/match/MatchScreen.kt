@@ -39,7 +39,7 @@ import java.time.Instant
     if(connection is MatchConnection.Recovering)Text(stringResource(R.string.match_recovering),color=MaterialTheme.colorScheme.error)
     if(snapshot==null){Text(stringResource(R.string.match_loading));LinearProgressIndicator(Modifier.fillMaxWidth());return}
     val self=snapshot.participants.find{it.userId==model.userId}
-    val teammates=if(snapshot.match.mode=="duel")snapshot.participants else snapshot.participants.filter{it.teamId==self?.teamId}
+    val teammates=if(snapshot.match.mode=="duel")snapshot.participants else if(snapshot.match.mode=="solo")snapshot.participants.filter{it.userId==model.userId} else snapshot.participants.filter{it.teamId==self?.teamId}
     teammates.chunked(2).forEach{row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
         row.forEach{player->BrawlPanel(Modifier.weight(1f)){
             Text(player.name?:stringResource(R.string.player),style=MaterialTheme.typography.titleSmall)
@@ -107,10 +107,10 @@ import java.time.Instant
     val deadline=Instant.parse(round.deadline).toEpochMilli()
     val opens=Instant.parse(round.opensAt).toEpochMilli()
     val starts=Instant.parse(round.startsAt).toEpochMilli()
-    val designated=round.kind!="question_round"||snapshot.match.mode=="duel"||draft?.answerers?.get(self?.teamId)==model.userId
+    val designated=round.kind!="question_round"||snapshot.match.mode in setOf("duel","solo")||draft?.answerers?.get(self?.teamId)==model.userId
     val accepting=connection is MatchConnection.Live&&now>=opens&&now<deadline&&round.submission==null&&!action.busy&&designated&&self?.eligible==true&&!(action.round==round.id&&action.accepted)
     val selected=if(action.round==round.id)action.selected else emptySet()
-    Text(namedString(R.string.round_count,"current" to round.ordinal+1,"total" to when(snapshot.match.mode){"duo"->21;"squad"->22;else->20}),style=MaterialTheme.typography.titleLarge)
+    Text(namedString(R.string.round_count,"current" to round.ordinal+1,"total" to when(snapshot.match.mode){"duo"->21;"squad"->22;"solo"->17;else->20}),style=MaterialTheme.typography.titleLarge)
     val reading=now<opens
     val remaining=(if(reading)opens-now else deadline-now).coerceAtLeast(0)
     val duration=if(reading)opens-starts else deadline-opens
@@ -142,6 +142,11 @@ import java.time.Instant
             round.content.options.forEach{option->AnswerOption(option.label,option.id in selected,accepting,{
                 if(round.kind=="question_round")model.submit(round,option.id)else model.select(round,option.id)
             })}
+            if(round.kind=="question_round"){
+                var reply by remember(round.id){mutableStateOf("")}
+                OutlinedTextField(reply,{reply=it.take(200)},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.answer_any_language))},enabled=accepting,singleLine=true)
+                BrawlButton(stringResource(R.string.submit_answer),{model.submit(round,answer=reply)},Modifier.fillMaxWidth(),enabled=accepting&&reply.isNotBlank())
+            }
             if(round.kind=="image_guess")BrawlButton(namedString(R.string.confirm_four,"count" to selected.size),{model.submit(round)},Modifier.fillMaxWidth(),enabled=accepting&&selected.size==4,tone=ActionTone.POSITIVE)
         }
     }

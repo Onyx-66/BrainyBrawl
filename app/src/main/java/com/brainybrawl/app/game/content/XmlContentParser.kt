@@ -17,7 +17,7 @@ class XmlContentParser {
             while (true) {
                 val n = source.read(buffer)
                 if (n < 0) break
-                require(out.size() + n <= 4_000_000) { "Content size limit" }
+                require(out.size() + n <= 12_000_000) { "Content size limit" }
                 out.write(buffer, 0, n)
             }
             out.toByteArray()
@@ -58,7 +58,7 @@ class XmlContentParser {
                     }
                     require(options.size == 5 && options.count { it.correct } == 1)
                     require(value("time_limit_seconds") == "20")
-                    QuestionContent(meta, value("theme"), value("question"), options, value("explanation"))
+                    QuestionContent(meta, value("theme"), value("question"), options, value("explanation"),item.children("acceptedAnswers").flatMap{it.children("answer")}.map{it.textContent}.toSet())
                 }
                 ContentKind.IMAGE -> {
                     val choices = nodes("choices", "choice").map {

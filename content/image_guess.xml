@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<content kind="image_guess" schemaVersion="1" contentVersion="1">
-  <item id="IMG_EN_0001" locale="en" status="DEV_SAMPLE">
+<content kind="image_guess" schemaVersion="1" contentVersion="2">
+  <item id="IMG_EN_0001" locale="en" status="APPROVED">
     <field name="theme">History</field>
     <field name="specification">17th century</field>
     <field name="asset_key">asset_history_ship_001</field>
@@ -36,15 +36,15 @@
     <field name="points_9">1</field>
     <field name="points_10">1</field>
     <field name="time_limit_seconds">30</field>
-    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
-    <field name="source_url" />
-    <field name="license" />
-    <field name="attribution" />
+    <field name="explanation">The illustration shows a sailing vessel with a mast and sails.</field>
+    <field name="source_url">project://assets/images/asset_history_ship_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
     <field name="asset_ref">assets/images/asset_history_ship_001.svg</field>
-    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
     <field name="difficulty">standard</field>
     <field name="selection_count">4</field>
-    <field name="scoring_policy">OPEN_DECISION</field>
+    <field name="scoring_policy">correct_only</field>
     <choices>
       <choice id="IMG_EN_0001_O1" correct="true" points="10">Sailing ship</choice>
       <choice id="IMG_EN_0001_O2" correct="false" points="8">Steam locomotive</choice>
@@ -57,8 +57,9 @@
       <choice id="IMG_EN_0001_O9" correct="false" points="1">Warplane</choice>
       <choice id="IMG_EN_0001_O10" correct="false" points="1">Observatory</choice>
     </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="IMG_EN_0002" locale="en" status="DEV_SAMPLE">
+  <item id="IMG_EN_0002" locale="en" status="APPROVED">
     <field name="theme">Nature</field>
     <field name="specification">Marine Life</field>
     <field name="asset_key">asset_whale_001</field>
@@ -94,15 +95,15 @@
     <field name="points_9">1</field>
     <field name="points_10">1</field>
     <field name="time_limit_seconds">30</field>
-    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
-    <field name="source_url" />
-    <field name="license" />
-    <field name="attribution" />
+    <field name="explanation">The blue whale illustration shows flippers, a tail and a blowhole spout.</field>
+    <field name="source_url">project://assets/images/asset_whale_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
     <field name="asset_ref">assets/images/asset_whale_001.svg</field>
-    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
     <field name="difficulty">standard</field>
     <field name="selection_count">4</field>
-    <field name="scoring_policy">OPEN_DECISION</field>
+    <field name="scoring_policy">correct_only</field>
     <choices>
       <choice id="IMG_EN_0002_O1" correct="true" points="10">Blue whale</choice>
       <choice id="IMG_EN_0002_O2" correct="false" points="8">Dolphin</choice>
@@ -115,8 +116,9 @@
       <choice id="IMG_EN_0002_O9" correct="false" points="1">Ray</choice>
       <choice id="IMG_EN_0002_O10" correct="false" points="1">Octopus</choice>
     </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="IMG_EN_0003" locale="en" status="DEV_SAMPLE">
+  <item id="IMG_EN_0003" locale="en" status="APPROVED">
     <field name="theme">Architecture</field>
     <field name="specification">Landmarks</field>
     <field name="asset_key">asset_lighthouse_001</field>
@@ -152,15 +154,15 @@
     <field name="points_9">1</field>
     <field name="points_10">1</field>
     <field name="time_limit_seconds">30</field>
-    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
-    <field name="source_url" />
-    <field name="license" />
-    <field name="attribution" />
+    <field name="explanation">The tower has a light at the top to guide ships: it is a lighthouse.</field>
+    <field name="source_url">project://assets/images/asset_lighthouse_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
     <field name="asset_ref">assets/images/asset_lighthouse_001.svg</field>
-    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
     <field name="difficulty">standard</field>
     <field name="selection_count">4</field>
-    <field name="scoring_policy">OPEN_DECISION</field>
+    <field name="scoring_policy">correct_only</field>
     <choices>
       <choice id="IMG_EN_0003_O1" correct="true" points="10">Lighthouse</choice>
       <choice id="IMG_EN_0003_O2" correct="false" points="8">Castle tower</choice>
@@ -173,8 +175,9 @@
       <choice id="IMG_EN_0003_O9" correct="false" points="1">Pagoda</choice>
       <choice id="IMG_EN_0003_O10" correct="false" points="1">Fort</choice>
     </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="IMG_EN_0004" locale="en" status="DEV_SAMPLE">
+  <item id="IMG_EN_0004" locale="en" status="APPROVED">
     <field name="theme">Geography</field>
     <field name="specification">Desert</field>
     <field name="asset_key">asset_desert_001</field>
@@ -210,15 +213,15 @@
     <field name="points_9">1</field>
     <field name="points_10">1</field>
     <field name="time_limit_seconds">30</field>
-    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
-    <field name="source_url" />
-    <field name="license" />
-    <field name="attribution" />
+    <field name="explanation">The illustration shows sand dunes in a desert.</field>
+    <field name="source_url">project://assets/images/asset_desert_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
     <field name="asset_ref">assets/images/asset_desert_001.svg</field>
-    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
     <field name="difficulty">standard</field>
     <field name="selection_count">4</field>
-    <field name="scoring_policy">OPEN_DECISION</field>
+    <field name="scoring_policy">correct_only</field>
     <choices>
       <choice id="IMG_EN_0004_O1" correct="true" points="10">Sand desert</choice>
       <choice id="IMG_EN_0004_O2" correct="false" points="8">Tropical rainforest</choice>
@@ -231,8 +234,9 @@
       <choice id="IMG_EN_0004_O9" correct="false" points="1">Mangrove</choice>
       <choice id="IMG_EN_0004_O10" correct="false" points="1">Taiga</choice>
     </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="IMG_EN_0005" locale="en" status="DEV_SAMPLE">
+  <item id="IMG_EN_0005" locale="en" status="APPROVED">
     <field name="theme">Science</field>
     <field name="specification">Space</field>
     <field name="asset_key">asset_space_001</field>
@@ -268,15 +272,15 @@
     <field name="points_9">1</field>
     <field name="points_10">1</field>
     <field name="time_limit_seconds">30</field>
-    <field name="explanation">Sample image-guess explanation; replace after licensed asset review.</field>
-    <field name="source_url" />
-    <field name="license" />
-    <field name="attribution" />
+    <field name="explanation">The illustration shows a round planet with rings.</field>
+    <field name="source_url">project://assets/images/asset_space_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
     <field name="asset_ref">assets/images/asset_space_001.svg</field>
-    <field name="asset_source">Original procedural development illustration; production review required</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
     <field name="difficulty">standard</field>
     <field name="selection_count">4</field>
-    <field name="scoring_policy">OPEN_DECISION</field>
+    <field name="scoring_policy">correct_only</field>
     <choices>
       <choice id="IMG_EN_0005_O1" correct="true" points="10">Planet</choice>
       <choice id="IMG_EN_0005_O2" correct="false" points="8">Moon</choice>
@@ -289,5 +293,596 @@
       <choice id="IMG_EN_0005_O9" correct="false" points="1">Black hole</choice>
       <choice id="IMG_EN_0005_O10" correct="false" points="1">Space station</choice>
     </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0001_FR" locale="fr" status="APPROVED">
+    <field name="theme">Histoire</field>
+    <field name="specification">XVIIe siècle</field>
+    <field name="asset_key">asset_history_ship_001</field>
+    <field name="prompt">Quel sujet historique est représenté ?</field>
+    <field name="option_1">Voilier</field>
+    <field name="option_2">Locomotive à vapeur</field>
+    <field name="option_3">Villa romaine</field>
+    <field name="option_4">Château</field>
+    <field name="option_5">Dirigeable</field>
+    <field name="option_6">Sous-marin</field>
+    <field name="option_7">Cathédrale</field>
+    <field name="option_8">Ferme</field>
+    <field name="option_9">Avion militaire</field>
+    <field name="option_10">Observatoire</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Le dessin montre un voilier avec un mât et des voiles.</field>
+    <field name="source_url">project://assets/images/asset_history_ship_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_history_ship_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0001_O1_FR" correct="true" points="10">Voilier</choice>
+      <choice id="IMG_EN_0001_O2_FR" correct="false" points="8">Locomotive à vapeur</choice>
+      <choice id="IMG_EN_0001_O3_FR" correct="false" points="7">Villa romaine</choice>
+      <choice id="IMG_EN_0001_O4_FR" correct="false" points="6">Château</choice>
+      <choice id="IMG_EN_0001_O5_FR" correct="false" points="5">Dirigeable</choice>
+      <choice id="IMG_EN_0001_O6_FR" correct="false" points="4">Sous-marin</choice>
+      <choice id="IMG_EN_0001_O7_FR" correct="false" points="3">Cathédrale</choice>
+      <choice id="IMG_EN_0001_O8_FR" correct="false" points="2">Ferme</choice>
+      <choice id="IMG_EN_0001_O9_FR" correct="false" points="1">Avion militaire</choice>
+      <choice id="IMG_EN_0001_O10_FR" correct="false" points="1">Observatoire</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0001_AR" locale="ar" status="APPROVED">
+    <field name="theme">التاريخ</field>
+    <field name="specification">القرن السابع عشر</field>
+    <field name="asset_key">asset_history_ship_001</field>
+    <field name="prompt">ما الموضوع التاريخي الذي تمثله الصورة؟</field>
+    <field name="option_1">سفينة شراعية</field>
+    <field name="option_2">قاطرة بخارية</field>
+    <field name="option_3">فيلا رومانية</field>
+    <field name="option_4">قلعة</field>
+    <field name="option_5">منطاد</field>
+    <field name="option_6">غواصة</field>
+    <field name="option_7">كاتدرائية</field>
+    <field name="option_8">بيت مزرعة</field>
+    <field name="option_9">طائرة حربية</field>
+    <field name="option_10">مرصد</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">يُظهر الرسم سفينة شراعية لها صارية وأشرعة.</field>
+    <field name="source_url">project://assets/images/asset_history_ship_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_history_ship_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0001_O1_AR" correct="true" points="10">سفينة شراعية</choice>
+      <choice id="IMG_EN_0001_O2_AR" correct="false" points="8">قاطرة بخارية</choice>
+      <choice id="IMG_EN_0001_O3_AR" correct="false" points="7">فيلا رومانية</choice>
+      <choice id="IMG_EN_0001_O4_AR" correct="false" points="6">قلعة</choice>
+      <choice id="IMG_EN_0001_O5_AR" correct="false" points="5">منطاد</choice>
+      <choice id="IMG_EN_0001_O6_AR" correct="false" points="4">غواصة</choice>
+      <choice id="IMG_EN_0001_O7_AR" correct="false" points="3">كاتدرائية</choice>
+      <choice id="IMG_EN_0001_O8_AR" correct="false" points="2">بيت مزرعة</choice>
+      <choice id="IMG_EN_0001_O9_AR" correct="false" points="1">طائرة حربية</choice>
+      <choice id="IMG_EN_0001_O10_AR" correct="false" points="1">مرصد</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0002_FR" locale="fr" status="APPROVED">
+    <field name="theme">Nature</field>
+    <field name="specification">Vie marine</field>
+    <field name="asset_key">asset_whale_001</field>
+    <field name="prompt">Quel animal est représenté ?</field>
+    <field name="option_1">Baleine bleue</field>
+    <field name="option_2">Dauphin</field>
+    <field name="option_3">Requin</field>
+    <field name="option_4">Orque</field>
+    <field name="option_5">Lamantin</field>
+    <field name="option_6">Phoque</field>
+    <field name="option_7">Morse</field>
+    <field name="option_8">Thon</field>
+    <field name="option_9">Raie</field>
+    <field name="option_10">Pieuvre</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">La baleine bleue dessinée possède des nageoires, une queue et un jet au-dessus de son évent.</field>
+    <field name="source_url">project://assets/images/asset_whale_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_whale_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0002_O1_FR" correct="true" points="10">Baleine bleue</choice>
+      <choice id="IMG_EN_0002_O2_FR" correct="false" points="8">Dauphin</choice>
+      <choice id="IMG_EN_0002_O3_FR" correct="false" points="7">Requin</choice>
+      <choice id="IMG_EN_0002_O4_FR" correct="false" points="6">Orque</choice>
+      <choice id="IMG_EN_0002_O5_FR" correct="false" points="5">Lamantin</choice>
+      <choice id="IMG_EN_0002_O6_FR" correct="false" points="4">Phoque</choice>
+      <choice id="IMG_EN_0002_O7_FR" correct="false" points="3">Morse</choice>
+      <choice id="IMG_EN_0002_O8_FR" correct="false" points="2">Thon</choice>
+      <choice id="IMG_EN_0002_O9_FR" correct="false" points="1">Raie</choice>
+      <choice id="IMG_EN_0002_O10_FR" correct="false" points="1">Pieuvre</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0002_AR" locale="ar" status="APPROVED">
+    <field name="theme">الطبيعة</field>
+    <field name="specification">الحياة البحرية</field>
+    <field name="asset_key">asset_whale_001</field>
+    <field name="prompt">ما الحيوان الظاهر في الصورة؟</field>
+    <field name="option_1">حوت أزرق</field>
+    <field name="option_2">دلفين</field>
+    <field name="option_3">قرش</field>
+    <field name="option_4">حوت قاتل</field>
+    <field name="option_5">خروف البحر</field>
+    <field name="option_6">فقمة</field>
+    <field name="option_7">فظ</field>
+    <field name="option_8">تونة</field>
+    <field name="option_9">شفنين</field>
+    <field name="option_10">أخطبوط</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">يُظهر رسم الحوت الأزرق زعانف وذيلًا ورذاذًا فوق فتحة التنفس.</field>
+    <field name="source_url">project://assets/images/asset_whale_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_whale_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0002_O1_AR" correct="true" points="10">حوت أزرق</choice>
+      <choice id="IMG_EN_0002_O2_AR" correct="false" points="8">دلفين</choice>
+      <choice id="IMG_EN_0002_O3_AR" correct="false" points="7">قرش</choice>
+      <choice id="IMG_EN_0002_O4_AR" correct="false" points="6">حوت قاتل</choice>
+      <choice id="IMG_EN_0002_O5_AR" correct="false" points="5">خروف البحر</choice>
+      <choice id="IMG_EN_0002_O6_AR" correct="false" points="4">فقمة</choice>
+      <choice id="IMG_EN_0002_O7_AR" correct="false" points="3">فظ</choice>
+      <choice id="IMG_EN_0002_O8_AR" correct="false" points="2">تونة</choice>
+      <choice id="IMG_EN_0002_O9_AR" correct="false" points="1">شفنين</choice>
+      <choice id="IMG_EN_0002_O10_AR" correct="false" points="1">أخطبوط</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0003_FR" locale="fr" status="APPROVED">
+    <field name="theme">Architecture</field>
+    <field name="specification">Monuments</field>
+    <field name="asset_key">asset_lighthouse_001</field>
+    <field name="prompt">Quelle structure est représentée ?</field>
+    <field name="option_1">Phare</field>
+    <field name="option_2">Tour de château</field>
+    <field name="option_3">Moulin à vent</field>
+    <field name="option_4">Pont</field>
+    <field name="option_5">Observatoire</field>
+    <field name="option_6">Clocher</field>
+    <field name="option_7">Château d’eau</field>
+    <field name="option_8">Barrage</field>
+    <field name="option_9">Pagode</field>
+    <field name="option_10">Fort</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">La tour porte une lumière qui guide les navires : c’est un phare.</field>
+    <field name="source_url">project://assets/images/asset_lighthouse_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_lighthouse_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0003_O1_FR" correct="true" points="10">Phare</choice>
+      <choice id="IMG_EN_0003_O2_FR" correct="false" points="8">Tour de château</choice>
+      <choice id="IMG_EN_0003_O3_FR" correct="false" points="7">Moulin à vent</choice>
+      <choice id="IMG_EN_0003_O4_FR" correct="false" points="6">Pont</choice>
+      <choice id="IMG_EN_0003_O5_FR" correct="false" points="5">Observatoire</choice>
+      <choice id="IMG_EN_0003_O6_FR" correct="false" points="4">Clocher</choice>
+      <choice id="IMG_EN_0003_O7_FR" correct="false" points="3">Château d’eau</choice>
+      <choice id="IMG_EN_0003_O8_FR" correct="false" points="2">Barrage</choice>
+      <choice id="IMG_EN_0003_O9_FR" correct="false" points="1">Pagode</choice>
+      <choice id="IMG_EN_0003_O10_FR" correct="false" points="1">Fort</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0003_AR" locale="ar" status="APPROVED">
+    <field name="theme">العمارة</field>
+    <field name="specification">المعالم</field>
+    <field name="asset_key">asset_lighthouse_001</field>
+    <field name="prompt">ما المنشأة الظاهرة في الصورة؟</field>
+    <field name="option_1">منارة</field>
+    <field name="option_2">برج قلعة</field>
+    <field name="option_3">طاحونة هوائية</field>
+    <field name="option_4">جسر</field>
+    <field name="option_5">مرصد</field>
+    <field name="option_6">برج أجراس</field>
+    <field name="option_7">خزان مياه مرتفع</field>
+    <field name="option_8">سد</field>
+    <field name="option_9">معبد باغودا</field>
+    <field name="option_10">حصن</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">يحمل البرج ضوءًا لإرشاد السفن، فهو منارة.</field>
+    <field name="source_url">project://assets/images/asset_lighthouse_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_lighthouse_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0003_O1_AR" correct="true" points="10">منارة</choice>
+      <choice id="IMG_EN_0003_O2_AR" correct="false" points="8">برج قلعة</choice>
+      <choice id="IMG_EN_0003_O3_AR" correct="false" points="7">طاحونة هوائية</choice>
+      <choice id="IMG_EN_0003_O4_AR" correct="false" points="6">جسر</choice>
+      <choice id="IMG_EN_0003_O5_AR" correct="false" points="5">مرصد</choice>
+      <choice id="IMG_EN_0003_O6_AR" correct="false" points="4">برج أجراس</choice>
+      <choice id="IMG_EN_0003_O7_AR" correct="false" points="3">خزان مياه مرتفع</choice>
+      <choice id="IMG_EN_0003_O8_AR" correct="false" points="2">سد</choice>
+      <choice id="IMG_EN_0003_O9_AR" correct="false" points="1">معبد باغودا</choice>
+      <choice id="IMG_EN_0003_O10_AR" correct="false" points="1">حصن</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0004_FR" locale="fr" status="APPROVED">
+    <field name="theme">Géographie</field>
+    <field name="specification">Désert</field>
+    <field name="asset_key">asset_desert_001</field>
+    <field name="prompt">Quel environnement est représenté ?</field>
+    <field name="option_1">Désert de sable</field>
+    <field name="option_2">Forêt tropicale</field>
+    <field name="option_3">Toundra</field>
+    <field name="option_4">Récif corallien</field>
+    <field name="option_5">Forêt tempérée</field>
+    <field name="option_6">Zone humide</field>
+    <field name="option_7">Savane</field>
+    <field name="option_8">Prairie alpine</field>
+    <field name="option_9">Mangrove</field>
+    <field name="option_10">Taïga</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Le dessin représente des dunes de sable dans un désert.</field>
+    <field name="source_url">project://assets/images/asset_desert_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_desert_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0004_O1_FR" correct="true" points="10">Désert de sable</choice>
+      <choice id="IMG_EN_0004_O2_FR" correct="false" points="8">Forêt tropicale</choice>
+      <choice id="IMG_EN_0004_O3_FR" correct="false" points="7">Toundra</choice>
+      <choice id="IMG_EN_0004_O4_FR" correct="false" points="6">Récif corallien</choice>
+      <choice id="IMG_EN_0004_O5_FR" correct="false" points="5">Forêt tempérée</choice>
+      <choice id="IMG_EN_0004_O6_FR" correct="false" points="4">Zone humide</choice>
+      <choice id="IMG_EN_0004_O7_FR" correct="false" points="3">Savane</choice>
+      <choice id="IMG_EN_0004_O8_FR" correct="false" points="2">Prairie alpine</choice>
+      <choice id="IMG_EN_0004_O9_FR" correct="false" points="1">Mangrove</choice>
+      <choice id="IMG_EN_0004_O10_FR" correct="false" points="1">Taïga</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0004_AR" locale="ar" status="APPROVED">
+    <field name="theme">الجغرافيا</field>
+    <field name="specification">الصحراء</field>
+    <field name="asset_key">asset_desert_001</field>
+    <field name="prompt">ما البيئة التي تمثلها الصورة؟</field>
+    <field name="option_1">صحراء رملية</field>
+    <field name="option_2">غابة استوائية</field>
+    <field name="option_3">تندرا</field>
+    <field name="option_4">شعاب مرجانية</field>
+    <field name="option_5">غابة معتدلة</field>
+    <field name="option_6">أرض رطبة</field>
+    <field name="option_7">سافانا</field>
+    <field name="option_8">مرج جبلي</field>
+    <field name="option_9">غابة مانغروف</field>
+    <field name="option_10">تايغا</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">يُظهر الرسم كثبانًا رملية في صحراء.</field>
+    <field name="source_url">project://assets/images/asset_desert_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_desert_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0004_O1_AR" correct="true" points="10">صحراء رملية</choice>
+      <choice id="IMG_EN_0004_O2_AR" correct="false" points="8">غابة استوائية</choice>
+      <choice id="IMG_EN_0004_O3_AR" correct="false" points="7">تندرا</choice>
+      <choice id="IMG_EN_0004_O4_AR" correct="false" points="6">شعاب مرجانية</choice>
+      <choice id="IMG_EN_0004_O5_AR" correct="false" points="5">غابة معتدلة</choice>
+      <choice id="IMG_EN_0004_O6_AR" correct="false" points="4">أرض رطبة</choice>
+      <choice id="IMG_EN_0004_O7_AR" correct="false" points="3">سافانا</choice>
+      <choice id="IMG_EN_0004_O8_AR" correct="false" points="2">مرج جبلي</choice>
+      <choice id="IMG_EN_0004_O9_AR" correct="false" points="1">غابة مانغروف</choice>
+      <choice id="IMG_EN_0004_O10_AR" correct="false" points="1">تايغا</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0005_FR" locale="fr" status="APPROVED">
+    <field name="theme">Sciences</field>
+    <field name="specification">Espace</field>
+    <field name="asset_key">asset_space_001</field>
+    <field name="prompt">Quel objet céleste est représenté ?</field>
+    <field name="option_1">Planète</field>
+    <field name="option_2">Lune</field>
+    <field name="option_3">Comète</field>
+    <field name="option_4">Galaxie</field>
+    <field name="option_5">Astéroïde</field>
+    <field name="option_6">Amas d’étoiles</field>
+    <field name="option_7">Nébuleuse</field>
+    <field name="option_8">Satellite</field>
+    <field name="option_9">Trou noir</field>
+    <field name="option_10">Station spatiale</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">Le dessin représente une planète ronde entourée d’anneaux.</field>
+    <field name="source_url">project://assets/images/asset_space_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_space_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0005_O1_FR" correct="true" points="10">Planète</choice>
+      <choice id="IMG_EN_0005_O2_FR" correct="false" points="8">Lune</choice>
+      <choice id="IMG_EN_0005_O3_FR" correct="false" points="7">Comète</choice>
+      <choice id="IMG_EN_0005_O4_FR" correct="false" points="6">Galaxie</choice>
+      <choice id="IMG_EN_0005_O5_FR" correct="false" points="5">Astéroïde</choice>
+      <choice id="IMG_EN_0005_O6_FR" correct="false" points="4">Amas d’étoiles</choice>
+      <choice id="IMG_EN_0005_O7_FR" correct="false" points="3">Nébuleuse</choice>
+      <choice id="IMG_EN_0005_O8_FR" correct="false" points="2">Satellite</choice>
+      <choice id="IMG_EN_0005_O9_FR" correct="false" points="1">Trou noir</choice>
+      <choice id="IMG_EN_0005_O10_FR" correct="false" points="1">Station spatiale</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="IMG_EN_0005_AR" locale="ar" status="APPROVED">
+    <field name="theme">العلوم</field>
+    <field name="specification">الفضاء</field>
+    <field name="asset_key">asset_space_001</field>
+    <field name="prompt">ما الجرم السماوي الظاهر في الصورة؟</field>
+    <field name="option_1">كوكب</field>
+    <field name="option_2">قمر</field>
+    <field name="option_3">مذنب</field>
+    <field name="option_4">مجرة</field>
+    <field name="option_5">كويكب</field>
+    <field name="option_6">عنقود نجمي</field>
+    <field name="option_7">سديم</field>
+    <field name="option_8">قمر صناعي</field>
+    <field name="option_9">ثقب أسود</field>
+    <field name="option_10">محطة فضائية</field>
+    <field name="correct_1">1</field>
+    <field name="correct_2">0</field>
+    <field name="correct_3">0</field>
+    <field name="correct_4">0</field>
+    <field name="correct_5">0</field>
+    <field name="correct_6">0</field>
+    <field name="correct_7">0</field>
+    <field name="correct_8">0</field>
+    <field name="correct_9">0</field>
+    <field name="correct_10">0</field>
+    <field name="points_1">10</field>
+    <field name="points_2">8</field>
+    <field name="points_3">7</field>
+    <field name="points_4">6</field>
+    <field name="points_5">5</field>
+    <field name="points_6">4</field>
+    <field name="points_7">3</field>
+    <field name="points_8">2</field>
+    <field name="points_9">1</field>
+    <field name="points_10">1</field>
+    <field name="time_limit_seconds">30</field>
+    <field name="explanation">يُظهر الرسم كوكبًا مستديرًا تحيط به حلقات.</field>
+    <field name="source_url">project://assets/images/asset_space_001.svg</field>
+    <field name="license">Original Brainy Brawl project artwork; distributed as part of the game</field>
+    <field name="attribution">Brainy Brawl original vector illustrations</field>
+    <field name="asset_ref">assets/images/asset_space_001.svg</field>
+    <field name="asset_source">Original project SVG; no third-party image</field>
+    <field name="difficulty">standard</field>
+    <field name="selection_count">4</field>
+    <field name="scoring_policy">correct_only</field>
+    <choices>
+      <choice id="IMG_EN_0005_O1_AR" correct="true" points="10">كوكب</choice>
+      <choice id="IMG_EN_0005_O2_AR" correct="false" points="8">قمر</choice>
+      <choice id="IMG_EN_0005_O3_AR" correct="false" points="7">مذنب</choice>
+      <choice id="IMG_EN_0005_O4_AR" correct="false" points="6">مجرة</choice>
+      <choice id="IMG_EN_0005_O5_AR" correct="false" points="5">كويكب</choice>
+      <choice id="IMG_EN_0005_O6_AR" correct="false" points="4">عنقود نجمي</choice>
+      <choice id="IMG_EN_0005_O7_AR" correct="false" points="3">سديم</choice>
+      <choice id="IMG_EN_0005_O8_AR" correct="false" points="2">قمر صناعي</choice>
+      <choice id="IMG_EN_0005_O9_AR" correct="false" points="1">ثقب أسود</choice>
+      <choice id="IMG_EN_0005_O10_AR" correct="false" points="1">محطة فضائية</choice>
+    </choices>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
 </content>

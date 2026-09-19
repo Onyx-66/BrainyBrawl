@@ -66,5 +66,5 @@ fun LoadoutScreen(model:StoreViewModel,continueAction:()->Unit) {
             selected=if(boost.id in selected)selected-boost.id else if(selected.size<2)selected+boost.id else selected
         })
     }
-    BrawlButton(stringResource(R.string.continue_action),{model.saveLoadout(selected)},Modifier.fillMaxWidth(),enabled=selected.size==2&&!ui.busy,tone=ActionTone.POSITIVE)
+    BrawlButton(stringResource(R.string.continue_action),{model.saveLoadout(selected)},Modifier.fillMaxWidth(),enabled=selected.size in setOf(0,2)&&ui.snapshot!=null&&!ui.busy,tone=ActionTone.POSITIVE)
 }

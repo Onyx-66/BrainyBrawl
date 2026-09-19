@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <content kind="precision_tap" schemaVersion="1" contentVersion="1">
-  <item id="PTAP_DEFAULT" locale="global" status="DEV_SAMPLE">
+  <item id="PTAP_DEFAULT" locale="global" status="APPROVED">
     <field name="difficulty">standard</field>
     <field name="turn_seconds">20</field>
     <field name="base_points">1</field>
@@ -17,8 +17,9 @@
     <field name="width_increment">2</field>
     <field name="max_hot_zone_degrees">90</field>
     <field name="streak_rule">hit_awards_current_streak</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="PTAP_EASY" locale="global" status="DEV_SAMPLE">
+  <item id="PTAP_EASY" locale="global" status="APPROVED">
     <field name="difficulty">easy</field>
     <field name="turn_seconds">20</field>
     <field name="base_points">1</field>
@@ -35,5 +36,6 @@
     <field name="width_increment">2</field>
     <field name="max_hot_zone_degrees">90</field>
     <field name="streak_rule">hit_awards_current_streak</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
 </content>

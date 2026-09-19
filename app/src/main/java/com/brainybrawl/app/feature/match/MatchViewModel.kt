@@ -44,13 +44,13 @@ class MatchViewModel(private val repository:MatchRepository,private val auth:Aut
         mutable.value=MatchAction(round=round.id,selected=selected)
         retry=null
     }
-    fun submit(round:MatchRound,option:String?=null){
+    fun submit(round:MatchRound,option:String?=null,answer:String?=null){
         val matchId=match.value?:return
         if(mutable.value.busy || round.submission!=null)return
         val selected=if(option!=null)setOf(option) else mutable.value.selected
         if(round.kind=="image_guess" && selected.size!=4)return
         val payload=buildJsonObject{
-            if(round.kind=="question_round")put("option_id",requireNotNull(option))
+            if(round.kind=="question_round"){if(answer!=null)put("answer",answer)else put("option_id",requireNotNull(option))}
             else put("choice_ids",JsonArray(selected.sorted().map(::JsonPrimitive)))
         }
         val prior=retry

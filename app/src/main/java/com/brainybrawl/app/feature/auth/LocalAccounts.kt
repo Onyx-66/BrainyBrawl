@@ -58,6 +58,11 @@ class LocalAccounts(private val vault:LocalAccountVault){
             save(db.copy(current=account.id));AuthNotice.NONE
         }
     }
+    suspend fun deleteCurrent(expectedId:String){initialize();lock.withLock{
+        val id=requireNotNull(db.current)
+        require(id==expectedId)
+        save(db.copy(accounts=db.accounts.filterNot{it.id==id},queue=db.queue.filterNot{it.owner==id},current=null))
+    }}
     suspend fun logout(){initialize();lock.withLock{save(db.copy(current=null))}}
     suspend fun changePassword(password:String):AuthNotice{
         if(!AuthValidation.password(password)||password.length>1024)return AuthNotice.INVALID_INPUT

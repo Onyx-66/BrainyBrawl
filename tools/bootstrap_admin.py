@@ -2,16 +2,15 @@
 Dry-run by default. Never packages credentials or grants privilege from user metadata.
 """
 import argparse,json,sys,urllib.request,urllib.error
+from local_config import read_env
 from pathlib import Path
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply',action='store_true')
     args=parser.parse_args()
-    env={}
-    for line in (Path(__file__).resolve().parents[1]/'.env').read_text(encoding='utf-8').splitlines():
-        if '=' in line and not line.lstrip().startswith('#'):
-            key,value=line.split('=',1);env[key.strip()]=value.strip()
+    env=read_env()
+    env['SUPABASE_SERVICE_ROLE_KEY']=env.get('SUPABASE_SECRET_KEY') or env.get('SUPABASE_SERVICE_ROLE_KEY','')
     required=['SUPABASE_URL','SUPABASE_SERVICE_ROLE_KEY','BRAWL_ADMIN_USERNAME','BRAWL_ADMIN_EMAIL','BRAWL_ADMIN_PASSWORD']
     missing=[key for key in required if not env.get(key)]
     if missing:print('Required settings: '+', '.join(missing));return 2
@@ -20,7 +19,8 @@ def main():
     if not args.apply:print('Configuration available. After approving the target project and applying migrations, run with --apply.');return 0
     key=env['SUPABASE_SERVICE_ROLE_KEY']
     def request(path,data=None):
-        headers={'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json'}
+        headers={'apikey':key,'Content-Type':'application/json'}
+        if not key.startswith('sb_secret_'):headers['Authorization']='Bearer '+key
         req=urllib.request.Request(base+path,data=None if data is None else json.dumps(data).encode(),headers=headers)
         with urllib.request.urlopen(req,timeout=30) as response:
             body=response.read();return json.loads(body) if body else None

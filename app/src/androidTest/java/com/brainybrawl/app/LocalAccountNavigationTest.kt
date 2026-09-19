@@ -18,10 +18,16 @@ class LocalAccountNavigationTest {
         rule.onNodeWithText("Username").performScrollTo().performTextInput(name)
         rule.onNodeWithText("Email").performScrollTo().performTextInput(name+"@example.invalid")
         rule.onNodeWithText("Password").performScrollTo().performTextInput("TestPassword123")
-        rule.onAllNodesWithText("Create account").filter(hasClickAction()).onFirst().performScrollTo().performClick()
+        rule.onAllNodesWithText("Create account").filter(hasClickAction()).onLast().performScrollTo().performClick()
         rule.waitUntil(20_000){rule.onAllNodesWithText("Level 1").fetchSemanticsNodes().isNotEmpty()}
         rule.onNodeWithText("Level 1").assertIsDisplayed()
         rule.onNodeWithContentDescription("Settings").assertIsDisplayed()
+        rule.onAllNodesWithText("Store").filter(hasClickAction()).onLast().performClick()
+        rule.onNodeWithText("Your device account is signed in").assertIsDisplayed()
+        rule.onNodeWithText("Profile").performClick()
+        rule.onNodeWithText(rule.activity.getString(R.string.upload_photo)).performScrollTo().assertIsDisplayed()
+        val profileFile=java.io.File(rule.activity.getExternalFilesDir(null),"profile-bento.png")
+        java.io.FileOutputStream(profileFile).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
         rule.onNodeWithText("Friends").performScrollTo().performClick()
         rule.onNodeWithText("Username, email or Player ID").performTextInput("Friend.Test")
         rule.onNodeWithText("Queue friend request").performScrollTo().performClick()

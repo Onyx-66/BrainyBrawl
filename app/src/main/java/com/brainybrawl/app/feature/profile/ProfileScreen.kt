@@ -28,7 +28,7 @@ fun CurrencyBar(snapshot: ProfileSnapshot) {
     }
 }
 @Composable
-fun ProfileScreen(model: PlayerViewModel, password: () -> Unit, logout: () -> Unit) {
+fun ProfileScreen(model: PlayerViewModel, avatars:AvatarRepository,password: () -> Unit, logout: () -> Unit) {
     val state by model.profile.collectAsStateWithLifecycle()
     val ui by model.social.collectAsStateWithLifecycle()
     Text(stringResource(R.string.profile),style=MaterialTheme.typography.headlineMedium)
@@ -39,7 +39,13 @@ fun ProfileScreen(model: PlayerViewModel, password: () -> Unit, logout: () -> Un
         is PlayerDataState.Ready -> {
             val profile=current.data.profile
             var username by rememberSaveable(profile.username) { mutableStateOf(profile.username) }
-            PlayerCard(profile.username,namedString(R.string.player_number,"number" to profile.number.toString()),profile.username.take(1),Modifier.fillMaxWidth())
+            BrawlPanel(Modifier.fillMaxWidth()){
+                Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)){
+                    ProfileAvatar(avatars,profile.id,profile.username,Modifier.size(76.dp))
+                    Column{Text(profile.username,style=MaterialTheme.typography.headlineSmall);Text(namedString(R.string.player_level,"level" to current.data.level),color=Gold);Text(namedString(R.string.player_number,"number" to profile.number.toString()),style=MaterialTheme.typography.labelMedium)}
+                }
+                PhotoPicker(avatars,false)
+            }
             CurrencyBar(current.data)
             BrawlPanel(Modifier.fillMaxWidth()) {
                 current.data.email?.let{Text(namedString(R.string.account_email,"email" to it))}
@@ -68,6 +74,5 @@ fun ProfileScreen(model: PlayerViewModel, password: () -> Unit, logout: () -> Un
             if(ui.failed) Text(stringResource(R.string.request_failed),color=MaterialTheme.colorScheme.error)
         }
     }
-    BrawlButton(stringResource(R.string.change_password),password,Modifier.fillMaxWidth())
-    BrawlButton(stringResource(R.string.sign_out),logout,Modifier.fillMaxWidth(),tone=ActionTone.DESTRUCTIVE)
+    ActionBento(listOf(BentoAction(stringResource(R.string.change_password),NavSymbol.SETTINGS,password),BentoAction(stringResource(R.string.sign_out),NavSymbol.HOME,logout)))
 }

@@ -29,7 +29,7 @@ object ModeRules {
         val begins=start+index*30_000L
         RoundWindow(begins,begins+if(index<15)10_000 else 0,begins+30_000)
     }
-    fun flames(mode:GameMode,winner:Boolean)=if(winner&&mode in setOf(GameMode.DUEL,GameMode.DUO,GameMode.SQUAD))1 else 0
+    fun flames(mode:GameMode,winner:Boolean)=if(winner&&mode in setOf(GameMode.DUEL,GameMode.DUO,GameMode.SQUAD,GameMode.SOLO))1 else 0
     fun duoFinalists(rankedTeams:List<String>):List<String> = rankedTeams.toList()
     fun duoDraft(question:Int,teamCount:Int=20):DuoDraft {
         require(question in 1..15 && teamCount in 1..20)
@@ -98,8 +98,11 @@ data class PuzzleBoard(val content:PuzzleContent,val window:RoundWindow,val left
     }
 }
 
-fun normalizeAnswer(answer:String):String = java.text.Normalizer.normalize(answer,java.text.Normalizer.Form.NFKC)
+fun normalizeAnswer(answer:String):String = java.text.Normalizer.normalize(answer,java.text.Normalizer.Form.NFKD)
+    .filterNot{Character.getType(it)==Character.NON_SPACING_MARK.toInt()||it=='ـ'}
+    .map{when(it){in '٠'..'٩'->'0'+(it-'٠');in '۰'..'۹'->'0'+(it-'۰');else->it}}.joinToString("")
     .trim().lowercase(java.util.Locale.ROOT).replace(Regex("\\s+")," ")
+
 data class ScrambleRound(val content:ScrambleContent,val window:RoundWindow,val eligible:Set<String>,val points:Map<String,Int> = emptyMap()) {
     fun submit(player:String,answer:String,now:Long):ScrambleRound {
         require(window.accepting(now)&&player in eligible&&player !in points)

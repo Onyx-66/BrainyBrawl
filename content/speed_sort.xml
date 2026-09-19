@@ -1,83 +1,273 @@
 <?xml version='1.0' encoding='utf-8'?>
-<content kind="speed_sort" schemaVersion="1" contentVersion="1">
-  <item id="SORT_0001" locale="en" status="DEV_SAMPLE">
+<content kind="speed_sort" schemaVersion="1" contentVersion="2">
+  <item id="SORT_0001" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Mammal</field>
     <field name="item_text">Elephant</field>
     <field name="correct_bucket">Mammal</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0002" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0002" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Mammal</field>
     <field name="item_text">Dolphin</field>
     <field name="correct_bucket">Mammal</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0003" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0003" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Reptile</field>
     <field name="item_text">Crocodile</field>
     <field name="correct_bucket">Reptile</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0004" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0004" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Reptile</field>
     <field name="item_text">Lizard</field>
     <field name="correct_bucket">Reptile</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0005" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0005" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Bird</field>
     <field name="item_text">Eagle</field>
     <field name="correct_bucket">Bird</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0006" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0006" locale="en" status="APPROVED">
     <field name="set_theme">Animal Class</field>
     <field name="bucket_label">Fish</field>
     <field name="item_text">Shark</field>
     <field name="correct_bucket">Fish</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0007" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0007" locale="en" status="APPROVED">
     <field name="set_theme">Historical Date</field>
     <field name="bucket_label">Before 1900</field>
     <field name="item_text">French Revolution</field>
     <field name="correct_bucket">Before 1900</field>
     <field name="points">1</field>
     <field name="difficulty">Medium</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0008" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0008" locale="en" status="APPROVED">
     <field name="set_theme">Historical Date</field>
     <field name="bucket_label">After 1900</field>
     <field name="item_text">Moon landing</field>
     <field name="correct_bucket">After 1900</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0009" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0009" locale="en" status="APPROVED">
     <field name="set_theme">True False</field>
     <field name="bucket_label">True</field>
     <field name="item_text">Water freezes at 0°C under standard conditions</field>
     <field name="correct_bucket">True</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="SORT_0010" locale="en" status="DEV_SAMPLE">
+  <item id="SORT_0010" locale="en" status="APPROVED">
     <field name="set_theme">True False</field>
     <field name="bucket_label">False</field>
     <field name="item_text">The Sun is a planet</field>
     <field name="correct_bucket">False</field>
     <field name="points">1</field>
     <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0001_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">Éléphant</field>
+    <field name="correct_bucket">Mammifère</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0001_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">فيل</field>
+    <field name="correct_bucket">ثديي</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0002_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">Dauphin</field>
+    <field name="correct_bucket">Mammifère</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0002_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Mammal</field>
+    <field name="item_text">دلفين</field>
+    <field name="correct_bucket">ثديي</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0003_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">Crocodile</field>
+    <field name="correct_bucket">Reptile</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0003_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">تمساح</field>
+    <field name="correct_bucket">زاحف</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0004_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">Lézard</field>
+    <field name="correct_bucket">Reptile</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0004_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Reptile</field>
+    <field name="item_text">سحلية</field>
+    <field name="correct_bucket">زاحف</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0005_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Bird</field>
+    <field name="item_text">Aigle</field>
+    <field name="correct_bucket">Oiseau</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0005_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Bird</field>
+    <field name="item_text">نسر</field>
+    <field name="correct_bucket">طائر</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0006_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Classes animales</field>
+    <field name="bucket_label">Fish</field>
+    <field name="item_text">Requin</field>
+    <field name="correct_bucket">Poisson</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0006_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تصنيف الحيوانات</field>
+    <field name="bucket_label">Fish</field>
+    <field name="item_text">قرش</field>
+    <field name="correct_bucket">سمكة</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0007_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Dates historiques</field>
+    <field name="bucket_label">Before 1900</field>
+    <field name="item_text">Révolution française</field>
+    <field name="correct_bucket">Avant 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Medium</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0007_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تواريخ تاريخية</field>
+    <field name="bucket_label">Before 1900</field>
+    <field name="item_text">الثورة الفرنسية</field>
+    <field name="correct_bucket">قبل 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Medium</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0008_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Dates historiques</field>
+    <field name="bucket_label">After 1900</field>
+    <field name="item_text">Premier alunissage habité</field>
+    <field name="correct_bucket">Après 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0008_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">تواريخ تاريخية</field>
+    <field name="bucket_label">After 1900</field>
+    <field name="item_text">أول هبوط بشري على القمر</field>
+    <field name="correct_bucket">بعد 1900</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0009_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Vrai ou faux</field>
+    <field name="bucket_label">True</field>
+    <field name="item_text">L’eau gèle à 0 °C à la pression atmosphérique normale</field>
+    <field name="correct_bucket">Vrai</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0009_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">صحيح أم خطأ</field>
+    <field name="bucket_label">True</field>
+    <field name="item_text">يتجمد الماء عند صفر مئوي تحت الضغط الجوي القياسي</field>
+    <field name="correct_bucket">صحيح</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0010_FR" locale="fr" status="APPROVED">
+    <field name="set_theme">Vrai ou faux</field>
+    <field name="bucket_label">False</field>
+    <field name="item_text">Le Soleil est une planète</field>
+    <field name="correct_bucket">Faux</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="SORT_0010_AR" locale="ar" status="APPROVED">
+    <field name="set_theme">صحيح أم خطأ</field>
+    <field name="bucket_label">False</field>
+    <field name="item_text">الشمس كوكب</field>
+    <field name="correct_bucket">خطأ</field>
+    <field name="points">1</field>
+    <field name="difficulty">Easy</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
 </content>

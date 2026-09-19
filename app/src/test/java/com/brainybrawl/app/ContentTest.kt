@@ -10,10 +10,16 @@ class ContentTest {
     private val directory = File(requireNotNull(System.getProperty("brainybrawl.contentDir")))
     @Test fun allEightFilesMeetTheRuntimeContract() {
         val records = ContentKind.entries.flatMap { parser.parse(File(directory, "${it.fileName}.xml").inputStream(), it) }
-        assertEquals(87, records.size)
+        for(locale in listOf("en","fr","ar")){
+            val questions=records.filterIsInstance<QuestionContent>().filter{it.meta.locale==locale}
+            assertEquals(1225,questions.size)
+            assertEquals(questions.size,questions.map{it.prompt}.toSet().size)
+            assertTrue(questions.all{it.acceptedAnswers.isNotEmpty()})
+            assertEquals(32,records.filterIsInstance<ReactionContent>().count{it.meta.locale==locale})
+        }
         assertEquals(records.size, records.map { it.meta.id }.toSet().size)
         assertTrue(records.filterIsInstance<PuzzleContent>().all { it.pieces.size == 96 })
-        assertTrue(records.filterIsInstance<ImageContent>().all { it.choices.size == 10 && it.scoringPolicy == null })
+        assertTrue(records.filterIsInstance<ImageContent>().all { it.choices.size == 10 && it.scoringPolicy == ImageScoringPolicy.CORRECT_ONLY })
     }
     @Test(expected = IllegalArgumentException::class)
     fun externalEntityIsRejectedBeforeParsing() {

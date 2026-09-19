@@ -98,11 +98,11 @@
     <string name="owned">مملوك</string>
     <string name="purchase">شراء</string>
     <string name="confirm_purchase">تأكيد الشراء</string>
-    <string name="flames_skill_only">تُكتسب نقاط اللهب بالفوز في مباريات واحد ضد واحد أو الثنائي أو الفريق. لا يمكن شراؤها.</string>
+    <string name="flames_skill_only">تُكتسب نقاط اللهب بالفوز في مباريات واحد ضد واحد أو الثنائي أو الفريق أو الفردي عبر الإنترنت. لا يمكن شراؤها.</string>
     <string name="purchase_retry">حدّث رصيدك ومقتنياتك قبل إعادة المحاولة. تكرار طلب الشراء لن يخصم المبلغ مرتين.</string>
     <string name="loadout">اختر تعزيزاتك</string>
-    <string name="choose_two_boosts">اختر تعزيزين تملكهما بالضبط.</string>
-    <string name="no_boosts">لا تملك تعزيزين متاحين بعد.</string>
+    <string name="choose_two_boosts">المعززات اختيارية. تابع دونها أو جهّز معززين تملكهما.</string>
+    <string name="no_boosts">لا توجد معززات حاليًا. يمكنك اللعب دونها.</string>
     <string name="lobby">الغرفة</string>
     <string name="reconnecting">جارٍ إعادة الاتصال…</string>
     <string name="reconnecting_description">جارٍ استعادة أحدث حالة للغرفة. ستعود الأزرار عند اكتمال الاتصال.</string>
@@ -230,7 +230,7 @@
     <string name="squad_description">فِرق من أربعة لاعبين</string>
     <string name="solo_description">كلّ لاعب لنفسه · حتى 20 لاعبًا</string>
     <string name="online_account_required">سجّل الدخول للعب مع أصدقائك والمنافسة عبر الإنترنت.</string>
-    <string name="offline_language_note">الأسئلة باللغة الإنجليزية. العب دون حساب أو اتصال بالإنترنت.</string>
+    <string name="offline_language_note">تدرّب بلغتك المختارة. اختر من خمس إجابات أو اكتب إجابتك. لديك ٤٥ ثانية.</string>
     <string name="play_english_questions">العب أسئلة باللغة الإنجليزية</string>
     <string name="device_account">حساب على هذا الجهاز</string>
     <string name="device_account_description">أنشئ حسابًا أو استخدم حسابك على هذا الجهاز حتى دون إنترنت.</string>
@@ -246,4 +246,21 @@
     <string name="queue_sent">تم الإرسال</string>
     <string name="queue_waiting">بانتظار الإرسال</string>
     <string name="dismiss">إغلاق</string>
+    <string name="answer_any_language">أو اكتب الإجابة بالعربية أو الفرنسية أو الإنجليزية</string>
+    <string name="device_signed_in">أنت مسجّل الدخول بحساب الجهاز</string>
+    <string name="online_feature_explanation">تتطلب التصنيفات والمشتريات حسابًا موثقًا عبر الإنترنت. اربط حسابك بخوادم اللعبة. يبقى تقدمك دون اتصال محفوظًا.</string>
+    <string name="auth_welcome">لنبدأ اللعب.</string>
+    <string name="show_password">إظهار</string>
+    <string name="hide_password">إخفاء</string>
+    <string name="upload_photo">اختيار صورة شخصية</string>
+    <string name="photo_saved">حُفظت الصورة على هذا الجهاز</string>
+    <string name="photo_synced">رُفعت الصورة الشخصية</string>
+    <string name="photo_sync_pending">حُفظت هنا. الرفع معلّق؛ أعد المحاولة عند الاتصال.</string>
+    <string name="delete_account">حذف الحساب</string>
+    <string name="delete_local_explanation">هل تريد حذف هذا الحساب المحلي وصورته وسجل التدريب والدعوات المعلّقة؟ ستبقى الحسابات الأخرى. لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="delete_online_explanation">طلب حذف حسابك عبر الإنترنت وبياناتك الشخصية المرتبطة به. سيُرسل الطلب إلى مسؤول الحسابات لمعالجته.</string>
+    <string name="deletion_requested">تم استلام طلب حذف حسابك.</string>
+    <string name="confirm_action">تأكيد</string>
+    <string name="offline_images">خمن من الصورة</string>
+    <string name="providers_later">سيتوفر تسجيل الدخول عبر Google وDiscord لاحقًا. يمكنك البدء باستخدام البريد الإلكتروني.</string>
 </resources>

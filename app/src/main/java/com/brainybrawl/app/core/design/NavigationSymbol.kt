@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 
-enum class NavSymbol { HOME,GAMES,STORE,PROFILE,TROPHY,SETTINGS }
+enum class NavSymbol { HOME,GAMES,IMAGE,STORE,PROFILE,TROPHY,SETTINGS }
 @Composable fun NavigationSymbol(symbol:NavSymbol){
     val color=LocalContentColor.current
     Canvas(Modifier.size(24.dp)){
@@ -18,6 +18,12 @@ enum class NavSymbol { HOME,GAMES,STORE,PROFILE,TROPHY,SETTINGS }
         fun point(x:Float,y:Float)=Offset(x*scale,y*scale)
         val stroke=Stroke(2*scale)
         when(symbol){
+            NavSymbol.IMAGE->{
+                drawRoundRect(color,point(2f,3f),Size(20*scale,18*scale),androidx.compose.ui.geometry.CornerRadius(2*scale),style=stroke)
+                drawCircle(color,2*scale,point(8f,8f))
+                val mountains=Path().apply{moveTo(3*scale,19*scale);lineTo(10*scale,12*scale);lineTo(14*scale,16*scale);lineTo(18*scale,10*scale);lineTo(22*scale,16*scale)}
+                drawPath(mountains,color,style=stroke)
+            }
             NavSymbol.SETTINGS->{
                 drawCircle(color,7*scale,point(12f,12f),style=stroke)
                 drawCircle(color,2.5f*scale,point(12f,12f),style=stroke)

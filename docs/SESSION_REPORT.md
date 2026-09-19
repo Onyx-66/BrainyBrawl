@@ -1,160 +1,77 @@
-# Brainy Brawl implementation handover
+# Brainy Brawl — September 19 implementation report
 
-Status: substantial implementation and local regression complete; the entire
-35-phase product is not declared complete. Remaining product/environment gates
-are listed below. Nothing has been deployed or submitted to Google Play.
+The Android game and authorized hosted backend are implemented and buildable; release gates below remain. Work stayed on the existing master branch and preserved pre-existing user documentation. No Google Play submission is claimed.
 
-## September 19 follow-up: accounts and visual revision
+## Architecture and completed behavior
 
-- Owner-supplied launcher icon and transparent brand logo, deeper navy theme, asymmetric bento mode grid with distinct swords/Duo/Squad/Solo artwork, account name/level header and accessible settings icon.
-- Offline device registration/login with Android Keystore encrypted records and salted PBKDF2 password verification; account-specific offline statistics. Device accounts confer no online authority.
-- Persistent, account-scoped friend-request and invitation queue. Explicit delivery requires the matching online email; accepted friendship and authoritative lobby checks remain enforced. Requests are never described as delivered while offline.
-- Migration 24 adds service-only administrator assignment and server-calculated levels from lifetime skill-earned Flames. Default is one level per ten earned Flames, starting at one; spending does not decrease level. Formula remains adjustable pending owner confirmation.
-- The requested Mr.onyx device account was created through the registration UI and its signed-in name/level header was verified on the emulator. This does not claim server administrator provisioning.
-- Administrator credentials are in ignored `.env` only. Real administrator provisioning and online play await project URL/public key, local server credential, provider setup and target-project approval. See `docs/ONLINE_SETUP.md`. No backend deployment was performed.
-- Added English/French/Arabic strings. The new mode grid was inspected on the 1080x2340 emulator. All 19 existing instrumentation tests passed; the new offline-account flow passed separately, and both encrypted-storage tests passed separately. All 54 JVM tests and 34 backend security/scoring checks passed. Debug and optimized unsigned release builds passed; lint reports zero errors and 36 warnings (including dependency/update notices).
-- Registration UI test initially used an input value as its completion signal, then encountered a persisted duplicate test identity on retry. It now waits for the level header and uses a unique test account; the full scenario passed without changing account uniqueness rules.
-- Secret scan of debug/release DEX and packaged configuration found no administrator or service-role values. `.env` and screenshots are excluded from source archives.
+One Android module, Kotlin/Compose feature UI, independent domain/content rules and repository boundaries, encrypted account/session storage and typed Supabase snapshots. Existing working implementation was extended, not replaced with a local multiplayer simulation.
 
-## Implementation and architecture
+- Dark/light themes, supplied launcher/transparent branding, distinct mode icons, bento modes/account/room actions, username/level/photo header and settings icon. Login/create-account segmented form follows the selected theme. Google/Discord are deliberately disabled/deferred by the owner; email/password registration, login, recovery/change-password interfaces and PKCE integration remain available.
+- Device accounts register/login without a backend. Per-account offline scores and photos persist securely. Friend/invitation requests can be queued offline and explicitly delivered after connecting the matching server account. Profile/friends/search/previews/block/report flows are implemented; unrestricted chat is absent.
+- A real Mr.onyx server account with private admin membership was provisioned. The installed normal app signed into it, loaded the username/level and opened Store/Leaderboards correctly. Device sign-in gates now explain why a server connection is needed instead of claiming the user is simply logged out.
+- Private profile-photo picker/upload, EXIF orientation correction, bounded decoding, 512-pixel JPEG output and source metadata removal. Header shows the account photo or its initial. Fixed an ActivityResultRegistryOwner loss caused by the localized context, which previously crashed the profile picker screen.
+- Ledger-authoritative Gold/Gems/Flames, idempotent purchase/loadout RPCs, level 1 plus one level per ten lifetime earned Flames. Store catalog remains empty pending commercial rules. Zero-boost starts now work; two-item selections still require owned approved boosts. Flames cannot be purchased.
+- Home/navigation, leaders by mode/period/friends, language dropdown with flags, English/French/Arabic resources, Tajawal Arabic typography, RTL, preset localized reactions and bounded diagnostics.
 
-The existing single Android application module and master branch were preserved.
-Kotlin/Compose UI lives in feature packages; game/content rules, repositories,
-configuration, encrypted auth storage, localization and design components have
-separate responsibilities. Supabase owns competitive transitions and rewards.
-No service-role secret, signing key or machine-specific configuration is included.
+## Modes and mini-games
 
-Auth covers email/password, registration, recovery/change-password and Google/
-Discord PKCE integration. Verified recovery callbacks open the password form.
-Profiles show permanent player number, owned cosmetics, private email/provider
-identities and mode statistics. Friends include search, requests, previews,
-blocking and reporting. Account deletion remains gated on the retention decision.
-Store/Vault purchases use authoritative balances and persistent idempotency keys;
-loadouts require exactly two owned boosts. Achievement/daily award rules and
-catalogs are absent, so those awards remain unimplemented. No IAP pricing or boost effects were
-invented. Flames remain skill-earned. Home/navigation, leaderboards, settings,
-quick reactions and bounded local diagnostics are implemented.
+| Mode | Implemented schedule |
+| --- | --- |
+| 1v1 | 15 Question Rounds and five Image Guess rounds, authoritative first-correct question scoring, results, dice tiebreak and winner Flame |
+| Duo | 96-piece collaborative puzzle, fifteen theme drafts, five scrambles; every team continues, small rooms cycle present chooser ranks, every correct designated team +1, two winning Flames |
+| Squad | Four 20-second Precision Tap turns, 90-second Speed Sort relay, twenty server-random theme/answerer drafts, team results and four winning Flames |
+| Solo Online | 2–20 players; 20s simultaneous Precision Tap, 90s individual common-stream Speed Sort, fifteen questions (10s read +20s answer, every correct player +1), no eliminations, cumulative leader, server dice for tied leaders, exactly one winner Flame |
+| Offline | Immediate five-choice/typed Question Round, 45 seconds; five-round Image Guess with ten choices, exactly four confirmations and 30 seconds; per-account best scores, no Flames |
 
-## Mode and mini-game status
+All seven mini-games have implemented domain/server/UI paths: Question Round, Image Guess, Precision Tap, Collaborative Puzzle, Word Scramble, Speed Sort and the 20-slot Roll the Dice. Correct-only hidden Image Guess points implement the owner's decision. Server receipts conceal question correctness/weights until the deadline. Competitive results, clocks, eligibility and rewards are never accepted from client claims.
 
-| Mode | Implemented | Remaining qualification |
-| --- | --- | --- |
-| 1v1 | Server schedule, questions/images, scoring, roulette, results and Flames; Android snapshot UI | Approved image policy/content and live backend test |
-| Duo | Puzzle, 15 drafts, five scrambles, rankings and two winning Flames | Approved production content/loadouts and live 40-client test |
-| Squad | Four 20s Precision Tap turns, 90s sort, 20 random drafts, rankings and four winning Flames | Approved production content/loadouts and live concurrency test |
-| Offline | Timed XML questions, answers/results, persisted local best/ratio | Image Guess scoring decision; no invented Offline sort schedule |
-| Solo Online | Room/presence shell and reusable game components | Final phase/score schedule explicitly OPEN_DECISION |
+## Backend/security and content
 
-Question Round, Image Guess, Collaborative Puzzle, Precision Tap, Word Scramble,
-Speed Sort and the twenty-slot roulette have domain/server/UI implementations
-appropriate to the above modes. Correct/wrong answers and image weights are
-rendered only from closed-round server reveals. No fake local competitive state
-replaces the backend.
+The owner approved the shared/production project setup and separately approved the follow-up scope. All 29 migrations and 3,855 records were deployed successfully. Hosted inspection confirms zero public tables without RLS and rooms/matches/invites/reactions in the Realtime publication. Private answer keys, membership checks, strict payloads, row locks, action/reward idempotency and service-only administration remain enforced. Client admin membership cannot access service-only deletion operations. Only public URL/key enter Android; credentials remain ignored and outside source artifacts.
 
-User decisions are applied: every Duo continues; smaller rooms cycle present
-chooser ranks for all 15 questions; Squad chooser and teammate assignments are
-persisted server-random draws; each correct designated team earns +1 during the
-20-second answer window after the 15-second selection window.
+Eight UTF-8 XML packs contain 22,976 unique record/option/piece IDs. Question content includes 1,200 original numeracy/logic concepts plus 25 reviewed trivia concepts, each in English/French/Arabic (3,675 question records). Remaining records cover all mini-games/reactions. Formula-based answers are independently recomputed in tests. Typed questions and scrambles accept explicit cross-language aliases with Latin/Arabic normalization and Arabic/Persian digits; arbitrary machine translation at answer time is not used. Fifty-question locale chunks prevent parsing the whole bank on the first offline screen. Runtime XLSX parsing is absent.
 
-## Database, security and multiplayer
-
-Twenty-three transactional migrations implement schema, default-deny RLS, private
-answer/action data, social/economy RPCs, room recovery, authoritative game modes,
-leaderboards, reaction safety, private account details and catalog localization.
-Only explicitly granted user-scoped functions mutate competitive data. Server
-locks, receipt IDs, deadlines and unique reward events prevent duplicate scoring
-and rewards. New schedules sample time after acquiring locks. No client-provided
-score, balance, winner or Flame value is trusted.
-
-Typed schema/version/time gates reject stale snapshots. Realtime notifications
-are coalesced, polling recovers missed events, subscriptions have bounded cleanup,
-terminal failures retry with bounded backoff, and logout/account replacement cancels observation.
-Public Duo/Squad/Solo searches join only opened rooms with capacity and a recent
-host; private, blocked, full and wrong-mode rooms are excluded. Retries restore
-existing membership. Searches never implicitly create public team-mode rooms.
-Countdowns use a monotonic server-clock estimate. Draft chooser disconnect/forfeit
-policy is unresolved; persisted assignments wait for reconnect. Hosted WebSocket,
-network partitions and true multi-connection load are not verified by PGlite.
-
-The Edge gateway verifies user auth, uses an RPC allowlist and streams bounded,
-strict UTF-8 request bodies. It passed Deno type-checking but was not deployed.
-
-## Content, localization and visual QA
-
-Eight separate UTF-8 XML files contain 87 development records with 474 unique
-record/option/piece IDs. The repository/parser and deterministic migration,
-validation and approved-only SQL export separate display fields from private
-answers. Runtime XLSX parsing is absent. Procedural packaged SVG samples are
-bounded/static-only validated. Production validation intentionally rejects the
-DEV_SAMPLE bundle; no content was silently approved.
-
-English/French/Arabic UI resources have matching keys/placeholders. Arabic RTL,
-locale-aware numbers, bidi isolation and persisted settings are implemented.
-Language splitting is disabled so app-bundle installs can switch languages.
-FR/AR production gameplay content is not supplied; unavailable locales do not
-silently become English questions.
-
-Actual auth, Arabic settings and puzzle component screenshots were inspected at
-1080 x 2340. Fixes include compact HUD spacing, piece rotation, clear selected
-state, green/red feedback, gold rewards and separate image-viewer dismiss areas.
-SQL-fixture HUDs were also inspected in English, French at 130% text and Arabic
-RTL at 130% text. `VISUAL_QA_RESULTS.md` records coverage and limitations.
-Full live authenticated navigation, physical-device and performance QA remains
-unverified. The reference image was treated as visual guidance, not source data.
-
-## Verification actually executed
+## Verification actually performed
 
 | Check | Result |
 | --- | --- |
-| Gradle JVM unit tests | 50 passed; zero failures/errors/skips |
-| Emulator instrumentation, Android 17/API 37 | 19 passed; zero failures/errors/skips |
-| Offline smoke test with airplane mode on and Wi-Fi off | Two tests passed; prior radio settings restored |
-| Debug assembly | Passed |
-| Optimized unsigned release assembly / R8 / release vital lint | Passed |
-| Debug lint | Zero errors/fatal findings; 34 warnings |
-| SQL/RLS/game flow verification through migration 23 | 33 groups passed in PGlite |
-| Python content tests | 18 passed |
-| XML development validation | Eight files / 87 records / 474 unique IDs passed |
-| Production content validation | Correctly rejected unapproved DEV_SAMPLE records |
-| Edge request-body tests | Passed bounds, UTF-8, object-shape and cancellation checks |
-| Deno 2.5.6 Edge type-check | Passed |
-| npm audit of tools/backend-tests dependencies | Zero reported vulnerabilities |
+| JVM tests | 61 passed, zero failures/errors/skips |
+| Emulator instrumentation | 25 passed on API 37 at 1080 × 2340; isolated QA package preserves normal account data |
+| Python tests | 21 passed |
+| Production XML validation | Eight files / 3,855 records / 22,976 IDs passed |
+| SQL/RLS/game flows | 41 groups passed with real PostgreSQL semantics in PGlite, including full 20-team Duo, Squad and 20-player Solo |
+| Edge bounded request parser | Passed |
+| Debug build + lint | Passed; zero lint errors, 39 warnings |
+| Optimized release APK + AAB | Built successfully, unsigned |
+| Native packaging | ZIP and all packaged ELF load segments passed 16 KB alignment checks |
+| Hosted verification | Email login, own profile/level/admin, store, leaderboard, anonymous denial and service-only restrictions passed |
+| Actual Android hosted navigation | Mr.onyx login, header, Store and Leaderboards verified |
 
-The reference UI/account-flow follow-up is recorded in `UI_REDESIGN.md`.
-Offline navigation also passed with airplane mode on and Wi-Fi off.
+Lint warnings are dependency/update notices, unused resources, intentional icon fallback and KTX/preferences/style suggestions. No test failures were suppressed. Full emulator regression exposed the localized photo-picker owner crash and led to the fix. A Solo tiebreak SQL scoping error was fixed and retested before deployment.
 
-Lint warnings concern available dependency updates, template resources and KTX/
-SharedPreferences style suggestions. No checks were disabled to hide failures.
-The full Android test suite exposed and led to fixes for locale-dependent test
-setup, image-viewer dismissal, recovery navigation and worker-thread artwork state
-publication. Account-switch cancellation also has an explicit regression test. The suite is not a claim
-of live provider, billing, shared-backend or production-security certification.
+## Reliability and visual QA
 
-## Required human/environment inputs
+Snapshots use schema/version gates, server time anchored to monotonic client time, coalesced Realtime notifications, polling recovery, lifecycle cancellation and bounded subscription cleanup. Duplicate actions/rewards, late input, wrong membership and stale sort indexes are tested. Snapshot reads recover missed deadlines. Hosted concurrent clients and disconnect/load testing remain unverified; no production synthetic match scores were created.
 
-1. Answer the pending account-deletion retention question: anonymized completed
-   match/purchase/audit records versus erasing the player's records. Email-verified
-   destructive cleanup must match that contract before implementation is enabled.
-2. Resolve Image Guess hidden-point treatment and the final Solo schedule.
-3. Approve production/localized content, image licensing, tuning, scramble values,
-   power-up effects/catalog/grants, achievement/daily award rules, monetization and
-   chooser disconnect policy.
-4. Configure a disposable Supabase project and Auth providers for live integration;
-   supply public client configuration securely. Docker/local Supabase was absent.
-5. Provide legal pages, signing material outside Git, privacy/data-safety decisions,
-   production crash/analytics policy, billing verification and store assets.
-6. Explicitly authorize production deployment/submission when release gates pass.
+The master mockup and visual checklist were inspected. Auth in both themes, modes, profile, Arabic questions/flags, offline image art and SQL-derived HUD captures were reviewed at the 1080 × 2340 target. Rounded navy panels, cyan/purple accents, green/red feedback and gold rewards are applied. User-supplied logos and original bounded SVG art are used; illustrative mockup usernames/prices were not imported. See `VISUAL_QA_RESULTS.md` for evidence and limits.
 
-## Artifacts and reproducibility
+## Remaining decisions and genuine release blockers
 
-- `CHANGED_FILES_MANIFEST.md`: additions/modifications/deletions and SHA-256 hashes.
-- `BrainyBrawl_CHANGED_FILES.zip`: only session-added/modified source files and the
-  manifest, compared with the saved session-start hash inventory.
-- `tools/package_changed_files.py --baseline <session-baseline.json>` regenerates
-  and validates archive membership and hashes.
+- Google/Discord setup is explicitly deferred by the owner; both tiles explain their status.
+- Play signing credentials and approved privacy/terms/public deletion pages are absent. Online deletion processing needs retention policy; the queue does not claim completed deletion.
+- Hosted unattended match/abandoned-room scheduler is not installed. Android uses authenticated SQL RPCs directly; optional Edge gateway is locally implemented but not deployed.
+- Commercial catalog, boost effects/grants, monetization, achievements/daily rewards, moderation/analytics policy and team-draft chooser disconnect/forfeit behavior need approved rules.
+- Live multi-device/concurrency, signed physical-device/API 26, TalkBack and measured performance checks remain release work. No blanket Play readiness or complete 35-phase certification is claimed.
 
-The initial user's uncommitted edits and pre-existing README deletion were
-preserved. Unchanged user documents/workbooks/mockups, Git metadata, dependencies,
-build outputs, local.properties, secrets, keystores and temporary captures are
-excluded. A local implementation commit was requested by the user; Git history records
-its revision. No push, database deployment or release was performed.
+Engineering implementation/verification phases progressed through the final audit. Production setup is deployed under approval; release preparation is blocked only by the listed policy/environment/integration gates. `RELEASE_CHECKLIST.md` and `release_preflight.py` record them.
+
+## Artifacts
+
+Repository root: `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`.
+
+- `CHANGED_FILES_MANIFEST.md`: session-relative added/modified/deleted paths and hashes.
+- `BrainyBrawl_CHANGED_FILES.zip`: only files changed from the initial SHA-256 inventory at HEAD 502bd53 plus the manifest. No Git/build outputs, local.properties, .env, signing keys, caches, QA screenshots or machine configuration.
+- Local-only evidence: `.local/visual-qa/`, `.local/instrumentation-final.log`, `.local/final-build.log`, `.local/backend/verification.json`.
+- Installable normal debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
+
+The requested local Git commit is recorded separately in the final response; nothing is pushed.

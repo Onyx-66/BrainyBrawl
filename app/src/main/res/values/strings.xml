@@ -98,11 +98,11 @@
     <string name="owned">Owned</string>
     <string name="purchase">Purchase</string>
     <string name="confirm_purchase">Confirm purchase</string>
-    <string name="flames_skill_only">Flames are earned by winning 1v1, Duo or Squad. They cannot be purchased.</string>
+    <string name="flames_skill_only">Flames are earned by winning 1v1, Duo, Squad or Solo Online. They cannot be purchased.</string>
     <string name="purchase_retry">Refresh your balance and inventory before retrying. A repeated purchase request cannot charge you twice.</string>
     <string name="loadout">Choose your loadout</string>
-    <string name="choose_two_boosts">Select exactly two owned boosts.</string>
-    <string name="no_boosts">You do not have two available boosts yet.</string>
+    <string name="choose_two_boosts">Boosts are optional. Continue without them, or equip two owned boosts.</string>
+    <string name="no_boosts">No boosts are available yet. You can play without them.</string>
     <string name="lobby">Lobby</string>
     <string name="reconnecting">Reconnecting…</string>
     <string name="reconnecting_description">Restoring the latest room state. Controls return when the connection is ready.</string>
@@ -230,7 +230,7 @@
     <string name="squad_description">Teams of 4</string>
     <string name="solo_description">Free-for-all · up to 20 players</string>
     <string name="online_account_required">Sign in to join friends and compete online.</string>
-    <string name="offline_language_note">Question pack: English. Play without an account or internet.</string>
+    <string name="offline_language_note">Practice in your selected language. Five choices, or type your answer. You have 45 seconds.</string>
     <string name="play_english_questions">Play English questions</string>
     <string name="device_account">Device account</string>
     <string name="device_account_description">Create or use an account on this device, even without internet.</string>
@@ -246,4 +246,21 @@
     <string name="queue_sent">Sent</string>
     <string name="queue_waiting">Waiting to send</string>
     <string name="dismiss">Dismiss</string>
+    <string name="answer_any_language">Or type an answer in English, French or Arabic</string>
+    <string name="device_signed_in">Your device account is signed in</string>
+    <string name="online_feature_explanation">Rankings and purchases need a verified online account. Connect online to sync with the game servers. Your offline progress stays saved.</string>
+    <string name="auth_welcome">Let’s play.</string>
+    <string name="show_password">Show</string>
+    <string name="hide_password">Hide</string>
+    <string name="upload_photo">Choose profile photo</string>
+    <string name="photo_saved">Photo saved on this device</string>
+    <string name="photo_synced">Profile photo uploaded</string>
+    <string name="photo_sync_pending">Saved here. Online upload is pending; retry when connected.</string>
+    <string name="delete_account">Delete account</string>
+    <string name="delete_local_explanation">Delete this device account, its saved photo, practice history and pending invitations? Other accounts on this device are kept. This cannot be undone.</string>
+    <string name="delete_online_explanation">Request deletion of your online account and associated personal data. The request is sent to the account administrator for processing.</string>
+    <string name="deletion_requested">Your deletion request has been received.</string>
+    <string name="confirm_action">Confirm</string>
+    <string name="offline_images">Guess from Image</string>
+    <string name="providers_later">Google and Discord sign-in will be available later. Use email to get started.</string>
 </resources>

@@ -56,8 +56,7 @@ fun LobbyScreen(model:RoomViewModel,userId:String?,friends:List<FriendEntry>,onM
         }
         if(s.room.status=="lobby") {
             BrawlButton(stringResource(if(self?.ready==true)R.string.not_ready else R.string.ready),{model.ready(self?.ready!=true)},Modifier.fillMaxWidth(),enabled=enabled,tone=ActionTone.POSITIVE)
-            if(host&&s.room.mode!=OnlineMode.SOLO)BrawlButton(stringResource(R.string.start_match),{model.start(locale)},Modifier.fillMaxWidth(),enabled=enabled&&s.members.all{it.ready},tone=ActionTone.POSITIVE)
-            if(s.room.mode==OnlineMode.SOLO)Text(stringResource(R.string.solo_rules_pending))
+            if(host)BrawlButton(stringResource(R.string.start_match),{model.start(locale)},Modifier.fillMaxWidth(),enabled=enabled&&s.members.size>=2&&s.members.all{it.ready},tone=ActionTone.POSITIVE)
             Text(stringResource(R.string.invite_friends),style=MaterialTheme.typography.titleMedium)
             friends.filter{it.status=="accepted"&&s.members.none{m->m.userId==it.userId}}.forEach { friend ->
                 BrawlButton(namedString(R.string.invite_named,"name" to friend.username),{model.invite(friend.userId)},Modifier.fillMaxWidth(),enabled=enabled)

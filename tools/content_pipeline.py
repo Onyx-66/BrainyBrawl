@@ -136,7 +136,7 @@ def require(condition,message):
 
 def parse(path):
     raw=path.read_bytes()
-    require(len(raw)<=4_000_000,f'{path.name}: too large')
+    require(len(raw)<=12_000_000,f'{path.name}: too large')
     text=raw.decode('utf-8-sig')
     require('<!DOCTYPE' not in text.upper() and '<!ENTITY' not in text.upper(),f'{path.name}: DTD/entity forbidden')
     return ET.fromstring(text)
@@ -225,7 +225,7 @@ def sanitized(item,kind):
     if kind=='question_round':
         public['prompt']=fields['question']
         public['options']=[{'id':o.get('id'),'label':o.text} for o in item.findall('options/option')]
-        secret={'correct_option_id':next(o.get('id') for o in item.findall('options/option') if o.get('correct')=='true'),'explanation':fields['explanation']}
+        secret={'correct_option_id':next(o.get('id') for o in item.findall('options/option') if o.get('correct')=='true'),'explanation':fields['explanation'],'accepted_answers':[a.text for a in item.findall('acceptedAnswers/answer')] or [next(o.text for o in item.findall('options/option') if o.get('correct')=='true')]}
     elif kind=='image_guess':
         public['prompt']=fields['prompt'];public['selection_count']=4
         public['options']=[{'id':o.get('id'),'label':o.text} for o in item.findall('choices/choice')]
@@ -252,14 +252,14 @@ def sanitized(item,kind):
     return public,secret
 
 
-def export_approved(output, directory=None):
+def export_approved(output, directory=None, exclude_ids=None):
     directory=Path(directory) if directory is not None else ROOT/'content'
     validate(directory)
     approved=[]
     for kind in KINDS:
         root=parse(directory/f'{kind}.xml')
         for item in root.findall('item'):
-            if item.get('status')!='APPROVED': continue
+            if item.get('status')!='APPROVED' or item.get('id') in (exclude_ids or set()): continue
             fields={f.get('name'):f.text or '' for f in item.findall('field')}
             if kind=='image_guess': require(fields.get('scoring_policy') in ('all_selected','correct_only'),'Image scoring approval required')
             if 'asset_ref' in fields:

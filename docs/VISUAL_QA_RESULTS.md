@@ -57,3 +57,9 @@ an original brain hero; compact filled account fields leave all providers and
 Play offline visible. Poppins and blue/cyan navigation follow the reference.
 The overflowing leaderboard tile label and English question direction inside
 Arabic UI were corrected and recaptured. See `UI_REDESIGN.md` and asset credits.
+
+## Final September 19 revision
+
+Reviewed local captures in `.local/visual-qa/files/`: `redesign-auth-dark.png`, `redesign-auth-light.png`, `redesign-modes.png`, `profile-bento.png`, `redesign-offline-ar.png`, `redesign-offline-image.png`, `redesign-settings-ar.png` and `redesign-settings-fr.png`. Auth now respects the theme (the forced white card was removed at owner request); provider tiles are deliberately disabled with localized explanatory text. Profile actions use bento tiles and a photo/initial header. Arabic uses Tajawal, mirrors layout and shows immediately selectable answers and a 45-second timer. Offline images render packaged artwork, ten choices and a 30-second timer. SQL-derived Solo precision HUD also passed the visible/enabled action assertion.
+
+The actual normal app signed into the hosted account, rendered its username/level/balances and opened Store and Leaderboards without erroneous login gates. An empty catalog and no completed-match ranking are honest backend states. Final normal home evidence is `.local/visual-qa/live-home.png`. UI hierarchy was inspected for the two authenticated pages. These checks supplement the earlier mockup comparison; they do not certify every live multiplayer transition or physical-device accessibility/performance.

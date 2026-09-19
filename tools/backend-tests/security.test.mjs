@@ -30,6 +30,12 @@ try {
     create role anon nologin;
     create role authenticated nologin;
     create role service_role nologin bypassrls;
+    create schema storage;
+    create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);
+    create table storage.objects(id uuid primary key default gen_random_uuid(),bucket_id text references storage.buckets(id),name text,unique(bucket_id,name));
+    alter table storage.objects enable row level security;
+    grant usage on schema storage to authenticated;
+    grant select,insert,update,delete on storage.objects to authenticated;
     create schema auth;
     create table auth.users(id uuid primary key, email text, raw_user_meta_data jsonb not null default '{}');
     create table auth.identities(user_id uuid not null references auth.users(id),provider text not null);
@@ -37,6 +43,10 @@ try {
       $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
     grant usage on schema auth to authenticated,anon;
     grant execute on function auth.uid() to authenticated,anon;
+    insert into auth.users(id,raw_user_meta_data) values
+      ('eeeeeeee-0000-0000-0000-000000000001','{"username":"Legacy"}'),
+      ('eeeeeeee-0000-0000-0000-000000000002','{"username":"Legacy"}'),
+      ('eeeeeeee-0000-0000-0000-000000000003','{"username":"!invalid"}');
   `);
   for (const name of readdirSync(`${root}/supabase/migrations`).filter(x => x.endsWith('.sql')).sort()) {
     await db.exec(readFileSync(`${root}/supabase/migrations/${name}`, 'utf8'));
@@ -46,6 +56,17 @@ try {
     await db.query("insert into auth.users(id,email,raw_user_meta_data) values($1,$2,$3)",
       [ids[i],`test${i}@example.invalid`,JSON.stringify({username:`Tester_${i}`})]);
   }
+  await check('Existing Auth users are backfilled with unique valid profiles',async()=>{
+    const rows=(await db.query("select username from public.profiles where id::text like 'eeeeeeee-%'")).rows;
+    assert.equal(rows.length,3);assert.equal(new Set(rows.map(r=>r.username.toLowerCase())).size,3);
+    assert(rows.every(r=>/^[A-Za-z0-9_.]{3,24}$/.test(r.username)));
+  });
+  await check('Empty launch loadouts are valid but arbitrary, singleton and null boosts are rejected',async()=>{
+    await user(ids[42]);await db.query("select public.set_loadout('{}'::text[])");
+    await denied("select public.set_loadout(array['fake'])");await denied("select public.set_loadout(array['fake','other'])");await denied('select public.set_loadout(null)');
+    const room=(await db.query("select public.create_room('duel') as id")).rows[0].id;
+    await db.query('select public.set_ready($1,true)',[room]);await db.query('select public.leave_room($1)',[room]);await admin();
+  });
   await check('Every public table enables RLS', async () => {
     const result=await db.query("select relname from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relkind='r' and not c.relrowsecurity");
     assert.equal(result.rows.length,0);
@@ -196,6 +217,22 @@ try {
     await user(ids[40]); await db.query('select public.match_snapshot($1)',[match]);
     const scores=(await db.query('select user_id,score from public.match_participants where match_id=$1',[match])).rows;
     assert.equal(scores.find(x=>x.user_id===ids[40]).score,1); assert.equal(scores.find(x=>x.user_id===ids[41]).score,0);
+  });
+
+  await check('Typed answers accept explicit translations without leaking correctness',async()=>{
+    await admin();const next=(await db.query('select id,content_id from public.match_rounds where match_id=$1 and ordinal=1',[match])).rows[0];
+    await db.query("update private.content_answers set answer=answer||$2::jsonb where content_id=$1",[next.content_id,JSON.stringify({accepted_answers:['heart','cœur','قلب']})]);
+    await db.query("update public.match_rounds set starts_at=clock_timestamp()-interval '11 seconds',answer_opens_at=clock_timestamp()-interval '1 second',deadline=clock_timestamp()+interval '30 seconds' where id=$1",[next.id]);
+    await user(ids[40]);await denied('select public.submit_answer($1,$2,gen_random_uuid(),$3)',[match,next.id,JSON.stringify({answer:'قلب',points:99})]);
+    const result=(await db.query('select public.submit_answer($1,$2,gen_random_uuid(),$3) as r',[match,next.id,JSON.stringify({answer:'قَلْب'})])).rows[0].r;
+    assert.deepEqual(Object.keys(result).sort(),['accepted','receipt']);
+    await user(ids[41]);await db.query('select public.submit_answer($1,$2,gen_random_uuid(),$3)',[match,next.id,JSON.stringify({answer:'liver'})]);
+    await admin();const scores=(await db.query('select user_id,awarded_points from private.submissions where round_id=$1',[next.id])).rows;
+    assert.equal(scores.find(s=>s.user_id===ids[40]).awarded_points,1);assert.equal(scores.find(s=>s.user_id===ids[41]).awarded_points,0);
+    assert.equal((await db.query("select private.normalize_answer('٩٦') as n")).rows[0].n,'96');
+    assert.equal((await db.query("select private.normalize_answer('école') as n")).rows[0].n,'ecole');
+    await db.query("update public.match_rounds set deadline=clock_timestamp()-interval '0.5 seconds' where id=$1",[next.id]);
+    await user(ids[40]);await db.query('select public.match_snapshot($1)',[match]);
   });
 
   await check('Image Guess accepts exactly four distinct choices and conceals weights until deadline',async()=>{
@@ -372,8 +409,7 @@ try {
     for(let i=0;i<count;i++){
       const number=flowUserSequence++,id=`aaaaaaaa-0000-4000-8000-${String(number).padStart(12,'0')}`;players.push(id);
       await admin();await db.query('insert into auth.users(id,email,raw_user_meta_data) values($1,$2,$3)',[id,`flow${number}@example.invalid`,JSON.stringify({username:`Flow_${number}`})]);
-      await db.query("insert into public.inventory(user_id,cosmetic_id) values($1,'test_boost_a'),($1,'test_boost_b')",[id]);
-      await user(id);await db.query("select public.set_loadout(array['test_boost_a','test_boost_b'])");
+      await user(id);await db.query("select public.set_loadout('{}'::text[])");
     }
     await user(players[0]);const room=(await db.query('select public.create_room($1) as id',[mode])).rows[0].id;await db.query('select public.set_matchmaking($1,true)',[room]);await db.query('select public.set_ready($1,true)',[room]);
     for(const id of players.slice(1)){await user(id);await db.query('select public.join_room($1)',[room]);await db.query('select public.set_ready($1,true)',[room]);}
@@ -424,6 +460,66 @@ try {
   await check('Small Duo rooms cycle all fifteen drafts, retain every team, and award exactly two winner Flames',()=>verifyTeamFlow('duo',4));
   await check('Forty-player Duo completes all phases without eliminating any of twenty teams',()=>verifyTeamFlow('duo',40));
   await check('Squad completes precision, sort, twenty random drafts and exactly four winner Flames',()=>verifyTeamFlow('squad',8));
+  async function verifySoloFlow(count,tied){
+    const players=[];await admin();
+    for(let i=0;i<count+1;i++){
+      const n=flowUserSequence++,id=`bbbbbbbb-0000-4000-8000-${String(n).padStart(12,'0')}`;players.push(id);
+      await db.query('insert into auth.users(id,email,raw_user_meta_data) values($1,$2,$3)',[id,`solo${n}@example.invalid`,JSON.stringify({username:`Solo_${n}`})]);
+    }
+    const outsider=players.pop();await user(players[0]);
+    const room=(await db.query("select public.create_room('solo') as id")).rows[0].id;
+    await db.query('select public.set_ready($1,true)',[room]);
+    await assert.rejects(db.query('select public.start_match($1)',[room]),/players_not_ready/);
+    await db.query('select public.set_matchmaking($1,true)',[room]);
+    for(const id of players.slice(1)){await user(id);await db.query('select public.join_room($1)',[room]);await db.query('select public.set_ready($1,true)',[room]);}
+    if(count===20){await user(outsider);await denied('select public.join_room($1)',[room]);}
+    await user(players[1]);await denied('select public.start_match($1)',[room]);
+    await user(players[0]);const match=(await db.query('select public.start_match($1) as id',[room])).rows[0].id;
+    assert.equal((await db.query('select public.start_match($1) as id',[room])).rows[0].id,match);
+    await user(outsider);await denied('select public.match_snapshot($1)',[match]);
+    await admin();const rounds=(await db.query('select * from public.match_rounds where match_id=$1 order by ordinal',[match])).rows;
+    assert.equal(rounds.length,17);assert.equal(new Date(rounds[0].deadline)-new Date(rounds[0].starts_at),20_000);
+    assert.equal(new Date(rounds[1].deadline)-new Date(rounds[1].starts_at),90_000);
+    for(const r of rounds.slice(2)){assert.equal(new Date(r.answer_opens_at)-new Date(r.starts_at),10_000);assert.equal(new Date(r.deadline)-new Date(r.answer_opens_at),20_000);}
+    async function activate(index){
+      await admin();
+      await db.query("update public.match_rounds set starts_at=clock_timestamp()-interval '12 seconds',answer_opens_at=clock_timestamp()-interval '2 seconds',deadline=clock_timestamp()+interval '8 seconds' where id=$1",[rounds[index].id]);
+      await user(players[0]);return (await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s;
+    }
+    async function expire(index){await admin();await db.query("update public.match_rounds set deadline=clock_timestamp()-interval '1 second' where id=$1",[rounds[index].id]);await user(players[0]);await db.query('select public.match_snapshot($1)',[match]);}
+    let snap=await activate(0);assert.equal(snap.board.players.length,1);saveFixture('solo_precision',snap);
+    assert.equal((await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s.match.version,snap.match.version);
+    await admin();await db.query('update private.precision_states set zone_start=0 where round_id=$1',[rounds[0].id]);
+    for(const id of players){
+      await user(id);const key=(await db.query('select gen_random_uuid() as id')).rows[0].id;
+      const result=(await db.query("select public.submit_relay_action($1,$2,$3,'{}') as r",[match,rounds[0].id,key])).rows[0].r;
+      assert.equal(result.points,1);assert.deepEqual((await db.query("select public.submit_relay_action($1,$2,$3,'{}') as r",[match,rounds[0].id,key])).rows[0].r,result);
+    }
+    await expire(0);await assert.rejects(db.query("select public.submit_relay_action($1,$2,gen_random_uuid(),'{}')",[match,rounds[0].id]),/round_not_accepting/);
+    await activate(1);await admin();await db.query("update private.sort_streams set items=array['test_sort_a','test_sort_b'] where round_id=$1",[rounds[1].id]);
+    for(const id of players){
+      await user(id);snap=(await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s;
+      assert.equal(snap.board.active_user,id);assert.equal(snap.board.index,0);assert.equal(snap.board.label,'a');
+      assert.equal((await db.query('select public.submit_relay_action($1,$2,gen_random_uuid(),$3) as r',[match,rounds[1].id,JSON.stringify({index:0,bucket:'A'})])).rows[0].r.points,1);
+      await assert.rejects(db.query('select public.submit_relay_action($1,$2,gen_random_uuid(),$3)',[match,rounds[1].id,JSON.stringify({index:0,bucket:'A'})]),/stale_item/);
+    }
+    saveFixture('solo_sort',snap);await expire(1);
+    for(let i=2;i<17;i++){
+      await activate(i);await admin();const answer=(await db.query('select answer from private.content_answers where content_id=$1',[rounds[i].content_id])).rows[0].answer;
+      for(const id of players){await user(id);await db.query('select public.submit_answer($1,$2,gen_random_uuid(),$3)',[match,rounds[i].id,JSON.stringify({option_id:answer.correct_option_id})]);}
+      if(i===2)saveFixture('solo_question',(await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s);
+      if(i===16&&!tied){await admin();await db.query('update public.match_participants set score=score+1 where match_id=$1 and user_id=$2',[match,players[0]]);}
+      await expire(i);
+    }
+    snap=(await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s;
+    saveFixture('solo_results',snap);assert.equal(snap.match.status,'results');assert.equal(snap.results.length,count);assert(snap.participants.every(p=>p.eligible&&p.team_id===null));
+    assert.equal(snap.results.filter(r=>r.winner).length,1);assert(snap.results.every(r=>r.score===17||!tied&&r.user_id===players[0]&&r.score===18));
+    if(tied){assert(snap.tie_rolls.length>=count);assert(snap.tie_rolls.every(r=>r.roll>=1&&r.roll<=20));}else{assert.equal(snap.tie_rolls.length,0);assert.equal(snap.results.find(r=>r.winner).user_id,players[0]);}
+    assert.equal((await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s.match.version,snap.match.version);
+    await admin();const rewards=(await db.query('select count(*)::int as n,sum(delta)::int as points from public.currency_ledger where source_event=$1',[match])).rows[0];assert.deepEqual(rewards,{n:1,points:1});
+  }
+  await check('Twenty-player Solo runs all phases, isolates actions, accepts every correct answer and resolves tied winners once',()=>verifySoloFlow(20,true));
+  await check('Two-player Solo keeps a unique winner without roulette or duplicate rewards',()=>verifySoloFlow(2,false));
   await check('Own account details never expose other users email or provider identities',async()=>{
     await admin();await db.query("insert into auth.identities(user_id,provider) values($1,'email'),($1,'google'),($2,'discord')",[ids[40],ids[41]]);
     await user(ids[40]);const own=(await db.query('select public.profile_snapshot() as s')).rows[0].s;
@@ -489,6 +585,21 @@ try {
     await user(ids[42]);const r=await db.query('select public.profile_snapshot() as snapshot');
     assert.equal(r.rows[0].snapshot.level,4);assert.equal(r.rows[0].snapshot.lifetime_flames,30);assert.equal(r.rows[0].snapshot.is_admin,true);
     await user(ids[41]);const other=await db.query('select public.profile_snapshot() as snapshot');assert.equal(other.rows[0].snapshot.is_admin,false);
+  });
+  await check('Profile photo storage is private and cannot overwrite another user',async()=>{
+    await user(ids[42]);await db.query("insert into storage.objects(bucket_id,name) values('profile-photos',$1)",[ids[42]+'/photo.jpg']);
+    await db.query('select public.set_profile_photo()');
+    await user(ids[41]);await assert.rejects(db.query("insert into storage.objects(bucket_id,name) values('profile-photos',$1)",[ids[42]+'/photo.jpg']),/row-level security/);
+    const changed=await db.query("update storage.objects set name=$1 where name=$2 returning id",[ids[41]+'/photo.jpg',ids[42]+'/photo.jpg']);assert.equal(changed.rows.length,0);
+    await admin();assert.equal((await db.query("select public from storage.buckets where id='profile-photos'")).rows[0].public,false);
+  });
+  await check('Deletion requests are self-only, idempotent and visible only to service administrators',async()=>{
+    await user(ids[42]);await db.query('select public.request_account_deletion()');await db.query('select public.request_account_deletion()');
+    await denied('select * from private.deletion_requests');await denied('select public.admin_deletion_requests()');
+    await assert.rejects(db.query('select public.request_account_deletion($1)',[ids[41]]),/does not exist/);
+    await admin();await db.exec('set role anon');await denied('select public.request_account_deletion()');
+    await admin();await db.exec('set role service_role');const requests=(await db.query('select public.admin_deletion_requests() as r')).rows[0].r;
+    assert.equal(requests.length,1);assert.equal(requests[0].user_id,ids[42]);assert.equal(requests[0].status,'pending');
   });
   console.log(`Backend verification: ${checks} checks passed. Real PostgreSQL semantics via PGlite; network/Realtime and concurrent connections require separate integration tests.`);
 } catch(error) {

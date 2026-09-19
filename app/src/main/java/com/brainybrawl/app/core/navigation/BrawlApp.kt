@@ -43,7 +43,7 @@ import com.brainybrawl.app.core.localization.namedString
 enum class Destination(val label: Int) {
     HOME(R.string.home), MODES(R.string.modes), STORE(R.string.store),
     PROFILE(R.string.profile), FRIENDS(R.string.friends), SETTINGS(R.string.settings),
-    CONNECT_AUTH(R.string.connect_online), SHOWCASE(R.string.design_system), AUTH(R.string.login), PASSWORD(R.string.change_password), LOADOUT(R.string.loadout), LOBBY(R.string.lobby), GAME(R.string.modes), OFFLINE(R.string.offline), LEADERBOARDS(R.string.leaderboards)
+    CONNECT_AUTH(R.string.connect_online), SHOWCASE(R.string.design_system), AUTH(R.string.login), PASSWORD(R.string.change_password), LOADOUT(R.string.loadout), LOBBY(R.string.lobby), GAME(R.string.modes), OFFLINE(R.string.offline), OFFLINE_IMAGES(R.string.offline_images), LEADERBOARDS(R.string.leaderboards)
 }
 
 @Composable
@@ -61,6 +61,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
     val leaderboardModel:LeaderboardViewModel=viewModel(factory=LeaderboardViewModel.factory(container.leaderboards,container.auth))
     val matchModel:MatchViewModel=viewModel(factory=MatchViewModel.factory(container.matches,container.auth))
     val offlineModel:OfflineViewModel=viewModel(factory=OfflineViewModel.factory(container.content,container.offlineStatistics))
+    val offlineImages:OfflineImageViewModel=viewModel(factory=OfflineImageViewModel.factory(container.content,container.offlineStatistics))
     val roomActions by roomModel.actions.collectAsStateWithLifecycle()
     val socialUi by playerModel.social.collectAsStateWithLifecycle()
     var selectedMode by rememberSaveable { mutableStateOf(OnlineMode.DUEL) }
@@ -99,7 +100,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
             if(entry==null) return@LaunchedEffect
             val account=(auth as? AuthState.SignedIn)?.userId
             if(previousAccount!=null&&previousAccount!=account){
-                activeMatch=null;offlineSession=false;offlineModel.stop()
+                activeMatch=null;offlineSession=false;offlineModel.stop();offlineImages.stop()
                 previousAccount=account
                 nav.navigate(if(account==null)Destination.AUTH.name else Destination.HOME.name){popUpTo(nav.graph.id){inclusive=false};launchSingleTop=true}
                 return@LaunchedEffect
@@ -116,12 +117,14 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         }
         fun go(destination: Destination) { nav.navigate(destination.name) { launchSingleTop = true } }
         val settingsLabel=stringResource(R.string.settings)
+        val profileLabel=stringResource(R.string.profile)
         Scaffold(containerColor = MaterialTheme.colorScheme.background,
             topBar = {
                 Row(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween) {
                     Row(Modifier.weight(1f),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                        BrainMark(Modifier.size(34.dp))
+                        val identity=auth as? AuthState.SignedIn
+                        if(identity==null)BrainMark(Modifier.size(40.dp))else ProfileAvatar(container.avatars,identity.userId,localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: "?",Modifier.size(44.dp).semantics{contentDescription=profileLabel}.clickable{go(Destination.PROFILE)})
                         Column {
                             Text(localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: stringResource(R.string.app_name), style=MaterialTheme.typography.titleMedium,maxLines=1,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                             if(auth is AuthState.SignedIn) Text(namedString(R.string.player_level,"level" to ((playerState as? PlayerDataState.Ready)?.data?.level ?: 1)),style=MaterialTheme.typography.labelMedium,color=Gold)
@@ -130,7 +133,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                     IconButton(onClick={go(Destination.SETTINGS)},modifier=Modifier.semantics{contentDescription=settingsLabel}) { NavigationSymbol(NavSymbol.SETTINGS) }
                 }
             }, bottomBar = {
-                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.GAME.name) NavigationBar(containerColor = MaterialTheme.colorScheme.surface,tonalElevation=0.dp) {
+                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.GAME.name) NavigationBar(containerColor = MaterialTheme.colorScheme.surface,tonalElevation=0.dp) {
                     listOf(Destination.HOME, Destination.MODES, Destination.STORE, Destination.PROFILE).forEach { dest ->
                         NavigationBarItem(selected = route == dest.name, onClick = { go(dest) },
                             colors=NavigationBarItemDefaults.colors(selectedIconColor=Cyan,selectedTextColor=Cyan,
@@ -155,19 +158,21 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                 Destination.PROFILE -> {
                                     val signedIn=auth as? AuthState.SignedIn
                                     if(signedIn==null) AuthScreen(authViewModel,{offlineSession=true;go(Destination.MODES)})
-                                    else if(signedIn.local) LocalProfileScreen(container.localAccounts,container.offlineStatistics,{go(Destination.CONNECT_AUTH)},{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{authViewModel.logout()})
-                                    else ProfileScreen(playerModel,{go(Destination.PASSWORD)},{offlineSession=false;authViewModel.logout()})
+                                    else if(signedIn.local) LocalProfileScreen(container.localAccounts,container.offlineStatistics,container.avatars,{go(Destination.CONNECT_AUTH)},{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{authViewModel.logout()})
+                                    else ProfileScreen(playerModel,container.avatars,{go(Destination.PASSWORD)},{offlineSession=false;authViewModel.logout()})
+                                    if(signedIn!=null)AccountPrivacy(container,signedIn)
                                 }
                                 Destination.FRIENDS -> {
                                     if(online) FriendsScreen(playerModel)
                                     if(localState.current!=null && (!online || localState.current?.email.equals((auth as? AuthState.SignedIn)?.email,true)))
                                         LocalFriendsScreen(container.localAccounts,container.socialQueue,online,{go(Destination.CONNECT_AUTH)})
                                 }
-                                Destination.STORE -> StoreScreen(storeModel,online,playerModel::refresh)
+                                Destination.STORE -> if(online)StoreScreen(storeModel,true,playerModel::refresh) else OnlineFeatureGate(auth is AuthState.SignedIn){go(Destination.CONNECT_AUTH)}
                                 Destination.LOADOUT -> LoadoutScreen(storeModel,{roomModel.create(selectedMode,quickMatch);go(Destination.LOBBY)})
                                 Destination.LOBBY -> LobbyScreen(roomModel,(auth as? AuthState.SignedIn)?.userId,socialUi.snapshot.friends,
                                     {activeMatch=it;go(Destination.GAME)},{go(Destination.MODES)})
-                                Destination.LEADERBOARDS -> LeaderboardScreen(leaderboardModel,online)
+                                Destination.LEADERBOARDS -> if(online)LeaderboardScreen(leaderboardModel,true) else OnlineFeatureGate(auth is AuthState.SignedIn){go(Destination.CONNECT_AUTH)}
+                                Destination.OFFLINE_IMAGES -> OfflineImageScreen(offlineImages){go(Destination.MODES)}
                                 Destination.OFFLINE -> OfflineScreen(offlineModel,{go(Destination.MODES)})
                                 Destination.GAME -> {
                                     MatchScreen(matchModel,activeMatch,{playerModel.refresh();go(Destination.MODES)})
@@ -198,22 +203,23 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     expandedMode?.let { mode ->
                                         BrawlPanel(Modifier.fillMaxWidth()){
                                             if(!online)Text(stringResource(R.string.online_account_required))
-                                            BrawlButton(stringResource(R.string.create_private),{
-                                                if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
-                                                else{selectedMode=mode;quickMatch=false;storeModel.refresh();go(Destination.LOADOUT)}
-                                            },Modifier.fillMaxWidth())
-                                            BrawlButton(stringResource(if(mode==OnlineMode.DUEL)R.string.quick_match else R.string.find_public_room),{
-                                                if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
-                                                else{selectedMode=mode;quickMatch=true;storeModel.refresh();go(Destination.LOADOUT)}
-                                            },Modifier.fillMaxWidth(),tone=ActionTone.POSITIVE)
+                                            ActionBento(listOf(
+                                                BentoAction(stringResource(R.string.create_private),NavSymbol.HOME){
+                                                    if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
+                                                    else{selectedMode=mode;quickMatch=false;storeModel.refresh();go(Destination.LOADOUT)}
+                                                },
+                                                BentoAction(stringResource(if(mode==OnlineMode.DUEL)R.string.quick_match else R.string.find_public_room),NavSymbol.GAMES){
+                                                    if(!online)go(if(auth is AuthState.SignedIn)Destination.CONNECT_AUTH else Destination.PROFILE)
+                                                    else{selectedMode=mode;quickMatch=true;storeModel.refresh();go(Destination.LOADOUT)}
+                                                }))
                                         }
                                     }
                                     BrawlPanel(Modifier.fillMaxWidth()){
                                         Text(stringResource(R.string.offline),style=MaterialTheme.typography.titleLarge)
                                         Text(stringResource(R.string.offline_language_note),style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
-                                        BrawlButton(stringResource(if(settings.language=="en")R.string.offline_questions else R.string.play_english_questions),{
-                                            offlineModel.start("en");go(Destination.OFFLINE)
-                                        },Modifier.fillMaxWidth(),tone=ActionTone.POSITIVE)
+                                        ActionBento(listOf(
+                                            BentoAction(stringResource(R.string.offline_questions),NavSymbol.GAMES){offlineModel.start(settings.language);go(Destination.OFFLINE)},
+                                            BentoAction(stringResource(R.string.offline_images),NavSymbol.IMAGE){offlineImages.start(settings.language);go(Destination.OFFLINE_IMAGES)}))
                                     }
                                     if(online){
                                         BrawlButton(stringResource(R.string.refresh_invites),roomModel::refreshInvites,Modifier.fillMaxWidth())
@@ -227,9 +233,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                         Text(stringResource(R.string.dark_theme),Modifier.weight(1f)); Switch(dark, { container.settings.update(settings.copy(dark=it)) })
                                     }
                                     Text(stringResource(R.string.language),style=MaterialTheme.typography.titleLarge)
-                                    listOf("en" to R.string.language_english,"fr" to R.string.language_french,"ar" to R.string.language_arabic).forEach { (code,label) ->
-                                        AnswerOption(stringResource(label),settings.language==code,true,{container.settings.update(settings.copy(language=code))})
-                                    }
+                                    LanguageDropdown(settings.language){container.settings.update(settings.copy(language=it))}
                                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween){
                                         Text(stringResource(R.string.audio),Modifier.weight(1f));Switch(settings.audio,{container.settings.update(settings.copy(audio=it))})
                                     }

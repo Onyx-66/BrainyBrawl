@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<content kind="reactions" schemaVersion="1" contentVersion="1">
-  <item id="REACTION_EN_001" locale="en" status="DEV_SAMPLE">
+<content kind="reactions" schemaVersion="1" contentVersion="2">
+  <item id="REACTION_EN_001" locale="en" status="APPROVED">
     <field name="trigger">streak_perfect</field>
     <field name="color_cue">green</field>
     <field name="text">Excellent!</field>
@@ -8,8 +8,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_001</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_002" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_002" locale="en" status="APPROVED">
     <field name="trigger">streak_perfect</field>
     <field name="color_cue">green</field>
     <field name="text">Perfect!</field>
@@ -17,8 +18,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_002</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_003" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_003" locale="en" status="APPROVED">
     <field name="trigger">streak_perfect</field>
     <field name="color_cue">green</field>
     <field name="text">On Fire!</field>
@@ -26,8 +28,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_003</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_004" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_004" locale="en" status="APPROVED">
     <field name="trigger">streak_perfect</field>
     <field name="color_cue">green</field>
     <field name="text">Unstoppable!</field>
@@ -35,8 +38,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_004</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_005" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_005" locale="en" status="APPROVED">
     <field name="trigger">correct</field>
     <field name="color_cue">green</field>
     <field name="text">Great!</field>
@@ -44,8 +48,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_005</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_006" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_006" locale="en" status="APPROVED">
     <field name="trigger">correct</field>
     <field name="color_cue">green</field>
     <field name="text">Nice!</field>
@@ -53,8 +58,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_006</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_007" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_007" locale="en" status="APPROVED">
     <field name="trigger">correct</field>
     <field name="color_cue">green</field>
     <field name="text">Correct!</field>
@@ -62,8 +68,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_007</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_008" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_008" locale="en" status="APPROVED">
     <field name="trigger">correct</field>
     <field name="color_cue">green</field>
     <field name="text">Well Done!</field>
@@ -71,8 +78,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_008</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_009" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_009" locale="en" status="APPROVED">
     <field name="trigger">near_miss</field>
     <field name="color_cue">yellow_orange</field>
     <field name="text">So Close...</field>
@@ -80,8 +88,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_009</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_010" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_010" locale="en" status="APPROVED">
     <field name="trigger">near_miss</field>
     <field name="color_cue">yellow_orange</field>
     <field name="text">Almost!</field>
@@ -89,8 +98,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_010</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_011" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_011" locale="en" status="APPROVED">
     <field name="trigger">near_miss</field>
     <field name="color_cue">yellow_orange</field>
     <field name="text">Just Missed It!</field>
@@ -98,8 +108,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_011</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_012" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_012" locale="en" status="APPROVED">
     <field name="trigger">near_miss</field>
     <field name="color_cue">yellow_orange</field>
     <field name="text">So Near!</field>
@@ -107,8 +118,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_012</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_013" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_013" locale="en" status="APPROVED">
     <field name="trigger">wrong</field>
     <field name="color_cue">red_grey</field>
     <field name="text">Oops!</field>
@@ -116,8 +128,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_013</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_014" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_014" locale="en" status="APPROVED">
     <field name="trigger">wrong</field>
     <field name="color_cue">red_grey</field>
     <field name="text">Not Quite...</field>
@@ -125,8 +138,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_014</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_015" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_015" locale="en" status="APPROVED">
     <field name="trigger">wrong</field>
     <field name="color_cue">red_grey</field>
     <field name="text">Try Again!</field>
@@ -134,8 +148,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_015</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_016" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_016" locale="en" status="APPROVED">
     <field name="trigger">wrong</field>
     <field name="color_cue">red_grey</field>
     <field name="text">Missed It!</field>
@@ -143,8 +158,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_016</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_017" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_017" locale="en" status="APPROVED">
     <field name="trigger">fastest</field>
     <field name="color_cue">blue</field>
     <field name="text">Lightning Fast!</field>
@@ -152,8 +168,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_017</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_018" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_018" locale="en" status="APPROVED">
     <field name="trigger">fastest</field>
     <field name="color_cue">blue</field>
     <field name="text">Quickest Draw!</field>
@@ -161,8 +178,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_018</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_019" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_019" locale="en" status="APPROVED">
     <field name="trigger">fastest</field>
     <field name="color_cue">blue</field>
     <field name="text">Speed Demon!</field>
@@ -170,8 +188,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_019</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_020" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_020" locale="en" status="APPROVED">
     <field name="trigger">fastest</field>
     <field name="color_cue">blue</field>
     <field name="text">Too Fast!</field>
@@ -179,8 +198,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_020</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_021" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_021" locale="en" status="APPROVED">
     <field name="trigger">teamwork</field>
     <field name="color_cue">purple</field>
     <field name="text">Great Teamwork!</field>
@@ -188,8 +208,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_021</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_022" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_022" locale="en" status="APPROVED">
     <field name="trigger">teamwork</field>
     <field name="color_cue">purple</field>
     <field name="text">In Sync!</field>
@@ -197,8 +218,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_022</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_023" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_023" locale="en" status="APPROVED">
     <field name="trigger">teamwork</field>
     <field name="color_cue">purple</field>
     <field name="text">Perfect Combo!</field>
@@ -206,8 +228,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_023</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_024" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_024" locale="en" status="APPROVED">
     <field name="trigger">teamwork</field>
     <field name="color_cue">purple</field>
     <field name="text">Nice Coordination!</field>
@@ -215,8 +238,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_024</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_025" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_025" locale="en" status="APPROVED">
     <field name="trigger">rank_change</field>
     <field name="color_cue">blue_yellow</field>
     <field name="text">Climbing Up!</field>
@@ -224,8 +248,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_025</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_026" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_026" locale="en" status="APPROVED">
     <field name="trigger">rank_change</field>
     <field name="color_cue">blue_yellow</field>
     <field name="text">Watch Out!</field>
@@ -233,8 +258,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_026</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_027" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_027" locale="en" status="APPROVED">
     <field name="trigger">rank_change</field>
     <field name="color_cue">blue_yellow</field>
     <field name="text">Falling Behind!</field>
@@ -242,8 +268,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_027</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_028" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_028" locale="en" status="APPROVED">
     <field name="trigger">rank_change</field>
     <field name="color_cue">blue_yellow</field>
     <field name="text">New Rank!</field>
@@ -251,8 +278,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_028</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_029" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_029" locale="en" status="APPROVED">
     <field name="trigger">match_result</field>
     <field name="color_cue">green_or_grey</field>
     <field name="text">Victory!</field>
@@ -260,8 +288,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_029</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_030" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_030" locale="en" status="APPROVED">
     <field name="trigger">match_result</field>
     <field name="color_cue">green_or_grey</field>
     <field name="text">You Win!</field>
@@ -269,8 +298,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_030</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_031" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_031" locale="en" status="APPROVED">
     <field name="trigger">match_result</field>
     <field name="color_cue">green_or_grey</field>
     <field name="text">Good Game</field>
@@ -278,8 +308,9 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_031</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
-  <item id="REACTION_EN_032" locale="en" status="DEV_SAMPLE">
+  <item id="REACTION_EN_032" locale="en" status="APPROVED">
     <field name="trigger">match_result</field>
     <field name="color_cue">green_or_grey</field>
     <field name="text">So Close — Try Again!</field>
@@ -287,5 +318,646 @@
     <field name="source_note">DEV_SAMPLE</field>
     <field name="localization_key">reaction_en_032</field>
     <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_001_FR" locale="fr" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Excellent !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_001_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_001_AR" locale="ar" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">ممتاز!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_001_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_002_FR" locale="fr" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Parfait !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_002_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_002_AR" locale="ar" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">رائع!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_002_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_003_FR" locale="fr" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">En feu !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_003_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_003_AR" locale="ar" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">متألق!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_003_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_004_FR" locale="fr" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">Inarrêtable !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_004_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_004_AR" locale="ar" status="APPROVED">
+    <field name="trigger">streak_perfect</field>
+    <field name="color_cue">green</field>
+    <field name="text">لا تُوقف!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_004_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_005_FR" locale="fr" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Super !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_005_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_005_AR" locale="ar" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">عظيم!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_005_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_006_FR" locale="fr" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Bien joué !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_006_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_006_AR" locale="ar" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">أحسنت!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_006_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_007_FR" locale="fr" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Correct !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_007_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_007_AR" locale="ar" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">صحيح!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_007_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_008_FR" locale="fr" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">Bravo !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_008_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_008_AR" locale="ar" status="APPROVED">
+    <field name="trigger">correct</field>
+    <field name="color_cue">green</field>
+    <field name="text">عمل رائع!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_008_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_009_FR" locale="fr" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">Si près…</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_009_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_009_AR" locale="ar" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">قريب جدًا…</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_009_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_010_FR" locale="fr" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">Presque !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_010_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_010_AR" locale="ar" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">تقريبًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_010_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_011_FR" locale="fr" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">De peu !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_011_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_011_AR" locale="ar" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">فاتتك بقليل!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_011_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_012_FR" locale="fr" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">Tout près !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_012_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_012_AR" locale="ar" status="APPROVED">
+    <field name="trigger">near_miss</field>
+    <field name="color_cue">yellow_orange</field>
+    <field name="text">كنت قريبًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_012_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_013_FR" locale="fr" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Oups !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_013_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_013_AR" locale="ar" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">عفوًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_013_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_014_FR" locale="fr" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Pas tout à fait…</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_014_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_014_AR" locale="ar" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">ليس تمامًا…</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_014_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_015_FR" locale="fr" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Réessaie !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_015_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_015_AR" locale="ar" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">حاول مجددًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_015_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_016_FR" locale="fr" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">Raté !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_016_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_016_AR" locale="ar" status="APPROVED">
+    <field name="trigger">wrong</field>
+    <field name="color_cue">red_grey</field>
+    <field name="text">فاتتك!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_016_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_017_FR" locale="fr" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Rapide comme l’éclair !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_017_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_017_AR" locale="ar" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">بسرعة البرق!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_017_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_018_FR" locale="fr" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Le plus rapide !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_018_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_018_AR" locale="ar" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">الأسرع!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_018_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_019_FR" locale="fr" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">À toute vitesse !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_019_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_019_AR" locale="ar" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">سرعة مذهلة!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_019_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_020_FR" locale="fr" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">Quelle vitesse !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_020_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_020_AR" locale="ar" status="APPROVED">
+    <field name="trigger">fastest</field>
+    <field name="color_cue">blue</field>
+    <field name="text">سريع جدًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_020_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_021_FR" locale="fr" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Belle équipe !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_021_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_021_AR" locale="ar" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">عمل جماعي رائع!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_021_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_022_FR" locale="fr" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Synchronisés !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_022_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_022_AR" locale="ar" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">متناغمون!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_022_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_023_FR" locale="fr" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Combo parfait !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_023_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_023_AR" locale="ar" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">تناغم مثالي!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_023_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_024_FR" locale="fr" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">Belle coordination !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_024_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_024_AR" locale="ar" status="APPROVED">
+    <field name="trigger">teamwork</field>
+    <field name="color_cue">purple</field>
+    <field name="text">تنسيق رائع!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_024_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_025_FR" locale="fr" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Ça monte !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_025_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_025_AR" locale="ar" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">تتقدم!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_025_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_026_FR" locale="fr" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Attention !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_026_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_026_AR" locale="ar" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">انتبه!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_026_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_027_FR" locale="fr" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Du retard !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_027_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_027_AR" locale="ar" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">تتأخر!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_027_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_028_FR" locale="fr" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">Nouveau rang !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_028_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_028_AR" locale="ar" status="APPROVED">
+    <field name="trigger">rank_change</field>
+    <field name="color_cue">blue_yellow</field>
+    <field name="text">مرتبة جديدة!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_028_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_029_FR" locale="fr" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Victoire !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_029_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_029_AR" locale="ar" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">انتصار!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_029_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_030_FR" locale="fr" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Tu gagnes !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_030_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_030_AR" locale="ar" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">فزت!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_030_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_031_FR" locale="fr" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Belle partie</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_031_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_031_AR" locale="ar" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">مباراة رائعة</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_031_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_032_FR" locale="fr" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">Si près… Réessaie !</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_032_fr</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
+  </item>
+  <item id="REACTION_EN_032_AR" locale="ar" status="APPROVED">
+    <field name="trigger">match_result</field>
+    <field name="color_cue">green_or_grey</field>
+    <field name="text">قريب جدًا… حاول مجددًا!</field>
+    <field name="display_duration">1.2-1.5s</field>
+    <field name="source_note">DEV_SAMPLE</field>
+    <field name="localization_key">reaction_en_032_ar</field>
+    <field name="category">preset</field>
+    <field name="review_method">Contract validation, authored translation review and launch content review 2026-09-19</field>
   </item>
 </content>

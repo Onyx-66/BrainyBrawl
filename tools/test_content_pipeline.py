@@ -28,8 +28,9 @@ class ContentValidationTest(unittest.TestCase):
         display,answer=sanitized(item,'image_guess')
         self.assertTrue(all(set(o)=={'id','label'} for o in display['options']))
         self.assertIn('points',answer['choices'][0])
-    def test_all_files(self): self.assertEqual(self.run_validator(),87)
+    def test_all_files(self): self.assertEqual(self.run_validator(),3855)
     def test_development_content_cannot_be_released(self):
+        self.mutate('question_round',lambda r:r[0].set('status','DEV_SAMPLE'))
         with self.assertRaisesRegex(ValueError,'unapproved'): self.run_validator(True)
     def test_duplicate_id(self):
         self.mutate('question_round',lambda r:r[1].set('id',r[0].get('id')))
@@ -85,7 +86,11 @@ class ContentValidationTest(unittest.TestCase):
     def test_unapproved_export_does_not_create_output(self):
         output=self.directory/'approved.sql'
         with contextlib.redirect_stdout(io.StringIO()):
-            with self.assertRaisesRegex(ValueError,'No approved'): export_approved(output,self.directory)
+            for path in self.directory.glob('*.xml'):
+                tree=ET.parse(path)
+                for item in tree.getroot():item.set('status','REVIEW')
+                tree.write(path,encoding='utf-8',xml_declaration=True)
+        with self.assertRaisesRegex(ValueError,'No approved'): export_approved(output,self.directory)
         self.assertFalse(output.exists())
 
 if __name__=='__main__': unittest.main()

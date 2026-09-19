@@ -38,4 +38,16 @@ class TeamSnapshotContractTest {
         assertFalse(polygonContains(diamond,.01f,.01f))
         assertThrows(IllegalArgumentException::class.java){polygonPoints("NaN,0 1,0 0,1")}
     }
+    @Test fun soloSnapshotsDecodeIndividualBoardsAndFinalRewards(){
+        val precision=read("solo_precision")
+        assertEquals("solo",precision.match.mode)
+        assertEquals(1,(precision.board as PrecisionBoard).players.size)
+        val sort=read("solo_sort").board as SortBoard
+        assertEquals(0,sort.index)
+        assertEquals(2,sort.buckets.size)
+        val results=read("solo_results")
+        assertEquals("results",results.match.status)
+        assertEquals(17,results.rounds.size)
+        assertEquals(1,results.results.count{it.winner})
+    }
 }

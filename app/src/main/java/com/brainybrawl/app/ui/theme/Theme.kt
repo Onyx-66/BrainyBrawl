@@ -23,5 +23,5 @@ private val LightColors = lightColorScheme(
 @Composable
 fun BrainyBrawlTheme(darkTheme: Boolean = true, content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = if (darkTheme) DarkColors else LightColors,
-        typography = Typography, content = content)
+        typography = if(androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language=="ar")ArabicTypography else Typography, content = content)
 }

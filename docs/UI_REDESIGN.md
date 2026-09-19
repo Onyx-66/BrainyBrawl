@@ -40,3 +40,7 @@ optimized unsigned release assembly, and lint with zero errors/34 warnings.
 Screenshot capture tests passed again after the visual corrections. The offline
 regression additionally checks that five answers appear after the reading timer,
 that a selection reveals feedback, and that Next advances the question.
+
+## Current follow-up
+
+See `SESSION_REPORT.md` and `VISUAL_QA_RESULTS.md` for the final themed segmented authentication, photo header, Tajawal RTL, flags dropdown, bento account/mode/room actions and hosted account verification. The owner specifically requested dark/light auth surfaces after the initial white-card reference layout; the latest build follows that preference.

@@ -85,4 +85,8 @@ class GameHudVisualTest {
         rule.waitUntil(10_000){rule.onAllNodesWithText("test").fetchSemanticsNodes().isNotEmpty()}
         rule.onNodeWithText("test").performScrollTo().assertIsDisplayed()
     }
+    @Test fun soloPrecisionShowsOnlyOwnPlayableBoard()=render("solo_precision","en",1f){
+        rule.waitUntil(10_000){rule.onAllNodesWithText("Tap!").fetchSemanticsNodes().isNotEmpty()}
+        rule.onNodeWithText("Tap!").assertIsDisplayed().assertIsEnabled()
+    }
 }

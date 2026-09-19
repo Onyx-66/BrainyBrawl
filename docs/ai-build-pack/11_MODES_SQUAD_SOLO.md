@@ -41,20 +41,22 @@ Top Squad members each receive 1 Flame.
 
 ## Solo Online
 
-The GDD defines Solo Online as up to 20 players in a free-for-all room,
-host-started. The exact Solo Online phase/score schedule is not fully
-specified beyond its inclusion of Precision Tap and Speed Sort in the
-mini-game section.
+Owner delegated the final rule decision to engineering on 2026-09-19.
 
-Therefore: - implement room/presence infrastructure now; - implement the
-reusable Precision Tap and Speed Sort components; - mark the final Solo
-Online match schedule as `OPEN_DECISION` rather than inventing it.
+- 2–20 individual players; private by default, host starts when everybody is ready.
+- Three-second synchronized countdown.
+- Precision Tap: all players act simultaneously for 20 seconds. Existing streak scoring applies.
+- Speed Sort: 90 seconds. Everyone receives the same shuffled sequence but maintains their own index; correct +1, wrong 0 and streak reset.
+- Question Round: 15 distinct questions, each with 10 seconds to read then 20 seconds to answer. Every correct player earns +1. Accepted multilingual aliases apply.
+- No eliminations; cumulative individual scores determine standings.
+- A unique leader wins. Tied leaders use server-owned 20-slot dice; only players tied at the highest roll reroll until one winner remains. Other equal scores share their competition rank.
+- Winner earns exactly one Flame. Offline practice earns none. Boosts are optional at launch.
+- Deadlines remain authoritative during disconnect; reconnect restores current state without extending time. Missed questions earn zero.
 
 ## Deliverables
 
-Squad lobby, relay scheduling, shared boards, theme draft, results, and
-a Solo Online shell that can accept the final rules without architecture
-changes.
+Squad relay/draft and Solo individual schedules, interactive boards, server scoring,
+reconnect recovery, results, and idempotent Flame rewards.
 
 ## Mandatory visual reference
 

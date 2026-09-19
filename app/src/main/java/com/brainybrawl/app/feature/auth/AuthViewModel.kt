@@ -30,7 +30,11 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
             AuthForm.CHANGE_PASSWORD -> repository.changePassword(password)
         }
     }
-    fun oauth(provider: AuthProvider) = perform { if(repository.onlineConfigured)repository.oauth(provider)else AuthNotice.BACKEND_REQUIRED }
+    fun providerEnabled(provider:AuthProvider)=when(provider){
+        AuthProvider.GOOGLE->com.brainybrawl.app.BuildConfig.GOOGLE_AUTH_ENABLED=="true"
+        AuthProvider.DISCORD->com.brainybrawl.app.BuildConfig.DISCORD_AUTH_ENABLED=="true"
+    }
+    fun oauth(provider: AuthProvider) = perform { if(!providerEnabled(provider))AuthNotice.REQUEST_FAILED else if(repository.onlineConfigured)repository.oauth(provider)else AuthNotice.BACKEND_REQUIRED }
     fun callback(uri: String) = perform { repository.callback(uri) }
     fun consumeNotice(){mutableUi.value=mutableUi.value.copy(notice=AuthNotice.NONE)}
     fun logout() = perform { repository.logout() }
