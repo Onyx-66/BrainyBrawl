@@ -30,8 +30,8 @@ android {
         applicationId = if(providers.gradleProperty("isolatedQa").orNull=="true")"com.brainybrawl.app.qa" else "com.brainybrawl.app"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GOOGLE_AUTH_ENABLED", publicConfig("GOOGLE_AUTH_ENABLED"))
@@ -111,7 +111,7 @@ abstract class PrepareContentAssets : DefaultTask() {
     @TaskAction fun prepare() {
         fs.sync {
             from(contentDirectory) { include("*.xml"); into("content") }
-            from(artDirectory) { include("**/*.svg"); into("assets") }
+            from(artDirectory) { include("**/*.svg", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.webp"); into("assets") }
             into(outputDirectory)
         }
         // Small locale packs keep opening an offline round fast on real phones.

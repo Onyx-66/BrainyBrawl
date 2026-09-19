@@ -32,6 +32,7 @@ class AppContainer(context: Context) {
         }
         install(Postgrest);install(Realtime);install(Functions);install(io.github.jan.supabase.storage.Storage)
     } else null
+    val screenArt=com.brainybrawl.app.core.design.ScreenArtRepository(applicationContext)
     val settings=com.brainybrawl.app.feature.settings.SettingsRepository(applicationContext)
     val localAccounts=com.brainybrawl.app.feature.auth.LocalAccounts(object:com.brainybrawl.app.feature.auth.LocalAccountVault{
         private val encrypted=EncryptedAuthStore(applicationContext)

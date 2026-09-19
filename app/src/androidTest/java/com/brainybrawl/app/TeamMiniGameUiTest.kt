@@ -49,15 +49,30 @@ class TeamMiniGameUiTest {
     }
     @Test fun puzzleRendersPackagedArtAndSubmitsOwnedPiecePlacement(){
         val context=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
-        val puzzle=com.brainybrawl.app.game.content.XmlContentParser().parse(context.assets.open("content/collaborative_puzzle.xml"),com.brainybrawl.app.game.content.ContentKind.PUZZLE).first() as com.brainybrawl.app.game.content.PuzzleContent
+        val puzzle=com.brainybrawl.app.game.content.XmlContentParser().parse(context.assets.open("content/collaborative_puzzle.xml"),com.brainybrawl.app.game.content.ContentKind.PUZZLE).filterIsInstance<com.brainybrawl.app.game.content.PuzzleContent>().first{it.assetRef.endsWith(".png")}
         fun polygon(piece:com.brainybrawl.app.game.content.PuzzlePiece)=piece.polygon.joinToString(" "){"${it.x},${it.y}"}
-        val board=PuzzleBoardView(puzzle.pieces.map{PuzzleTile(it.id,it.side,it.rotation,polygon(it))},puzzle.pieces.map{PuzzleSlot(it.slot,polygon(it))},emptyList(),emptyList(),emptyList())
+        val board=PuzzleBoardView(puzzle.pieces.map{PuzzleTile(it.id,it.side,it.rotation,polygon(it),it.assetRef)},puzzle.pieces.map{PuzzleSlot(it.slot,polygon(it))},emptyList(),emptyList(),emptyList())
+        val current=androidx.compose.runtime.mutableStateOf(board)
         var placement:Triple<String,String,Int>?=null
         rule.setContent { LocalizedContent("en") { BrainyBrawlTheme { Surface(Modifier.fillMaxSize()) { Column(Modifier.padding(20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-            PuzzleGame(board,puzzle.assetRef,0,"test-player",true,{piece,slot,rotation->placement=Triple(piece,slot,rotation)},{_,_->})
+            PuzzleGame(current.value,puzzle.assetRef,0,"test-player",true,{piece,slot,rotation->placement=Triple(piece,slot,rotation)},{_,_->})
         } } } } }
         rule.waitUntil(10_000){rule.onAllNodesWithText("Choose a board slot").fetchSemanticsNodes().isNotEmpty()}
         rule.onNodeWithText("Choose a board slot").assertIsDisplayed()
+        val faded=rule.onNodeWithTag("puzzle-board").captureToImage().asAndroidBitmap()
+        val original=com.brainybrawl.app.core.design.loadPackagedArtwork(context.assets,puzzle.assetRef)
+        fun checkColor(rendered:android.graphics.Bitmap,column:Int,row:Int,opacity:Float){
+            val u=(column+.5f)/12;val v=(row+.5f)/8
+            val source=original.getPixel((u*original.width).toInt(),(v*original.height).toInt())
+            val actual=rendered.getPixel((u*rendered.width).toInt(),(v*rendered.height).toInt())
+            for(channel in listOf<(Int)->Int>(android.graphics.Color::red,android.graphics.Color::green,android.graphics.Color::blue)){
+                assertEquals("Image opacity",channel(source)*opacity+255*(1-opacity),channel(actual).toFloat(),18f)
+            }
+        }
+        checkColor(faded,0,0,.6f);checkColor(faded,5,2,.6f);checkColor(faded,11,6,.6f)
+        rule.runOnIdle{current.value=board.copy(placements=listOf(PuzzlePlacement(puzzle.pieces.first().id,puzzle.pieces.first().slot,"test-player")))}
+        checkColor(rule.onNodeWithTag("puzzle-board").captureToImage().asAndroidBitmap(),0,0,1f)
+        rule.runOnIdle{current.value=board}
         val screenshot=rule.onRoot().captureToImage()
         val file=java.io.File(context.getExternalFilesDir(null),"puzzle-ui.png")
         java.io.FileOutputStream(file).use{screenshot.asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}

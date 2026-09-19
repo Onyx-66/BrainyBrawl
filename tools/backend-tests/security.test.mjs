@@ -308,7 +308,7 @@ try {
     teamMatch=(await db.query("insert into public.matches(room_id,mode,status) values($1,'duo','active') returning id",[roomId])).rows[0].id;
     const teams=['55555555-5555-5555-5555-555555555555','66666666-6666-6666-6666-666666666666'];
     for(let i=0;i<4;i++)await db.query('insert into public.match_participants(match_id,user_id,team_id,seat) values($1,$2,$3,$4)',[teamMatch,ids[10+i],teams[Math.floor(i/2)],i%2]);
-    await db.query("insert into public.content_items(id,kind,locale,schema_version,content_version,status,payload) values('test_puzzle','collaborative_puzzle','en',1,1,'APPROVED','{}'),('test_scramble','word_scramble','en',1,1,'APPROVED','{}')");
+    await db.query("insert into public.content_items(id,kind,locale,schema_version,content_version,status,payload) values('test_puzzle','collaborative_puzzle','en',1,1,'APPROVED','{\"layout_type\":\"grid_12x8\"}'),('test_scramble','word_scramble','en',1,1,'APPROVED','{}')");
     const pieces=Array.from({length:96},(_,i)=>({id:`p${i}`,slot:`s${i}`,side:i<48?'LEFT':'RIGHT',rotation:0,polygon:`${(i%12)/12},${Math.floor(i/12)/8} ${(i%12+1)/12},${Math.floor(i/12)/8} ${(i%12+1)/12},${(Math.floor(i/12)+1)/8} ${(i%12)/12},${(Math.floor(i/12)+1)/8}`}));
     await db.query("insert into private.content_answers(content_id,answer) values('test_puzzle',$1),('test_scramble',$2)",[JSON.stringify({pieces}),JSON.stringify({accepted_answers:['CAFE','COFFEE'],full_points:10,reduced_points:6})]);
     const phase=(await db.query("insert into public.match_phases(match_id,ordinal,kind,status) values($1,0,'collaborative_puzzle','active') returning id",[teamMatch])).rows[0].id;
@@ -415,7 +415,16 @@ try {
     for(const id of players.slice(1)){await user(id);await db.query('select public.join_room($1)',[room]);await db.query('select public.set_ready($1,true)',[room]);}
     await user(players[0]);const match=(await db.query('select public.start_match($1) as id',[room])).rows[0].id;
     assert.equal((await db.query('select public.start_match($1) as id',[room])).rows[0].id,match);
-    await admin();await db.query("update public.match_rounds set starts_at=clock_timestamp()-interval '1 second',answer_opens_at=clock_timestamp()-interval '1 second' where match_id=$1",[match]);
+    await admin();
+    const duration=(await db.query('select extract(epoch from deadline-starts_at)::int as seconds from public.match_rounds where match_id=$1 and ordinal=0',[match])).rows[0].seconds;
+    assert.equal(duration,mode==='duo'?180:80);
+    if(mode==='duo'){
+      await db.query("update public.match_rounds set starts_at=clock_timestamp()-interval '121 seconds',answer_opens_at=clock_timestamp()-interval '121 seconds',deadline=clock_timestamp()+interval '59 seconds' where match_id=$1 and ordinal=0",[match]);
+      await user(players[0]);const active=(await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s;
+      assert.equal(active.rounds.find(r=>r.ordinal===0).status,'active');
+      await admin();
+    }
+    await db.query("update public.match_rounds set starts_at=clock_timestamp()-interval '1 second',answer_opens_at=clock_timestamp()-interval '1 second' where match_id=$1",[match]);
     await db.query("update public.match_phases set starts_at=clock_timestamp()-interval '1 second' where match_id=$1 and ordinal=0",[match]);
     await user(players[0]);saveFixture(mode+'_initial',(await db.query('select public.match_snapshot($1) as s',[match])).rows[0].s);
 

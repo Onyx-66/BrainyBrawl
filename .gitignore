@@ -26,3 +26,6 @@ local.properties
 BrainyBrawl_CHANGED_FILES.zip
 
 **/__pycache__/
+
+# Installable handoff builds stay local
+/deliverables/*.apk

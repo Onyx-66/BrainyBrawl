@@ -157,3 +157,8 @@ pages and deployment approval remain the existing owner-controlled gates.
 - Launch boosts: an empty loadout is permitted; a selected loadout must still contain exactly two distinct owned/approved boosts. Effects, starter grants and commercial pricing remain unresolved and are not invented.
 - Solo Online: owner delegated the rule decision. The final schedule is recorded in `11_MODES_SQUAD_SOLO.md`: 2–20 players, 20s simultaneous Precision Tap, 90s individual Speed Sort, 15 questions (10s read +20s answer), every correct player +1, no elimination, one winner Flame, server dice for tied leaders. This supersedes the earlier Solo OPEN_DECISION.
 - Shared/production setup was explicitly approved for the supplied project. Schema/content/admin deployment is tracked in `../PRODUCTION_DEPLOYMENT_REVIEW.md`; this does not authorize Play submission or invent legal/retention terms.
+
+
+## Owner artwork and puzzle update — September 19, 2026
+
+RESOLVED: New puzzles use a regular 12-column × 8-row grid, 96 exact square PNG cuts, a 60%-opacity full-image guide, and 180 seconds. This owner instruction replaces the earlier irregular-pieces/120-second requirement. Existing published IDs and in-flight rounds retain their original contract. Splash and home choose from their respective packaged image folders once per app launch; home uses 75% opacity. See `../PUZZLE_BACKGROUND_UPDATE.md` for migration scope.

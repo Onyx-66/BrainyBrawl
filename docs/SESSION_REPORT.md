@@ -18,7 +18,7 @@ One Android module, Kotlin/Compose feature UI, independent domain/content rules 
 | Mode | Implemented schedule |
 | --- | --- |
 | 1v1 | 15 Question Rounds and five Image Guess rounds, authoritative first-correct question scoring, results, dice tiebreak and winner Flame |
-| Duo | 96-piece collaborative puzzle, fifteen theme drafts, five scrambles; every team continues, small rooms cycle present chooser ranks, every correct designated team +1, two winning Flames |
+| Duo | 180-second 12×8 / 96-piece collaborative puzzle, fifteen theme drafts, five scrambles; every team continues, small rooms cycle present chooser ranks, every correct designated team +1, two winning Flames |
 | Squad | Four 20-second Precision Tap turns, 90-second Speed Sort relay, twenty server-random theme/answerer drafts, team results and four winning Flames |
 | Solo Online | 2–20 players; 20s simultaneous Precision Tap, 90s individual common-stream Speed Sort, fifteen questions (10s read +20s answer, every correct player +1), no eliminations, cumulative leader, server dice for tied leaders, exactly one winner Flame |
 | Offline | Immediate five-choice/typed Question Round, 45 seconds; five-round Image Guess with ten choices, exactly four confirmations and 30 seconds; per-account best scores, no Flames |
@@ -27,22 +27,22 @@ All seven mini-games have implemented domain/server/UI paths: Question Round, Im
 
 ## Backend/security and content
 
-The owner approved the shared/production project setup and separately approved the follow-up scope. All 29 migrations and 3,855 records were deployed successfully. Hosted inspection confirms zero public tables without RLS and rooms/matches/invites/reactions in the Realtime publication. Private answer keys, membership checks, strict payloads, row locks, action/reward idempotency and service-only administration remain enforced. Client admin membership cannot access service-only deletion operations. Only public URL/key enter Android; credentials remain ignored and outside source artifacts.
+The owner approved the shared/production project setup and separately approved the follow-up scope. All 30 migrations and 3,861 records were deployed successfully. Hosted inspection confirms zero public tables without RLS and rooms/matches/invites/reactions in the Realtime publication. Private answer keys, membership checks, strict payloads, row locks, action/reward idempotency and service-only administration remain enforced. Client admin membership cannot access service-only deletion operations. Only public URL/key enter Android; credentials remain ignored and outside source artifacts.
 
-Eight UTF-8 XML packs contain 22,976 unique record/option/piece IDs. Question content includes 1,200 original numeracy/logic concepts plus 25 reviewed trivia concepts, each in English/French/Arabic (3,675 question records). Remaining records cover all mini-games/reactions. Formula-based answers are independently recomputed in tests. Typed questions and scrambles accept explicit cross-language aliases with Latin/Arabic normalization and Arabic/Persian digits; arbitrary machine translation at answer time is not used. Fifty-question locale chunks prevent parsing the whole bank on the first offline screen. Runtime XLSX parsing is absent.
+Eight UTF-8 XML packs contain 23,558 unique record/option/piece IDs. Question content includes 1,200 original numeracy/logic concepts plus 25 reviewed trivia concepts, each in English/French/Arabic (3,675 question records). Remaining records cover all mini-games/reactions. Formula-based answers are independently recomputed in tests. Typed questions and scrambles accept explicit cross-language aliases with Latin/Arabic normalization and Arabic/Persian digits; arbitrary machine translation at answer time is not used. Fifty-question locale chunks prevent parsing the whole bank on the first offline screen. Runtime XLSX parsing is absent.
 
 ## Verification actually performed
 
 | Check | Result |
 | --- | --- |
-| JVM tests | 61 passed, zero failures/errors/skips |
-| Emulator instrumentation | 25 passed on API 37 at 1080 × 2340; isolated QA package preserves normal account data |
-| Python tests | 21 passed |
-| Production XML validation | Eight files / 3,855 records / 22,976 IDs passed |
+| JVM tests | 63 passed, zero failures/errors/skips |
+| Emulator instrumentation | 27 passed on API 37 at 1080 × 2340; isolated QA package preserves normal account data |
+| Python tests | 24 passed |
+| Production XML validation | Eight files / 3,861 records / 23,558 IDs passed |
 | SQL/RLS/game flows | 41 groups passed with real PostgreSQL semantics in PGlite, including full 20-team Duo, Squad and 20-player Solo |
 | Edge bounded request parser | Passed |
 | Debug build + lint | Passed; zero lint errors, 39 warnings |
-| Optimized release APK + AAB | Built successfully, unsigned |
+| Optimized release APK | Version 1.0.1 built successfully, unsigned; AAB was verified on the preceding revision |
 | Native packaging | ZIP and all packaged ELF load segments passed 16 KB alignment checks |
 | Hosted verification | Email login, own profile/level/admin, store, leaderboard, anonymous denial and service-only restrictions passed |
 | Actual Android hosted navigation | Mr.onyx login, header, Store and Leaderboards verified |
@@ -54,6 +54,16 @@ Lint warnings are dependency/update notices, unused resources, intentional icon 
 Snapshots use schema/version gates, server time anchored to monotonic client time, coalesced Realtime notifications, polling recovery, lifecycle cancellation and bounded subscription cleanup. Duplicate actions/rewards, late input, wrong membership and stale sort indexes are tested. Snapshot reads recover missed deadlines. Hosted concurrent clients and disconnect/load testing remain unverified; no production synthetic match scores were created.
 
 The master mockup and visual checklist were inspected. Auth in both themes, modes, profile, Arabic questions/flags, offline image art and SQL-derived HUD captures were reviewed at the 1080 × 2340 target. Rounded navy panels, cyan/purple accents, green/red feedback and gold rewards are applied. User-supplied logos and original bounded SVG art are used; illustrative mockup usernames/prices were not imported. See `VISUAL_QA_RESULTS.md` for evidence and limits.
+
+## Version 1.0.1 artwork and puzzle update
+
+Applied the owner’s supplied scene and mockup artwork selectively: four mode shields, three currency icons, two empty-state illustrations and an additional puzzle image. New Duo puzzles show the full image at 60% opacity beneath a regular 12×8 grid. Both 1536×1024 originals produce 96 exact 128×128 PNG pieces each with the adapted reference cutter; byte-for-byte reconstruction tests pass. Six new localized records and migration 030 were deployed after separate owner approval, preserving all 3,855 previous published records and active deadlines. Hosted checksum/function/content verification passed.
+
+Splash uses a randomly selected packaged scene, transparent logo and loading progress tied to artwork/account initialization. Home uses a scene at 75% opacity. Selection happens once per app launch and remains stable through navigation. Each folder currently contains one image, so visible variation requires additional supplied images. Bitmap decoding and caching are bounded, and missing artwork has a safe fallback.
+
+Visual review covered the splash, grid board, updated badges, both home themes and the installed normal app with Mr.onyx still signed in. A transparent-Scaffold text-color regression found during screenshot review was fixed, then the five affected navigation tests passed again. Pixel assertions verify both opacity values and full-color placed pieces. No tests were disabled. Final debug/optimized-release assembly, JVM tests and lint pass; lint has zero errors and 39 warnings. Debug APK signature, ZIP CRC, all 192 tiles, both scenes, secret exclusion, absence of test fixtures and four native ELF/ZIP 16 KB alignment checks pass.
+
+Installable phone test build: `deliverables/BrainyBrawl-1.0.1.apk`, 30,170,598 bytes, Android 8.0/API 26+, package `com.brainybrawl.app`, version code 2. SHA-256: `69d0829e16fbeab11b0a5a33cc1aeec19812054af87fb320fd1105fb50508be7`. This is development-signed, not a Play release. The normal emulator app was updated without clearing account data and relaunched successfully.
 
 ## Remaining decisions and genuine release blockers
 
@@ -72,6 +82,6 @@ Repository root: `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`.
 - `CHANGED_FILES_MANIFEST.md`: session-relative added/modified/deleted paths and hashes.
 - `BrainyBrawl_CHANGED_FILES.zip`: only files changed from the initial SHA-256 inventory at HEAD 502bd53 plus the manifest. No Git/build outputs, local.properties, .env, signing keys, caches, QA screenshots or machine configuration.
 - Local-only evidence: `.local/visual-qa/`, `.local/instrumentation-final.log`, `.local/final-build.log`, `.local/backend/verification.json`.
-- Installable normal debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
+- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.1.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
 
 The requested local Git commit is recorded separately in the final response; nothing is pushed.

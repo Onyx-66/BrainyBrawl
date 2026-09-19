@@ -15,14 +15,14 @@ Implement the 40-player / 20-team Duo mode exactly as specified.
 ## Phase 1 --- Collaborative Puzzle
 
 -   96 pieces.
--   12×8 conceptual board.
+-   12 columns × 8 rows with equal square pieces (owner update, September 19, 2026).
 -   Split left/right halves between teammates.
--   120 seconds.
+-   180 seconds.
 -   +1 per correct placement.
 -   Rank all Duos.
 -   Teammate cursor/placement attempts are live.
--   Irregular variable-sized blocks, not merely uniform squares.
--   Incorrect/unplaced slots remain visually distinct.
+-   Exact row-major PNG cuts from the source, using the supplied cutter algorithm.
+-   Show the complete image at 60% opacity beneath the grid; correctly placed pieces become fully opaque.
 
 ## Tiebreak
 

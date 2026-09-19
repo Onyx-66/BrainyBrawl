@@ -25,12 +25,12 @@ content/configuration supplied by the XLSX/database.
 ## Collaborative Puzzle
 
 -   96 pieces.
--   Conceptual 12×8 layout.
+-   Exact 12×8 grid of equal square pieces (owner update, September 19, 2026).
 -   Left/right split.
--   120s.
+-   180s.
 -   +1 correct placement.
 -   Live teammate cursor/attempt visibility.
--   Irregular variable-sized blocks.
+-   Source image at 60% opacity beneath the grid; 96 exact PNG cuts.
 -   Crisp full-color art when correctly placed.
 
 ## Precision Tap

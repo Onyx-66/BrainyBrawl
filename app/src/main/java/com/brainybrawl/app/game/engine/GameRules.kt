@@ -39,7 +39,7 @@ object ModeRules {
         return scheduled.copy(chooserRank=(scheduled.chooserRank-1)%teamCount+1)
     }
     val squadPrecisionTurns=List(4){20_000L}
-    const val PUZZLE_MILLIS=120_000L
+    const val PUZZLE_MILLIS=180_000L
     const val SQUAD_SORT_MILLIS=90_000L
     const val SELECTION_MILLIS=15_000L
     const val DUO_SCRAMBLE_MILLIS=15_000L

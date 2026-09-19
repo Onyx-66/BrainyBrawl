@@ -11,6 +11,9 @@ class LocalAccountNavigationTest {
     @get:Rule val rule=createAndroidComposeRule<MainActivity>()
     private val container get()=(rule.activity.application as BrainyBrawlApplication).container
     @After fun cleanup(){runBlocking{container.auth.logout()}}
+    @org.junit.Before fun awaitStartup(){
+        rule.waitUntil(15_000){rule.onAllNodes(androidx.compose.ui.test.hasText(rule.activity.getString(R.string.play_offline))).fetchSemanticsNodes().isNotEmpty()}
+    }
     @Test fun registerQueueAndReconnectKeepLocalIdentity(){
         val name="Device."+java.util.UUID.randomUUID().toString().take(8)
         rule.runOnIdle{container.settings.update(UserSettings())}

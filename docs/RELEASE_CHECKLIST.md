@@ -4,10 +4,10 @@ The owner-authorized Supabase schema/content/admin setup is deployed. Google Pla
 
 ## Passed engineering checks
 
-- 61 JVM tests, 25 API 37 emulator instrumentation tests, 21 Python tests, 41 PostgreSQL/PGlite verification groups and Edge request-body tests.
-- Debug assembly, debug lint (zero errors; 39 warnings), optimized unsigned release APK and unsigned AAB.
+- 63 JVM tests, 27 API 37 emulator instrumentation tests, 24 Python tests, 41 PostgreSQL/PGlite verification groups and Edge request-body tests.
+- Debug assembly, debug lint (zero errors; 39 warnings), optimized unsigned release APK 1.0.1; unsigned AAB was verified on the preceding revision.
 - APK ZIP alignment and all bundled native ELF load segments meet 16 KB alignment. A physical 16 KB device run is still outstanding.
-- Eight production XML packs: 3,855 approved records, including 1,225 question concepts in each of English/French/Arabic. Cross-language aliases and independent numeracy checks pass.
+- Eight production XML packs: 3,861 approved records, including 1,225 question concepts in each of English/French/Arabic. Cross-language aliases and independent numeracy checks pass.
 - Real hosted email sign-in, account/level/admin status, Store and Leaderboards, RLS and service-only RPC restrictions. Actual Android Store/Leaderboard navigation works while signed in.
 - Dark/light auth surfaces, bento modes/actions, local/online profile flow, Arabic RTL/Tajawal, French, immediate offline answer controls, 45-second questions, 30-second offline images and isolated SQL-fixture multiplayer HUDs.
 

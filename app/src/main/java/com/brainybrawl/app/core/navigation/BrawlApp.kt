@@ -68,16 +68,17 @@ fun BrawlApp(authViewModel: AuthViewModel) {
     var quickMatch by rememberSaveable { mutableStateOf(false) }
     var activeMatch by rememberSaveable { mutableStateOf<String?>(null) }
     var offlineSession by rememberSaveable { mutableStateOf(false) }
-    if(auth==AuthState.Loading) {
-        BrainyBrawlTheme {
-            Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(32.dp),
-                verticalArrangement=Arrangement.Center) {
-                Text(stringResource(R.string.app_name),style=MaterialTheme.typography.headlineLarge)
-                Spacer(Modifier.height(24.dp))
-                LinearProgressIndicator(Modifier.fillMaxWidth())
-                Text(stringResource(R.string.loading))
-            }
+    val screenArt by container.screenArt.state.collectAsStateWithLifecycle()
+    var startupPresented by rememberSaveable{mutableStateOf(false)}
+    LaunchedEffect(Unit){container.screenArt.prepare()}
+    LaunchedEffect(screenArt.ready,auth==AuthState.Loading){
+        if(screenArt.ready&&auth!=AuthState.Loading){
+            // Brief completion transition; the progress bar reflects actual loading work.
+            kotlinx.coroutines.delay(350);startupPresented=true
         }
+    }
+    if(!startupPresented||!screenArt.ready||auth==AuthState.Loading){
+        BrainyBrawlTheme{StartupSplash(screenArt,auth==AuthState.Loading)}
         return
     }
     val settings by container.settings.state.collectAsStateWithLifecycle()
@@ -118,9 +119,12 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         fun go(destination: Destination) { nav.navigate(destination.name) { launchSingleTop = true } }
         val settingsLabel=stringResource(R.string.settings)
         val profileLabel=stringResource(R.string.profile)
-        Scaffold(containerColor = MaterialTheme.colorScheme.background,
+        Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)){
+        if(route==Destination.HOME.name)ScreenBackdrop(screenArt.home,.75f)
+        Scaffold(containerColor = if(route==Destination.HOME.name)Color.Transparent else MaterialTheme.colorScheme.background,
+            contentColor=MaterialTheme.colorScheme.onBackground,
             topBar = {
-                Row(Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
+                Row(Modifier.fillMaxWidth().then(if(route==Destination.HOME.name)Modifier.background(MaterialTheme.colorScheme.background.copy(alpha=.9f))else Modifier).statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween) {
                     Row(Modifier.weight(1f),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
                         val identity=auth as? AuthState.SignedIn
@@ -147,8 +151,8 @@ fun BrawlApp(authViewModel: AuthViewModel) {
             NavHost(nav, Destination.AUTH.name, Modifier.padding(padding).imePadding()) {
                 Destination.entries.forEach { destination ->
                     composable(destination.name) {
-                        Column(Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(
-                            MaterialTheme.colorScheme.background, MaterialTheme.colorScheme.surface.copy(alpha = .4f))))
+                        Column(Modifier.fillMaxSize().then(if(destination==Destination.HOME)Modifier else Modifier.background(Brush.verticalGradient(listOf(
+                            MaterialTheme.colorScheme.background, MaterialTheme.colorScheme.surface.copy(alpha = .4f)))))
                             .verticalScroll(rememberScrollState()).padding(20.dp),
                             verticalArrangement = Arrangement.spacedBy(when(destination){Destination.GAME->8.dp;Destination.AUTH,Destination.PROFILE->10.dp;else->16.dp})) {
                             when(destination) {
@@ -182,7 +186,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                 }
                                 Destination.HOME -> {
                                     (playerState as? PlayerDataState.Ready)?.data?.let { CurrencyBar(it) }
-                                    Text(stringResource(R.string.welcome),style=MaterialTheme.typography.headlineLarge)
+                                    Text(stringResource(R.string.welcome),style=MaterialTheme.typography.headlineLarge.copy(shadow=androidx.compose.ui.graphics.Shadow(Color(0xFF061228),androidx.compose.ui.geometry.Offset(0f,2f),8f)),color=Color.White)
                                     GameHero{go(Destination.MODES)}
                                     Row(Modifier.height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
                                         GameTile(stringResource(R.string.modes),stringResource(R.string.tile_modes),NavSymbol.GAMES,listOf(Color(0xFF2D9859),Color(0xFF16C78A)),Modifier.weight(1f).fillMaxHeight()){go(Destination.MODES)}
@@ -256,6 +260,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                     }
                 }
             }
+        }
         }
     }
 }

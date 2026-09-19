@@ -10,3 +10,6 @@
 - Launcher icon and transparent Brainy Brawl logo: supplied by the project owner on September 19, 2026. Source images are copied intact to drawable-nodpi/brand_icon.png and brand_logo.png.
 
 - Tajawal Regular, Bold and ExtraBold: [official Google Fonts distribution](https://github.com/google/fonts/tree/main/ofl/tajawal), SIL Open Font License 1.1. Bundled in `res/font`; license in `assets/licenses/Tajawal-OFL.txt`. Arabic uses these fonts instead of platform fallback.
+
+- Selected mode badges, currency symbols, empty-store/ranking art, and Orbital Garden puzzle: owner-supplied `assets_mockups` pack. The pack describes these as original artwork. Selected source names and hashes are recorded in `assets/SELECTED_MOCKUP_ASSETS.json`; none of its sample product data is shipped.
+- Alpine lake puzzle and splash/home scenes: supplied by the project owner. Originals are preserved in `assets/puzzles` and `assets/screen`. Puzzle PNG tiles are exact, unresized crops made with `tools/puzzle_image_cutter.py`, adapted from the owner-supplied reference script.

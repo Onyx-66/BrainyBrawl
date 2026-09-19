@@ -76,7 +76,7 @@ class XmlContentParser {
                     ImageContent(meta, value("theme"), value("specification"), value("prompt"), asset(), choices, value("explanation"), policy)
                 }
                 ContentKind.PUZZLE -> {
-                    require(value("piece_count") == "96" && value("columns") == "12" && value("rows") == "8" && value("time_limit_seconds") == "120")
+                    require(value("piece_count") == "96" && value("columns") == "12" && value("rows") == "8" && value("time_limit_seconds") == if(values["layout_type"]=="grid_12x8")"180" else "120")
                     val pieces = nodes("pieces", "piece").map {
                         val row = it.getAttribute("row").toInt(); val column = it.getAttribute("column").toInt()
                         val side = it.getAttribute("side")
@@ -86,7 +86,7 @@ class XmlContentParser {
                             Point(xy[0].toFloat(), xy[1].toFloat()).also { q -> require(q.x in 0f..1f && q.y in 0f..1f) }
                         }
                         require(polygon.size >= 4)
-                        PuzzlePiece(id(it.getAttribute("id")), id(it.getAttribute("slot")), row, column, side, it.getAttribute("rotation").toInt(), polygon)
+                        PuzzlePiece(id(it.getAttribute("id")), id(it.getAttribute("slot")), row, column, side, it.getAttribute("rotation").toInt(), polygon,it.getAttribute("asset_ref").takeIf(String::isNotBlank)?.also{ref->require(ref.startsWith("assets/")&&!ref.contains("..")&&!ref.contains('\\'))})
                     }
                     require(pieces.size == 96 && pieces.map { it.row to it.column }.toSet().size == 96)
                     PuzzleContent(meta, asset(), pieces)

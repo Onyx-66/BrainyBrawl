@@ -52,12 +52,13 @@ fun BrawlPanel(modifier: Modifier = Modifier, content: @Composable ColumnScope.(
 }
 
 @Composable
-fun ResourceChip(label: String, value: String, tint: Color, modifier: Modifier = Modifier) {
+fun ResourceChip(label: String, value: String, tint: Color, modifier: Modifier = Modifier, icon:Int?=null) {
     Surface(modifier.semantics(mergeDescendants = true) {},
         color = MaterialTheme.colorScheme.surfaceVariant, shape = RoundedCornerShape(30.dp)) {
         Row(Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            icon?.let{androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(it),null,Modifier.size(22.dp))}
             Text(label, color = tint, style = MaterialTheme.typography.labelMedium)
             Text(value, style = MaterialTheme.typography.labelLarge)
         }

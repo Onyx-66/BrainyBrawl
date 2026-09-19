@@ -1,0 +1,38 @@
+{
+  "app/src/main/res/drawable-nodpi/bb_badge_duel.png": {
+    "source": "03_assets/badges/bb_badge_duel.png",
+    "sha256": "e5a903beafe1d8ca3313fdd333ff72fd3aae7af497b352d0af73064b6d74a59b"
+  },
+  "app/src/main/res/drawable-nodpi/bb_badge_duo.png": {
+    "source": "03_assets/badges/bb_badge_duo.png",
+    "sha256": "34287ba0965f149a450f3d56e62f26dff8e5aec63424dce529ac743c46dd23fd"
+  },
+  "app/src/main/res/drawable-nodpi/bb_badge_squad.png": {
+    "source": "03_assets/badges/bb_badge_squad.png",
+    "sha256": "a35b8cbd47bb80b391ba005e83046e19b2e69b4084f647a01fe926b759995cd8"
+  },
+  "app/src/main/res/drawable-nodpi/bb_badge_solo.png": {
+    "source": "03_assets/badges/bb_badge_solo.png",
+    "sha256": "7145033bcd52b02e8a833fa523a09b91a3abcec303620d1045bb30ed45b4c99b"
+  },
+  "app/src/main/res/drawable-nodpi/bb_currency_gold.png": {
+    "source": "03_assets/currency/bb_currency_gold.png",
+    "sha256": "7683226ec0e75b3a4d03c42df0340ee2b8d736fc46440fefa2b7d32273e6b601"
+  },
+  "app/src/main/res/drawable-nodpi/bb_currency_gems.png": {
+    "source": "03_assets/currency/bb_currency_gems.png",
+    "sha256": "97a2d3349578f0024750461ec3ca2dc8542b170936a191a39df0638b45312502"
+  },
+  "app/src/main/res/drawable-nodpi/bb_currency_flames.png": {
+    "source": "03_assets/currency/bb_currency_flames.png",
+    "sha256": "48c8f3effb4d656a952b29d83dd244e9189017ba7bce5a39b2ceb08f86eb8b13"
+  },
+  "app/src/main/res/drawable-nodpi/bb_state_empty_store.png": {
+    "source": "03_assets/illustrations/bb_state_empty_store.png",
+    "sha256": "c1a3860e19fce3d2d873e298d7b68b2f80815814174ada19420669325c0b3d8e"
+  },
+  "app/src/main/res/drawable-nodpi/bb_state_no_rankings.png": {
+    "source": "03_assets/illustrations/bb_state_no_rankings.png",
+    "sha256": "a09e4bfbb1e0eff26031a0bba39c9a22771ba0586e06290636f906c6c39e3ff9"
+  }
+}

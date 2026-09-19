@@ -24,13 +24,27 @@ class RedesignedNavigationTest {
         val file=java.io.File(rule.activity.getExternalFilesDir(null),"redesign-$name.png")
         java.io.FileOutputStream(file).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
     }
+    @org.junit.Before fun awaitStartup(){
+        rule.waitUntil(15_000){rule.onAllNodes(androidx.compose.ui.test.hasText(rule.activity.getString(R.string.play_offline))).fetchSemanticsNodes().isNotEmpty()}
+    }
     @Test fun guestCanBrowseHomeModesAndOpenEveryAccountOption(){
         rule.onNodeWithText(text(R.string.email)).assertIsDisplayed()
         capture("auth")
         rule.onNodeWithText(text(R.string.play_offline)).performScrollTo().performClick()
         capture("modes")
         rule.onNodeWithText(text(R.string.home)).performClick()
+        val heading=rule.onNodeWithText(text(R.string.welcome)).captureToImage().asAndroidBitmap()
+        var brightPixels=0
+        for(y in 0 until heading.height)for(x in 0 until heading.width){
+            val pixel=heading.getPixel(x,y)
+            if(android.graphics.Color.red(pixel)>225&&android.graphics.Color.green(pixel)>225&&android.graphics.Color.blue(pixel)>225)brightPixels++
+        }
+        org.junit.Assert.assertTrue("Home heading stays legible over artwork",brightPixels>50)
         capture("home")
+        rule.runOnIdle{app.container.settings.update(UserSettings(dark=false))}
+        rule.onNodeWithText(text(R.string.welcome)).assertIsDisplayed()
+        capture("home-light")
+        rule.runOnIdle{app.container.settings.update(UserSettings())}
         rule.onNodeWithText(text(R.string.profile)).performClick()
         rule.onNodeWithText(text(R.string.email)).assertIsDisplayed()
         rule.onNodeWithText(text(R.string.google)).performScrollTo().assertIsNotEnabled()

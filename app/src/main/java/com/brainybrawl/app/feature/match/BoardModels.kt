@@ -14,7 +14,7 @@ import com.brainybrawl.app.game.content.Point
     @SerialName("active_user")val activeUser:String,val buckets:List<String>):BoardState
 @Serializable @SerialName("collaborative_puzzle") data class PuzzleBoardView(val pieces:List<PuzzleTile>,val slots:List<PuzzleSlot>,
     val placements:List<PuzzlePlacement>,val cursors:List<PuzzleCursor>,val attempts:List<PuzzleAttempt>):BoardState
-@Serializable data class PuzzleTile(val id:String,val side:String,val rotation:Int,val polygon:String)
+@Serializable data class PuzzleTile(val id:String,val side:String,val rotation:Int,val polygon:String,@SerialName("asset_ref")val assetRef:String?=null)
 @Serializable data class PuzzleSlot(val id:String,val polygon:String)
 @Serializable data class PuzzlePlacement(@SerialName("piece_id")val pieceId:String,@SerialName("slot_id")val slotId:String,@SerialName("user_id")val userId:String)
 @Serializable data class PuzzleCursor(@SerialName("user_id")val userId:String,val x:Float,val y:Float)

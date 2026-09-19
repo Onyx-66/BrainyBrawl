@@ -16,6 +16,9 @@ class NavigationSmokeTest {
             app.container.settings.update(com.brainybrawl.app.feature.settings.UserSettings(language="en"))
         }
     }).around(rule)
+    @org.junit.Before fun awaitStartup(){
+        rule.waitUntil(15_000){rule.onAllNodes(androidx.compose.ui.test.hasText(rule.activity.getString(R.string.play_offline))).fetchSemanticsNodes().isNotEmpty()}
+    }
     @Test fun offlineQuestionLoadsWithoutBackend() {
         rule.onNodeWithText(rule.activity.getString(R.string.play_offline)).performScrollTo().performClick()
         rule.onNodeWithText(rule.activity.getString(R.string.offline_questions)).performScrollTo().performClick()

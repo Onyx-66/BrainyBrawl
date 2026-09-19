@@ -20,7 +20,7 @@ data class ImageContent(override val meta: ContentMeta, val theme: String, val s
 
 data class Point(val x: Float, val y: Float)
 data class PuzzlePiece(val id: String, val slot: String, val row: Int, val column: Int,
-    val side: String, val rotation: Int, val polygon: List<Point>)
+    val side: String, val rotation: Int, val polygon: List<Point>, val assetRef:String?=null)
 data class PuzzleContent(override val meta: ContentMeta, val assetRef: String,
     val pieces: List<PuzzlePiece>) : GameContent
 

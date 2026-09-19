@@ -186,7 +186,13 @@ def validate(directory=None,production=False):
                     require(piece.get('side')==('LEFT' if c<6 else 'RIGHT'),f'{pid}: owner')
                     points=[tuple(map(float,p.split(','))) for p in piece.get('polygon','').split()]
                     require(len(points)>=4 and all(0<=x<=1 and 0<=y<=1 for x,y in points),f'{pid}: geometry')
-                require(fields['time_limit_seconds']=='120',f'{key}: puzzle timer')
+                    if fields.get('layout_type')=='grid_12x8':
+                        expected=[(c/12,r/8),((c+1)/12,r/8),((c+1)/12,(r+1)/8),(c/12,(r+1)/8)]
+                        require(len(points)==4 and all(abs(x-a)<1e-8 and abs(y-b)<1e-8 for (x,y),(a,b) in zip(points,expected)),f'{pid}: exact grid geometry')
+                        tile=(ROOT/piece.get('asset_ref','')).resolve()
+                        require(tile.is_relative_to(ROOT/'assets') and tile.is_file() and tile.suffix=='.png',f'{pid}: missing/unsafe tile asset')
+
+                require(fields['time_limit_seconds']==('180' if fields.get('layout_type')=='grid_12x8' else '120'),f'{key}: puzzle timer')
             elif kind=='precision_tap':
                 options=[];has('rotation_degrees_per_second','hot_zone_degrees','streak_rule')
                 require(fields['turn_seconds']=='20' and fields['streak_bonus_at_3']=='2',f'{key}: written precision rules')
@@ -241,6 +247,7 @@ def sanitized(item,kind):
     elif kind=='collaborative_puzzle':
         public['piece_count']=96
         secret['pieces']=[dict(p.attrib) for p in item.findall('pieces/piece')]
+        if fields.get('layout_type')=='grid_12x8': public.update(layout_type='grid_12x8',time_limit_seconds=180)
     elif kind=='precision_tap':
         public.update({k:fields[k] for k in ('rotation_degrees_per_second','hot_zone_degrees','speed_increment','width_increment','max_hot_zone_degrees')})
         secret['streak_rule']='hit_awards_current_streak'

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brainybrawl.app.R
@@ -39,7 +40,10 @@ import com.brainybrawl.app.core.localization.namedString
             Text(stringResource(R.string.your_rank),style=MaterialTheme.typography.titleLarge)
             board.own?.let{RankRow(it,filter.metric!="highest_score")}?:Text(stringResource(R.string.unranked))
         }
-        if(board.rows.isEmpty())Text(stringResource(R.string.no_rankings))
+        if(board.rows.isEmpty()){
+            androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(R.drawable.bb_state_no_rankings),null,Modifier.fillMaxWidth().height(120.dp))
+            Text(stringResource(R.string.no_rankings))
+        }
         board.rows.forEach{player->BrawlPanel(Modifier.fillMaxWidth()){RankRow(player,filter.metric!="highest_score")}}
     }
 }

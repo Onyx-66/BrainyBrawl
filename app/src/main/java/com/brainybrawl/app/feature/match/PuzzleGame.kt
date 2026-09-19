@@ -17,6 +17,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.*
+import androidx.compose.ui.platform.testTag
+import kotlin.math.roundToInt
 import com.brainybrawl.app.R
 import com.brainybrawl.app.core.design.*
 import com.brainybrawl.app.core.localization.namedString
@@ -45,7 +47,7 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
     val slots=remember(board.slots){board.slots.associate{it.id to polygonPoints(it.polygon)}}
     val tiles=remember(board.pieces){board.pieces.associate{it.id to polygonPoints(it.polygon)}}
     fun place(x:Float,y:Float){if(enabled)selected?.let{piece->slots.entries.firstOrNull{polygonContains(it.value,x,y)}?.let{onPlace(piece,it.key,rotation)}}}
-    Box(Modifier.fillMaxWidth().aspectRatio(1.5f)){
+    Box(Modifier.fillMaxWidth().aspectRatio(1.5f).testTag("puzzle-board")){
         Canvas(Modifier.fillMaxSize().pointerInput(selected,rotation,enabled,slots){
             detectTapGestures{if(enabled)place(it.x/size.width,it.y/size.height)}
         }.pointerInput(selected,rotation,enabled,slots){
@@ -53,13 +55,13 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
                 onDragEnd={cursor?.let{place(it.x/size.width,it.y/size.height)};cursor=null},
                 onDrag={change,amount->change.consume();cursor=(cursor?:change.position)+amount;cursor?.let{onCursor(it.x/size.width,it.y/size.height)}})
         }){
-            drawRect(PanelRaised)
+            drawRect(Color.White)
+            drawImage(image,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()),alpha=.60f)
             board.slots.forEach{slot->
                 val path=shape(slots.getValue(slot.id),size.width,size.height)
                 val placed=board.placements.any{it.slotId==slot.id}
                 if(placed)clipPath(path){drawImage(image,dstSize=IntSize(size.width.toInt(),size.height.toInt()))}
-                else drawPath(path,Navy.copy(alpha=.6f))
-                drawPath(path,if(placed)Positive else Cyan.copy(alpha=.55f),style=Stroke(1.dp.toPx()))
+                drawPath(path,if(placed)Positive else Ink.copy(alpha=.85f),style=Stroke(1.dp.toPx()))
             }
             board.attempts.filter{!it.correct}.forEach{attempt->slots[attempt.action["slot_id"]?.jsonPrimitive?.contentOrNull]?.let{drawPath(shape(it,size.width,size.height),Negative.copy(alpha=.65f))}}
             board.cursors.filter{it.userId!=userId}.forEach{drawCircle(Gold,6.dp.toPx(),Offset(it.x*size.width,it.y*size.height))}
@@ -70,6 +72,8 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
     LazyRow(horizontalArrangement=Arrangement.spacedBy(8.dp)){
         items(remaining,key={it.id}){tile->
             val label=namedString(R.string.puzzle_piece,"number" to (ordered.indexOf(tile)+1))
+            val pieceState=tile.assetRef?.let{rememberArtwork(it).value}
+            val pieceImage=(pieceState as? ArtworkState.Ready)?.bitmap?.asImageBitmap()
             val points=tiles.getValue(tile.id)
             val minX=points.minOf{it.x};val minY=points.minOf{it.y};val maxX=points.maxOf{it.x};val maxY=points.maxOf{it.y}
             val normalized=remember(points){points.map{Point((it.x-minX)/(maxX-minX),(it.y-minY)/(maxY-minY))}}
@@ -77,9 +81,12 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
                 .clickable(enabled=enabled){selected=tile.id}){
                 val path=shape(normalized,size.width,size.height)
                 rotate((if(selected==tile.id)rotation else 0).toFloat()-tile.rotation){
-                clipPath(path){drawImage(image,srcOffset=IntOffset((minX*image.width).toInt(),(minY*image.height).toInt()),
-                    srcSize=IntSize(((maxX-minX)*image.width).toInt().coerceAtLeast(1),((maxY-minY)*image.height).toInt().coerceAtLeast(1)),
-                    dstSize=IntSize(size.width.toInt(),size.height.toInt()))}
+                clipPath(path){
+                    if(pieceImage!=null)drawImage(pieceImage,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()))
+                    else drawImage(image,srcOffset=IntOffset((minX*image.width).roundToInt(),(minY*image.height).roundToInt()),
+                        srcSize=IntSize(((maxX*image.width).roundToInt()-(minX*image.width).roundToInt()).coerceAtLeast(1),((maxY*image.height).roundToInt()-(minY*image.height).roundToInt()).coerceAtLeast(1)),
+                        dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()))
+                }
                 drawPath(path,if(selected==tile.id)Gold else Cyan,style=Stroke(if(selected==tile.id)3.dp.toPx()else 1.dp.toPx()))
                 }
             }

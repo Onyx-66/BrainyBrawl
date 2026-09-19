@@ -29,7 +29,10 @@ fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit) {
     if(ui.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
     if(ui.failed) FeedbackPanel(stringResource(R.string.request_failed),stringResource(R.string.purchase_retry),stringResource(R.string.retry),model::refresh)
     val items=ui.snapshot?.items?.filter { it.vault==vault }
-    if(items!=null && items.isEmpty()) Text(stringResource(R.string.empty_store))
+    if(items!=null && items.isEmpty()) {
+        androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(R.drawable.bb_state_empty_store),null,Modifier.fillMaxWidth().height(132.dp))
+        Text(stringResource(R.string.empty_store))
+    }
     items.orEmpty().forEach { item ->
         val label=catalogLabel(item.labels,locale)
         BrawlPanel(Modifier.fillMaxWidth()) {

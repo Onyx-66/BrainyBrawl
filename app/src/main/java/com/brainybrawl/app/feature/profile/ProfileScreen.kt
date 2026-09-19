@@ -22,7 +22,7 @@ fun CurrencyBar(snapshot: ProfileSnapshot) {
         listOf("gold" to R.string.gold,"gems" to R.string.gems,"flames" to R.string.flames).forEach { (key,label) ->
             snapshot.currencies.find { it.currency==key }?.let {
                 ResourceChip(stringResource(label),java.text.NumberFormat.getIntegerInstance(androidx.compose.ui.platform.LocalConfiguration.current.locales[0]).format(it.balance),
-                    when(key) { "gold" -> Gold; "gems" -> Cyan; else -> Gold })
+                    when(key) { "gold" -> Gold; "gems" -> Cyan; else -> Gold },icon=when(key){"gold"->R.drawable.bb_currency_gold;"gems"->R.drawable.bb_currency_gems;else->R.drawable.bb_currency_flames})
             }
         }
     }

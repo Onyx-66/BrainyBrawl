@@ -28,7 +28,7 @@ class ContentValidationTest(unittest.TestCase):
         display,answer=sanitized(item,'image_guess')
         self.assertTrue(all(set(o)=={'id','label'} for o in display['options']))
         self.assertIn('points',answer['choices'][0])
-    def test_all_files(self): self.assertEqual(self.run_validator(),3855)
+    def test_all_files(self): self.assertEqual(self.run_validator(),3861)
     def test_development_content_cannot_be_released(self):
         self.mutate('question_round',lambda r:r[0].set('status','DEV_SAMPLE'))
         with self.assertRaisesRegex(ValueError,'unapproved'): self.run_validator(True)
