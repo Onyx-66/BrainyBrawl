@@ -479,6 +479,17 @@ try {
     await admin();await db.exec('set role anon');await denied("select public.join_public_room('squad')");
   });
 
+  await check('Admin assignment is service-only and levels use earned Flames', async()=>{
+    await user(ids[42]);await denied('select public.bootstrap_admin($1)',[ids[42]]);
+    await denied('select * from private.administrators');
+    await db.query("select public.update_profile('Mr.onyx')");
+    await admin();await db.exec('set role service_role');await db.query('select public.bootstrap_admin($1)',[ids[42]]);
+    await admin();
+    await db.query("insert into public.currency_ledger(user_id,currency,delta,reason,source_event,idempotency_key) values($1,'flames',30,'match_win','test-level','test-level-positive'),($1,'flames',-5,'vault','test-level','test-level-spent')",[ids[42]]);
+    await user(ids[42]);const r=await db.query('select public.profile_snapshot() as snapshot');
+    assert.equal(r.rows[0].snapshot.level,4);assert.equal(r.rows[0].snapshot.lifetime_flames,30);assert.equal(r.rows[0].snapshot.is_admin,true);
+    await user(ids[41]);const other=await db.query('select public.profile_snapshot() as snapshot');assert.equal(other.rows[0].snapshot.is_admin,false);
+  });
   console.log(`Backend verification: ${checks} checks passed. Real PostgreSQL semantics via PGlite; network/Realtime and concurrent connections require separate integration tests.`);
 } catch(error) {
   console.error('BACKEND TEST FAILURE:', error.message, error.detail ?? '', error.where ?? '');

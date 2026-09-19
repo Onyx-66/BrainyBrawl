@@ -4,6 +4,18 @@ Status: substantial implementation and local regression complete; the entire
 35-phase product is not declared complete. Remaining product/environment gates
 are listed below. Nothing has been deployed or submitted to Google Play.
 
+## September 19 follow-up: accounts and visual revision
+
+- Owner-supplied launcher icon and transparent brand logo, deeper navy theme, asymmetric bento mode grid with distinct swords/Duo/Squad/Solo artwork, account name/level header and accessible settings icon.
+- Offline device registration/login with Android Keystore encrypted records and salted PBKDF2 password verification; account-specific offline statistics. Device accounts confer no online authority.
+- Persistent, account-scoped friend-request and invitation queue. Explicit delivery requires the matching online email; accepted friendship and authoritative lobby checks remain enforced. Requests are never described as delivered while offline.
+- Migration 24 adds service-only administrator assignment and server-calculated levels from lifetime skill-earned Flames. Default is one level per ten earned Flames, starting at one; spending does not decrease level. Formula remains adjustable pending owner confirmation.
+- The requested Mr.onyx device account was created through the registration UI and its signed-in name/level header was verified on the emulator. This does not claim server administrator provisioning.
+- Administrator credentials are in ignored `.env` only. Real administrator provisioning and online play await project URL/public key, local server credential, provider setup and target-project approval. See `docs/ONLINE_SETUP.md`. No backend deployment was performed.
+- Added English/French/Arabic strings. The new mode grid was inspected on the 1080x2340 emulator. All 19 existing instrumentation tests passed; the new offline-account flow passed separately, and both encrypted-storage tests passed separately. All 54 JVM tests and 34 backend security/scoring checks passed. Debug and optimized unsigned release builds passed; lint reports zero errors and 36 warnings (including dependency/update notices).
+- Registration UI test initially used an input value as its completion signal, then encountered a persisted duplicate test identity on retry. It now waits for the level header and uses a unique test account; the full scenario passed without changing account uniqueness rules.
+- Secret scan of debug/release DEX and packaged configuration found no administrator or service-role values. `.env` and screenshots are excluded from source archives.
+
 ## Implementation and architecture
 
 The existing single Android application module and master branch were preserved.

@@ -21,6 +21,7 @@ No production deployment, credentials or signing material is included.
 - `app/proguard-rules.pro`
 - `app/src/androidTest/java/com/brainybrawl/app/EncryptedAuthStoreTest.kt`
 - `app/src/androidTest/java/com/brainybrawl/app/GameHudVisualTest.kt`
+- `app/src/androidTest/java/com/brainybrawl/app/LocalAccountNavigationTest.kt`
 - `app/src/androidTest/java/com/brainybrawl/app/LocalizationUiTest.kt`
 - `app/src/androidTest/java/com/brainybrawl/app/NavigationSmokeTest.kt`
 - `app/src/androidTest/java/com/brainybrawl/app/RecoveryNavigationTest.kt`
@@ -34,6 +35,7 @@ No production deployment, credentials or signing material is included.
 - `app/src/main/java/com/brainybrawl/app/core/design/ContentImage.kt`
 - `app/src/main/java/com/brainybrawl/app/core/design/GameIdentity.kt`
 - `app/src/main/java/com/brainybrawl/app/core/design/GameplayFeedback.kt`
+- `app/src/main/java/com/brainybrawl/app/core/design/ModeBento.kt`
 - `app/src/main/java/com/brainybrawl/app/core/design/NavigationSymbol.kt`
 - `app/src/main/java/com/brainybrawl/app/core/diagnostics/Diagnostics.kt`
 - `app/src/main/java/com/brainybrawl/app/core/localization/CatalogLabels.kt`
@@ -48,8 +50,11 @@ No production deployment, credentials or signing material is included.
 - `app/src/main/java/com/brainybrawl/app/feature/auth/AuthRepository.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/auth/AuthScreen.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/auth/AuthViewModel.kt`
+- `app/src/main/java/com/brainybrawl/app/feature/auth/LocalAccounts.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/auth/SupabaseAuthRepository.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/friends/FriendsScreen.kt`
+- `app/src/main/java/com/brainybrawl/app/feature/friends/LocalFriendsScreen.kt`
+- `app/src/main/java/com/brainybrawl/app/feature/friends/LocalSocialCoordinator.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardRepository.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardScreen.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardViewModel.kt`
@@ -69,6 +74,7 @@ No production deployment, credentials or signing material is included.
 - `app/src/main/java/com/brainybrawl/app/feature/match/RoundReveal.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/offline/OfflineScreen.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/offline/OfflineViewModel.kt`
+- `app/src/main/java/com/brainybrawl/app/feature/profile/LocalProfileScreen.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerRepository.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerViewModel.kt`
 - `app/src/main/java/com/brainybrawl/app/feature/profile/ProfileScreen.kt`
@@ -81,6 +87,9 @@ No production deployment, credentials or signing material is included.
 - `app/src/main/java/com/brainybrawl/app/game/content/XmlContentParser.kt`
 - `app/src/main/java/com/brainybrawl/app/game/engine/GameRules.kt`
 - `app/src/main/java/com/brainybrawl/app/game/engine/OfflineQuestions.kt`
+- `app/src/main/res/drawable-nodpi/brand_icon.png`
+- `app/src/main/res/drawable-nodpi/brand_logo.png`
+- `app/src/main/res/drawable/launcher_brand.xml`
 - `app/src/main/res/font/poppins_bold.ttf`
 - `app/src/main/res/font/poppins_extrabold.ttf`
 - `app/src/main/res/font/poppins_regular.ttf`
@@ -92,6 +101,7 @@ No production deployment, credentials or signing material is included.
 - `app/src/test/java/com/brainybrawl/app/ContentTest.kt`
 - `app/src/test/java/com/brainybrawl/app/DiagnosticsTest.kt`
 - `app/src/test/java/com/brainybrawl/app/GameRulesTest.kt`
+- `app/src/test/java/com/brainybrawl/app/LocalAccountsTest.kt`
 - `app/src/test/java/com/brainybrawl/app/LocalizationContractTest.kt`
 - `app/src/test/java/com/brainybrawl/app/MatchLifecycleTest.kt`
 - `app/src/test/java/com/brainybrawl/app/MatchSnapshotTest.kt`
@@ -127,6 +137,7 @@ No production deployment, credentials or signing material is included.
 - `content/word_scramble.xml`
 - `docs/ASSET_CREDITS.md`
 - `docs/IMPLEMENTATION_STATUS.md`
+- `docs/ONLINE_SETUP.md`
 - `docs/RELEASE_CHECKLIST.md`
 - `docs/SESSION_REPORT.md`
 - `docs/UI_REDESIGN.md`
@@ -158,10 +169,12 @@ No production deployment, credentials or signing material is included.
 - `supabase/migrations/202609190021_catalog_labels.sql`
 - `supabase/migrations/202609190022_duel_timing_hardening.sql`
 - `supabase/migrations/202609190023_public_room_join.sql`
+- `supabase/migrations/202609190024_levels_admin.sql`
 - `tools/backend-tests/edge-body.test.mjs`
 - `tools/backend-tests/package-lock.json`
 - `tools/backend-tests/package.json`
 - `tools/backend-tests/security.test.mjs`
+- `tools/bootstrap_admin.py`
 - `tools/content_pipeline.py`
 - `tools/package_changed_files.py`
 - `tools/test_content_pipeline.py`
@@ -176,6 +189,8 @@ No production deployment, credentials or signing material is included.
 - `app/src/main/java/com/brainybrawl/app/ui/theme/Theme.kt`
 - `app/src/main/java/com/brainybrawl/app/ui/theme/Type.kt`
 - `app/src/main/res/drawable/ic_launcher_foreground.xml`
+- `app/src/main/res/mipmap-anydpi/ic_launcher.xml`
+- `app/src/main/res/mipmap-anydpi/ic_launcher_round.xml`
 - `app/src/main/res/values/strings.xml`
 - `app/src/main/res/values/themes.xml`
 - `build.gradle.kts`
@@ -201,10 +216,11 @@ keystores, credential files, emulator screenshots and temporary files are exclud
 | --- | --- |
 | `.github/workflows/android.yml` | `B9E9564405AF9CC7016B1C908AE829180A53469EAD4444BE4BA8BECD3CEAAA56` |
 | `.gitignore` | `B615D273E0F288ACB482A2CA253F44D9FA2A4689E0B15848C6E1F7F85956F24E` |
-| `app/build.gradle.kts` | `CFB9332BC943014EA33AB0757AB7F8C535AD5595C4119D066C095E4726145E1B` |
+| `app/build.gradle.kts` | `DD841CE7CF13711F6D358D502BE687B7A7C9A8CCDD2A6C4F2CA2E02C2D4D8236` |
 | `app/proguard-rules.pro` | `FE1AB388082D4E267293CA2CA9DD0A6D43CDBA89ED2751F72B923C72156B45BE` |
 | `app/src/androidTest/java/com/brainybrawl/app/EncryptedAuthStoreTest.kt` | `2643004D3DF8321AB85C87B73EBE08DC4FD560548B7ED1451B7BE962BAD109CA` |
 | `app/src/androidTest/java/com/brainybrawl/app/GameHudVisualTest.kt` | `31F2B6E4645A224154C4CAA11867E5BEF57A9B716EE8A77E44200BE06FB102C4` |
+| `app/src/androidTest/java/com/brainybrawl/app/LocalAccountNavigationTest.kt` | `AB5B329008E6A6737D786DF6E2C237CB345CF4B1A810F03468C839286BF6D670` |
 | `app/src/androidTest/java/com/brainybrawl/app/LocalizationUiTest.kt` | `91133145B05F87E599DC5B0A98A26FA8B39C67F83F1097E63CF0748752DE93C4` |
 | `app/src/androidTest/java/com/brainybrawl/app/NavigationSmokeTest.kt` | `D9E62DB06E52016D4D948D97E4BC0B25AA5BD56931C96A21398716C988BFE3E9` |
 | `app/src/androidTest/java/com/brainybrawl/app/RecoveryNavigationTest.kt` | `201D0C6BEEBF77AACE541FB95BDAA9A8504591467035BF5F8043E5A6EB7503ED` |
@@ -214,76 +230,87 @@ keystores, credential files, emulator screenshots and temporary files are exclud
 | `app/src/main/assets/licenses/Poppins-OFL.txt` | `B741A4319A716FA488D77425010697A0990798F7647E07C606F46CF0B55957C7` |
 | `app/src/main/java/com/brainybrawl/app/BrainyBrawlApplication.kt` | `148F92C567B4E8EB6D4D5723D8690CFA66392FA0B57596C303359E8BAC2DD269` |
 | `app/src/main/java/com/brainybrawl/app/MainActivity.kt` | `73D303BF073B247BA3EB15BE47BBDE55EA9847F7B34672825AF17E216139ED8A` |
-| `app/src/main/java/com/brainybrawl/app/core/AppContainer.kt` | `52166578F617FC6C93FCAEFDA6080677645B5F4625BA0C2A9F4253659F7A1509` |
+| `app/src/main/java/com/brainybrawl/app/core/AppContainer.kt` | `E4AAE3527FE5B44653C5999F1C4080EB8055947A44FB8A634FF9B110AB4414EF` |
 | `app/src/main/java/com/brainybrawl/app/core/common/Outcome.kt` | `0556A343B3A7FBD991097893B4A8EA23986FC9BBA9F832099C0978C4BABC61F6` |
 | `app/src/main/java/com/brainybrawl/app/core/design/BrawlComponents.kt` | `B71E21736E0EF2A6A823BD746ABBF7AE4B1EDBA6379904B7472E707E719991FE` |
 | `app/src/main/java/com/brainybrawl/app/core/design/ContentImage.kt` | `D1F004FE2975B8AA22BF0A2B7E463E89A7AF3EB9262CB24EC4B5C8250FBA9133` |
-| `app/src/main/java/com/brainybrawl/app/core/design/GameIdentity.kt` | `E5C6E04A861CA156520A6C3097C025B3CD5D2CBE3CF2A8A71674A4FFBC9FBEBD` |
+| `app/src/main/java/com/brainybrawl/app/core/design/GameIdentity.kt` | `68FE201D7DA5E5E50329BC5DED1335BE511CC30D060C0A97A09C73268A81E90C` |
 | `app/src/main/java/com/brainybrawl/app/core/design/GameplayFeedback.kt` | `D119FFE12F04EC01987A4976C5FF1F788C322B84096D17462ED421F25663DB39` |
-| `app/src/main/java/com/brainybrawl/app/core/design/NavigationSymbol.kt` | `EA75AD12AE157822A1987C84D031194B20D3B8F18B03E69A1AD440ED6FE55F72` |
+| `app/src/main/java/com/brainybrawl/app/core/design/ModeBento.kt` | `997CD6FC4BEA129916ADA6A992944AC38DF64D78309F9C1A336D2E190F9FF78A` |
+| `app/src/main/java/com/brainybrawl/app/core/design/NavigationSymbol.kt` | `CA917E228DB00009FCCE3D32893DC5DB5EA2838E5443A975B401DAC7E06769DA` |
 | `app/src/main/java/com/brainybrawl/app/core/diagnostics/Diagnostics.kt` | `104444D2CE72092AC45983829673DB836BBF93A4655EB531F4B220BD82DE8E51` |
 | `app/src/main/java/com/brainybrawl/app/core/localization/CatalogLabels.kt` | `710369AF6CD41EA1E3507EC0DA44EFF97F40AA0059F403C4295FE8156738A913` |
 | `app/src/main/java/com/brainybrawl/app/core/localization/LocalizedContent.kt` | `4C9F48A73347448637DAB7D5D6A05855DE6EF64C4CB2D957640A28B37B697C42` |
 | `app/src/main/java/com/brainybrawl/app/core/localization/NamedStrings.kt` | `5E897474202C6695F0C841EF1B820847EC924A86C539D8B035E2B216DF87BDA2` |
-| `app/src/main/java/com/brainybrawl/app/core/navigation/BrawlApp.kt` | `B8DF55E344C80180A02AC93C4648B317D8F66F14AC9664AECADB5E33C301C414` |
+| `app/src/main/java/com/brainybrawl/app/core/navigation/BrawlApp.kt` | `486DD79E71809AE1F90B7497857BE1041AF6CFAAF16C678F765DDC6D76247FBE` |
 | `app/src/main/java/com/brainybrawl/app/core/navigation/LegalLinks.kt` | `8C1FD64219666E66FDAF9D6D3153FEA4376B5A8BFE158851BF09FB57C2BD4242` |
 | `app/src/main/java/com/brainybrawl/app/core/network/BackendConfig.kt` | `BC9974E0D2936DF516E2F04EBAF55C28C3201C109F059C8A320E2BE986622FA6` |
 | `app/src/main/java/com/brainybrawl/app/core/network/ServerClock.kt` | `4381897A4729519788A98B15BAF31137D032E6F441F4384BC4572280524A0588` |
-| `app/src/main/java/com/brainybrawl/app/core/security/EncryptedAuthStore.kt` | `A5A3C75076AA993DCCAB5E3A2CB03C732DAC06EAE597795CF5A862917D1318A6` |
+| `app/src/main/java/com/brainybrawl/app/core/security/EncryptedAuthStore.kt` | `D6278FEA2465ABDFCE4E5BD3BE8457EC0F3FBC66D192D607617EF3D2ECBD3917` |
 | `app/src/main/java/com/brainybrawl/app/core/security/PackagedSvg.kt` | `CA6D9FE0BD821A5552BF9A3C2A22D84C5B735C5D2CB81658EEDDB5EFACB017EB` |
-| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthRepository.kt` | `944654F83B3690ED693F4CBA81BD5EC8453398EDF44B6A700532EFED8597E8EF` |
-| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthScreen.kt` | `A797C085FEC04047234123A520C0CDE45490C52742ABCE6BA055A0BA8CA85044` |
-| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthViewModel.kt` | `B81453826F585D253F9FD1760A2B415401C60032BA5EF846B62C9072B54C4020` |
+| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthRepository.kt` | `C715DC6B2BA206AD8C96D565E25CEDF20EB97E653E9CDFF74770D6399EA9A667` |
+| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthScreen.kt` | `53DEAF53D2C529751839CF1D3FEF786583EDB1B907725E7CB75B98019011F405` |
+| `app/src/main/java/com/brainybrawl/app/feature/auth/AuthViewModel.kt` | `1556BC31A9A242D3BAA111EEAC246280E1BC986853569B6CB7F43187709EC7CC` |
+| `app/src/main/java/com/brainybrawl/app/feature/auth/LocalAccounts.kt` | `34F2238EFBE5A7F610278469A94712D281C72810D487397ECDFF0E6B21BD5EC8` |
 | `app/src/main/java/com/brainybrawl/app/feature/auth/SupabaseAuthRepository.kt` | `6E49440581C94F111D62A7866E77CCF7BBA21F9E36C6B21E0D1901819F26D903` |
 | `app/src/main/java/com/brainybrawl/app/feature/friends/FriendsScreen.kt` | `3B70F33191EE4D0F0F5AE3173D475D0B5358DE4C3594ADA8CCF5E7C3A8BFBE00` |
+| `app/src/main/java/com/brainybrawl/app/feature/friends/LocalFriendsScreen.kt` | `9857CA801CA5BCD768BE9089F8587FCBC89E2AD29C7080509A92212008EAEAE0` |
+| `app/src/main/java/com/brainybrawl/app/feature/friends/LocalSocialCoordinator.kt` | `1EC26D4FB03D9ADC4ADA3512E456446D28486C3F1FEA709D2EED7F85FD7104D0` |
 | `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardRepository.kt` | `0D56A53E6308E23934BFD43BAD344C29C159B180B668DE8A6CBAA5C4AD5BC852` |
 | `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardScreen.kt` | `A8CD0690539975EECAC6B214280086D105198AD13CB54DC09E31C3C4C3D0F426` |
-| `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardViewModel.kt` | `6B988A2AB72D2D2C92B31123121C9209FC4C1CA926DDD2A8E5BCCE4CA87762B2` |
+| `app/src/main/java/com/brainybrawl/app/feature/leaderboard/LeaderboardViewModel.kt` | `6D8DCBE76486AD698A100C082A9E5894099A1BE298740B5F9E1F63C24137B8DB` |
 | `app/src/main/java/com/brainybrawl/app/feature/lobby/LobbyScreen.kt` | `FD5EDFF6B62F987B1E7A0FE60ECF8762D68C12F6D1D90771684DEA835B3A3953` |
 | `app/src/main/java/com/brainybrawl/app/feature/lobby/ReactionPanel.kt` | `C3A039F1E51DD7545957EC0F53F754A114DD9D0F68308ADBDAF0D99580B17354` |
 | `app/src/main/java/com/brainybrawl/app/feature/lobby/RoomModels.kt` | `E9AB5CEC635E5E488F585F9CB8A1A3FCD49DDAA6B9D346B3D1E98C699F158BDE` |
 | `app/src/main/java/com/brainybrawl/app/feature/lobby/RoomRepository.kt` | `00C2FE1E6DF36251165BB5A7C7FDA3F6E94A4875D5D4DFFC90BB6A46161E42B7` |
-| `app/src/main/java/com/brainybrawl/app/feature/lobby/RoomViewModel.kt` | `5592511637F962EA0AFC0D38509C1BFA8800A5D9E19D2D348B7B61845EDEA31B` |
+| `app/src/main/java/com/brainybrawl/app/feature/lobby/RoomViewModel.kt` | `EBC988455BB42C2617C9A89AB2E547100A6F9CB2387A5D2491FFA6F1D9B4DE42` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/BoardModels.kt` | `AE9C2903D83C127D5AF9A47408C6A2B97F87E2258E7D5F9A3C3B1BE73DA62193` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/MatchModels.kt` | `405CC1495D3CF07AEBD27952CFCF04E9791DC3AD4065D1C59A4F114AAA399721` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/MatchRepository.kt` | `018F87A53A49C7BCFFA53BA714C26FBAC2671B5179D1F0DFB50840ACD8C97338` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/MatchScreen.kt` | `EF4F7A7D1CF8A42FBA49AD3AA3DBA73D96E4D3070CA5718E62652B3EDAAC51CC` |
-| `app/src/main/java/com/brainybrawl/app/feature/match/MatchViewModel.kt` | `BE071B88FADD78B5BD0BAF0BEB10E4F9EEB0EC674BE802213E4B3307FD007365` |
+| `app/src/main/java/com/brainybrawl/app/feature/match/MatchViewModel.kt` | `59B5970F4721F9031C9D5C89F497DEA2525227CC2B6C22F6713DD7455516C263` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/MiniGameComponents.kt` | `A580FF8A5822CEF58367F7A3E2690B253DC6F6CB3E2541EF0E7C1A8A47EB784C` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/PuzzleGame.kt` | `5E9577A7C0E3B51D7CDC9EC3CCF1431D021E684EB27ABD0CD6D5607EC6D685DE` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/RouletteWheel.kt` | `0EA9DD955E92043A0FA44832A194A3C8E9D18CBC52C1BF032C178EAEE73A3736` |
 | `app/src/main/java/com/brainybrawl/app/feature/match/RoundReveal.kt` | `346782B495FC85C97F6A8096729C2A8AA1B0E2E2A41075544C37CA5AAC90D33A` |
 | `app/src/main/java/com/brainybrawl/app/feature/offline/OfflineScreen.kt` | `83EB033A156E2E1BDF3AC4B3601D2E58DD427608DB2C9C76B670440E5A845003` |
-| `app/src/main/java/com/brainybrawl/app/feature/offline/OfflineViewModel.kt` | `CF1F70DAEF71314F7267E869956B83BD8AE92C844D0C403E058B45812C688A46` |
-| `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerRepository.kt` | `D11D8F00174D8FC61EABDB0A35E9D30C46EADD52CE7403037696563E970FC5C2` |
-| `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerViewModel.kt` | `B1BAB9BFE40F94A3D497D92F79813046FBC20A7FBD5306B6AEB47B706E5AE636` |
+| `app/src/main/java/com/brainybrawl/app/feature/offline/OfflineViewModel.kt` | `6E0B31F3D88EA9E2B06B5088E00C97BEB2E9687396898B626031A46D9AF85CB8` |
+| `app/src/main/java/com/brainybrawl/app/feature/profile/LocalProfileScreen.kt` | `51358385CB1A879A3099545BEA4594FCEF28B3F5AF44E9BA2B1AC99C18AFC3BF` |
+| `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerRepository.kt` | `BC997BC64EA8EE8F7D4CF3C683E240F142EDFAF3706B236B380238826FAF2F2C` |
+| `app/src/main/java/com/brainybrawl/app/feature/profile/PlayerViewModel.kt` | `79D5C38FE4EA2351B9E2A95FB826C782EDB1224E618841EAB5F75FD4153164A0` |
 | `app/src/main/java/com/brainybrawl/app/feature/profile/ProfileScreen.kt` | `FAF780C1EDF4EAEE0E51C6B1D6CA0D782DA99134B411703B3391494ACD8B7812` |
 | `app/src/main/java/com/brainybrawl/app/feature/settings/SettingsRepository.kt` | `7AC85BA540168DAE9DAC2D4ACFED8139E345601B7DA13F9D77BAE7BFF6B49727` |
 | `app/src/main/java/com/brainybrawl/app/feature/store/StoreRepository.kt` | `E7AD4E2E76F422E519FE994EEB8B27C8958DDFAACED2DDC84503893A92977E76` |
 | `app/src/main/java/com/brainybrawl/app/feature/store/StoreScreen.kt` | `089A11A9B4B4A7273F313015B44B1EF9F9A67037AF8A3032B062A421DF1994A9` |
-| `app/src/main/java/com/brainybrawl/app/feature/store/StoreViewModel.kt` | `A295B0C18E51E43474BD6C1E2F7DC0DD7CD8A46E825EEFC0C009923439A1192D` |
+| `app/src/main/java/com/brainybrawl/app/feature/store/StoreViewModel.kt` | `BC6B837A23B40A3F2C85196C72C7EAC2A25AD7542353AE8440BD71E0781E0609` |
 | `app/src/main/java/com/brainybrawl/app/game/content/ContentModels.kt` | `4EA4AEAB0CB7446C9ADD5ABF86514DA5FAE83AA60B360F0412CB9E7FD1548B0C` |
 | `app/src/main/java/com/brainybrawl/app/game/content/ContentRepository.kt` | `BA80810911DDF321FA8C0C803B44C60DBA3F81E92DFECC649C0BCF6262DF1868` |
 | `app/src/main/java/com/brainybrawl/app/game/content/XmlContentParser.kt` | `E289381B671FC30163E7E2D9D4D7199954C8F72F1E50FFA518D880884FA1700D` |
 | `app/src/main/java/com/brainybrawl/app/game/engine/GameRules.kt` | `C77A4D56242742CCB9EC72560047FD87EAB25FEB2B8C028A413FD9E0158399B2` |
 | `app/src/main/java/com/brainybrawl/app/game/engine/OfflineQuestions.kt` | `2A1F2804A99455696AAA127CF8EE7836B40D7CE8EC07A7643F57D3A25C695C68` |
-| `app/src/main/java/com/brainybrawl/app/ui/theme/Color.kt` | `2A914C945292C99B3635E0A4B319E3448AD7B23B1961F69B7C31706EED47BBDC` |
+| `app/src/main/java/com/brainybrawl/app/ui/theme/Color.kt` | `98C8059B00783FCAB7015B114C534C0B5A28EB720EE2302D7310A0A040F86755` |
 | `app/src/main/java/com/brainybrawl/app/ui/theme/Theme.kt` | `07AE9AE0018EB95405E058A2B42A3CE632A12574C09358996A8E209AB935B936` |
 | `app/src/main/java/com/brainybrawl/app/ui/theme/Type.kt` | `34DD063BB9D6A7E14B8CE8256CAF280A1524929AD2DFDD5C72F83D735CDF074F` |
+| `app/src/main/res/drawable-nodpi/brand_icon.png` | `DEA61A1596978DB5FD84357893864C24465758382328F73F424FE63078380269` |
+| `app/src/main/res/drawable-nodpi/brand_logo.png` | `3DC848112B22ADD871DF2851F715C9E50F2602572191C185063AC746EE7CD380` |
 | `app/src/main/res/drawable/ic_launcher_foreground.xml` | `3BD90936981FA09C99DA8A4A897ACF894F1CF5A9121DF2BF7D4CE17A9A2AF629` |
+| `app/src/main/res/drawable/launcher_brand.xml` | `D976C61A48351FF680DC099346E5234C183C08100812D8AE79081F6C1D710D0A` |
 | `app/src/main/res/font/poppins_bold.ttf` | `983676516167748B74DE6F4771FB384C664FD913ACB8B471122ECACF5DA5EA6C` |
 | `app/src/main/res/font/poppins_extrabold.ttf` | `F2AB17C1A63A0ECC12C2461848FC8A469395E3CD2D641803E889C643D9F958E1` |
 | `app/src/main/res/font/poppins_regular.ttf` | `7E65201E9B79159E2300267CC885E16C8DCEF2424CDFA09A29BFB0980A94A7BA` |
-| `app/src/main/res/values-ar/strings.xml` | `CB5C37FF17176F6D7280AB462E57BB967E0EBEF12A01F30A46C7CCD5573F3811` |
-| `app/src/main/res/values-fr/strings.xml` | `9ED03CB659A1077AD7C8E99048B8CAA0C6B6DE36FFB1B53747C99D91B0C7A137` |
+| `app/src/main/res/mipmap-anydpi/ic_launcher.xml` | `CADB3BAC61CC5ACDA7B7D811FF9C1292A8FD06D697A9CBFC7063E335B3966202` |
+| `app/src/main/res/mipmap-anydpi/ic_launcher_round.xml` | `CADB3BAC61CC5ACDA7B7D811FF9C1292A8FD06D697A9CBFC7063E335B3966202` |
+| `app/src/main/res/values-ar/strings.xml` | `4544D7C3D0208031ADA6179F5A11DB5351546A29C2DE0FA010F627D36A4157F8` |
+| `app/src/main/res/values-fr/strings.xml` | `22E964E73FA2B151EBAD2C96A178BB6F22CE5E265E37569DC5023CB2E9AC0D1F` |
 | `app/src/main/res/values-v31/themes.xml` | `264008CEEFC2859C615DB958CC87DE19D4ACB40B98DEE34CE677E208AB84F9A6` |
-| `app/src/main/res/values/strings.xml` | `DA301B43D0CFFBAABC089DA7311BCC571846613C657C1790516F5F912F1273CD` |
+| `app/src/main/res/values/strings.xml` | `E637794E9E5A0BD4545DE35D5854E4B4715127FDDC46AD1C52EADFEA9CE5C26F` |
 | `app/src/main/res/values/themes.xml` | `25DE0C97304ADD8E091A5B3EE115F69C93F5783065C185B5E92E45996F61EE15` |
 | `app/src/test/java/com/brainybrawl/app/AuthValidationTest.kt` | `8F9B30E1AECBA120D95F2AD21AD7DFBFBFD9740382B3C13E8CB18A88AE2433C4` |
 | `app/src/test/java/com/brainybrawl/app/BackendConfigTest.kt` | `A380405187046B6687F4BD34F23C80D6125F1D3BA1790187908824B8E2FFCD4F` |
 | `app/src/test/java/com/brainybrawl/app/ContentTest.kt` | `9F77E69E9C467C7B4F469595D58E98CDC7B1DA8822C142CD90FA8479DBBD44F5` |
 | `app/src/test/java/com/brainybrawl/app/DiagnosticsTest.kt` | `4B01661B5CA891899386461DB3E2F657825A95807D63C8DA46D4AAAB7534A632` |
 | `app/src/test/java/com/brainybrawl/app/GameRulesTest.kt` | `340E2F976516C817EAAD4DF34BDAB80F870EF4AF40CAC8632024A4B64916E06C` |
+| `app/src/test/java/com/brainybrawl/app/LocalAccountsTest.kt` | `336BF013038E69347F2D08C99D8EC3C60E7FDA18C2D0504D4E85C2186AAD4F27` |
 | `app/src/test/java/com/brainybrawl/app/LocalizationContractTest.kt` | `7570992AA79B8995ED49872C566E6D2884CF29BB1D52AFA9A625A15DC13F4792` |
 | `app/src/test/java/com/brainybrawl/app/MatchLifecycleTest.kt` | `46F0F9888CEC32976351AD6893982A8384173E66141C7BD914DF273FD61DCF5D` |
 | `app/src/test/java/com/brainybrawl/app/MatchSnapshotTest.kt` | `C6094B4C190E25B20955BC8233985FF3AD13934E58F602121C463061DFAE948C` |
@@ -318,15 +345,16 @@ keystores, credential files, emulator screenshots and temporary files are exclud
 | `content/roll_the_dice.xml` | `36224A968FB312AF7FE544BFD9D90C1D405B2B370ADCD8DE82076CE7690F2A4D` |
 | `content/speed_sort.xml` | `061E7248F9C7D71FEA21E150EC32DEDD09DE421A9FA5C97108771C52D75F699D` |
 | `content/word_scramble.xml` | `69897FA69F34DB6CCA6ACFC148AAF366D5BE0ADE5462E92041E59AAD2F458ED3` |
-| `docs/ASSET_CREDITS.md` | `CD5C2F8C5DEFBACE104005FC093DDAB215548D7E574901BDB1C65FFFF6F4362E` |
-| `docs/IMPLEMENTATION_STATUS.md` | `AE9D216D9DB59376BAD58D85761E5BD417FE12E2F2D5ADA93805DDF78B0870A0` |
+| `docs/ASSET_CREDITS.md` | `40F259CF03E188C8C8BE0140C969752B2E85F2B6648F6D04EDE136963C08B8B0` |
+| `docs/IMPLEMENTATION_STATUS.md` | `06D51507D63AC841109F6635E09C5470D476661195EE65918EB1985C812C4DCB` |
+| `docs/ONLINE_SETUP.md` | `DD2C03987A7D8C17FDF1EC92F00CAFFD0C03456BE95262FF6668690A58B52A95` |
 | `docs/RELEASE_CHECKLIST.md` | `23F55DA8CD63C4C28E648C52B9DB616FCB2124C40573B3EFCB8BD3BC34FDE53E` |
-| `docs/SESSION_REPORT.md` | `32BE6C96FF24174F6B6959297D0A1CD7C728D85EAED40C00BEDC4C29CDA9C375` |
+| `docs/SESSION_REPORT.md` | `4443FA1FBC60651E0053B37EF32000C803F2685096AF95005B8A8DE1F4D0C8E1` |
 | `docs/UI_REDESIGN.md` | `F895E5AE374E3EEE937596FA335464F6678363D4186C4833BF94A4DF8B0FF6A8` |
 | `docs/VISUAL_QA_RESULTS.md` | `AD40172D6C9D2607782A4B3349E0E6C23D40704591409B0936B2DB4486F25332` |
 | `docs/ai-build-pack/10_MODES_DUO.md` | `8C00F08172FD4940AAA070ECD54AAEF785EAE099FC976210CE8F74FC0C7CE837` |
 | `docs/ai-build-pack/11_MODES_SQUAD_SOLO.md` | `57A883AC592362C80A9393B70173970CD210100EDAC07E0D01C5FC2A58B6050F` |
-| `docs/ai-build-pack/17_DECISION_REGISTER.md` | `A354ED7D2B41CA9AC1E8CF056632BAA7688AE53C89748A501500B4809684C035` |
+| `docs/ai-build-pack/17_DECISION_REGISTER.md` | `2A7D3F13149DCDA6817269C1E8F250429535E3A2A6088B395BF5D859F7A459F3` |
 | `gradle/libs.versions.toml` | `C8001C5F3F9BB2666BEAB62C963264CB809410E352E5E06BC19BD4E41CEFF659` |
 | `supabase/README.md` | `67BCCF75173EB4C3984D59933AB3960B73B2C8A367D7D1E514B8D4495F6A21B0` |
 | `supabase/config.toml` | `234110CEF7070A7EEDF6C2B3E160884353A99C6205233AE09826A4E30AF74A04` |
@@ -355,10 +383,12 @@ keystores, credential files, emulator screenshots and temporary files are exclud
 | `supabase/migrations/202609190021_catalog_labels.sql` | `7F568892B1D6D98EE5624C7919D504A3658ECD4F3D8FC16B69E3D705C3F4CE87` |
 | `supabase/migrations/202609190022_duel_timing_hardening.sql` | `7413C3AD7916C5F17F0992C645266F8608FEE165D9EC3E45BFD9BFDC5665FEFE` |
 | `supabase/migrations/202609190023_public_room_join.sql` | `DB1B7DD38A302ED2F9DD72DD81B695BD87B0CA414E86D9C93465A067723C01FF` |
+| `supabase/migrations/202609190024_levels_admin.sql` | `ED884872B6679DAFBF2705C5D47F71EB6BCFA4D54F845A58F807336FB928382B` |
 | `tools/backend-tests/edge-body.test.mjs` | `0139D340420F562AEE7F97196E787BFFDE883B260CCEE2A095937A11D5C0285F` |
 | `tools/backend-tests/package-lock.json` | `7A8D846C8374552BF2568DDFD503B376E76098A21B2F892F22F1210D371CE741` |
 | `tools/backend-tests/package.json` | `9CCA30F279F7BAF3CB18E2719D93948E22847453048F0A1F6C9731B8B96AD779` |
-| `tools/backend-tests/security.test.mjs` | `973A6B11A0AC0AABB8ED6AD958A1B8F18C1BA518BDABDEC82BB3F1A18E1C5B46` |
+| `tools/backend-tests/security.test.mjs` | `9B3A066DB089D2CA36D55AF3585AE1038F2BCE72A050B9F9C8E8A0AD53237747` |
+| `tools/bootstrap_admin.py` | `A09452663BA47A665D295E6A9AD00B7BC7BAD823F684068B44A50557BDCAF634` |
 | `tools/content_pipeline.py` | `10A001D9077477A235B470DD14D5C6EF7DF002EEB7089B71ED120E414EB2D353` |
 | `tools/package_changed_files.py` | `DB1F23DF48A0F177CA2FBCCE4890F39E11059D47B851C9ECB58DAD7278F624CE` |
 | `tools/test_content_pipeline.py` | `5B72971CE601FF6E890BA17740290399952152D98B81ADD98D03A8084F42D950` |

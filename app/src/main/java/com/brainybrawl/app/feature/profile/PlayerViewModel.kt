@@ -30,7 +30,7 @@ class PlayerViewModel(private val repository: PlayerRepository,private val auth:
     init { viewModelScope.launch { auth.state.collect { state ->
         refreshJob?.cancel();operationJob?.cancel();closePreview()
         mutableProfile.value=PlayerDataState.SignedOut;mutableSocial.value=SocialUi()
-        if(state is AuthState.SignedIn) refresh()
+        if(state is AuthState.SignedIn&&!state.local) refresh()
     } } }
     fun closePreview(){previewJob?.cancel();mutablePreview.value=null}
     fun preview(id:String){
@@ -43,7 +43,7 @@ class PlayerViewModel(private val repository: PlayerRepository,private val auth:
         }
     }
     fun refresh() {
-        if(auth.state.value !is AuthState.SignedIn) return
+        if((auth.state.value as? AuthState.SignedIn)?.local!=false) return
         refreshJob?.cancel()
         refreshJob=viewModelScope.launch {
             mutableProfile.value=PlayerDataState.Loading
@@ -55,7 +55,7 @@ class PlayerViewModel(private val repository: PlayerRepository,private val auth:
         }
     }
     private fun operation(action: suspend () -> Unit) {
-        if(mutableSocial.value.busy || auth.state.value !is AuthState.SignedIn) return
+        if(mutableSocial.value.busy || (auth.state.value as? AuthState.SignedIn)?.local!=false) return
         mutableSocial.value=mutableSocial.value.copy(busy=true,failed=false,reportSent=false)
         operationJob=viewModelScope.launch {
             try { action(); mutableSocial.value=mutableSocial.value.copy(snapshot=repository.social()) }

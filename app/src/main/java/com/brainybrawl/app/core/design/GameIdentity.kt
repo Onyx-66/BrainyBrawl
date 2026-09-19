@@ -20,35 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.brainybrawl.app.R
 import com.brainybrawl.app.ui.theme.*
 
-/** Original scalable artwork; no illustrative player or economy data from the mockup. */
+/** Owner-supplied transparent branding; decorative when accompanied by a screen title. */
 @Composable fun BrainMark(modifier:Modifier=Modifier){
-    Canvas(modifier){
-        val u=size.minDimension/100f
-        translate((size.width-100*u)/2,(size.height-100*u)/2){
-            drawCircle(Cyan.copy(alpha=.12f),49*u,Offset(50*u,50*u))
-            val outline=Path().apply{
-                moveTo(49*u,20*u);cubicTo(30*u,7*u,15*u,24*u,20*u,36*u)
-                cubicTo(3*u,44*u,10*u,67*u,23*u,69*u)
-                cubicTo(18*u,86*u,43*u,94*u,50*u,78*u)
-                cubicTo(65*u,94*u,85*u,83*u,80*u,69*u)
-                cubicTo(96*u,62*u,96*u,43*u,81*u,36*u)
-                cubicTo(84*u,16*u,62*u,10*u,49*u,20*u);close()
-            }
-            drawPath(outline,Ink,style=Stroke(10*u,cap=StrokeCap.Round))
-            drawPath(outline,Cyan,style=Stroke(6*u,cap=StrokeCap.Round))
-            drawPath(outline,Brush.verticalGradient(listOf(Color(0xFFFF99E7),Color(0xFFBC55E8)),0f,90*u))
-            val folds=Path().apply{
-                moveTo(50*u,25*u);lineTo(50*u,68*u)
-                moveTo(30*u,29*u);quadraticTo(24*u,44*u,38*u,44*u)
-                moveTo(24*u,58*u);quadraticTo(34*u,49*u,39*u,59*u)
-                moveTo(70*u,27*u);quadraticTo(77*u,44*u,64*u,43*u)
-                moveTo(76*u,57*u);quadraticTo(62*u,51*u,63*u,63*u)
-            }
-            drawPath(folds,Color(0xFF71338F),style=Stroke(3.5f*u,cap=StrokeCap.Round))
-            drawCircle(Ink,3*u,Offset(37*u,67*u));drawCircle(Ink,3*u,Offset(63*u,67*u))
-            drawArc(Ink,10f,160f,false,Offset(43*u,67*u),Size(14*u,11*u),style=Stroke(2.5f*u))
-        }
-    }
+    androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(R.drawable.brand_logo),
+        contentDescription=null,modifier=modifier,contentScale=androidx.compose.ui.layout.ContentScale.Fit)
 }
 
 @Composable fun GameHero(onPlay:()->Unit){

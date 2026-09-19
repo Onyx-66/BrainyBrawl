@@ -28,14 +28,14 @@ class RoomViewModel(private val repository:RoomRepository,private val auth:AuthR
     }.stateIn(viewModelScope,SharingStarted.WhileSubscribed(5_000),RoomConnection.Empty)
     init { viewModelScope.launch { auth.state.collectLatest { state ->
         operation?.cancel();catalogJob?.cancel();selectedRoom.value=null;mutableActions.value=LobbyActions()
-        if(state is AuthState.SignedIn) {
+        if(state is AuthState.SignedIn&&!state.local) {
             try { selectedRoom.value=repository.currentRoom();mutableActions.value=mutableActions.value.copy(invites=repository.invites()) }
             catch(e:CancellationException){throw e}
             catch(_:Exception){mutableActions.value=mutableActions.value.copy(failed=true)}
         }
     } } }
     private fun action(block:suspend()->Unit) {
-        if(mutableActions.value.busy||auth.state.value !is AuthState.SignedIn)return
+        if(mutableActions.value.busy||(auth.state.value as? AuthState.SignedIn)?.local!=false)return
         mutableActions.value=mutableActions.value.copy(busy=true,failed=false,noPublicRoom=false)
         operation=viewModelScope.launch {
             try{block()}
@@ -46,7 +46,7 @@ class RoomViewModel(private val repository:RoomRepository,private val auth:AuthR
     }
     fun loadReactions(locale:String){
         catalogJob?.cancel()
-        if(auth.state.value !is AuthState.SignedIn)return
+        if((auth.state.value as? AuthState.SignedIn)?.local!=false)return
         catalogJob=viewModelScope.launch{
             try{val catalog=repository.reactions(locale);mutableActions.update{it.copy(reactions=catalog)}}
             catch(e:CancellationException){throw e}

@@ -21,7 +21,7 @@ import kotlinx.serialization.json.Json
 /** Keys remain in Android Keystore. Both session and PKCE verifier are encrypted. */
 class EncryptedAuthStore(context: Context) : SessionManager, CodeVerifierCache {
     private val preferences = context.getSharedPreferences("auth_encrypted", Context.MODE_PRIVATE)
-    private val mutex = Mutex()
+    companion object { private val mutex = Mutex() }
     private val json = Json { ignoreUnknownKeys = true }
     private fun key(): SecretKey {
         val store = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
@@ -49,11 +49,14 @@ class EncryptedAuthStore(context: Context) : SessionManager, CodeVerifierCache {
             cipher.init(Cipher.DECRYPT_MODE, key(), GCMParameterSpec(128, bytes.copyOfRange(0, 12)))
             cipher.updateAAD(name.toByteArray(Charsets.UTF_8))
             String(cipher.doFinal(bytes.copyOfRange(12, bytes.size)), Charsets.UTF_8)
-        } catch (_: Exception) {
+        } catch (error: Exception) {
+            if(name=="local_accounts") throw error
             // Invalidated keys or corrupt ciphertext require fresh sign-in, never plaintext fallback.
             preferences.edit().remove(name).commit(); null
         }
     }
+    suspend fun readLocalAccounts():String?=withContext(Dispatchers.IO){mutex.withLock{read("local_accounts")}}
+    suspend fun writeLocalAccounts(value:String)=withContext(Dispatchers.IO){mutex.withLock{write("local_accounts",value)}}
     override suspend fun saveSession(session: UserSession) = withContext(Dispatchers.IO) {
         mutex.withLock { write("session", json.encodeToString(UserSession.serializer(), session)) }
     }

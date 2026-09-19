@@ -9,10 +9,10 @@ class LeaderboardViewModel(private val repository:LeaderboardRepository,private 
     private val mutable=MutableStateFlow(LeaderboardUi())
     val state=mutable.asStateFlow()
     private var request:Job?=null
-    init{viewModelScope.launch{auth.state.collect{request?.cancel();mutable.value=LeaderboardUi();if(it is AuthState.SignedIn)load(LeaderboardFilter())}}}
+    init{viewModelScope.launch{auth.state.collect{request?.cancel();mutable.value=LeaderboardUi();if(it is AuthState.SignedIn&&!it.local)load(LeaderboardFilter())}}}
     fun load(filter:LeaderboardFilter){
         request?.cancel();mutable.value=LeaderboardUi(filter,loading=true)
-        if(auth.state.value !is AuthState.SignedIn){mutable.value=LeaderboardUi(filter);return}
+        if((auth.state.value as? AuthState.SignedIn)?.local!=false){mutable.value=LeaderboardUi(filter);return}
         request=viewModelScope.launch{
             try{val board=repository.load(filter);mutable.value=LeaderboardUi(filter,board=board)}
             catch(e:CancellationException){throw e}

@@ -232,4 +232,18 @@
     <string name="online_account_required">Connectez-vous pour rejoindre vos amis et jouer en ligne.</string>
     <string name="offline_language_note">Questions en anglais. Jouez sans compte ni connexion.</string>
     <string name="play_english_questions">Jouer aux questions en anglais</string>
+    <string name="device_account">Compte sur cet appareil</string>
+    <string name="device_account_description">Créez ou utilisez un compte sur cet appareil, même sans internet.</string>
+    <string name="local_profile_description">Votre progression hors ligne reste sur cet appareil. Connectez un compte en ligne vérifié pour participer aux compétitions.</string>
+    <string name="player_level">Niveau {level}</string>
+    <string name="connect_online">Connecter un compte en ligne</string>
+    <string name="offline_social">Demandes et invitations</string>
+    <string name="offline_social_description">Préparez vos demandes hors ligne. Elles seront envoyées après connexion avec la même adresse e-mail. Les invitations nécessitent une amitié acceptée.</string>
+    <string name="queue_friend">Préparer une demande</string>
+    <string name="queue_invite">Préparer une invitation</string>
+    <string name="send_queued">Envoyer les demandes</string>
+    <string name="queue_pending_reason">Certaines demandes restent en attente. Vérifiez le joueur, votre amitié et la connexion, puis réessayez.</string>
+    <string name="queue_sent">Envoyé</string>
+    <string name="queue_waiting">En attente</string>
+    <string name="dismiss">Fermer</string>
 </resources>

@@ -232,4 +232,18 @@
     <string name="online_account_required">Sign in to join friends and compete online.</string>
     <string name="offline_language_note">Question pack: English. Play without an account or internet.</string>
     <string name="play_english_questions">Play English questions</string>
+    <string name="device_account">Device account</string>
+    <string name="device_account_description">Create or use an account on this device, even without internet.</string>
+    <string name="local_profile_description">Your offline progress stays on this device. Connect a verified online account to play competitively.</string>
+    <string name="player_level">Level {level}</string>
+    <string name="connect_online">Connect online account</string>
+    <string name="offline_social">Friend requests and invitations</string>
+    <string name="offline_social_description">Prepare requests offline. They are sent after connecting the same email online; invitations require an accepted friendship.</string>
+    <string name="queue_friend">Queue friend request</string>
+    <string name="queue_invite">Queue game invitation</string>
+    <string name="send_queued">Send queued requests</string>
+    <string name="queue_pending_reason">Some requests are still waiting. Check the player name, friendship and connection, then retry.</string>
+    <string name="queue_sent">Sent</string>
+    <string name="queue_waiting">Waiting to send</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

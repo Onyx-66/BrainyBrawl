@@ -33,12 +33,18 @@ class AppContainer(context: Context) {
         install(Postgrest);install(Realtime);install(Functions)
     } else null
     val settings=com.brainybrawl.app.feature.settings.SettingsRepository(applicationContext)
-    val auth=SupabaseAuthRepository(supabase,scope)
+    val localAccounts=com.brainybrawl.app.feature.auth.LocalAccounts(object:com.brainybrawl.app.feature.auth.LocalAccountVault{
+        private val encrypted=EncryptedAuthStore(applicationContext)
+        override suspend fun read()=encrypted.readLocalAccounts()
+        override suspend fun write(value:String)=encrypted.writeLocalAccounts(value)
+    })
+    val auth=com.brainybrawl.app.feature.auth.HybridAuthRepository(SupabaseAuthRepository(supabase,scope),localAccounts,scope)
     val players=SupabasePlayerRepository(supabase)
     val store=com.brainybrawl.app.feature.store.SupabaseStoreRepository(supabase,applicationContext)
     val leaderboards=com.brainybrawl.app.feature.leaderboard.SupabaseLeaderboardRepository(supabase)
     val matches=com.brainybrawl.app.feature.match.SupabaseMatchRepository(supabase)
     val rooms=com.brainybrawl.app.feature.lobby.SupabaseRoomRepository(supabase)
-    val offlineStatistics=com.brainybrawl.app.feature.offline.OfflineStatistics(applicationContext)
+    val socialQueue=com.brainybrawl.app.feature.friends.LocalSocialCoordinator(localAccounts,auth,players,rooms)
+    val offlineStatistics=com.brainybrawl.app.feature.offline.OfflineStatistics(applicationContext){(auth.state.value as? com.brainybrawl.app.feature.auth.AuthState.SignedIn)?.userId?:"guest"}
     val content=XmlContentRepository(applicationContext.assets::open,BuildConfig.DEBUG)
 }

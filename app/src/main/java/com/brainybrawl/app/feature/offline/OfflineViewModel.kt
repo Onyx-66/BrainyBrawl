@@ -16,16 +16,18 @@ import java.util.UUID
 data class OfflineStats(val best:Int=0,val earned:Long=0,val possible:Long=0)
 data class OfflineUi(val loading:Boolean=false,val failed:Boolean=false,val game:OfflineQuestions?=null,
     val now:Long=0,val stats:OfflineStats=OfflineStats(),val saved:Boolean=false)
-class OfflineStatistics(context:Context) {
+class OfflineStatistics(context:Context,private val owner:()->String={"guest"}) {
     private val preferences=context.getSharedPreferences("offline_question_statistics",Context.MODE_PRIVATE)
-    fun read()=OfflineStats(preferences.getInt("best",0),preferences.getLong("earned",0),preferences.getLong("possible",0))
-    @Synchronized fun record(id:String,score:Int,total:Int):OfflineStats {
+    fun currentOwner()=owner()
+    private fun key(name:String,account:String)=if(account=="guest")name else "$account:$name"
+    fun read(account:String=owner())=OfflineStats(preferences.getInt(key("best",account),0),preferences.getLong(key("earned",account),0),preferences.getLong(key("possible",account),0))
+    @Synchronized fun record(id:String,score:Int,total:Int,account:String=owner()):OfflineStats {
         require(score in 0..total && total>0)
-        if(preferences.getString("last_session",null)==id)return read()
-        val old=read()
-        check(preferences.edit().putString("last_session",id).putInt("best",maxOf(old.best,score))
-            .putLong("earned",old.earned+score).putLong("possible",old.possible+total).commit())
-        return read()
+        if(preferences.getString(key("last_session",account),null)==id)return read(account)
+        val old=read(account)
+        check(preferences.edit().putString(key("last_session",account),id).putInt(key("best",account),maxOf(old.best,score))
+            .putLong(key("earned",account),old.earned+score).putLong(key("possible",account),old.possible+total).commit())
+        return read(account)
     }
 }
 class OfflineViewModel(private val content:ContentRepository,private val statistics:OfflineStatistics):ViewModel() {
@@ -39,13 +41,14 @@ class OfflineViewModel(private val content:ContentRepository,private val statist
         if(mutable.value.loading)return
         ticker?.cancel()
         session=UUID.randomUUID().toString()
+        val sessionOwner=statistics.currentOwner()
         mutable.value=OfflineUi(loading=true)
         ticker=viewModelScope.launch {
             try {
                 val questions=content.load(ContentKind.QUESTION,locale).filterIsInstance<QuestionContent>().shuffled().take(15)
                 require(questions.isNotEmpty())
                 mutable.value=OfflineUi(game=OfflineQuestions(questions,startedAt=SystemClock.elapsedRealtime()),
-                    now=SystemClock.elapsedRealtime(),stats=withContext(Dispatchers.IO){statistics.read()})
+                    now=SystemClock.elapsedRealtime(),stats=withContext(Dispatchers.IO){statistics.read(sessionOwner)})
                 while(isActive) {
                     visible.first{it}
                     val now=SystemClock.elapsedRealtime()
@@ -53,7 +56,7 @@ class OfflineViewModel(private val content:ContentRepository,private val statist
                     val current=mutable.value
                     if(current.game?.finished==true && !current.saved) {
                         val game=current.game
-                        val stats=withContext(Dispatchers.IO){statistics.record(session,game.score,game.questions.size)}
+                        val stats=withContext(Dispatchers.IO){statistics.record(session,game.score,game.questions.size,sessionOwner)}
                         mutable.update{it.copy(stats=stats,saved=true)}
                         break
                     }

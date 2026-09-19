@@ -18,7 +18,7 @@ class MatchViewModel(private val repository:MatchRepository,private val auth:Aut
     private var cursorJob:Job?=null
     val userId:String? get()=(auth.state.value as? AuthState.SignedIn)?.userId
     private var retry:Triple<String,String,JsonObject>?=null
-    val connection=combine(match,auth.state){id,state->if(state is AuthState.SignedIn)id else null}
+    val connection=combine(match,auth.state){id,state->if(state is AuthState.SignedIn&&!state.local)id else null}
         .flatMapLatest{id->if(id==null)flowOf(MatchConnection.Loading) else repository.observe(id).retryWhen{cause,attempt->
             if(cause is CancellationException)throw cause
             emit(MatchConnection.Recovering(null))

@@ -134,3 +134,10 @@ pages and deployment approval remain the existing owner-controlled gates.
   reward amounts are defined anywhere in the build pack. Awarding Gold or granting
   achievements requires these rules; no client-authoritative or fabricated grants
   are implemented.
+
+
+## September 19 account/level follow-up
+
+- Owner requested offline-capable device accounts, queued social invitations, supplied branding, bento modes and username/level header. Implemented separately from Supabase identity; offline practice still cannot award competitive Flames.
+- OPEN_DECISION LEVEL_CURVE: owner requested Flame-based levels without thresholds. Current adjustable implementation is level = 1 + floor(lifetime earned match-win Flames / 10), with no decrease after spending. Await owner confirmation of the curve; unrelated features remain available.
+- Online activation and server administrator provisioning require target-project settings and approval. Administrator credentials are in ignored `.env`, never in this register or the APK.

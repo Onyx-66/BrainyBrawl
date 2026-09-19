@@ -232,4 +232,18 @@
     <string name="online_account_required">سجّل الدخول للعب مع أصدقائك والمنافسة عبر الإنترنت.</string>
     <string name="offline_language_note">الأسئلة باللغة الإنجليزية. العب دون حساب أو اتصال بالإنترنت.</string>
     <string name="play_english_questions">العب أسئلة باللغة الإنجليزية</string>
+    <string name="device_account">حساب على هذا الجهاز</string>
+    <string name="device_account_description">أنشئ حسابًا أو استخدم حسابك على هذا الجهاز حتى دون إنترنت.</string>
+    <string name="local_profile_description">يبقى تقدمك دون اتصال على هذا الجهاز. اربط حسابًا موثقًا عبر الإنترنت للمنافسة.</string>
+    <string name="player_level">المستوى {level}</string>
+    <string name="connect_online">ربط حساب عبر الإنترنت</string>
+    <string name="offline_social">طلبات الصداقة والدعوات</string>
+    <string name="offline_social_description">جهّز طلباتك دون اتصال. تُرسل بعد الاتصال بالحساب ذي البريد نفسه. تتطلب الدعوات قبول الصداقة.</string>
+    <string name="queue_friend">تجهيز طلب صداقة</string>
+    <string name="queue_invite">تجهيز دعوة للعب</string>
+    <string name="send_queued">إرسال الطلبات المحفوظة</string>
+    <string name="queue_pending_reason">بعض الطلبات ما زالت معلقة. تحقق من اسم اللاعب والصداقة والاتصال ثم أعد المحاولة.</string>
+    <string name="queue_sent">تم الإرسال</string>
+    <string name="queue_waiting">بانتظار الإرسال</string>
+    <string name="dismiss">إغلاق</string>
 </resources>

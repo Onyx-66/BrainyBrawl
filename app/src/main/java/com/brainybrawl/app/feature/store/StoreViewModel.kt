@@ -19,10 +19,10 @@ class StoreViewModel(private val repository:StoreRepository,private val auth:Aut
     private var job:Job?=null
     init { viewModelScope.launch { auth.state.collect { state ->
         job?.cancel();mutable.value=StoreUi()
-        if(state is AuthState.SignedIn) refresh()
+        if(state is AuthState.SignedIn&&!state.local) refresh()
     } } }
     private fun action(block:suspend()->Unit) {
-        if(mutable.value.busy || auth.state.value !is AuthState.SignedIn) return
+        if(mutable.value.busy || (auth.state.value as? AuthState.SignedIn)?.local!=false) return
         mutable.value=mutable.value.copy(busy=true,failed=false,saved=false)
         job=viewModelScope.launch {
             try { block();mutable.value=mutable.value.copy(snapshot=repository.snapshot()) }

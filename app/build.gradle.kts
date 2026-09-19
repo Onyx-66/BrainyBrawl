@@ -7,7 +7,8 @@ plugins {
 }
 
 fun publicConfig(name: String): String {
-    val value = providers.environmentVariable(name).orElse(providers.gradleProperty(name)).getOrElse("")
+    val localPublic = rootProject.file(".env").takeIf { it.isFile }?.readLines()?.firstOrNull { it.startsWith("$name=") }?.substringAfter('=')?.trim().orEmpty()
+    val value = providers.environmentVariable(name).orElse(providers.gradleProperty(name)).getOrElse(localPublic)
     require(!value.startsWith("sb_secret_")) { "Only publishable client credentials are allowed" }
     if (name == "SUPABASE_PUBLISHABLE_KEY" && value.isNotBlank() && !value.startsWith("sb_publishable_")) {
         val parts = value.split('.')

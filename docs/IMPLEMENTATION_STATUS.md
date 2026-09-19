@@ -279,3 +279,7 @@ See `UI_REDESIGN.md` for the visual redesign, restored account forms/providers a
 explicit English content selection that fixes offline startup under Arabic/French.
 The user requested a local commit and relaunch after verification. Existing
 unrelated documentation changes and deletion remain outside that commit's scope.
+
+## Account and branding follow-up
+
+See `SESSION_REPORT.md` and `ONLINE_SETUP.md` for the latest device accounts, queued social requests, supplied branding/bento grid, level/admin migration, verification and backend configuration gates. Previous auth-only-online notes are superseded by device accounts.

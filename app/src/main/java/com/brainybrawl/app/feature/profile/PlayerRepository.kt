@@ -9,7 +9,7 @@ import kotlinx.serialization.json.*
 @Serializable data class PlayerProfile(val id: String,@SerialName("player_number") val number: Long,val username: String)
 @Serializable data class Balance(val currency: String,val balance: Long)
 @Serializable data class OwnedCosmetic(val id: String,val kind: String,@SerialName("label_key") val labelKey: String,val labels:Map<String,String> = emptyMap())
-@Serializable data class ProfileSnapshot(val profile: PlayerProfile,val currencies: List<Balance>,val inventory: List<OwnedCosmetic>,val played: Int,val wins: Int,val email:String?=null,val providers:List<String> = emptyList(),@SerialName("mode_stats")val modeStats:List<ModeStatistics> = emptyList())
+@Serializable data class ProfileSnapshot(val profile: PlayerProfile,val currencies: List<Balance>,val inventory: List<OwnedCosmetic>,val played: Int,val wins: Int,val email:String?=null,val providers:List<String> = emptyList(),@SerialName("mode_stats")val modeStats:List<ModeStatistics> = emptyList(),@SerialName("lifetime_flames")val lifetimeFlames:Long=0,val level:Long=1,@SerialName("is_admin")val isAdmin:Boolean=false)
 @Serializable data class ModeStatistics(val mode:String,val played:Int,val wins:Int,val best:Int)
 @Serializable data class PlayerPreview(val profile:PlayerProfile,val inventory:List<OwnedCosmetic>,@SerialName("mode_stats")val modeStats:List<ModeStatistics>)
 @Serializable data class FriendEntry(@SerialName("user_id") val userId: String,@SerialName("player_number") val number: Long,val username: String,val status: String,val incoming: Boolean)

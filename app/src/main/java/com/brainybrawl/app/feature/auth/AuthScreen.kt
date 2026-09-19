@@ -15,9 +15,10 @@ import com.brainybrawl.app.R
 import com.brainybrawl.app.core.design.*
 
 @Composable
-fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Boolean = false) {
+fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Boolean = false,onlineOnly:Boolean=false) {
     val state by viewModel.ui.collectAsStateWithLifecycle()
     var form by rememberSaveable(changePassword) { mutableStateOf(if(changePassword) AuthForm.CHANGE_PASSWORD else AuthForm.LOGIN) }
+    var local by rememberSaveable(onlineOnly){mutableStateOf(!onlineOnly&&!viewModel.onlineConfigured)}
     var username by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     // Passwords deliberately never enter saved instance state or a ViewModel property.
@@ -35,6 +36,13 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
     if(!changePassword)Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.Center){BrainMark(Modifier.size(56.dp))}
     Text(stringResource(title),Modifier.fillMaxWidth(),style=MaterialTheme.typography.headlineMedium,textAlign=androidx.compose.ui.text.style.TextAlign.Center)
     Text(stringResource(R.string.auth_description),Modifier.fillMaxWidth(),textAlign=androidx.compose.ui.text.style.TextAlign.Center,style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
+    if(!changePassword&&!onlineOnly){
+        Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically){
+            Checkbox(local,{local=it;viewModel.consumeNotice()})
+            Text(stringResource(R.string.device_account))
+        }
+        if(local)Text(stringResource(R.string.device_account_description),style=MaterialTheme.typography.bodySmall)
+    }
     BrawlPanel(Modifier.fillMaxWidth()) {
         if(form==AuthForm.REGISTER) OutlinedTextField(username,{username=it},Modifier.fillMaxWidth(),
             label={Text(stringResource(R.string.username))},singleLine=true,enabled=enabled,colors=fields,shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
@@ -45,7 +53,7 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
             label={Text(stringResource(R.string.password))},singleLine=true,enabled=enabled,colors=fields,shape=androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
             visualTransformation=PasswordVisualTransformation(), keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Password))
         BrawlButton(stringResource(title),{
-            val submitted=password;password="";viewModel.submit(form,username,email,submitted)
+            val submitted=password;password="";viewModel.submit(form,username,email,submitted,local)
         },Modifier.fillMaxWidth(),enabled=enabled)
         if(state.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
         if(state.notice!=AuthNotice.NONE&&state.notice!=AuthNotice.BACKEND_REQUIRED) Text(stringResource(state.notice.label()),color=MaterialTheme.colorScheme.onSurface)
@@ -55,7 +63,7 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
         if(form==AuthForm.LOGIN) {
             ProviderButton(stringResource(R.string.google),"G",{viewModel.oauth(AuthProvider.GOOGLE)},enabled)
             ProviderButton(stringResource(R.string.discord),"D",{viewModel.oauth(AuthProvider.DISCORD)},enabled)
-            TextButton(onClick={form=AuthForm.RECOVER;password=""}) { Text(stringResource(R.string.recover_password)) }
+            if(!local)TextButton(onClick={form=AuthForm.RECOVER;password=""}) { Text(stringResource(R.string.recover_password)) }
         }
         TextButton(onClick={form=if(form==AuthForm.LOGIN) AuthForm.REGISTER else AuthForm.LOGIN;password=""}) {
             Text(stringResource(if(form==AuthForm.LOGIN) R.string.register else R.string.login))
