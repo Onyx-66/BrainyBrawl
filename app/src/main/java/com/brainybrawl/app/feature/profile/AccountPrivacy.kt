@@ -17,8 +17,8 @@ import kotlinx.coroutines.*
  var confirm by remember{mutableStateOf(false)};var busy by remember{mutableStateOf(false)};var done by remember{mutableStateOf(false)};var failed by remember{mutableStateOf(false)}
  val scope=rememberCoroutineScope()
  Column(modifier){
- FilledTonalButton({confirm=true},Modifier.fillMaxWidth().heightIn(min=64.dp),enabled=!busy,colors=ButtonDefaults.filledTonalButtonColors(containerColor=MaterialTheme.colorScheme.error.copy(alpha=.14f),contentColor=MaterialTheme.colorScheme.error)){
-  Column(horizontalAlignment=Alignment.CenterHorizontally){NavigationSymbol(NavSymbol.DELETE);Text(stringResource(R.string.delete_account),style=MaterialTheme.typography.labelMedium)}
+ FilledTonalButton({confirm=true},Modifier.fillMaxWidth().heightIn(min=52.dp),enabled=!busy,colors=ButtonDefaults.filledTonalButtonColors(containerColor=MaterialTheme.colorScheme.error.copy(alpha=.14f),contentColor=MaterialTheme.colorScheme.error)){
+  NavigationSymbol(NavSymbol.DELETE);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.delete_account),maxLines=1)
  }
  if(done)Text(stringResource(R.string.deletion_requested))
  if(failed)Text(stringResource(R.string.request_failed))

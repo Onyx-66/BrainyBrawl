@@ -61,4 +61,14 @@ class ProfileCustomizationTest{
         rule.onNodeWithText("الحساب").performScrollTo().assertIsDisplayed()
         rule.onNodeWithContentDescription("تعديل البريد الإلكتروني").performScrollTo().assertIsDisplayed()
     }
+    @Test fun permanentIdIsVisibleAndCopyableInArabic(){
+        val user=container.localAccounts.state.value.current!!
+        runBlocking{container.localAccounts.rememberProfile(user.email,10000001,user.username)}
+        rule.runOnIdle{container.settings.update(UserSettings(language="ar"))}
+        rule.onNodeWithText("000010000001").assertIsDisplayed()
+        rule.onNodeWithContentDescription("نسخ المعرّف").performClick()
+        rule.onNodeWithText("الصور").assertIsDisplayed()
+        capture("arabic-id")
+    }
+
 }

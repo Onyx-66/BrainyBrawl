@@ -33,7 +33,7 @@ class SupabasePlayerRepository(private val client: SupabaseClient?) : PlayerRepo
     override suspend fun profile()=json.decodeFromString<ProfileSnapshot>(rpc("profile_snapshot"))
     override suspend fun preview(userId:String)=json.decodeFromString<PlayerPreview>(rpc("player_preview",buildJsonObject{put("p_target",userId)}))
     override suspend fun social()=json.decodeFromString<SocialSnapshot>(rpc("social_snapshot"))
-    override suspend fun search(query: String)=json.decodeFromString<List<PlayerProfile>>(rpc("search_players",buildJsonObject { put("p_query",query) }))
+    override suspend fun search(query: String)=json.decodeFromString<List<PlayerProfile>>(rpc("search_players",buildJsonObject { put("p_query",PlayerId.searchQuery(query)) }))
     override suspend fun rename(username: String) { rpc("update_profile",buildJsonObject { put("p_username",username) }) }
     override suspend fun friend(userId: String,action: String) { rpc("friend_action",buildJsonObject { put("p_target",userId);put("p_action",action) }) }
     override suspend fun block(userId: String,blocked: Boolean) { rpc("set_block",buildJsonObject { put("p_target",userId);put("p_blocked",blocked) }) }

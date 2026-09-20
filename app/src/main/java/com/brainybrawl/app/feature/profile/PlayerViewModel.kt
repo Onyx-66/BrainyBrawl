@@ -32,6 +32,21 @@ class PlayerViewModel(private val repository: PlayerRepository,private val auth:
         mutableProfile.value=PlayerDataState.SignedOut;mutableSocial.value=SocialUi()
         if(state is AuthState.SignedIn&&!state.local) refresh()
     } } }
+    init {
+        (auth as? com.brainybrawl.app.feature.auth.HybridAuthRepository)?.let{hybrid->
+            viewModelScope.launch{
+                combine(profile,hybrid.localAccounts.state,auth.state){data,local,identity->Triple(data,local.current,identity)}.collect{(data,local,identity)->
+                    val snapshot=(data as? PlayerDataState.Ready)?.data
+                    val remote=identity as? AuthState.SignedIn
+                    if(snapshot!=null&&local!=null&&remote!=null&&!remote.local&&snapshot.profile.id==remote.userId&&local.email.equals(remote.email,true)&&
+                        (local.playerNumber!=snapshot.profile.number||local.username!=snapshot.profile.username)){
+                        try{hybrid.localAccounts.rememberProfile(local.email,snapshot.profile.number,snapshot.profile.username)}
+                        catch(e:CancellationException){throw e}catch(_:Exception){} // The verified server profile remains usable if offline caching fails.
+                    }
+                }
+            }
+        }
+    }
     fun closePreview(){previewJob?.cancel();mutablePreview.value=null}
     fun preview(id:String){
         closePreview()
@@ -48,7 +63,8 @@ class PlayerViewModel(private val repository: PlayerRepository,private val auth:
         refreshJob=viewModelScope.launch {
             mutableProfile.value=PlayerDataState.Loading
             try {
-                mutableProfile.value=PlayerDataState.Ready(repository.profile())
+                val snapshot=repository.profile()
+                mutableProfile.value=PlayerDataState.Ready(snapshot)
                 mutableSocial.value=mutableSocial.value.copy(snapshot=repository.social(),failed=false)
             } catch(e: CancellationException) { throw e }
             catch(_: Exception) { mutableProfile.value=PlayerDataState.Failed }

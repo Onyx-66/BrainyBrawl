@@ -29,7 +29,7 @@ fun FriendsScreen(model: PlayerViewModel) {
                 PlayerDataState.Failed->Text(stringResource(R.string.request_failed))
                 is PlayerDataState.Ready->{
                     Text(current.data.profile.username,style=MaterialTheme.typography.headlineMedium)
-                    Text(namedString(R.string.player_number,"number" to current.data.profile.number.toString()))
+                    com.brainybrawl.app.feature.profile.PlayerIdRow(current.data.profile.number)
                     Text(namedString(R.string.owned_cosmetics,"count" to current.data.inventory.size))
                     current.data.modeStats.forEach{stats->BrawlPanel(Modifier.fillMaxWidth()){
                         Text(stringResource(when(stats.mode){"duo"->R.string.duo;"squad"->R.string.squad;"solo"->R.string.solo;else->R.string.duel}),style=MaterialTheme.typography.titleMedium)
@@ -56,7 +56,7 @@ fun FriendsScreen(model: PlayerViewModel) {
     ui.search.forEach { found ->
         BrawlPanel(Modifier.fillMaxWidth()) {
             Text(found.username,style=MaterialTheme.typography.titleLarge)
-            Text(namedString(R.string.player_number,"number" to found.number.toString()))
+            com.brainybrawl.app.feature.profile.PlayerIdRow(found.number)
             BrawlButton(stringResource(R.string.add_friend),{model.friend(found.id,"request")},Modifier.fillMaxWidth(),enabled=!ui.busy)
             TextButton(onClick={reportTarget=FriendEntry(found.id,found.number,found.username,"",false)}) { Text(stringResource(R.string.report)) }
         }
@@ -65,7 +65,7 @@ fun FriendsScreen(model: PlayerViewModel) {
     ui.snapshot.friends.forEach { friend ->
         BrawlPanel(Modifier.fillMaxWidth()) {
             Text(friend.username,style=MaterialTheme.typography.titleLarge)
-            Text(namedString(R.string.player_number,"number" to friend.number.toString()))
+            com.brainybrawl.app.feature.profile.PlayerIdRow(friend.number)
             if(friend.status=="pending") {
                 Text(stringResource(if(friend.incoming) R.string.incoming_request else R.string.request_pending))
                 if(friend.incoming) BrawlButton(stringResource(R.string.accept),{model.friend(friend.userId,"accept")},Modifier.fillMaxWidth(),enabled=!ui.busy,tone=ActionTone.POSITIVE)
@@ -83,7 +83,7 @@ fun FriendsScreen(model: PlayerViewModel) {
     if(ui.snapshot.blocks.isNotEmpty()) Text(stringResource(R.string.blocked_players),style=MaterialTheme.typography.titleLarge)
     ui.snapshot.blocks.forEach { blocked ->
         BrawlPanel(Modifier.fillMaxWidth()) {
-            Text(namedString(R.string.player_number,"number" to blocked.number.toString()))
+            com.brainybrawl.app.feature.profile.PlayerIdRow(blocked.number)
             BrawlButton(stringResource(R.string.unblock),{model.block(blocked.userId,false)},enabled=!ui.busy)
         }
     }

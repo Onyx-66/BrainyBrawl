@@ -39,7 +39,7 @@ import com.brainybrawl.app.ui.theme.*
                     Text(stringResource(R.string.play_title),style=MaterialTheme.typography.headlineMedium,color=Color.White)
                     Text(stringResource(R.string.play_description),style=MaterialTheme.typography.bodyMedium,color=Color.White.copy(alpha=.9f))
                 }
-                BrainMark(Modifier.size(106.dp))
+                GameArtwork("start_game_icon",Modifier.size(112.dp))
             }
             BrawlButton(stringResource(R.string.start_game),onPlay,Modifier.fillMaxWidth(),tone=ActionTone.POSITIVE)
         }

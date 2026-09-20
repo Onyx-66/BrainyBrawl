@@ -14,18 +14,18 @@ import androidx.compose.ui.unit.IntSize
 private val artworkBounds=mapOf(
     "1v1_card" to Rect(0.019936f,0.030303f,0.980861f,0.945774f),
     "1v1_icon" to Rect(0.133333f,0.142105f,0.875439f,0.871930f),
-    "coin_count" to Rect(0.021639f,0.140884f,0.973757f,0.820442f),
+    "coin_count" to Rect(0.023020f,0.131215f,0.976980f,0.853591f),
     "coin_icon" to Rect(0.045455f,0.046252f,0.953748f,0.949761f),
-    "coin_more" to Rect(0.093947f,0.131048f,0.950189f,0.841734f),
+    "coin_more" to Rect(0.067449f,0.087977f,0.909091f,0.912023f),
     "duo_card" to Rect(0.033493f,0.051834f,0.966507f,0.922648f),
     "duo_icon" to Rect(0.101351f,0.143581f,0.942568f,0.846284f),
-    "flame_count" to Rect(0.025783f,0.168508f,0.971915f,0.802486f),
+    "flame_count" to Rect(0.021921f,0.174178f,0.979123f,0.721072f),
     "flame_icon" to Rect(0.141946f,0.057416f,0.853270f,0.899522f),
-    "flame_more" to Rect(0.100883f,0.138105f,0.940731f,0.837702f),
+    "flame_more" to Rect(0.066066f,0.060060f,0.927928f,0.912913f),
     "games_icon" to Rect(0.030545f,0.152098f,0.969455f,0.897727f),
-    "gem_count" to Rect(0.042818f,0.161602f,0.957182f,0.845304f),
+    "gem_count" to Rect(0.000000f,0.000000f,1.000000f,1.000000f),
     "gem_icon" to Rect(0.048644f,0.157895f,0.950558f,0.891547f),
-    "gem_more" to Rect(0.098991f,0.146169f,0.950820f,0.847782f),
+    "gem_more" to Rect(0.063063f,0.072072f,0.924925f,0.921922f),
     "home_icon" to Rect(0.123636f,0.104021f,0.873455f,0.902098f),
     "offline_card" to Rect(0.029696f,0.254144f,0.970994f,0.748619f),
     "offline_icon" to Rect(0.171224f,0.141602f,0.824219f,0.916992f),
@@ -34,6 +34,7 @@ private val artworkBounds=mapOf(
     "solo_icon" to Rect(0.133065f,0.082661f,0.893145f,0.949597f),
     "squad_card" to Rect(0.016746f,0.032695f,0.983254f,0.966507f),
     "squad_icon" to Rect(0.064062f,0.125000f,0.917188f,0.884375f),
+    "start_game_icon" to Rect(0.047085f,0.056170f,0.983558f,0.978723f),
     "store_icon" to Rect(0.123636f,0.099650f,0.874909f,0.913462f)
 )
 @Composable fun GameArtwork(name:String,modifier:Modifier=Modifier,contentScale:ContentScale=ContentScale.Fit){

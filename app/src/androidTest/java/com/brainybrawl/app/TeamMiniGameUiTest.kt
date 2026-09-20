@@ -69,7 +69,7 @@ class TeamMiniGameUiTest {
                 assertEquals("Image opacity",channel(source)*opacity+255*(1-opacity),channel(actual).toFloat(),18f)
             }
         }
-        checkColor(faded,0,0,.6f);checkColor(faded,5,2,.6f);checkColor(faded,11,6,.6f)
+        checkColor(faded,0,0,.25f);checkColor(faded,5,2,.25f);checkColor(faded,11,6,.25f)
         rule.runOnIdle{current.value=board.copy(placements=listOf(PuzzlePlacement(puzzle.pieces.first().id,puzzle.pieces.first().slot,"test-player")))}
         checkColor(rule.onNodeWithTag("puzzle-board").captureToImage().asAndroidBitmap(),0,0,1f)
         rule.runOnIdle{current.value=board}

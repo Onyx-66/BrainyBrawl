@@ -44,4 +44,23 @@ class ModeHeaderUiTest{
   rule.runOnIdle{container.settings.update(UserSettings(dark=false))}
   rule.onNodeWithTag("mode-DUEL").assertIsDisplayed();capture("light")
  }
+ @Test fun modeCardsStaySquareAndHeaderButtonsMatchHeight(){
+  rule.onNodeWithTag("nav-MODES").performClick()
+  listOf("DUEL","DUO","SQUAD","SOLO").forEach{mode->
+   rule.onNodeWithTag("mode-$mode").performScrollTo()
+   val bounds=rule.onNodeWithTag("mode-$mode").fetchSemanticsNode().boundsInRoot
+   Assert.assertEquals(bounds.width,bounds.height,1f)
+  }
+  val profile=rule.onNodeWithTag("header-profile").fetchSemanticsNode().boundsInRoot
+  val settings=rule.onNodeWithTag("header-settings").fetchSemanticsNode().boundsInRoot
+  Assert.assertEquals(profile.height,settings.height,1f)
+ }
+ @Test fun bluetoothEntryIsAvailableWithoutAServerAccount(){
+  rule.onNodeWithTag("nav-MODES").performClick()
+  rule.onNodeWithText("Bluetooth with friends").performScrollTo().performClick()
+  rule.onNodeWithText("Bluetooth with friends").assertIsDisplayed()
+  rule.onNodeWithText("Back to modes").performScrollTo().performClick()
+  rule.onNodeWithTag("mode-DUEL").performScrollTo().assertIsDisplayed()
+ }
+
 }

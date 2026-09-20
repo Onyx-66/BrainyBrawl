@@ -29,7 +29,7 @@ class HybridAuthRepository(
     val connection=mutableConnection.asStateFlow()
     override val state=combine(remote.state,localAccounts.state){remoteState,local->
         when{
-            !local.ready->AuthState.Loading
+            !local.ready||remoteState==AuthState.Loading->AuthState.Loading
             remoteState is AuthState.SignedIn->remoteState
             local.current!=null->AuthState.SignedIn(local.current.id,local.current.email,local=true)
             else->remoteState
@@ -51,6 +51,7 @@ class HybridAuthRepository(
         scope.launch{connectivity.collectLatest{connected->
             if(connected&&onlineConfigured){
                 localAccounts.state.first{it.ready}
+                remote.state.first{it!=AuthState.Loading}
                 // Retry transient outages without looping on bad credentials or confirmation requirements.
                 while(isActive){
                     val result=ensureOnline()
@@ -79,33 +80,46 @@ class HybridAuthRepository(
             result=remote.register(candidate.username,candidate.email,candidate.password)
             if(result==AuthNotice.NONE||result==AuthNotice.VERIFY_EMAIL)pending.write(candidate.copy(register=false))
         }
-        if(result==AuthNotice.NONE&&remoteConnected()){pending.write(null);return@safe AuthNotice.NONE}
+        if(result==AuthNotice.NONE){
+            if(remoteConnected()){pending.write(null);return@safe AuthNotice.NONE}
+            return@safe AuthNotice.NETWORK_ERROR
+        }
         result
     }.also{mutableConnection.value=it}
     override suspend fun loginLocal(email:String,password:String)=login(email,password)
     override suspend fun registerLocal(username:String,email:String,password:String)=register(username,email,password)
     override suspend fun login(email:String,password:String):AuthNotice=connectionLock.withLock{safe{
-        val localResult=localAccounts.login(email,password)
-        val address=if(localResult==AuthNotice.NONE)localAccounts.state.value.current!!.email else email.trim()
+        val address=localAccounts.resolveEmail(email)
         if(connectivity.value&&onlineConfigured){
             val result=remote.login(address,password)
-            if(result==AuthNotice.NONE){
-                localAccounts.rememberVerifiedLogin(address,password);pending.write(null);return@safe AuthNotice.NONE
-            }
-            if(localResult!=AuthNotice.NONE)return@safe result
+            mutableConnection.value=result
+            if(result!=AuthNotice.NONE)return@safe result
+            if(!remoteConnected())return@safe AuthNotice.NETWORK_ERROR
+            localAccounts.rememberVerifiedLogin(address,password);pending.write(null)
+            return@safe AuthNotice.NONE
         }
-        if(localResult==AuthNotice.NONE){
-            val user=localAccounts.state.value.current!!
-            rememberPending(user.username,user.email,password,true)
-            if(connectivity.value&&onlineConfigured)connectPending()
-            AuthNotice.NONE
-        }else localResult
+        val result=localAccounts.login(email,password)
+        if(result==AuthNotice.NONE){
+            val user=requireNotNull(localAccounts.state.value.current)
+            rememberPending(user.username,user.email,password,false)
+        }
+        result
     }}
     override suspend fun register(username:String,email:String,password:String):AuthNotice=connectionLock.withLock{safe{
+        if(!AuthValidation.username(username)||!AuthValidation.email(email)||!AuthValidation.password(password))return@safe AuthNotice.INVALID_INPUT
+        if(connectivity.value&&onlineConfigured){
+            val result=remote.register(username,email,password)
+            mutableConnection.value=result
+            if(result==AuthNotice.NONE){
+                if(!remoteConnected())return@safe AuthNotice.NETWORK_ERROR
+                localAccounts.rememberVerifiedLogin(email,password);pending.write(null)
+            }
+            // Confirmation is a pending registration, never a successful online session.
+            return@safe result
+        }
         val result=localAccounts.register(username,email,password)
-        if(result!=AuthNotice.NONE)return@safe result
-        rememberPending(username,email,password,true)
-        if(connectivity.value&&onlineConfigured)connectPending()else AuthNotice.NONE
+        if(result==AuthNotice.NONE)rememberPending(username,email,password,true)
+        result
     }}
     override suspend fun recover(email:String)=if(!connectivity.value)AuthNotice.NETWORK_ERROR else if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.recover(email)
     override suspend fun changePassword(password:String):AuthNotice=connectionLock.withLock{safe{

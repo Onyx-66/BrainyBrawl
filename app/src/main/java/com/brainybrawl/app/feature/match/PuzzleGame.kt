@@ -56,7 +56,7 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
                 onDrag={change,amount->change.consume();cursor=(cursor?:change.position)+amount;cursor?.let{onCursor(it.x/size.width,it.y/size.height)}})
         }){
             drawRect(Color.White)
-            drawImage(image,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()),alpha=.60f)
+            drawImage(image,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()),alpha=.25f)
             board.slots.forEach{slot->
                 val path=shape(slots.getValue(slot.id),size.width,size.height)
                 val placed=board.placements.any{it.slotId==slot.id}

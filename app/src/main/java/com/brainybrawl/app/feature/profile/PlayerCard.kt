@@ -41,7 +41,7 @@ import kotlinx.coroutines.*
             ProfileAvatar(appearance,id,username,Modifier.size(92.dp).testTag("player-avatar"))
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(5.dp)){
                 Text(username,style=MaterialTheme.typography.headlineSmall,color=Color.White)
-                number?.let{Text(namedString(R.string.player_number,"number" to it),style=MaterialTheme.typography.labelMedium,color=Color(0xFFC8D9EF))}
+                PlayerIdRow(number)
             }
         }
         Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(6.dp)){
@@ -53,7 +53,7 @@ import kotlinx.coroutines.*
                 Row(Modifier.weight(1f).fillMaxHeight().clip(RoundedCornerShape(12.dp)).background(Color(0x55101935)).padding(horizontal=5.dp,vertical=10.dp)
                     .semantics(mergeDescendants=true){contentDescription="$label $formatted"}.testTag("card-$key"),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(5.dp)){
                     if(key=="level")CompositionLocalProvider(LocalContentColor provides Gold){NavigationSymbol(NavSymbol.LEVEL,Modifier.size(20.dp))}
-                    else Image(painterResource(when(key){"gold"->R.drawable.bb_currency_gold;"gems"->R.drawable.bb_currency_gems;else->R.drawable.bb_currency_flames}),null,Modifier.size(20.dp))
+                    else GameArtwork(when(key){"gold"->"coin_icon";"gems"->"gem_icon";else->"flame_icon"},Modifier.size(24.dp))
                     Text(if(value>=10_000)android.icu.text.CompactDecimalFormat.getInstance(locale,android.icu.text.CompactDecimalFormat.CompactStyle.SHORT).format(value)else formatted,style=MaterialTheme.typography.labelLarge,color=Color.White,maxLines=1,modifier=Modifier.weight(1f))
                 }
             }
@@ -61,7 +61,7 @@ import kotlinx.coroutines.*
         Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(10.dp)){
             listOf("avatar" to R.string.avatars,"frame" to R.string.frames).forEach{(kind,label)->
                 FilledTonalButton({picker=kind},Modifier.weight(1f).fillMaxHeight().heightIn(min=48.dp),shape=RoundedCornerShape(14.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=Color(0xFF6650DC),contentColor=Color.White)){
-                    NavigationSymbol(if(kind=="avatar")NavSymbol.AVATARS else NavSymbol.FRAMES);Spacer(Modifier.width(8.dp));Text(stringResource(label))
+                    NavigationSymbol(if(kind=="avatar")NavSymbol.AVATARS else NavSymbol.FRAMES);Spacer(Modifier.width(8.dp));Text(stringResource(label),maxLines=1,softWrap=false,style=MaterialTheme.typography.labelLarge)
                 }
             }
         }

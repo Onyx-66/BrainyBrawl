@@ -41,6 +41,7 @@ import com.brainybrawl.app.core.localization.namedString
 
 /** No tokens, passwords or user objects ever enter the navigation back stack. */
 enum class Destination(val label: Int) {
+    BLUETOOTH(R.string.bluetooth_play),
     HOME(R.string.home), MODES(R.string.modes), MODE_OPTIONS(R.string.mode_options), OFFLINE_MODES(R.string.offline), OFFLINE_PUZZLE(R.string.offline_puzzle), STORE(R.string.store),
     PROFILE(R.string.profile), FRIENDS(R.string.friends), SETTINGS(R.string.settings),
     CONNECT_AUTH(R.string.connect_online), SHOWCASE(R.string.design_system), AUTH(R.string.login), PASSWORD(R.string.change_password), LOADOUT(R.string.loadout), LOBBY(R.string.lobby), GAME(R.string.modes), OFFLINE(R.string.offline), OFFLINE_IMAGES(R.string.offline_images), LEADERBOARDS(R.string.leaderboards)
@@ -154,7 +155,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
             }, bottomBar = {
                 if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.OFFLINE_PUZZLE.name && route != Destination.GAME.name) GameNavigationBar(
                     listOf(Destination.HOME,Destination.MODES,Destination.STORE,Destination.PROFILE).map{dest->
-                        GameNavItem(dest.name,stringResource(dest.label),when(dest){Destination.HOME->"home_icon";Destination.MODES->"games_icon";Destination.STORE->"store_icon";else->"profile_icon"})
+                        GameNavItem(dest.name,stringResource(if(dest==Destination.PROFILE)R.string.nav_profile else dest.label),when(dest){Destination.HOME->"home_icon";Destination.MODES->"games_icon";Destination.STORE->"store_icon";else->"profile_icon"})
                     },activeBottomDestination(route).name,{go(Destination.valueOf(it))})
             }) { padding ->
             NavHost(nav, Destination.AUTH.name, Modifier.padding(padding).imePadding()) {
@@ -164,6 +165,9 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                             .verticalScroll(rememberScrollState()).padding(20.dp),
                             verticalArrangement = Arrangement.spacedBy(when(destination){Destination.GAME->8.dp;Destination.AUTH,Destination.PROFILE->10.dp;else->16.dp})) {
                             when(destination) {
+                                Destination.BLUETOOTH -> com.brainybrawl.app.feature.nearby.NearbyScreen(container.content,
+                                    (playerState as? PlayerDataState.Ready)?.data?.profile?.username?:localState.current?.username?:stringResource(R.string.player),
+                                    com.brainybrawl.app.feature.nearby.NearbyMode.valueOf(selectedMode.name)){go(Destination.MODES)}
                                 Destination.CONNECT_AUTH -> AuthScreen(authViewModel,{go(Destination.MODES)},onlineOnly=true)
                                 Destination.AUTH -> AuthScreen(authViewModel, { offlineSession=true;go(Destination.OFFLINE_MODES) })
                                 Destination.PASSWORD -> AuthScreen(authViewModel, {}, changePassword=true)
@@ -193,7 +197,6 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     }
                                 }
                                 Destination.HOME -> {
-                                    if(auth is AuthState.SignedIn&&!online)AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
                                     Text(stringResource(R.string.welcome),style=MaterialTheme.typography.headlineLarge.copy(shadow=androidx.compose.ui.graphics.Shadow(Color(0xFF061228),androidx.compose.ui.geometry.Offset(0f,2f),8f)),color=Color.White)
                                     GameHero{go(Destination.MODES)}
                                     Row(Modifier.height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
@@ -212,10 +215,12 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     if(roomConnection!=RoomConnection.Empty)BrawlButton(stringResource(R.string.rejoin_room),{go(Destination.LOBBY)},Modifier.fillMaxWidth())
                                     ModeBento(null){selectedMode=it;go(Destination.MODE_OPTIONS)}
                                     OfflineModeCard{go(Destination.OFFLINE_MODES)}
+                                    BrawlButton(stringResource(R.string.bluetooth_play),{go(Destination.BLUETOOTH)},Modifier.fillMaxWidth())
                                 }
                                 Destination.MODE_OPTIONS -> {
                                     Text(stringResource(when(selectedMode){OnlineMode.DUEL->R.string.duel;OnlineMode.DUO->R.string.duo;OnlineMode.SQUAD->R.string.squad;OnlineMode.SOLO->R.string.solo}),style=MaterialTheme.typography.headlineMedium)
                                     Text(stringResource(R.string.mode_options))
+                                    BrawlButton(stringResource(R.string.bluetooth_play),{go(Destination.BLUETOOTH)},Modifier.fillMaxWidth())
                                     ActionBento(listOf(
                                         BentoAction(stringResource(R.string.create_private),NavSymbol.HOME){enterRoom(false)},
                                         BentoAction(stringResource(R.string.join_a_room),NavSymbol.GAMES){enterRoom(true)}))
@@ -275,7 +280,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
 
 /** Nested screens retain their parent tab selection. */
 internal fun activeBottomDestination(route:String?):Destination=when(route){
-    Destination.MODES.name,Destination.MODE_OPTIONS.name,Destination.OFFLINE_MODES.name,Destination.OFFLINE.name,Destination.OFFLINE_IMAGES.name,Destination.OFFLINE_PUZZLE.name,Destination.LOADOUT.name,Destination.LOBBY.name,Destination.GAME.name->Destination.MODES
+    Destination.BLUETOOTH.name,Destination.MODES.name,Destination.MODE_OPTIONS.name,Destination.OFFLINE_MODES.name,Destination.OFFLINE.name,Destination.OFFLINE_IMAGES.name,Destination.OFFLINE_PUZZLE.name,Destination.LOADOUT.name,Destination.LOBBY.name,Destination.GAME.name->Destination.MODES
     Destination.STORE.name->Destination.STORE
     Destination.PROFILE.name,Destination.FRIENDS.name,Destination.PASSWORD.name,Destination.CONNECT_AUTH.name->Destination.PROFILE
     else->Destination.HOME

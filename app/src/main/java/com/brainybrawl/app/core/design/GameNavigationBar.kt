@@ -32,7 +32,7 @@ data class GameNavItem(val key:String,val title:String,val art:String)
                 .semantics(mergeDescendants=true){if(!active)text=AnnotatedString(item.title)},
                 horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.Center){
                 GameArtwork(item.art,Modifier.size(if(active)42.dp else 38.dp))
-                if(active)Text(item.title,Modifier.testTag("nav-label-${item.key}"),style=MaterialTheme.typography.labelLarge,color=Color.White,maxLines=1)
+                if(active)Text(item.title,Modifier.testTag("nav-label-${item.key}"),style=MaterialTheme.typography.labelMedium,color=Color.White,maxLines=1,softWrap=false,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
             }
         }
     }

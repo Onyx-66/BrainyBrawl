@@ -32,7 +32,7 @@ fun ProfileScreen(model: PlayerViewModel, container:com.brainybrawl.app.core.App
     val state by model.profile.collectAsStateWithLifecycle()
     val ui by model.social.collectAsStateWithLifecycle()
     val identity by container.auth.state.collectAsStateWithLifecycle()
-    Text(stringResource(R.string.profile),style=MaterialTheme.typography.headlineMedium)
+    Text(stringResource(R.string.profile),modifier=androidx.compose.ui.Modifier.fillMaxWidth(),textAlign=androidx.compose.ui.text.style.TextAlign.Start,style=MaterialTheme.typography.headlineMedium)
     when(val current=state) {
         PlayerDataState.Loading -> LinearProgressIndicator(Modifier.fillMaxWidth())
         PlayerDataState.Failed -> FeedbackPanel(stringResource(R.string.request_failed),stringResource(R.string.network_error),stringResource(R.string.retry),model::refresh)

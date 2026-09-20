@@ -14,10 +14,10 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 interface LocalAccountVault { suspend fun read():String?;suspend fun write(value:String) }
-@Serializable private data class StoredAccount(val id:String,val username:String,val email:String,val salt:String,val verifier:String)
+@Serializable private data class StoredAccount(val id:String,val username:String,val email:String,val salt:String,val verifier:String,val playerNumber:Long?=null)
 @Serializable data class PendingSocial(val id:String,val owner:String,val target:String,val kind:String,val mode:String="duel",val room:String?=null,val sent:Boolean=false)
 @Serializable private data class AccountDatabase(val accounts:List<StoredAccount> = emptyList(),val current:String?=null,val queue:List<PendingSocial> = emptyList())
-data class LocalIdentity(val id:String,val username:String,val email:String)
+data class LocalIdentity(val id:String,val username:String,val email:String,val playerNumber:Long?=null)
 data class LocalAccountState(val ready:Boolean=false,val failed:Boolean=false,val current:LocalIdentity?=null,val queue:List<PendingSocial> = emptyList())
 
 /** Local identity is not a Supabase identity. No remote role, score or Flame can be granted here. */
@@ -27,7 +27,7 @@ class LocalAccounts(private val vault:LocalAccountVault){
     val state=mutable.asStateFlow()
     private var db=AccountDatabase()
     private val json=Json{ignoreUnknownKeys=true}
-    private fun publish(){val a=db.accounts.find{it.id==db.current};mutable.value=LocalAccountState(true,false,a?.let{LocalIdentity(it.id,it.username,it.email)},db.queue.filter{it.owner==a?.id})}
+    private fun publish(){val a=db.accounts.find{it.id==db.current};mutable.value=LocalAccountState(true,false,a?.let{LocalIdentity(it.id,it.username,it.email,it.playerNumber)},db.queue.filter{it.owner==a?.id})}
     suspend fun initialize()=lock.withLock{if(!mutable.value.ready||mutable.value.failed){db=vault.read()?.let{json.decodeFromString<AccountDatabase>(it)}?:AccountDatabase();publish()}}
     fun storageFailed(){mutable.value=LocalAccountState(ready=true,failed=true)}
     private suspend fun save(next:AccountDatabase){vault.write(json.encodeToString(AccountDatabase.serializer(),next));db=next;publish()}
@@ -68,9 +68,16 @@ class LocalAccounts(private val vault:LocalAccountVault){
             val base=address.substringBefore('@').filter{it.isLetterOrDigit()&&it.code<128}.take(16).padEnd(3,'_')
             var name=base;var suffix=1
             while(db.accounts.any{it.id!=existing?.id&&it.username.equals(name,true)}){name=base+suffix++}
-            val account=StoredAccount(existing?.id?:"local_"+UUID.randomUUID(),existing?.username?:name,address,Base64.getEncoder().encodeToString(salt),verifier)
+            val account=StoredAccount(existing?.id?:"local_"+UUID.randomUUID(),existing?.username?:name,address,Base64.getEncoder().encodeToString(salt),verifier,existing?.playerNumber)
             require(existing!=null||db.accounts.size<32)
             save(db.copy(accounts=db.accounts.filterNot{it.id==account.id}+account,current=account.id))
+        }
+    }
+    suspend fun resolveEmail(value:String):String { initialize();return lock.withLock { db.accounts.find{it.username.equals(value.trim(),true)||it.email==normalize(value)}?.email?:value.trim() } }
+    /** Only server-allocated IDs are cached; local profiles cannot claim a friend's identity. */
+    suspend fun rememberProfile(email:String,number:Long,username:String){
+        require(number in 1..999_999_999_999L);initialize();lock.withLock{
+            save(db.copy(accounts=db.accounts.map{if(it.email==normalize(email))it.copy(playerNumber=number,username=username)else it}))
         }
     }
     suspend fun updateVerifiedEmail(old:String,email:String){

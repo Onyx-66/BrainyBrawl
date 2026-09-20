@@ -49,26 +49,27 @@ class HybridAuthRepositoryTest {
         val local=LocalAccounts(Vault());val remote=Remote();remote.users["one@example.invalid"]="ExamplePass123"
         val network=MutableStateFlow(true);val repo=HybridAuthRepository(remote,local,backgroundScope,network)
         assertEquals(AuthNotice.NONE,repo.login("one@example.invalid","ExamplePass123"));runCurrent()
-        val owner=local.state.value.current!!.id;repo.logout();network.value=false;runCurrent()
+        val owner=local.state.value.current!!.id;local.rememberProfile("one@example.invalid",10000001,"PlayerOne");repo.logout();network.value=false;runCurrent()
         val calls=remote.calls
         assertEquals(AuthNotice.NONE,repo.login("one@example.invalid","ExamplePass123"));runCurrent()
         assertEquals(calls,remote.calls);assertTrue((repo.state.value as AuthState.SignedIn).local)
-        assertEquals(owner,local.state.value.current!!.id)
+        assertEquals(owner,local.state.value.current!!.id);assertEquals(10000001L,local.state.value.current!!.playerNumber)
         assertEquals(AuthNotice.REQUEST_FAILED,repo.login("one@example.invalid","WrongPassword"))
     }
     @Test fun oldDeviceAccountCanConnectAfterCredentialsAreReentered()=runTest{
         val local=LocalAccounts(Vault());local.register("Legacy","legacy@example.invalid","ExamplePass123")
-        val remote=Remote();val repo=HybridAuthRepository(remote,local,backgroundScope)
+        val remote=Remote();remote.users["legacy@example.invalid"]="ExamplePass123";val repo=HybridAuthRepository(remote,local,backgroundScope)
         assertEquals(AuthNotice.REAUTH_REQUIRED,repo.ensureOnline())
         assertEquals(AuthNotice.NONE,repo.loginLocal("Legacy","ExamplePass123"));runCurrent()
-        assertFalse((repo.state.value as AuthState.SignedIn).local);assertEquals(1,remote.registrations)
+        assertFalse((repo.state.value as AuthState.SignedIn).local);assertEquals(0,remote.registrations)
     }
     @Test fun emailConfirmationIsNotBypassedAndDoesNotRepeatSignup()=runTest{
         val remote=Remote(confirmation=true);val pending=MemoryPendingAccountStore()
         val repo=HybridAuthRepository(remote,LocalAccounts(Vault()),backgroundScope,MutableStateFlow(true),pending)
         assertEquals(AuthNotice.VERIFY_EMAIL,repo.register("PlayerOne","one@example.invalid","ExamplePass123"))
-        assertEquals(AuthNotice.VERIFY_EMAIL,repo.ensureOnline());assertEquals(1,remote.registrations)
-        remote.confirmed=true;assertEquals(AuthNotice.NONE,repo.ensureOnline());runCurrent()
+        runCurrent();assertFalse(repo.state.value is AuthState.SignedIn)
+        assertEquals(AuthNotice.REAUTH_REQUIRED,repo.ensureOnline());assertEquals(1,remote.registrations)
+        remote.confirmed=true;assertEquals(AuthNotice.NONE,repo.login("one@example.invalid","ExamplePass123"));runCurrent()
         assertFalse((repo.state.value as AuthState.SignedIn).local);assertNull(pending.read())
     }
     @Test fun expiredOrWrongOwnerPendingCredentialsCannotConnect()=runTest{
@@ -121,4 +122,14 @@ class HybridAuthRepositoryTest {
         assertNull(pending.read());network.value=true;runCurrent()
         assertEquals(AuthState.SignedOut,repo.state.value);assertEquals(0,remote.calls)
     }
+    @Test fun cachedPasswordCannotHideFailedOnlineSignIn()=runTest{
+        val local=LocalAccounts(Vault());local.register("Legacy","legacy@example.invalid","OldPassword123");local.logout()
+        val remote=Remote();remote.users["legacy@example.invalid"]="NewPassword123"
+        val repo=HybridAuthRepository(remote,local,backgroundScope)
+        assertEquals(AuthNotice.REQUEST_FAILED,repo.login("Legacy","OldPassword123"));runCurrent()
+        assertFalse(repo.state.value is AuthState.SignedIn);assertNull(local.state.value.current);assertEquals(0,remote.registrations)
+        assertEquals(AuthNotice.NONE,repo.login("Legacy","NewPassword123"));runCurrent()
+        assertFalse((repo.state.value as AuthState.SignedIn).local)
+    }
+
 }

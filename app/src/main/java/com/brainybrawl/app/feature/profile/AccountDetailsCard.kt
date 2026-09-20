@@ -55,14 +55,12 @@ import com.brainybrawl.app.feature.auth.*
             if(available.any{!model.providerEnabled(it)})Text(stringResource(R.string.providers_later),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
         HorizontalDivider(color=MaterialTheme.colorScheme.outline.copy(alpha=.3f))
-        Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(10.dp)){
-            FilledTonalButton(password,Modifier.weight(1f).fillMaxHeight().heightIn(min=64.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=MaterialTheme.colorScheme.surfaceVariant,contentColor=MaterialTheme.colorScheme.onSurface)){
-                Column(horizontalAlignment=Alignment.CenterHorizontally){NavigationSymbol(NavSymbol.PASSWORD);Text(stringResource(R.string.change_password),style=MaterialTheme.typography.labelMedium)}
-            }
-            AccountPrivacy(container,identity,Modifier.weight(1f).fillMaxHeight())
+        FilledTonalButton(password,Modifier.fillMaxWidth().heightIn(min=52.dp)){
+            NavigationSymbol(NavSymbol.PASSWORD);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.change_password),maxLines=1)
         }
-        TextButton(logout,Modifier.fillMaxWidth(),colors=ButtonDefaults.textButtonColors(contentColor=MaterialTheme.colorScheme.error)){
-            NavigationSymbol(NavSymbol.SIGN_OUT);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.sign_out))
+        AccountPrivacy(container,identity,Modifier.fillMaxWidth())
+        FilledTonalButton(logout,Modifier.fillMaxWidth().heightIn(min=52.dp),colors=ButtonDefaults.filledTonalButtonColors(contentColor=MaterialTheme.colorScheme.error)){
+            NavigationSymbol(NavSymbol.SIGN_OUT);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.sign_out),maxLines=1)
         }
         if(!editing&&ui.notice in setOf(AuthNotice.REQUEST_FAILED,AuthNotice.NETWORK_ERROR,AuthNotice.REAUTH_REQUIRED))Text(stringResource(if(ui.notice==AuthNotice.REAUTH_REQUIRED)R.string.finish_account_connection else R.string.request_failed),style=MaterialTheme.typography.bodySmall)
     }
