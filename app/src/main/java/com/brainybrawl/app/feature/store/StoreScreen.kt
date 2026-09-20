@@ -21,7 +21,9 @@ fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit) {
     var vault by rememberSaveable { mutableStateOf(false) }
     var confirmation by remember { mutableStateOf<StoreItem?>(null) }
     Text(stringResource(R.string.store),style=MaterialTheme.typography.headlineMedium)
-    if(!signedIn){Text(stringResource(R.string.sign_in_required));return}
+    CurrencyOffers()
+    if(!signedIn)return
+    Text(stringResource(R.string.store_cosmetics),style=MaterialTheme.typography.titleLarge)
     Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
         FilterChip(!vault,{vault=false},label={Text(stringResource(R.string.catalog))})
         FilterChip(vault,{vault=true},label={Text(stringResource(R.string.flame_vault))})
@@ -42,7 +44,7 @@ fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit) {
             BrawlButton(stringResource(if(item.owned) R.string.owned else R.string.purchase),{confirmation=item},Modifier.fillMaxWidth(),enabled=label!=null&&!item.owned&&!ui.busy,tone=if(item.vault)ActionTone.REWARD else ActionTone.PRIMARY)
         }
     }
-    Text(stringResource(R.string.flames_skill_only),style=MaterialTheme.typography.bodyMedium)
+
     confirmation?.let { item ->
         AlertDialog(onDismissRequest={confirmation=null},title={Text(catalogLabel(item.labels,locale)?:stringResource(R.string.confirm_purchase))},
             text={Text(namedString(R.string.item_price,"amount" to item.price,"currency" to stringResource(when(item.currency){"gold"->R.string.gold;"gems"->R.string.gems;else->R.string.flames})))},

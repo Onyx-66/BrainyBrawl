@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="store_coins">Coins</string>
+    <string name="store_stock_up">Stock up for the brawl</string>
+    <string name="store_subtitle">Explore currency packs and make it yours.</string>
+    <string name="store_six_packs">6 packs</string>
+    <string name="store_pocket">Pocket</string>
+    <string name="store_pouch">Pouch</string>
+    <string name="store_bundle">Bundle</string>
+    <string name="store_chest">Chest</string>
+    <string name="store_vault">Vault</string>
+    <string name="store_treasury">Treasury</string>
+    <string name="store_coming_soon">Coming soon</string>
+    <string name="store_purchase_pending">Currency purchases are not available yet.</string>
+    <string name="store_cosmetics">Cosmetics</string>
+</resources>

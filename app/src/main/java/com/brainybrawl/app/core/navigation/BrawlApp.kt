@@ -187,7 +187,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     if(localState.current!=null && (!online || localState.current?.email.equals((auth as? AuthState.SignedIn)?.email,true)))
                                         LocalFriendsScreen(container.localAccounts,container.socialQueue,online,{go(Destination.CONNECT_AUTH)})
                                 }
-                                Destination.STORE -> if(online)StoreScreen(storeModel,true,playerModel::refresh) else AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
+                                Destination.STORE -> StoreScreen(storeModel,online,playerModel::refresh)
                                 Destination.LOADOUT -> LoadoutScreen(storeModel,{roomModel.create(selectedMode,quickMatch);go(Destination.LOBBY)})
                                 Destination.LOBBY -> LobbyScreen(roomModel,(auth as? AuthState.SignedIn)?.userId,socialUi.snapshot.friends,
                                     {activeMatch=it;go(Destination.GAME)},{go(Destination.MODES)})

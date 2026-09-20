@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="store_coins">Pièces</string>
+    <string name="store_stock_up">Préparez votre prochaine partie</string>
+    <string name="store_subtitle">Découvrez les packs de monnaies et personnalisez votre jeu.</string>
+    <string name="store_six_packs">6 packs</string>
+    <string name="store_pocket">Poche</string>
+    <string name="store_pouch">Bourse</string>
+    <string name="store_bundle">Lot</string>
+    <string name="store_chest">Coffre</string>
+    <string name="store_vault">Réserve</string>
+    <string name="store_treasury">Trésor</string>
+    <string name="store_coming_soon">Bientôt</string>
+    <string name="store_purchase_pending">Les achats de monnaies ne sont pas encore disponibles.</string>
+    <string name="store_cosmetics">Cosmétiques</string>
+</resources>

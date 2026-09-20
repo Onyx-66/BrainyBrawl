@@ -11,6 +11,8 @@ import com.brainybrawl.app.R
 enum class NavSymbol { HOME,GAMES,IMAGE,STORE,PROFILE,TROPHY,SETTINGS,PUZZLE,OFFLINE,FRIENDS,AVATARS,FRAMES,EDIT,PASSWORD,DELETE,SIGN_OUT,EMAIL,LINK,CHECK,CLOSE,LEVEL,DOWN }
 /** Native vectors from the Lucide set featured in the Morphicons gallery. */
 @Composable fun NavigationSymbol(symbol:NavSymbol,modifier:Modifier=Modifier){
+    val art=when(symbol){NavSymbol.HOME->"home_icon";NavSymbol.GAMES->"games_icon";NavSymbol.STORE->"store_icon";NavSymbol.PROFILE->"profile_icon";else->null}
+    if(art!=null){GameArtwork(art,modifier.size(36.dp));return}
     Icon(painterResource(when(symbol){
         NavSymbol.HOME->R.drawable.ic_lucide_house
         NavSymbol.GAMES->R.drawable.ic_lucide_gamepad_2
