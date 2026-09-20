@@ -37,6 +37,17 @@ class HybridAuthRepository(
     }.stateIn(scope,SharingStarted.Eagerly,AuthState.Loading)
     init{
         scope.launch{try{localAccounts.initialize()}catch(e:CancellationException){throw e}catch(_:Exception){localAccounts.storageFailed()}}
+        scope.launch{
+            var previous:AuthState.SignedIn?=null
+            remote.state.collect{state->
+                val current=state as? AuthState.SignedIn
+                if(current!=null&&previous?.userId==current.userId&&previous?.email!=current.email&&current.email!=null){
+                    val old=previous?.email
+                    connectionLock.withLock{safe{if(old!=null)localAccounts.updateVerifiedEmail(old,current.email);pending.write(null);AuthNotice.NONE}}
+                }
+                previous=current
+            }
+        }
         scope.launch{connectivity.collectLatest{connected->
             if(connected&&onlineConfigured){
                 localAccounts.state.first{it.ready}
@@ -123,6 +134,20 @@ class HybridAuthRepository(
             result
         }
     }}
+    override suspend fun changeEmail(email:String):AuthNotice=connectionLock.withLock{safe{
+        if(!AuthValidation.email(email))return@safe AuthNotice.INVALID_INPUT
+        if(!connectivity.value)return@safe AuthNotice.NETWORK_ERROR
+        val connected=connectPending()
+        if(connected!=AuthNotice.NONE)return@safe connected
+        remote.changeEmail(email)
+    }}
+    override suspend fun linkProvider(provider:AuthProvider):AuthNotice=connectionLock.withLock{safe{
+        if(!connectivity.value)return@safe AuthNotice.NETWORK_ERROR
+        val connected=connectPending()
+        if(connected!=AuthNotice.NONE)return@safe connected
+        remote.linkProvider(provider)
+    }}
+    override suspend fun linkedAccounts()=if((remote.state.value as? AuthState.SignedIn)!=null)remote.linkedAccounts()else emptyMap()
     override suspend fun oauth(provider:AuthProvider)=if(!connectivity.value)AuthNotice.NETWORK_ERROR else if(!onlineConfigured)AuthNotice.BACKEND_REQUIRED else remote.oauth(provider)
     override suspend fun callback(uri:String)=connectionLock.withLock{
         val result=remote.callback(uri)

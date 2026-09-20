@@ -15,6 +15,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.contentOrNull
 
 class SupabaseAuthRepository(private val client: SupabaseClient?, scope: CoroutineScope) : AuthRepository {
     override val state: StateFlow<AuthState> = client?.auth?.sessionStatus?.map { status ->
@@ -52,6 +54,20 @@ class SupabaseAuthRepository(private val client: SupabaseClient?, scope: Corouti
     override suspend fun changePassword(password: String): AuthNotice {
         if (!AuthValidation.password(password)) return AuthNotice.INVALID_INPUT
         return request { client!!.auth.updateUser { this.password=password }; AuthNotice.PASSWORD_UPDATED }
+    }
+    override suspend fun changeEmail(email:String):AuthNotice{
+        if(!AuthValidation.email(email))return AuthNotice.INVALID_INPUT
+        return request{client!!.auth.updateUser(redirectUrl=CALLBACK){this.email=email.trim()};AuthNotice.EMAIL_UPDATE_SENT}
+    }
+    override suspend fun linkProvider(provider:AuthProvider):AuthNotice=request{
+        client!!.auth.linkIdentity(when(provider){AuthProvider.GOOGLE->Google;AuthProvider.DISCORD->Discord},redirectUrl=CALLBACK)
+        AuthNotice.NONE
+    }
+    override suspend fun linkedAccounts():Map<String,String>{
+        val user=client?.auth?.retrieveUserForCurrentSession()?:return emptyMap()
+        return user.identities.orEmpty().associate{identity->
+            identity.provider to (listOf("preferred_username","full_name","name","email").firstNotNullOfOrNull{identity.identityData?.get(it)?.jsonPrimitive?.contentOrNull}?:user.email.orEmpty())
+        }
     }
     override suspend fun oauth(provider: AuthProvider): AuthNotice = request {
         when(provider) {

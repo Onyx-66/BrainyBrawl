@@ -4,8 +4,8 @@ The owner-authorized Supabase schema/content/admin setup is deployed. Google Pla
 
 ## Passed engineering checks
 
-- 72 JVM tests, 29 API 37 emulator instrumentation tests (11 affected checks re-passed after final edits), and 24 Python tests on 1.0.3. Earlier unchanged backend revision passed 41 PostgreSQL/PGlite groups and Edge request-body tests.
-- Debug assembly, debug lint (zero errors; 52 warnings), optimized unsigned release APK 1.0.3; unsigned AAB was verified on the preceding revision.
+- 76 JVM tests, 36 API 37 emulator instrumentation tests (three profile checks re-passed after final contrast edits), and 24 Python tests on 1.0.4. Earlier unchanged backend revision passed 41 PostgreSQL/PGlite groups and Edge request-body tests.
+- Debug assembly, debug lint (zero errors; 68 warnings), optimized unsigned release APK 1.0.4; unsigned AAB was verified on the preceding revision.
 - APK ZIP alignment and all bundled native ELF load segments meet 16 KB alignment. A physical 16 KB device run is still outstanding.
 - Eight production XML packs: 3,861 approved records, including 1,225 question concepts in each of English/French/Arabic. Cross-language aliases and independent numeracy checks pass.
 - Real hosted email sign-in, account/level/admin status, Store and Leaderboards, RLS and service-only RPC restrictions. Actual Android Store/Leaderboard navigation works while signed in.
@@ -14,6 +14,7 @@ The owner-authorized Supabase schema/content/admin setup is deployed. Google Pla
 ## Required release gates
 
 - Provide owner-approved `PRIVACY_POLICY_URL`, `TERMS_URL`, and `ACCOUNT_DELETION_URL` HTTPS pages. Define retention and implement/operate online account-deletion processing; the in-app request queue alone does not complete deletion.
+- Add/review the final twelve-avatar/twelve-frame art pack; current numbered square previews are intentional placeholders. Exact paths and validation are in `PROFILE_CUSTOMIZATION_UPDATE.md`.
 - Supply signing environment settings `BRAWL_KEYSTORE_PATH`, `BRAWL_KEYSTORE_PASSWORD`, `BRAWL_KEY_ALIAS`, `BRAWL_KEY_PASSWORD` outside Git. No debug-signing fallback is used for release.
 - Install an authorized trusted scheduler for `advance_due_matches()` and `close_abandoned_rooms()`. Current snapshots recover deadlines when a player returns; no hosted scheduler is installed.
 - Run real simultaneous-device matches through all phases, hosted Realtime reconnect/partition/load tests, API 26/physical Galaxy A56 checks, TalkBack and measured frame/memory testing. Local SQL tests do not model concurrent network connections.

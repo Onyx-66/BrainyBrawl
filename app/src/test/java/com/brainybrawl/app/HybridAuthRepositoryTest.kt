@@ -13,7 +13,7 @@ class HybridAuthRepositoryTest {
     private class Remote(val confirmation:Boolean=false):AuthRepository{
         override val onlineConfigured=true
         override val state=MutableStateFlow<AuthState>(AuthState.SignedOut)
-        val users=mutableMapOf<String,String>();var registrations=0;var calls=0;var confirmed=false
+        val users=mutableMapOf<String,String>();var registrations=0;var calls=0;var confirmed=false;var linked=0;var oauthCalls=0;var requestedEmail:String?=null
         override suspend fun login(email:String,password:String):AuthNotice{
             calls++
             if(users[email]!=password)return AuthNotice.REQUEST_FAILED
@@ -30,7 +30,9 @@ class HybridAuthRepositoryTest {
             (state.value as? AuthState.SignedIn)?.email?.let{users[it]=password}
             return AuthNotice.PASSWORD_UPDATED
         }
-        override suspend fun oauth(provider:AuthProvider)=AuthNotice.NONE
+        override suspend fun oauth(provider:AuthProvider):AuthNotice{oauthCalls++;return AuthNotice.NONE}
+        override suspend fun changeEmail(email:String):AuthNotice{requestedEmail=email;return AuthNotice.EMAIL_UPDATE_SENT}
+        override suspend fun linkProvider(provider:AuthProvider):AuthNotice{linked++;return AuthNotice.NONE}
         override suspend fun callback(uri:String)=AuthNotice.NONE
     }
     @Test fun offlineCreationConnectsAutomaticallyWhenNetworkReturns()=runTest{
@@ -77,6 +79,25 @@ class HybridAuthRepositoryTest {
         network.value=true;assertEquals(AuthNotice.REAUTH_REQUIRED,repo.ensureOnline());assertNull(pending.read())
         pending.write(PendingAccountConnection("different-owner","One","one@example.invalid","ExamplePass123",true,700_000_000L))
         assertEquals(AuthNotice.REAUTH_REQUIRED,repo.ensureOnline());assertNull(pending.read());assertEquals(0,remote.calls)
+    }
+    @Test fun emailCacheChangesOnlyAfterTheServerConfirmsIt()=runTest{
+        val local=LocalAccounts(Vault());val remote=Remote();val network=MutableStateFlow(true)
+        remote.users["old@example.invalid"]="ExamplePass123"
+        val repo=HybridAuthRepository(remote,local,backgroundScope,network)
+        repo.login("old@example.invalid","ExamplePass123");runCurrent();val owner=local.state.value.current!!.id
+        network.value=false;runCurrent();assertEquals(AuthNotice.NETWORK_ERROR,repo.changeEmail("new@example.invalid"));assertNull(remote.requestedEmail)
+        network.value=true;runCurrent();assertEquals(AuthNotice.EMAIL_UPDATE_SENT,repo.changeEmail("new@example.invalid"))
+        assertEquals("old@example.invalid",local.state.value.current!!.email)
+        remote.state.value=AuthState.SignedIn("remote-id","new@example.invalid");runCurrent()
+        assertEquals(owner,local.state.value.current!!.id);assertEquals("new@example.invalid",local.state.value.current!!.email)
+        repo.logout();network.value=false;runCurrent();assertEquals(AuthNotice.NONE,repo.login("new@example.invalid","ExamplePass123"))
+    }
+    @Test fun linkingUsesTheExistingIdentityRatherThanAnotherSignIn()=runTest{
+        val remote=Remote();remote.users["one@example.invalid"]="ExamplePass123"
+        val repo=HybridAuthRepository(remote,LocalAccounts(Vault()),backgroundScope)
+        repo.login("one@example.invalid","ExamplePass123");runCurrent()
+        assertEquals(AuthNotice.NONE,repo.linkProvider(AuthProvider.GOOGLE));assertEquals(1,remote.linked);assertEquals(0,remote.oauthCalls)
+        assertEquals("remote-id",(repo.state.value as AuthState.SignedIn).userId)
     }
     @Test fun passwordChangesCannotDivergeBetweenServerAndOfflineCache()=runTest{
         val remote=Remote();remote.users["one@example.invalid"]="ExamplePass123"

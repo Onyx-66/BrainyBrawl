@@ -171,3 +171,10 @@ Owner clarification: the selected `assets/screen/home` image is shared across AL
 RESOLVED: All created accounts use one online/offline-capable flow. An account created without internet is registered locally and connected through real Supabase authentication when possible. Existing server verification and authorization remain enforced; a local identity cannot issue competitive RPCs. Legacy one-way password records require re-entry once, not a second account. Google/Discord remain deferred by the owner's earlier instruction.
 
 RESOLVED: Mode cards open dedicated Create private room / Join a room pages. Offline is a peer mode card with Question Round, Image Guess and new single-player Puzzle choices. Offline Puzzle uses all 96 pieces, 180 seconds, one practice point per correct distinct placement and no Flames; no new online schedule or production migration is required. See `../ACCOUNT_MODES_UPDATE.md`.
+
+
+## Owner profile/appearance correction — September 20, 2026
+
+RESOLVED: Remove arbitrary profile uploads from the UI and provide twelve designed-avatar slots plus twelve square-frame slots. Both use the same square canvas. Slots have native fallback previews until the owner supplies the final PNGs. Baseline slot selection is a cosmetic preference, not a grant of premium inventory or competitive benefits. Online avatar bytes use the existing private Storage flow; selected IDs synchronize through user-owned Auth metadata. Profile save notices disappear after three seconds.
+
+RESOLVED: Level, currencies and the accepted-friend count belong in the player card. Account controls group verified email editing, linked/unlinked platforms, password/deletion actions and sign-out. Provider setup remains deferred; existing verification and deletion-retention safeguards remain. Use the Lucide icon set featured by Morphicons for native app navigation/actions. See `../PROFILE_CUSTOMIZATION_UPDATE.md`.

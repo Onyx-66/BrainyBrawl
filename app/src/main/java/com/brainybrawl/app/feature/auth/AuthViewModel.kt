@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 
 enum class AuthForm { LOGIN, REGISTER, RECOVER, CHANGE_PASSWORD }
@@ -14,6 +16,12 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
     val auth = repository.state
     private val mutableUi=MutableStateFlow(AuthUiState())
     val ui=mutableUi.asStateFlow()
+    private val mutableAccounts=MutableStateFlow<Map<String,String>>(emptyMap())
+    val accounts=mutableAccounts.asStateFlow()
+    init{viewModelScope.launch{auth.collectLatest{identity->mutableAccounts.value=emptyMap();if(identity is AuthState.SignedIn&&!identity.local)loadAccounts(identity)}}}
+    private suspend fun loadAccounts(identity:AuthState){
+        try{val linked=repository.linkedAccounts();if(auth.value==identity)mutableAccounts.value=linked}catch(e:CancellationException){throw e}catch(_:Exception){}
+    }
     private fun perform(action: suspend () -> AuthNotice) {
         if(mutableUi.value.busy) return
         mutableUi.value=AuthUiState(busy=true)
@@ -34,9 +42,11 @@ class AuthViewModel(private val repository: AuthRepository) : ViewModel() {
         AuthProvider.GOOGLE->com.brainybrawl.app.BuildConfig.GOOGLE_AUTH_ENABLED=="true"
         AuthProvider.DISCORD->com.brainybrawl.app.BuildConfig.DISCORD_AUTH_ENABLED=="true"
     }
+    fun changeEmail(email:String)=perform{repository.changeEmail(email)}
+    fun link(provider:AuthProvider)=perform{if(providerEnabled(provider))repository.linkProvider(provider)else AuthNotice.REQUEST_FAILED}
     fun connectOnline()=perform{repository.ensureOnline()}
     fun oauth(provider: AuthProvider) = perform { if(!providerEnabled(provider))AuthNotice.REQUEST_FAILED else if(repository.onlineConfigured)repository.oauth(provider)else AuthNotice.BACKEND_REQUIRED }
-    fun callback(uri: String) = perform { repository.callback(uri) }
+    fun callback(uri: String) = perform { val result=repository.callback(uri);loadAccounts(auth.value);result }
     fun consumeNotice(){mutableUi.value=mutableUi.value.copy(notice=AuthNotice.NONE)}
     fun logout() = perform { repository.logout() }
     companion object {

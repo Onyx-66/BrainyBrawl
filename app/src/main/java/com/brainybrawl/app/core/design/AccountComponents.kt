@@ -37,7 +37,7 @@ data class BentoAction(val label:String,val symbol:NavSymbol,val click:()->Unit)
  val selected=languages.single{it.first==current}
  Box(Modifier.fillMaxWidth()){
   OutlinedButton({open=true},Modifier.fillMaxWidth().onSizeChanged{anchorWidth=it.width}.testTag("language-anchor").heightIn(min=56.dp),shape=RoundedCornerShape(16.dp),colors=ButtonDefaults.outlinedButtonColors(containerColor=MaterialTheme.colorScheme.surface,contentColor=MaterialTheme.colorScheme.onSurface)){
-   Text(selected.second+"  "+stringResource(selected.third),Modifier.weight(1f));Text("▾")
+   Text(selected.second+"  "+stringResource(selected.third),Modifier.weight(1f));NavigationSymbol(NavSymbol.DOWN)
   }
   DropdownMenu(open,{open=false},modifier=Modifier.width(with(density){anchorWidth.toDp()}).testTag("language-menu"),containerColor=MaterialTheme.colorScheme.surface,tonalElevation=0.dp){languages.forEach{(code,flag,label)->DropdownMenuItem(text={Text(flag+"  "+stringResource(label))},onClick={open=false;onSelect(code)})}}
  }

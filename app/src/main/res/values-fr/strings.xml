@@ -286,4 +286,17 @@
     <string name="played_label">Parties jouées</string>
     <string name="wins_label">Victoires</string>
     <string name="signin_methods">Méthodes de connexion</string>
+    <string name="avatars">Avatars</string>
+    <string name="frames">Cadres</string>
+    <string name="account">Compte</string>
+    <string name="connected">Connecté</string>
+    <string name="close">Fermer</string>
+    <string name="edit_email">Modifier l’adresse e-mail</string>
+    <string name="connect_platform">Connecter une autre plateforme</string>
+    <string name="email_change_explanation">Confirmez le changement avec les liens envoyés par e-mail. Votre adresse actuelle reste active en attendant.</string>
+    <string name="email_change_sent">Consultez votre messagerie pour confirmer la nouvelle adresse.</string>
+    <string name="appearance_synced">Apparence enregistrée sur votre compte.</string>
+    <string name="appearance_saved">Apparence enregistrée. Elle sera synchronisée à la connexion.</string>
+    <string name="avatar_number">Avatar {number}</string>
+    <string name="frame_number">Cadre {number}</string>
 </resources>

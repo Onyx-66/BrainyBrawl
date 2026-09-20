@@ -146,7 +146,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                     horizontalArrangement = Arrangement.SpaceBetween) {
                     Row(Modifier.weight(1f),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
                         val identity=auth as? AuthState.SignedIn
-                        if(identity==null)BrainMark(Modifier.size(40.dp))else ProfileAvatar(container.avatars,identity.userId,localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: "?",Modifier.size(44.dp).semantics{contentDescription=profileLabel}.clickable{go(Destination.PROFILE)})
+                        if(identity==null)BrainMark(Modifier.size(40.dp))else ProfileAvatar(container.appearance,identity.userId,localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: "?",Modifier.size(44.dp).semantics{contentDescription=profileLabel}.clickable{go(Destination.PROFILE)})
                         Column {
                             Text(localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: stringResource(R.string.app_name), style=MaterialTheme.typography.titleMedium,maxLines=1,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                             if(auth is AuthState.SignedIn) Text(namedString(R.string.player_level,"level" to ((playerState as? PlayerDataState.Ready)?.data?.level ?: 1)),style=MaterialTheme.typography.labelMedium,color=Gold)
@@ -179,9 +179,8 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                 Destination.PROFILE -> {
                                     val signedIn=auth as? AuthState.SignedIn
                                     if(signedIn==null) AuthScreen(authViewModel,{offlineSession=true;go(Destination.OFFLINE_MODES)})
-                                    else if(signedIn.local) LocalProfileScreen(container.localAccounts,container.offlineStatistics,container.avatars,{go(Destination.CONNECT_AUTH)},{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{authViewModel.logout()})
-                                    else ProfileScreen(playerModel,container.avatars,{go(Destination.PASSWORD)},{offlineSession=false;authViewModel.logout()})
-                                    if(signedIn!=null)AccountPrivacy(container,signedIn)
+                                    else if(signedIn.local) LocalProfileScreen(container,authViewModel,{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{authViewModel.logout()})
+                                    else ProfileScreen(playerModel,container,authViewModel,{go(Destination.FRIENDS)},{go(Destination.PASSWORD)},{offlineSession=false;authViewModel.logout()})
                                 }
                                 Destination.FRIENDS -> {
                                     if(online) FriendsScreen(playerModel)
@@ -213,7 +212,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     }
                                     Row(Modifier.height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
                                         GameTile(stringResource(R.string.store),stringResource(R.string.tile_store),NavSymbol.STORE,listOf(Color(0xFFB96713),Color(0xFFFFAB35)),Modifier.weight(1f).fillMaxHeight()){go(Destination.STORE)}
-                                        GameTile(stringResource(R.string.friends),stringResource(R.string.tile_friends),NavSymbol.PROFILE,listOf(Color(0xFF0875B5),Color(0xFF15B3D8)),Modifier.weight(1f).fillMaxHeight()){
+                                        GameTile(stringResource(R.string.friends),stringResource(R.string.tile_friends),NavSymbol.FRIENDS,listOf(Color(0xFF0875B5),Color(0xFF15B3D8)),Modifier.weight(1f).fillMaxHeight()){
                                             go(if(auth is AuthState.SignedIn)Destination.FRIENDS else Destination.PROFILE)
                                         }
                                     }

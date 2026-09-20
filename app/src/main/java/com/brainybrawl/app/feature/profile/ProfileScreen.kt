@@ -28,9 +28,10 @@ fun CurrencyBar(snapshot: ProfileSnapshot) {
     }
 }
 @Composable
-fun ProfileScreen(model: PlayerViewModel, avatars:AvatarRepository,password: () -> Unit, logout: () -> Unit) {
+fun ProfileScreen(model: PlayerViewModel, container:com.brainybrawl.app.core.AppContainer,authModel:com.brainybrawl.app.feature.auth.AuthViewModel,friends:()->Unit,password: () -> Unit, logout: () -> Unit) {
     val state by model.profile.collectAsStateWithLifecycle()
     val ui by model.social.collectAsStateWithLifecycle()
+    val identity by container.auth.state.collectAsStateWithLifecycle()
     Text(stringResource(R.string.profile),style=MaterialTheme.typography.headlineMedium)
     when(val current=state) {
         PlayerDataState.Loading -> LinearProgressIndicator(Modifier.fillMaxWidth())
@@ -39,9 +40,8 @@ fun ProfileScreen(model: PlayerViewModel, avatars:AvatarRepository,password: () 
         is PlayerDataState.Ready -> {
             val profile=current.data.profile
             var username by rememberSaveable(profile.username) { mutableStateOf(profile.username) }
-            PlayerCard(avatars,profile.id,profile.username,current.data.level,profile.number.toLong())
-            CurrencyBar(current.data)
-            AccountDetailsCard(current.data.email,current.data.providers)
+            PlayerCard(container.appearance,profile.id,profile.username,current.data.level,profile.number,current.data.currencies,ui.snapshot.friends.count{it.status=="accepted"},friends)
+            (identity as? com.brainybrawl.app.feature.auth.AuthState.SignedIn)?.let{AccountDetailsCard(container,it,authModel,current.data.email,current.data.providers,password,logout)}
             current.data.modeStats.forEach{stats->BrawlPanel(Modifier.fillMaxWidth()){
                 Text(stringResource(when(stats.mode){"duo"->R.string.duo;"squad"->R.string.squad;"solo"->R.string.solo;else->R.string.duel}),style=MaterialTheme.typography.titleMedium)
                 Text(namedString(R.string.games_played,"count" to stats.played))
@@ -57,15 +57,12 @@ fun ProfileScreen(model: PlayerViewModel, avatars:AvatarRepository,password: () 
                     BrawlButton(stringResource(R.string.save),{model.rename(username);editing=false},Modifier.fillMaxWidth(),enabled=!ui.busy&&AuthValidation.username(username))
                 }
             }
-            Text(stringResource(R.string.inventory),style=MaterialTheme.typography.titleLarge)
-            if(current.data.inventory.isEmpty()) Text(stringResource(R.string.empty_inventory))
-            current.data.inventory.forEach { cosmetic ->
-                val label=com.brainybrawl.app.core.localization.catalogLabel(cosmetic.labels,androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language)
-                Text(label?:stringResource(R.string.content_unavailable))
-                if(cosmetic.kind!="boost") BrawlButton(stringResource(when(cosmetic.kind) { "frame"->R.string.equip_frame;"banner"->R.string.equip_banner;else->R.string.equip_avatar }),{model.equip(cosmetic.id)},Modifier.fillMaxWidth(),enabled=!ui.busy)
+            current.data.inventory.filter{it.kind=="boost"}.takeIf{it.isNotEmpty()}?.let{items->
+                Text(stringResource(R.string.inventory),style=MaterialTheme.typography.titleLarge)
+                items.forEach{Text(com.brainybrawl.app.core.localization.catalogLabel(it.labels,androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language)?:stringResource(R.string.content_unavailable))}
             }
             if(ui.failed) Text(stringResource(R.string.request_failed),color=MaterialTheme.colorScheme.error)
         }
     }
-    ActionBento(listOf(BentoAction(stringResource(R.string.change_password),NavSymbol.SETTINGS,password),BentoAction(stringResource(R.string.sign_out),NavSymbol.HOME,logout)))
+
 }

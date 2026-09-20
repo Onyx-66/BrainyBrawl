@@ -80,6 +80,7 @@ fun AuthScreen(viewModel: AuthViewModel, offline: () -> Unit, changePassword: Bo
     }
 }
 private fun AuthNotice.label(): Int = when(this) {
+    AuthNotice.EMAIL_UPDATE_SENT -> R.string.email_change_sent
     AuthNotice.VERIFY_EMAIL -> R.string.verify_email
     AuthNotice.RECOVERY_SENT -> R.string.recovery_sent
     AuthNotice.PASSWORD_RESET_READY -> R.string.change_password

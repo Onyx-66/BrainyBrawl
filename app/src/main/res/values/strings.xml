@@ -286,4 +286,17 @@
     <string name="played_label">Games played</string>
     <string name="wins_label">Wins</string>
     <string name="signin_methods">Sign-in methods</string>
+    <string name="avatars">Avatars</string>
+    <string name="frames">Frames</string>
+    <string name="account">Account</string>
+    <string name="connected">Connected</string>
+    <string name="close">Close</string>
+    <string name="edit_email">Edit email</string>
+    <string name="connect_platform">Connect another platform</string>
+    <string name="email_change_explanation">Confirm the change using the verification links sent by email. Your current address stays active until confirmation.</string>
+    <string name="email_change_sent">Check your email to confirm the address change.</string>
+    <string name="appearance_synced">Appearance saved to your account.</string>
+    <string name="appearance_saved">Appearance saved. It will sync when connected.</string>
+    <string name="avatar_number">Avatar {number}</string>
+    <string name="frame_number">Frame {number}</string>
 </resources>

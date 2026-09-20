@@ -48,6 +48,7 @@ class AppContainer(context: Context) {
             override suspend fun write(value:com.brainybrawl.app.feature.auth.PendingAccountConnection?)=encrypted.writePendingAccount(value?.let{json.encodeToString(com.brainybrawl.app.feature.auth.PendingAccountConnection.serializer(),it)})
         })
     val avatars=com.brainybrawl.app.feature.profile.AvatarRepository(applicationContext,supabase,auth)
+    val appearance=com.brainybrawl.app.feature.profile.AppearanceRepository(applicationContext,auth,supabase?.let{com.brainybrawl.app.feature.profile.SupabaseAppearanceRemote(it)},scope,connectivity.online){identity->localAccounts.state.value.current?.takeIf{it.email.equals(identity.email,true)}?.id}
     val players=SupabasePlayerRepository(supabase)
     val store=com.brainybrawl.app.feature.store.SupabaseStoreRepository(supabase,applicationContext)
     val leaderboards=com.brainybrawl.app.feature.leaderboard.SupabaseLeaderboardRepository(supabase)

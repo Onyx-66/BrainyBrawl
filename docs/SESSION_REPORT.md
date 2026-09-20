@@ -1,4 +1,4 @@
-# Brainy Brawl — September 19 implementation report
+# Brainy Brawl — September 20 implementation report
 
 The Android game and authorized hosted backend are implemented and buildable; release gates below remain. Work stayed on the existing master branch and preserved pre-existing user documentation. No Google Play submission is claimed.
 
@@ -9,7 +9,7 @@ One Android module, Kotlin/Compose feature UI, independent domain/content rules 
 - Dark/light themes, supplied launcher/transparent branding, distinct mode icons, bento modes/account/room actions, username/level/photo header and settings icon. Login/create-account segmented form follows the selected theme. Google/Discord are deliberately disabled/deferred by the owner; email/password registration, login, recovery/change-password interfaces and PKCE integration remain available.
 - One account flow registers/logs in online or offline. Accounts created offline automatically attempt real Supabase authentication when internet returns; existing legacy accounts require password re-entry once. Verified email logins also cache an offline verifier. Per-account offline scores and photos persist securely. Friend/invitation requests can be queued offline and explicitly delivered after connecting the matching server account. Profile/friends/search/previews/block/report flows are implemented; unrestricted chat is absent.
 - A real Mr.onyx server account with private admin membership was provisioned. The installed normal app signed into it, loaded the username/level and opened Store/Leaderboards correctly. Connection panels report internet, verification or reauthentication requirements instead of imposing a permanent device-account restriction.
-- Private profile-photo picker/upload, EXIF orientation correction, bounded decoding, 512-pixel JPEG output and source metadata removal. Header shows the account photo or its initial. Fixed an ActivityResultRegistryOwner loss caused by the localized context, which previously crashed the profile picker screen.
+- Profile now uses twelve avatar slots and twelve square-frame slots, shared by the header and player card. The gallery picker was removed at owner request. Appearance preferences synchronize to user-owned Auth metadata and selected avatar images upload as bounded 512-pixel JPEGs to private Storage. Legacy photo sanitation remains tested. Native previews work until the final pack is added.
 - Ledger-authoritative Gold/Gems/Flames, idempotent purchase/loadout RPCs, level 1 plus one level per ten lifetime earned Flames. Store catalog remains empty pending commercial rules. Zero-boost starts now work; two-item selections still require owned approved boosts. Flames cannot be purchased.
 - Home/navigation, leaders by mode/period/friends, language dropdown with flags, English/French/Arabic resources, Tajawal Arabic typography, RTL, preset localized reactions and bounded diagnostics.
 
@@ -35,14 +35,14 @@ Eight UTF-8 XML packs contain 23,558 unique record/option/piece IDs. Question co
 
 | Check | Result |
 | --- | --- |
-| JVM tests | 72 passed, zero failures/errors/skips |
-| Emulator instrumentation | 29 passed on API 37 at 1080 × 2340; 11 affected checks passed again after final auth/navigation fixes; isolated QA package preserves normal account data |
+| JVM tests | 76 passed, zero failures/errors/skips |
+| Emulator instrumentation | 36 passed on API 37 at 1080 × 2340; three profile checks rerun after final contrast adjustments; isolated QA package preserves normal account data |
 | Python tests | 24 passed |
 | Production XML validation | Eight files / 3,861 records / 23,558 IDs passed |
 | SQL/RLS/game flows | 41 groups passed with real PostgreSQL semantics in PGlite, including full 20-team Duo, Squad and 20-player Solo |
 | Edge bounded request parser | Passed |
-| Debug build + lint | Passed; zero lint errors, 52 warnings |
-| Optimized release APK | Version 1.0.3 built successfully, unsigned; AAB was verified on an earlier revision |
+| Debug build + lint | Passed; zero lint errors, 68 warnings |
+| Optimized release APK | Version 1.0.4 built successfully, unsigned; AAB was verified on an earlier revision |
 | Native packaging | ZIP and all packaged ELF load segments passed 16 KB alignment checks |
 | Hosted verification | Email login, own profile/level/admin, store, leaderboard, anonymous denial and service-only restrictions passed |
 | Actual Android hosted navigation | Mr.onyx login, header, Store and Leaderboards verified |
@@ -77,6 +77,20 @@ The full 29-test emulator run passed, followed by 11 affected checks after final
 
 Installable version 1.0.3: `deliverables/BrainyBrawl-1.0.3.apk`, 30,248,642 bytes, version code 4, SHA-256 `1086eb172fcde30119fc97c4080a507af8eab43382aed07bba93aeb13c1c7e54`. Debug and optimized unsigned release assembly pass. The installable development-signed APK passes v2 signature, ZIP CRC, private-credential exclusion, both packaged scenes, all 192 exact puzzle tiles and four native ELF/ZIP 16 KB alignment checks. It was installed in place and relaunched on emulator-5554 with Mr.onyx still signed in; the new actual hosted player card and email/method panel were visually inspected. Physical-device installation remains for the owner's manual test.
 
+## Version 1.0.4 profile customization
+
+The player-card caption and gallery upload control are gone. Avatar and frame share a square canvas across the header/card/pickers. Level and Gold/Gems/Flames appear together as icon/value chips. Friends and the accepted-friend count live inside the card; Avatars and Frames are adjacent purple buttons. Each selector offers twelve slots, with native previews until the final artwork is placed in `assets/avatars/avatar_01.png`–`avatar_12.png` and `assets/frames/frame_01.png`–`frame_12.png`. Each folder includes an exact handoff README; rebuilding includes added PNGs automatically.
+
+Account now groups Email plus edit icon, actual linked-platform details, unlinked-provider controls, Change password/Delete account, and an icon/sign-out action. Email changes follow Supabase confirmation and preserve the matching offline identity after verification. Provider linking uses the current account; deferred providers remain disabled. The old local-account explanation is removed from Profile. Appearance notices clear after three seconds.
+
+Selected avatar JPEGs and appearance IDs synchronize through the existing private bucket/RPC and authenticated Auth API. Offline selections persist and follow the matching account when it connects. Requests pin the initiating session; failed/late writes cannot overwrite another local account. All IDs are constrained to the twelve packaged slots. No competitive values, premium ownership, RLS policies or schema migrations were changed. Legacy gallery data is preserved without a gallery UI. Navigation/action icons now use 22 native Lucide vectors from the Morphicons gallery, with source hashes and ISC/MIT notices.
+
+Verification: 76 JVM tests and the full 36-test emulator suite passed; three profile tests were rerun after contrast corrections. Tests cover appearance storage/retry/restoration/adoption, account-switch isolation, square geometry, bounded JPEGs, malicious IDs, verified email cache changes, existing-account provider linking, selectors, transient feedback, deletion cancellation and Arabic layout. Lint has zero errors and 68 warnings, mainly unused resources/dependency updates/style suggestions. Final build, APK checks and the installed normal app are recorded below. See `PROFILE_CUSTOMIZATION_UPDATE.md` for the detailed handoff.
+
+Final 1.0.4 artifact: `deliverables/BrainyBrawl-1.0.4.apk`, 30,338,838 bytes, version code 5, SHA-256 `2eb2b90703aef415598388e3a464655a35ca24b82e50db95db4aea733d799ed4`. The development-signed APK passes v2 signature, CRC, private-credential exclusion, art integrity and native/ZIP alignment checks. The complete final normal build passes 76 JVM tests, debug/optimized release assembly and lint (zero errors, 68 warnings). The 36-test full emulator run was followed by seven appearance/profile checks and three final dialog/profile checks. The PNG handoff validator confirms all 24 slots currently use native previews.
+
+The normal app was installed in place with Mr.onyx preserved. An actual avatar Save succeeded through the app; a separate read-only database check confirmed explicit avatar 1/frame 1 metadata and a private 9,610-byte JPEG. No schema/RLS/provider settings were changed. The final navy picker was visually inspected and its first/last row labels have equal full height. The old save notice is absent after its three-second duration. The app remains open on Profile for manual testing.
+
 ## Remaining decisions and genuine release blockers
 
 - Google/Discord setup is explicitly deferred by the owner; both tiles explain their status.
@@ -94,6 +108,6 @@ Repository root: `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`.
 - `CHANGED_FILES_MANIFEST.md`: session-relative added/modified/deleted paths and hashes.
 - `BrainyBrawl_CHANGED_FILES.zip`: only files changed from the initial SHA-256 inventory at HEAD 502bd53 plus the manifest. No Git/build outputs, local.properties, .env, signing keys, caches, QA screenshots or machine configuration.
 - Local-only evidence: `.local/visual-qa/`, `.local/instrumentation-final.log`, `.local/final-build.log`, `.local/backend/verification.json`.
-- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.3.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
+- Installable normal debug APK: `deliverables/BrainyBrawl-1.0.4.apk` (also `app/build/outputs/apk/debug/app-debug.apk`). Unsigned engineering AAB: `app/build/outputs/bundle/release/app-release.aab`.
 
 The requested local Git commit is recorded separately in the final response; nothing is pushed.

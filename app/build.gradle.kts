@@ -30,8 +30,8 @@ android {
         applicationId = if(providers.gradleProperty("isolatedQa").orNull=="true")"com.brainybrawl.app.qa" else "com.brainybrawl.app"
         minSdk = 26
         targetSdk = 37
-        versionCode = 4
-        versionName = "1.0.3"
+        versionCode = 5
+        versionName = "1.0.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "GOOGLE_AUTH_ENABLED", publicConfig("GOOGLE_AUTH_ENABLED"))

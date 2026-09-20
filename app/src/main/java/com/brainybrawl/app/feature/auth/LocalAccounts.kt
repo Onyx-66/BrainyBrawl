@@ -73,6 +73,13 @@ class LocalAccounts(private val vault:LocalAccountVault){
             save(db.copy(accounts=db.accounts.filterNot{it.id==account.id}+account,current=account.id))
         }
     }
+    suspend fun updateVerifiedEmail(old:String,email:String){
+        require(AuthValidation.email(email));initialize();lock.withLock{
+            val account=db.accounts.find{it.email==normalize(old)}?:return@withLock
+            if(db.accounts.any{it.id!=account.id&&it.email==normalize(email)})return@withLock
+            save(db.copy(accounts=db.accounts.map{if(it.id==account.id)it.copy(email=normalize(email))else it}))
+        }
+    }
     suspend fun deleteCurrent(expectedId:String){initialize();lock.withLock{
         val id=requireNotNull(db.current)
         require(id==expectedId)

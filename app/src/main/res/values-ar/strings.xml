@@ -286,4 +286,17 @@
     <string name="played_label">المباريات الملعوبة</string>
     <string name="wins_label">الانتصارات</string>
     <string name="signin_methods">طرق تسجيل الدخول</string>
+    <string name="avatars">الشخصيات</string>
+    <string name="frames">الإطارات</string>
+    <string name="account">الحساب</string>
+    <string name="connected">متصل</string>
+    <string name="close">إغلاق</string>
+    <string name="edit_email">تعديل البريد الإلكتروني</string>
+    <string name="connect_platform">ربط منصة أخرى</string>
+    <string name="email_change_explanation">أكّد التغيير عبر روابط التحقق المرسلة بالبريد. يبقى عنوانك الحالي فعالًا حتى التأكيد.</string>
+    <string name="email_change_sent">تحقق من بريدك لتأكيد تغيير العنوان.</string>
+    <string name="appearance_synced">تم حفظ المظهر في حسابك.</string>
+    <string name="appearance_saved">تم حفظ المظهر. ستتم مزامنته عند الاتصال.</string>
+    <string name="avatar_number">الشخصية {number}</string>
+    <string name="frame_number">الإطار {number}</string>
 </resources>

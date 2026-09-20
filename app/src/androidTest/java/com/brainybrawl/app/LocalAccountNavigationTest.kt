@@ -28,7 +28,9 @@ class LocalAccountNavigationTest {
         rule.onAllNodesWithText("Store").filter(hasClickAction()).onLast().performClick()
         rule.onNodeWithText("Account connection").assertIsDisplayed()
         rule.onNodeWithText("Profile").performClick()
-        rule.onNodeWithText(rule.activity.getString(R.string.upload_photo)).performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText(rule.activity.getString(R.string.avatars)).performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText(rule.activity.getString(R.string.frames)).assertIsDisplayed()
+        rule.onAllNodesWithText(rule.activity.getString(R.string.upload_photo)).assertCountEquals(0)
         val profileFile=java.io.File(rule.activity.getExternalFilesDir(null),"profile-bento.png")
         java.io.FileOutputStream(profileFile).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}
         rule.onNodeWithText("Friends").performScrollTo().performClick()

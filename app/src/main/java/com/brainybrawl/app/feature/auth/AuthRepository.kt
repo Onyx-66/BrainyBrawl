@@ -9,7 +9,7 @@ sealed interface AuthState {
     data class SignedIn(val userId: String, val email: String?,val local:Boolean=false) : AuthState
 }
 enum class AuthProvider { GOOGLE, DISCORD }
-enum class AuthNotice { NONE, BACKEND_REQUIRED, VERIFY_EMAIL, RECOVERY_SENT, PASSWORD_RESET_READY, PASSWORD_UPDATED, INVALID_INPUT, NETWORK_ERROR, REAUTH_REQUIRED, REQUEST_FAILED, CALLBACK_REJECTED }
+enum class AuthNotice { NONE, BACKEND_REQUIRED, VERIFY_EMAIL, RECOVERY_SENT, PASSWORD_RESET_READY, PASSWORD_UPDATED, INVALID_INPUT, NETWORK_ERROR, REAUTH_REQUIRED, REQUEST_FAILED, CALLBACK_REJECTED, EMAIL_UPDATE_SENT }
 interface AuthRepository {
     val onlineConfigured:Boolean get()=state.value!=AuthState.Unconfigured
     val state: StateFlow<AuthState>
@@ -20,6 +20,9 @@ interface AuthRepository {
     suspend fun register(username: String, email: String, password: String): AuthNotice
     suspend fun recover(email: String): AuthNotice
     suspend fun changePassword(password: String): AuthNotice
+    suspend fun changeEmail(email:String):AuthNotice=AuthNotice.REAUTH_REQUIRED
+    suspend fun linkProvider(provider:AuthProvider):AuthNotice=AuthNotice.REAUTH_REQUIRED
+    suspend fun linkedAccounts():Map<String,String> = emptyMap()
     suspend fun oauth(provider: AuthProvider): AuthNotice
     suspend fun callback(uri: String): AuthNotice
     suspend fun logout(): AuthNotice
