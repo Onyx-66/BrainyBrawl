@@ -49,7 +49,7 @@ import com.brainybrawl.app.ui.theme.*
 @Composable fun GameTile(title:String,subtitle:String,symbol:NavSymbol,colors:List<Color>,modifier:Modifier=Modifier,onClick:()->Unit){
     Column(modifier.clip(RoundedCornerShape(20.dp)).background(Brush.linearGradient(colors)).clickable(onClick=onClick)
         .padding(16.dp),verticalArrangement=Arrangement.spacedBy(8.dp)){
-        CompositionLocalProvider(LocalContentColor provides Color.White){NavigationSymbol(symbol)}
+        CompositionLocalProvider(LocalContentColor provides Color.White){NavigationSymbol(symbol,Modifier.align(Alignment.CenterHorizontally).size(72.dp))}
         Text(title,style=MaterialTheme.typography.titleMedium,color=Color.White,fontWeight=FontWeight.ExtraBold)
         Text(subtitle,style=MaterialTheme.typography.labelMedium,color=Color.White.copy(alpha=.9f))
     }

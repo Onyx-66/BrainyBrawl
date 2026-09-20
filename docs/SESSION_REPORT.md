@@ -1,3 +1,7 @@
+## Latest UI handoff — 1.0.6
+
+Games cards/icons, active-only bottom labels, resource header shortcuts and the supplied 10 avatars/20 frames are complete. APK: `deliverables/BrainyBrawl-1.0.6.apk`. Verification: 76 JVM / 40 emulator / 24 Python tests passed; 0 lint errors (74 warnings). Android Studio opened successfully with a fresh local cache, and the app is running on emulator-5554. See `docs/GAMES_HEADER_UPDATE.md` for implementation and validation details.
+
 # Brainy Brawl — September 20 implementation report
 
 The Android game and authorized hosted backend are implemented and buildable; release gates below remain. Work stayed on the existing master branch and preserved pre-existing user documentation. No Google Play submission is claimed.

@@ -21,20 +21,20 @@ class ProfileCustomizationTest{
     }
     @After fun clean(){runBlocking{container.localAccounts.state.value.current?.id?.let{container.localAccounts.deleteCurrent(it);container.appearance.remove(it)};container.auth.logout()};container.settings.update(UserSettings())}
     private fun capture(name:String){val file=java.io.File(rule.activity.getExternalFilesDir(null),"profile-$name.png");java.io.FileOutputStream(file).use{rule.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG,100,it)}}
-    @Test fun twelveAvatarsAndFramesSaveWithTransientFeedback(){
+    @Test fun suppliedAvatarsAndFramesSaveWithTransientFeedback(){
         rule.onAllNodesWithText("Player card").assertCountEquals(0)
         rule.onAllNodesWithText("Choose profile photo").assertCountEquals(0)
         listOf("level","gold","gems","flames").forEach{rule.onNodeWithTag("card-$it").assertIsDisplayed()}
         rule.onNode(hasText("Friends") and hasAnyAncestor(hasTestTag("player-card"))).assertIsDisplayed()
         rule.onNodeWithText("Avatars").performClick()
-        rule.onNodeWithTag("avatar-12").performScrollTo().performClick()
+        rule.onNodeWithTag("avatar-10").performScrollTo().performClick()
         rule.onNodeWithText("Save").performClick()
-        rule.waitUntil(5_000){container.appearance.read(container.localAccounts.state.value.current!!.id).avatar==12}
+        rule.waitUntil(5_000){container.appearance.read(container.localAccounts.state.value.current!!.id).avatar==10}
         rule.onNodeWithTag("appearance-notice").assertIsDisplayed()
         rule.mainClock.advanceTimeBy(3_100);rule.waitForIdle();rule.onAllNodesWithTag("appearance-notice").assertCountEquals(0)
         rule.onNodeWithText("Frames").performClick()
-        rule.onNodeWithTag("frame-12").performScrollTo().performClick();rule.onNodeWithText("Save").performClick()
-        rule.waitUntil(5_000){container.appearance.read(container.localAccounts.state.value.current!!.id).frame==12}
+        rule.onNodeWithTag("frame-20").performScrollTo().performClick();rule.onNodeWithText("Save").performClick()
+        rule.waitUntil(5_000){container.appearance.read(container.localAccounts.state.value.current!!.id).frame==20}
         capture("card")
     }
     @Test fun accountActionsAreGroupedAndDestructiveActionCanBeCancelled(){

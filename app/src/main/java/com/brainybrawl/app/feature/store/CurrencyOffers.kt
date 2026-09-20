@@ -26,8 +26,9 @@ enum class OfferCurrency(val label:Int,val art:String,val accent:Color,val amoun
     FLAMES(R.string.flames,"flame_icon",Color(0xFFFF7866),listOf(5,15,35,80,180,400))
 }
 
-@Composable fun CurrencyOffers(){
-    var selected by rememberSaveable{mutableStateOf(OfferCurrency.GEMS)}
+@Composable fun CurrencyOffers(initialCurrency:OfferCurrency=OfferCurrency.GEMS,sectionRequest:Int=0){
+    var selected by rememberSaveable(initialCurrency){mutableStateOf(initialCurrency)}
+    LaunchedEffect(initialCurrency,sectionRequest){selected=initialCurrency}
     val locale=LocalConfiguration.current.locales[0]
     val number=remember(locale){NumberFormat.getIntegerInstance(locale)}
     val currency=stringResource(selected.label)

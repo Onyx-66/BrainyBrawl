@@ -61,12 +61,20 @@ class AppearanceRepositoryTest{
             assertEquals(AppearanceSelection(4,8),repo.read("appearance-server"));assertFalse(repo.pending("appearance-test"))
         }finally{scope.cancel();repo.remove("appearance-test");repo.remove("appearance-server")}
     }
-    @Test fun frameHasTransparentCenterAndSquareVisibleCorners(){
+    @Test fun suppliedFramesHaveTransparentOpeningsAndSquarePresentation(){
         val context=InstrumentationRegistry.getInstrumentation().targetContext
-        val frame=AppearanceArt.frame(context,1);val avatar=AppearanceArt.avatar(context,1)
-        assertEquals(0,android.graphics.Color.alpha(frame.getPixel(256,256)))
-        assertTrue(android.graphics.Color.alpha(frame.getPixel(15,15))>200)
-        assertEquals(255,android.graphics.Color.alpha(avatar.getPixel(0,0)))
-        assertEquals(frame.width,frame.height);assertEquals(avatar.width,avatar.height);frame.recycle();avatar.recycle()
+        (1..20).forEach{index->
+            val frame=AppearanceArt.frame(context,index)
+            assertEquals(0,android.graphics.Color.alpha(frame.getPixel(256,256)))
+            val opening=AppearanceArt.opening(frame)
+            assertTrue(opening.width()>.4f&&opening.height()>.4f)
+            assertTrue(opening.left>=0f&&opening.top>=0f&&opening.right<=1f&&opening.bottom<=1f)
+            var visible=0
+            for(y in 0 until 512 step 4)for(x in 0 until 512 step 4)if(android.graphics.Color.alpha(frame.getPixel(x,y))>200)visible++
+            assertTrue("Frame $index must render its supplied border",visible>300)
+            assertEquals(512,frame.width);assertEquals(512,frame.height);frame.recycle()
+        }
+        val avatar=AppearanceArt.avatar(context,1)
+        assertEquals(255,android.graphics.Color.alpha(avatar.getPixel(0,0)));avatar.recycle()
     }
 }

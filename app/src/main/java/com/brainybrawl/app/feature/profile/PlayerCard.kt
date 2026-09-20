@@ -74,6 +74,8 @@ import kotlinx.coroutines.*
 }
 
 @Composable private fun AppearancePicker(repository:AppearanceRepository,user:String,kind:String,dismiss:()->Unit,saved:(Boolean)->Unit){
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val slots=remember(kind){context.assets.list("assets/${kind}s").orEmpty().mapNotNull{Regex("${kind}_([0-9]{2})\\.png").matchEntire(it)?.groupValues?.get(1)?.toIntOrNull()}.filter{it in 1..if(kind=="avatar")12 else 20}.sorted()}
     val version by repository.revision.collectAsStateWithLifecycle()
     val original=remember(user,version){repository.read(user)}
     var selection by remember(kind){mutableStateOf(original)}
@@ -81,7 +83,7 @@ import kotlinx.coroutines.*
     val scope=rememberCoroutineScope()
     AlertDialog(containerColor=MaterialTheme.colorScheme.surface,onDismissRequest={if(!busy)dismiss()},title={Text(stringResource(if(kind=="avatar")R.string.avatars else R.string.frames))},
         text={Column(Modifier.heightIn(max=460.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(10.dp)){
-            (1..12).chunked(3).forEach{row->Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
+            slots.chunked(3).forEach{row->Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
                 row.forEach{index->
                     val candidate=if(kind=="avatar")selection.copy(avatar=index)else selection.copy(frame=index)
                     val active=if(kind=="avatar")selection.avatar==index else selection.frame==index
@@ -91,6 +93,7 @@ import kotlinx.coroutines.*
                         AppearancePreview(candidate,Modifier.fillMaxWidth());Text(index.toString(),style=MaterialTheme.typography.labelSmall)
                     }
                 }
+                repeat(3-row.size){Spacer(Modifier.weight(1f))}
             }}
             if(busy)LinearProgressIndicator(Modifier.fillMaxWidth())
             if(failed)Text(stringResource(R.string.request_failed),color=MaterialTheme.colorScheme.error)

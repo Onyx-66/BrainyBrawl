@@ -69,6 +69,8 @@ fun BrawlApp(authViewModel: AuthViewModel) {
     val roomActions by roomModel.actions.collectAsStateWithLifecycle()
     val socialUi by playerModel.social.collectAsStateWithLifecycle()
     var selectedMode by rememberSaveable { mutableStateOf(OnlineMode.DUEL) }
+    var storeRequest by rememberSaveable { mutableIntStateOf(0) }
+    var storeCurrency by rememberSaveable { mutableStateOf(OfferCurrency.GEMS) }
     var quickMatch by rememberSaveable { mutableStateOf(false) }
     var activeMatch by rememberSaveable { mutableStateOf<String?>(null) }
     var offlineSession by rememberSaveable { mutableStateOf(false) }
@@ -142,29 +144,18 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         Scaffold(containerColor = Color.Transparent,
             contentColor=MaterialTheme.colorScheme.onBackground,
             topBar = {
-                Row(Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background.copy(alpha=.9f)).statusBarsPadding().padding(horizontal = 20.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween) {
-                    Row(Modifier.weight(1f),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)){
-                        val identity=auth as? AuthState.SignedIn
-                        if(identity==null)BrainMark(Modifier.size(40.dp))else ProfileAvatar(container.appearance,identity.userId,localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: "?",Modifier.size(44.dp).semantics{contentDescription=profileLabel}.clickable{go(Destination.PROFILE)})
-                        Column {
-                            Text(localState.current?.takeIf{!online}?.username ?: (playerState as? PlayerDataState.Ready)?.data?.profile?.username ?: stringResource(R.string.app_name), style=MaterialTheme.typography.titleMedium,maxLines=1,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                            if(auth is AuthState.SignedIn) Text(namedString(R.string.player_level,"level" to ((playerState as? PlayerDataState.Ready)?.data?.level ?: 1)),style=MaterialTheme.typography.labelMedium,color=Gold)
-                        }
-                    }
-                    IconButton(onClick={go(Destination.SETTINGS)},modifier=Modifier.semantics{contentDescription=settingsLabel}) { NavigationSymbol(NavSymbol.SETTINGS) }
-                }
+                val identity=auth as? AuthState.SignedIn
+                val player=(playerState as? PlayerDataState.Ready)?.data
+                PlayerHeader(container.appearance,identity?.userId,
+                    localState.current?.takeIf{!online}?.username ?: player?.profile?.username ?: stringResource(R.string.app_name),
+                    player?.level?:1,
+                    if(identity?.local==true)listOf(Balance("gold",0),Balance("gems",0),Balance("flames",0))else player?.currencies,
+                    {go(Destination.PROFILE)},{go(Destination.SETTINGS)},{storeCurrency=it;storeRequest++;if(route!=Destination.STORE.name)go(Destination.STORE)})
             }, bottomBar = {
-                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.OFFLINE_PUZZLE.name && route != Destination.GAME.name) NavigationBar(containerColor = MaterialTheme.colorScheme.surface,tonalElevation=0.dp) {
-                    listOf(Destination.HOME, Destination.MODES, Destination.STORE, Destination.PROFILE).forEach { dest ->
-                        NavigationBarItem(selected = route == dest.name, onClick = { go(dest) },
-                            colors=NavigationBarItemDefaults.colors(selectedIconColor=Cyan,selectedTextColor=Cyan,
-                                indicatorColor=Cyan.copy(alpha=.12f),unselectedIconColor=MaterialTheme.colorScheme.onSurfaceVariant,
-                                unselectedTextColor=MaterialTheme.colorScheme.onSurfaceVariant),
-                            icon = { NavigationSymbol(when(dest){Destination.HOME->NavSymbol.HOME;Destination.MODES->NavSymbol.GAMES;Destination.STORE->NavSymbol.STORE;else->NavSymbol.PROFILE}) },
-                            label = { Text(stringResource(dest.label)) })
-                    }
-                }
+                if(route != Destination.AUTH.name && route != Destination.PASSWORD.name && route != Destination.OFFLINE.name && route != Destination.OFFLINE_IMAGES.name && route != Destination.OFFLINE_PUZZLE.name && route != Destination.GAME.name) GameNavigationBar(
+                    listOf(Destination.HOME,Destination.MODES,Destination.STORE,Destination.PROFILE).map{dest->
+                        GameNavItem(dest.name,stringResource(dest.label),when(dest){Destination.HOME->"home_icon";Destination.MODES->"games_icon";Destination.STORE->"store_icon";else->"profile_icon"})
+                    },activeBottomDestination(route).name,{go(Destination.valueOf(it))})
             }) { padding ->
             NavHost(nav, Destination.AUTH.name, Modifier.padding(padding).imePadding()) {
                 Destination.entries.forEach { destination ->
@@ -187,7 +178,7 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                     if(localState.current!=null && (!online || localState.current?.email.equals((auth as? AuthState.SignedIn)?.email,true)))
                                         LocalFriendsScreen(container.localAccounts,container.socialQueue,online,{go(Destination.CONNECT_AUTH)})
                                 }
-                                Destination.STORE -> StoreScreen(storeModel,online,playerModel::refresh)
+                                Destination.STORE -> StoreScreen(storeModel,online,playerModel::refresh,storeCurrency,storeRequest)
                                 Destination.LOADOUT -> LoadoutScreen(storeModel,{roomModel.create(selectedMode,quickMatch);go(Destination.LOBBY)})
                                 Destination.LOBBY -> LobbyScreen(roomModel,(auth as? AuthState.SignedIn)?.userId,socialUi.snapshot.friends,
                                     {activeMatch=it;go(Destination.GAME)},{go(Destination.MODES)})
@@ -203,7 +194,6 @@ fun BrawlApp(authViewModel: AuthViewModel) {
                                 }
                                 Destination.HOME -> {
                                     if(auth is AuthState.SignedIn&&!online)AccountConnectionPanel(auth,internet,authUi.busy,if(authUi.notice!=AuthNotice.NONE)authUi.notice else connectionNotice,{authViewModel.connectOnline()},{go(Destination.CONNECT_AUTH)})
-                                    (playerState as? PlayerDataState.Ready)?.data?.let { CurrencyBar(it) }
                                     Text(stringResource(R.string.welcome),style=MaterialTheme.typography.headlineLarge.copy(shadow=androidx.compose.ui.graphics.Shadow(Color(0xFF061228),androidx.compose.ui.geometry.Offset(0f,2f),8f)),color=Color.White)
                                     GameHero{go(Destination.MODES)}
                                     Row(Modifier.height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
@@ -281,4 +271,12 @@ fun BrawlApp(authViewModel: AuthViewModel) {
         }
         }
     }
+}
+
+/** Nested screens retain their parent tab selection. */
+internal fun activeBottomDestination(route:String?):Destination=when(route){
+    Destination.MODES.name,Destination.MODE_OPTIONS.name,Destination.OFFLINE_MODES.name,Destination.OFFLINE.name,Destination.OFFLINE_IMAGES.name,Destination.OFFLINE_PUZZLE.name,Destination.LOADOUT.name,Destination.LOBBY.name,Destination.GAME.name->Destination.MODES
+    Destination.STORE.name->Destination.STORE
+    Destination.PROFILE.name,Destination.FRIENDS.name,Destination.PASSWORD.name,Destination.CONNECT_AUTH.name->Destination.PROFILE
+    else->Destination.HOME
 }

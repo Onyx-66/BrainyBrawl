@@ -18,3 +18,7 @@
 
 - Navigation/account/action vectors: [Lucide](https://github.com/lucide-icons/lucide), featured by the owner's [Morphicons reference](https://www.morphicons.com/). ISC/MIT license and required notices are bundled in `assets/licenses/Lucide-LICENSE.txt`. Source SVG hashes and URLs: `assets/icons/LUCIDE_SOURCES.json`. Native vector conversion retains stroke geometry; the Morphicons JavaScript animation runtime is not embedded in Compose.
 - Twelve avatar/frame slots currently use original native square preview drawings. Final owner art can be added at the named PNG paths in `assets/avatars/README.md` and `assets/frames/README.md`.
+
+## Owner update — 20 September 2026
+
+The mode icons, resource controls, 10 avatar portraits and 20 decorative frames in assets/ui, assets/avatars and assets/frames were supplied by the owner. Originals are packaged unchanged; runtime source rectangles exclude transparent padding.

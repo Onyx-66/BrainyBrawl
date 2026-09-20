@@ -15,13 +15,13 @@ import com.brainybrawl.app.core.localization.catalogLabel
 import androidx.compose.ui.platform.LocalConfiguration
 
 @Composable
-fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit) {
+fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit,initialCurrency:OfferCurrency=OfferCurrency.GEMS,sectionRequest:Int=0) {
     val ui by model.ui.collectAsStateWithLifecycle()
     val locale=LocalConfiguration.current.locales[0].language
     var vault by rememberSaveable { mutableStateOf(false) }
     var confirmation by remember { mutableStateOf<StoreItem?>(null) }
     Text(stringResource(R.string.store),style=MaterialTheme.typography.headlineMedium)
-    CurrencyOffers()
+    CurrencyOffers(initialCurrency,sectionRequest)
     if(!signedIn)return
     Text(stringResource(R.string.store_cosmetics),style=MaterialTheme.typography.titleLarge)
     Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {

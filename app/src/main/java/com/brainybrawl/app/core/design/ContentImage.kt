@@ -45,6 +45,8 @@ fun loadPackagedArtwork(assets:android.content.res.AssetManager,reference:String
         require(options.outWidth>0&&options.outHeight>0&&options.outWidth.toLong()*options.outHeight<=120_000_000)
         options.inJustDecodeBounds=false;options.inScaled=false
         while(options.outWidth.toLong()*options.outHeight/(options.inSampleSize.coerceAtLeast(1).toLong()*options.inSampleSize.coerceAtLeast(1))>3_000_000){options.inSampleSize=options.inSampleSize.coerceAtLeast(1)*2}
+        // HUD art is drawn at small sizes. Bound its decode independently of full-screen scenes.
+        if(reference.startsWith("assets/ui/"))while(maxOf(options.outWidth,options.outHeight)/options.inSampleSize.coerceAtLeast(1)>720){options.inSampleSize=options.inSampleSize.coerceAtLeast(1)*2}
         requireNotNull(android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.size,options))
     }
     artworkCache.put(reference,bitmap);return bitmap

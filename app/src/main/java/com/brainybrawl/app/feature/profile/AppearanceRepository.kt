@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 @Serializable data class AppearanceSelection(val avatar:Int=1,val frame:Int=1){
-    init{require(avatar in 1..12&&frame in 1..12)}
+    init{require(avatar in 1..12&&frame in 1..20)}
     val avatarPath get()="assets/avatars/avatar_${avatar.toString().padStart(2,'0')}.png"
     val framePath get()="assets/frames/frame_${frame.toString().padStart(2,'0')}.png"
 }
@@ -97,17 +97,32 @@ object AppearanceArt{
         val selection=AppearanceSelection(frame=index)
         packaged(context,selection.framePath)?.let{return it}
         return Bitmap.createBitmap(512,512,Bitmap.Config.ARGB_8888).also{bitmap->
-            val canvas=Canvas(bitmap);val p=Paint(Paint.ANTI_ALIAS_FLAG);p.style=Paint.Style.STROKE;p.color=colors[index-1];p.strokeWidth=32f
+            val canvas=Canvas(bitmap);val p=Paint(Paint.ANTI_ALIAS_FLAG);p.style=Paint.Style.STROKE;p.color=colors[(index-1)%colors.size];p.strokeWidth=32f
             canvas.drawRect(22f,22f,490f,490f,p);p.strokeWidth=6f;p.color=0xFFFFD55C.toInt();canvas.drawRect(43f,43f,469f,469f,p)
             p.style=Paint.Style.FILL;listOf(22f to 22f,490f to 22f,22f to 490f,490f to 490f).forEach{(x,y)->canvas.drawRect(x-14,y-14,x+14,y+14,p)}
         }
     }
+    /** Locate the transparent opening so portrait and square frame sources align identically. */
+    fun opening(frame:Bitmap):RectF{
+        val cx=frame.width/2;val cy=frame.height/2
+        fun opaque(x:Int,y:Int)=Color.alpha(frame.getPixel(x,y))>40
+        val left=(cx downTo 0).firstOrNull{opaque(it,cy)}?:44
+        val right=(cx until frame.width).firstOrNull{opaque(it,cy)}?:468
+        val top=(cy downTo 0).firstOrNull{opaque(cx,it)}?:44
+        val bottom=(cy until frame.height).firstOrNull{opaque(cx,it)}?:468
+        return RectF((left-4).coerceAtLeast(0)/frame.width.toFloat(),(top-4).coerceAtLeast(0)/frame.height.toFloat(),(right+4).coerceAtMost(frame.width)/frame.width.toFloat(),(bottom+4).coerceAtMost(frame.height)/frame.height.toFloat())
+    }
     private fun packaged(context:Context,path:String):Bitmap?=try{
         val bytes=context.assets.open(path).use{it.readAppearanceBytes(8*1024*1024)};require(bytes.size<=8*1024*1024)
         val bounds=BitmapFactory.Options().apply{inJustDecodeBounds=true};BitmapFactory.decodeByteArray(bytes,0,bytes.size,bounds)
-        require(bounds.outWidth in 1..4096&&bounds.outHeight==bounds.outWidth)
+        require(bounds.outWidth in 1..4096&&bounds.outHeight in 1..4096)
         val source=requireNotNull(BitmapFactory.decodeByteArray(bytes,0,bytes.size,BitmapFactory.Options().apply{inSampleSize=(bounds.outWidth/512).coerceAtLeast(1)}))
-        Bitmap.createScaledBitmap(source,512,512,true).also{if(it!==source)source.recycle()}
+        Bitmap.createBitmap(512,512,Bitmap.Config.ARGB_8888).also{target->
+            val scale=512f/maxOf(source.width,source.height)
+            val w=source.width*scale;val h=source.height*scale
+            Canvas(target).drawBitmap(source,null,RectF((512-w)/2,(512-h)/2,(512+w)/2,(512+h)/2),Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG))
+            source.recycle()
+        }
     }catch(_:Exception){null}
 }
 
