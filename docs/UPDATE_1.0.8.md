@@ -19,6 +19,8 @@
 - 44 isolated PostgreSQL/PGlite checks passed, including typo matching, numeric false positives, mission reward idempotency/authorization and locked image answer pools.
 - Android lint completed with zero errors; existing warnings remain.
 - Hosted authentication, profile, store, leaderboard, six-mission snapshot and access restrictions passed after applying migrations 031–033.
+- Published 957 new localized records, retired 27 superseded records without deleting history, and refreshed 3,675 existing question answer dictionaries.
+- The installed normal APK passed an additional opt-in device test using the restored account to read its profile and friends. Its live missions screen was also verified.
 
 ## Operational notes
 
