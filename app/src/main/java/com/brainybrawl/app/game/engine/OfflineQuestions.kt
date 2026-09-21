@@ -18,7 +18,7 @@ data class OfflineQuestions(val questions:List<QuestionContent>,val index:Int=0,
     fun answerText(text:String,now:Long):OfflineQuestions {
         if(revealed||selected!=null||!window.accepting(now))return tick(now)
         val accepted=question.acceptedAnswers+question.options.single{it.correct}.label
-        val correct=accepted.any{normalizeAnswer(it)==normalizeAnswer(text)}
+        val correct=AnswerMatcher.matches(text,accepted,question.options.filterNot{it.correct}.map{it.label})
         return copy(selected=if(correct)question.options.single{it.correct}.id else "typed_wrong",score=score+if(correct)1 else 0,revealed=true)
     }
     fun next(now:Long):OfflineQuestions {

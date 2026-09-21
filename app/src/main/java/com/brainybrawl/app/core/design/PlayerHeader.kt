@@ -45,8 +45,7 @@ import com.brainybrawl.app.core.localization.namedString
     }
 }
 @Composable private fun HeaderSettings(label:String,action:()->Unit){
-    Box(Modifier.testTag("header-settings").width(56.dp).fillMaxHeight().heightIn(min=56.dp).clip(RoundedCornerShape(13.dp)).background(Brush.verticalGradient(listOf(Color(0xFF2AE2FF),Color(0xFF0060E6))))
-        .border(2.dp,Color(0xFF66EDFF),RoundedCornerShape(13.dp)).clickable(onClick=action).semantics{contentDescription=label},contentAlignment=Alignment.Center){
+    Box(Modifier.testTag("header-settings").width(56.dp).fillMaxHeight().heightIn(min=56.dp).clip(RoundedCornerShape(13.dp)).background(Color(0x88102042)).clickable(onClick=action).semantics{contentDescription=label},contentAlignment=Alignment.Center){
         CompositionLocalProvider(LocalContentColor provides Color.White){NavigationSymbol(NavSymbol.SETTINGS,Modifier.size(28.dp))}
     }
 }
@@ -61,10 +60,10 @@ import com.brainybrawl.app.core.localization.namedString
             val display=if(value!=null&&value>=1000)android.icu.text.CompactDecimalFormat.getInstance(locale,android.icu.text.CompactDecimalFormat.CompactStyle.SHORT).format(value)else exact
             val label=stringResource(currency.label)
             Box(Modifier.weight(1f).heightIn(min=48.dp).testTag("header-${currency.name}").clip(RoundedCornerShape(12.dp)).clickable{onCurrency(currency)}.semantics(mergeDescendants=true){contentDescription="$label $exact";role=Role.Button},contentAlignment=Alignment.Center){
-                GameArtwork("${prefix}_count",Modifier.fillMaxWidth().height(38.dp),androidx.compose.ui.layout.ContentScale.FillBounds)
+                GameArtwork("currency_count",Modifier.fillMaxWidth().height(38.dp).background(Color(0xFFF2F3F7),RoundedCornerShape(14.dp)),androidx.compose.ui.layout.ContentScale.FillBounds)
                 Row(Modifier.fillMaxWidth().padding(horizontal=2.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(2.dp)){
                     GameArtwork("${prefix}_icon",Modifier.size(28.dp))
-                    Text(display,Modifier.weight(1f),style=MaterialTheme.typography.labelMedium,color=if(currency==OfferCurrency.COINS)Color(0xFF442300)else Color.White,maxLines=1)
+                    Text(display,Modifier.weight(1f),style=MaterialTheme.typography.labelMedium,color=Color(0xFF17243A),maxLines=1)
                     GameArtwork("${prefix}_more",Modifier.size(30.dp))
                 }
             }

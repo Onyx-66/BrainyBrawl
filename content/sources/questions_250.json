@@ -1,0 +1,3762 @@
+{
+  "title": "BrainyBrawl Multilingual Quiz Pack",
+  "question_count": 250,
+  "languages": [
+    "en",
+    "fr",
+    "ar"
+  ],
+  "difficulty": "medium-hard",
+  "questions": [
+    {
+      "id": "Q001",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which treaty formally ended the Thirty Years' War in 1648?",
+        "fr": "Quel traité a officiellement mis fin à la guerre de Trente Ans en 1648 ?",
+        "ar": "ما المعاهدة التي أنهت رسميا حرب الثلاثين عاما سنة 1648؟"
+      },
+      "answer": {
+        "en": "The Peace of Westphalia",
+        "fr": "La paix de Westphalie",
+        "ar": "صلح وستفاليا"
+      }
+    },
+    {
+      "id": "Q002",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which empire was ruled by Mansa Musa in the 14th century?",
+        "fr": "Quel empire était dirigé par Mansa Moussa au XIVe siècle ?",
+        "ar": "ما الإمبراطورية التي حكمها مانسا موسى في القرن الرابع عشر؟"
+      },
+      "answer": {
+        "en": "The Mali Empire",
+        "fr": "L'Empire du Mali",
+        "ar": "إمبراطورية مالي"
+      }
+    },
+    {
+      "id": "Q003",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who was the first Roman emperor?",
+        "fr": "Qui fut le premier empereur romain ?",
+        "ar": "من كان أول إمبراطور روماني؟"
+      },
+      "answer": {
+        "en": "Augustus",
+        "fr": "Auguste",
+        "ar": "أغسطس"
+      }
+    },
+    {
+      "id": "Q004",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What city was the capital of the Byzantine Empire?",
+        "fr": "Quelle ville était la capitale de l'Empire byzantin ?",
+        "ar": "ما المدينة التي كانت عاصمة الإمبراطورية البيزنطية؟"
+      },
+      "answer": {
+        "en": "Constantinople",
+        "fr": "Constantinople",
+        "ar": "القسطنطينية"
+      }
+    },
+    {
+      "id": "Q005",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which dynasty built most of the present Great Wall of China?",
+        "fr": "Quelle dynastie a construit la majeure partie de la Grande Muraille de Chine actuelle ?",
+        "ar": "أي سلالة بنت معظم سور الصين العظيم القائم حاليا؟"
+      },
+      "answer": {
+        "en": "The Ming dynasty",
+        "fr": "La dynastie Ming",
+        "ar": "سلالة مينغ"
+      }
+    },
+    {
+      "id": "Q006",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "In which year did the Battle of Hastings take place?",
+        "fr": "En quelle année la bataille d'Hastings a-t-elle eu lieu ?",
+        "ar": "في أي سنة وقعت معركة هاستينغز؟"
+      },
+      "answer": {
+        "en": "1066",
+        "fr": "1066",
+        "ar": "1066"
+      }
+    },
+    {
+      "id": "Q007",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which civilization built Machu Picchu?",
+        "fr": "Quelle civilisation a construit le Machu Picchu ?",
+        "ar": "أي حضارة بنت ماتشو بيتشو؟"
+      },
+      "answer": {
+        "en": "The Inca civilization",
+        "fr": "La civilisation inca",
+        "ar": "حضارة الإنكا"
+      }
+    },
+    {
+      "id": "Q008",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who led the Haitian Revolution and became governor-general for life?",
+        "fr": "Qui a dirigé la Révolution haïtienne et est devenu gouverneur général à vie ?",
+        "ar": "من قاد الثورة الهايتية وأصبح حاكما عاما مدى الحياة؟"
+      },
+      "answer": {
+        "en": "Toussaint Louverture",
+        "fr": "Toussaint Louverture",
+        "ar": "توسان لوفرتور"
+      }
+    },
+    {
+      "id": "Q009",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which document limited the English king's power in 1215?",
+        "fr": "Quel document a limité le pouvoir du roi d'Angleterre en 1215 ?",
+        "ar": "ما الوثيقة التي قيدت سلطة ملك إنجلترا سنة 1215؟"
+      },
+      "answer": {
+        "en": "Magna Carta",
+        "fr": "La Magna Carta",
+        "ar": "الماجنا كارتا"
+      }
+    },
+    {
+      "id": "Q010",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which ancient city was buried by Mount Vesuvius in AD 79?",
+        "fr": "Quelle ville antique a été ensevelie par le Vésuve en 79 apr. J.-C. ?",
+        "ar": "ما المدينة القديمة التي دفنها بركان فيزوف سنة 79م؟"
+      },
+      "answer": {
+        "en": "Pompeii",
+        "fr": "Pompéi",
+        "ar": "بومبي"
+      }
+    },
+    {
+      "id": "Q011",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who founded the Mongol Empire?",
+        "fr": "Qui a fondé l'Empire mongol ?",
+        "ar": "من أسس الإمبراطورية المغولية؟"
+      },
+      "answer": {
+        "en": "Genghis Khan",
+        "fr": "Gengis Khan",
+        "ar": "جنكيز خان"
+      }
+    },
+    {
+      "id": "Q012",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which war was fought between the houses of Lancaster and York?",
+        "fr": "Quelle guerre opposa les maisons de Lancastre et d'York ?",
+        "ar": "ما الحرب التي دارت بين أسرتي لانكستر ويورك؟"
+      },
+      "answer": {
+        "en": "The Wars of the Roses",
+        "fr": "La guerre des Deux-Roses",
+        "ar": "حرب الوردتين"
+      }
+    },
+    {
+      "id": "Q013",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What was the name of the ship on which Charles Darwin sailed?",
+        "fr": "Quel était le nom du navire sur lequel Charles Darwin a voyagé ?",
+        "ar": "ما اسم السفينة التي أبحر عليها تشارلز داروين؟"
+      },
+      "answer": {
+        "en": "HMS Beagle",
+        "fr": "Le HMS Beagle",
+        "ar": "إتش إم إس بيغل"
+      }
+    },
+    {
+      "id": "Q014",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which European power controlled Algeria from 1830 until 1962?",
+        "fr": "Quelle puissance européenne a contrôlé l'Algérie de 1830 à 1962 ?",
+        "ar": "أي قوة أوروبية استعمرت الجزائر من 1830 إلى 1962؟"
+      },
+      "answer": {
+        "en": "France",
+        "fr": "La France",
+        "ar": "فرنسا"
+      }
+    },
+    {
+      "id": "Q015",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who was the last pharaoh of Ptolemaic Egypt?",
+        "fr": "Qui fut le dernier pharaon de l'Égypte ptolémaïque ?",
+        "ar": "من كانت آخر فراعنة مصر البطلمية؟"
+      },
+      "answer": {
+        "en": "Cleopatra VII",
+        "fr": "Cléopâtre VII",
+        "ar": "كليوباترا السابعة"
+      }
+    },
+    {
+      "id": "Q016",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which revolution began with the storming of the Bastille in 1789?",
+        "fr": "Quelle révolution a commencé avec la prise de la Bastille en 1789 ?",
+        "ar": "أي ثورة ارتبطت ببداية اقتحام الباستيل سنة 1789؟"
+      },
+      "answer": {
+        "en": "The French Revolution",
+        "fr": "La Révolution française",
+        "ar": "الثورة الفرنسية"
+      }
+    },
+    {
+      "id": "Q017",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which empire used Janissaries as an elite infantry corps?",
+        "fr": "Quel empire utilisait les janissaires comme corps d'infanterie d'élite ?",
+        "ar": "أي إمبراطورية استخدمت الإنكشارية كقوات مشاة نخبة؟"
+      },
+      "answer": {
+        "en": "The Ottoman Empire",
+        "fr": "L'Empire ottoman",
+        "ar": "الإمبراطورية العثمانية"
+      }
+    },
+    {
+      "id": "Q018",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which 1494 treaty divided newly discovered lands outside Europe between Spain and Portugal?",
+        "fr": "Quel traité de 1494 a partagé les terres nouvellement découvertes hors d'Europe entre l'Espagne et le Portugal ?",
+        "ar": "ما معاهدة 1494 التي قسمت الأراضي المكتشفة خارج أوروبا بين إسبانيا والبرتغال؟"
+      },
+      "answer": {
+        "en": "The Treaty of Tordesillas",
+        "fr": "Le traité de Tordesillas",
+        "ar": "معاهدة تورديسيلاس"
+      }
+    },
+    {
+      "id": "Q019",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who was the Soviet leader during the Cuban Missile Crisis?",
+        "fr": "Qui était le dirigeant soviétique pendant la crise des missiles de Cuba ?",
+        "ar": "من كان الزعيم السوفيتي خلال أزمة الصواريخ الكوبية؟"
+      },
+      "answer": {
+        "en": "Nikita Khrushchev",
+        "fr": "Nikita Khrouchtchev",
+        "ar": "نيكيتا خروتشوف"
+      }
+    },
+    {
+      "id": "Q020",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which ancient people created the first known alphabetic writing system widely used around the Mediterranean?",
+        "fr": "Quel peuple antique a créé un des premiers systèmes d'écriture alphabétique largement diffusés en Méditerranée ?",
+        "ar": "أي شعب قديم طور من أوائل أنظمة الكتابة الأبجدية المنتشرة في البحر المتوسط؟"
+      },
+      "answer": {
+        "en": "The Phoenicians",
+        "fr": "Les Phéniciens",
+        "ar": "الفينيقيون"
+      }
+    },
+    {
+      "id": "Q021",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who was crowned emperor of the Romans in the year 800?",
+        "fr": "Qui fut couronné empereur des Romains en l'an 800 ?",
+        "ar": "من توج إمبراطورا للرومان سنة 800؟"
+      },
+      "answer": {
+        "en": "Charlemagne",
+        "fr": "Charlemagne",
+        "ar": "شارلمان"
+      }
+    },
+    {
+      "id": "Q022",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What event triggered the start of World War I in 1914?",
+        "fr": "Quel événement a déclenché la Première Guerre mondiale en 1914 ?",
+        "ar": "ما الحدث الذي أشعل اندلاع الحرب العالمية الأولى سنة 1914؟"
+      },
+      "answer": {
+        "en": "The assassination of Archduke Franz Ferdinand",
+        "fr": "L'assassinat de l'archiduc François-Ferdinand",
+        "ar": "اغتيال الأرشيدوق فرانز فرديناند"
+      }
+    },
+    {
+      "id": "Q023",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which kingdom defeated the Byzantine Empire at the Battle of Manzikert in 1071?",
+        "fr": "Quel empire a vaincu les Byzantins à la bataille de Manzikert en 1071 ?",
+        "ar": "أي إمبراطورية هزمت البيزنطيين في معركة ملاذكرد سنة 1071؟"
+      },
+      "answer": {
+        "en": "The Seljuk Empire",
+        "fr": "L'Empire seldjoukide",
+        "ar": "الإمبراطورية السلجوقية"
+      }
+    },
+    {
+      "id": "Q024",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote the Ninety-five Theses in 1517?",
+        "fr": "Qui a écrit les Quatre-vingt-quinze thèses en 1517 ?",
+        "ar": "من كتب الأطروحات الخمس والتسعين سنة 1517؟"
+      },
+      "answer": {
+        "en": "Martin Luther",
+        "fr": "Martin Luther",
+        "ar": "مارتن لوثر"
+      }
+    },
+    {
+      "id": "Q025",
+      "topic": "history",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country was formerly known as Abyssinia?",
+        "fr": "Quel pays était autrefois connu sous le nom d'Abyssinie ?",
+        "ar": "أي دولة كانت تعرف قديما باسم الحبشة؟"
+      },
+      "answer": {
+        "en": "Ethiopia",
+        "fr": "L'Éthiopie",
+        "ar": "إثيوبيا"
+      }
+    },
+    {
+      "id": "Q026",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the longest river entirely within Europe?",
+        "fr": "Quel est le plus long fleuve entièrement situé en Europe ?",
+        "ar": "ما أطول نهر يقع بالكامل داخل أوروبا؟"
+      },
+      "answer": {
+        "en": "The Volga",
+        "fr": "La Volga",
+        "ar": "نهر الفولغا"
+      }
+    },
+    {
+      "id": "Q027",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country has the most natural lakes?",
+        "fr": "Quel pays possède le plus grand nombre de lacs naturels ?",
+        "ar": "أي دولة تضم أكبر عدد من البحيرات الطبيعية؟"
+      },
+      "answer": {
+        "en": "Canada",
+        "fr": "Le Canada",
+        "ar": "كندا"
+      }
+    },
+    {
+      "id": "Q028",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the capital of Kazakhstan?",
+        "fr": "Quelle est la capitale du Kazakhstan ?",
+        "ar": "ما عاصمة كازاخستان؟"
+      },
+      "answer": {
+        "en": "Astana",
+        "fr": "Astana",
+        "ar": "أستانا"
+      }
+    },
+    {
+      "id": "Q029",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which desert covers much of northern Chile?",
+        "fr": "Quel désert couvre une grande partie du nord du Chili ?",
+        "ar": "أي صحراء تغطي جزءا كبيرا من شمال تشيلي؟"
+      },
+      "answer": {
+        "en": "The Atacama Desert",
+        "fr": "Le désert d'Atacama",
+        "ar": "صحراء أتاكاما"
+      }
+    },
+    {
+      "id": "Q030",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which strait separates Asia from North America?",
+        "fr": "Quel détroit sépare l'Asie de l'Amérique du Nord ?",
+        "ar": "ما المضيق الذي يفصل آسيا عن أمريكا الشمالية؟"
+      },
+      "answer": {
+        "en": "The Bering Strait",
+        "fr": "Le détroit de Béring",
+        "ar": "مضيق بيرينغ"
+      }
+    },
+    {
+      "id": "Q031",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the highest mountain outside Asia?",
+        "fr": "Quelle est la plus haute montagne hors d'Asie ?",
+        "ar": "ما أعلى جبل خارج قارة آسيا؟"
+      },
+      "answer": {
+        "en": "Aconcagua",
+        "fr": "L'Aconcagua",
+        "ar": "أكونكاغوا"
+      }
+    },
+    {
+      "id": "Q032",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which African country is completely surrounded by South Africa?",
+        "fr": "Quel pays africain est entièrement enclavé dans l'Afrique du Sud ?",
+        "ar": "أي دولة إفريقية محاطة بالكامل بجنوب إفريقيا؟"
+      },
+      "answer": {
+        "en": "Lesotho",
+        "fr": "Le Lesotho",
+        "ar": "ليسوتو"
+      }
+    },
+    {
+      "id": "Q033",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which river flows through Baghdad?",
+        "fr": "Quel fleuve traverse Bagdad ?",
+        "ar": "أي نهر يمر بمدينة بغداد؟"
+      },
+      "answer": {
+        "en": "The Tigris",
+        "fr": "Le Tigre",
+        "ar": "نهر دجلة"
+      }
+    },
+    {
+      "id": "Q034",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the largest island in the Mediterranean Sea?",
+        "fr": "Quelle est la plus grande île de la mer Méditerranée ?",
+        "ar": "ما أكبر جزيرة في البحر الأبيض المتوسط؟"
+      },
+      "answer": {
+        "en": "Sicily",
+        "fr": "La Sicile",
+        "ar": "صقلية"
+      }
+    },
+    {
+      "id": "Q035",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country contains the region of Transylvania?",
+        "fr": "Dans quel pays se trouve la Transylvanie ?",
+        "ar": "في أي دولة تقع منطقة ترانسيلفانيا؟"
+      },
+      "answer": {
+        "en": "Romania",
+        "fr": "La Roumanie",
+        "ar": "رومانيا"
+      }
+    },
+    {
+      "id": "Q036",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the capital of Bhutan?",
+        "fr": "Quelle est la capitale du Bhoutan ?",
+        "ar": "ما عاصمة بوتان؟"
+      },
+      "answer": {
+        "en": "Thimphu",
+        "fr": "Thimphou",
+        "ar": "تيمفو"
+      }
+    },
+    {
+      "id": "Q037",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which sea lies between northeast Africa and the Arabian Peninsula?",
+        "fr": "Quelle mer se situe entre le nord-est de l'Afrique et la péninsule Arabique ?",
+        "ar": "أي بحر يقع بين شمال شرق إفريقيا وشبه الجزيرة العربية؟"
+      },
+      "answer": {
+        "en": "The Red Sea",
+        "fr": "La mer Rouge",
+        "ar": "البحر الأحمر"
+      }
+    },
+    {
+      "id": "Q038",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which mountain range forms a traditional boundary between Europe and Asia?",
+        "fr": "Quelle chaîne de montagnes forme une frontière traditionnelle entre l'Europe et l'Asie ?",
+        "ar": "أي سلسلة جبلية تعد حدا تقليديا بين أوروبا وآسيا؟"
+      },
+      "answer": {
+        "en": "The Ural Mountains",
+        "fr": "L'Oural",
+        "ar": "جبال الأورال"
+      }
+    },
+    {
+      "id": "Q039",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the world's largest inland body of water by surface area?",
+        "fr": "Quelle est la plus grande étendue d'eau intérieure du monde par superficie ?",
+        "ar": "ما أكبر مسطح مائي داخلي في العالم من حيث المساحة؟"
+      },
+      "answer": {
+        "en": "The Caspian Sea",
+        "fr": "La mer Caspienne",
+        "ar": "بحر قزوين"
+      }
+    },
+    {
+      "id": "Q040",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country shares the longest international border with the United States?",
+        "fr": "Quel pays partage la plus longue frontière internationale avec les États-Unis ?",
+        "ar": "أي دولة تشترك في أطول حدود دولية مع الولايات المتحدة؟"
+      },
+      "answer": {
+        "en": "Canada",
+        "fr": "Le Canada",
+        "ar": "كندا"
+      }
+    },
+    {
+      "id": "Q041",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the capital of Mongolia?",
+        "fr": "Quelle est la capitale de la Mongolie ?",
+        "ar": "ما عاصمة منغوليا؟"
+      },
+      "answer": {
+        "en": "Ulaanbaatar",
+        "fr": "Oulan-Bator",
+        "ar": "أولان باتور"
+      }
+    },
+    {
+      "id": "Q042",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which river forms much of the border between the United States and Mexico?",
+        "fr": "Quel fleuve forme une grande partie de la frontière entre les États-Unis et le Mexique ?",
+        "ar": "أي نهر يشكل جزءا كبيرا من الحدود بين الولايات المتحدة والمكسيك؟"
+      },
+      "answer": {
+        "en": "The Rio Grande",
+        "fr": "Le Rio Grande",
+        "ar": "ريو غراندي"
+      }
+    },
+    {
+      "id": "Q043",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country has coastlines on both the Atlantic and Indian Oceans?",
+        "fr": "Quel pays possède des côtes sur les océans Atlantique et Indien ?",
+        "ar": "أي دولة لها سواحل على المحيطين الأطلسي والهندي؟"
+      },
+      "answer": {
+        "en": "South Africa",
+        "fr": "L'Afrique du Sud",
+        "ar": "جنوب إفريقيا"
+      }
+    },
+    {
+      "id": "Q044",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the deepest lake in the world?",
+        "fr": "Quel est le lac le plus profond du monde ?",
+        "ar": "ما أعمق بحيرة في العالم؟"
+      },
+      "answer": {
+        "en": "Lake Baikal",
+        "fr": "Le lac Baïkal",
+        "ar": "بحيرة بايكال"
+      }
+    },
+    {
+      "id": "Q045",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which European capital is located on the River Vltava?",
+        "fr": "Quelle capitale européenne est située sur la Vltava ?",
+        "ar": "أي عاصمة أوروبية تقع على نهر فلتافا؟"
+      },
+      "answer": {
+        "en": "Prague",
+        "fr": "Prague",
+        "ar": "براغ"
+      }
+    },
+    {
+      "id": "Q046",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is home to Mount Kilimanjaro?",
+        "fr": "Dans quel pays se trouve le Kilimandjaro ?",
+        "ar": "في أي دولة يقع جبل كليمنجارو؟"
+      },
+      "answer": {
+        "en": "Tanzania",
+        "fr": "La Tanzanie",
+        "ar": "تنزانيا"
+      }
+    },
+    {
+      "id": "Q047",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which archipelago includes the islands of Tenerife and Gran Canaria?",
+        "fr": "Quel archipel comprend Tenerife et Grande Canarie ?",
+        "ar": "أي أرخبيل يضم جزيرتي تينيريفي وغران كناريا؟"
+      },
+      "answer": {
+        "en": "The Canary Islands",
+        "fr": "Les îles Canaries",
+        "ar": "جزر الكناري"
+      }
+    },
+    {
+      "id": "Q048",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the southernmost capital city in the world?",
+        "fr": "Quelle est la capitale la plus australe du monde ?",
+        "ar": "ما عاصمة الدولة الواقعة في أقصى جنوب العالم؟"
+      },
+      "answer": {
+        "en": "Wellington",
+        "fr": "Wellington",
+        "ar": "ويلينغتون"
+      }
+    },
+    {
+      "id": "Q049",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country contains the ancient city of Petra?",
+        "fr": "Dans quel pays se trouve l'ancienne cité de Pétra ?",
+        "ar": "في أي دولة تقع مدينة البتراء الأثرية؟"
+      },
+      "answer": {
+        "en": "Jordan",
+        "fr": "La Jordanie",
+        "ar": "الأردن"
+      }
+    },
+    {
+      "id": "Q050",
+      "topic": "geography",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the largest country in Africa by area?",
+        "fr": "Quel est le plus grand pays d'Afrique par superficie ?",
+        "ar": "ما أكبر دولة في إفريقيا من حيث المساحة؟"
+      },
+      "answer": {
+        "en": "Algeria",
+        "fr": "L'Algérie",
+        "ar": "الجزائر"
+      }
+    },
+    {
+      "id": "Q051",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What particle carries the electromagnetic force?",
+        "fr": "Quelle particule transmet l'interaction électromagnétique ?",
+        "ar": "ما الجسيم الذي يحمل القوة الكهرومغناطيسية؟"
+      },
+      "answer": {
+        "en": "The photon",
+        "fr": "Le photon",
+        "ar": "الفوتون"
+      }
+    },
+    {
+      "id": "Q052",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which organelle is primarily responsible for ATP production in eukaryotic cells?",
+        "fr": "Quel organite est principalement responsable de la production d'ATP dans les cellules eucaryotes ?",
+        "ar": "ما العضية المسؤولة أساسا عن إنتاج ATP في الخلايا حقيقية النواة؟"
+      },
+      "answer": {
+        "en": "The mitochondrion",
+        "fr": "La mitochondrie",
+        "ar": "الميتوكوندريا"
+      }
+    },
+    {
+      "id": "Q053",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the chemical symbol for tungsten?",
+        "fr": "Quel est le symbole chimique du tungstène ?",
+        "ar": "ما الرمز الكيميائي للتنغستن؟"
+      },
+      "answer": {
+        "en": "W",
+        "fr": "W",
+        "ar": "W"
+      }
+    },
+    {
+      "id": "Q054",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What type of bond involves the sharing of electron pairs between atoms?",
+        "fr": "Quel type de liaison implique le partage de paires d'électrons entre atomes ?",
+        "ar": "ما نوع الرابطة التي تتضمن مشاركة أزواج من الإلكترونات بين الذرات؟"
+      },
+      "answer": {
+        "en": "A covalent bond",
+        "fr": "Une liaison covalente",
+        "ar": "رابطة تساهمية"
+      }
+    },
+    {
+      "id": "Q055",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which law states that pressure and volume of a gas are inversely proportional at constant temperature?",
+        "fr": "Quelle loi indique que la pression et le volume d'un gaz sont inversement proportionnels à température constante ?",
+        "ar": "أي قانون ينص على أن ضغط الغاز وحجمه يتناسبان عكسيا عند ثبات درجة الحرارة؟"
+      },
+      "answer": {
+        "en": "Boyle's law",
+        "fr": "La loi de Boyle-Mariotte",
+        "ar": "قانون بويل"
+      }
+    },
+    {
+      "id": "Q056",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the most abundant gas in Earth's atmosphere?",
+        "fr": "Quel est le gaz le plus abondant dans l'atmosphère terrestre ?",
+        "ar": "ما الغاز الأكثر وفرة في الغلاف الجوي للأرض؟"
+      },
+      "answer": {
+        "en": "Nitrogen",
+        "fr": "L'azote",
+        "ar": "النيتروجين"
+      }
+    },
+    {
+      "id": "Q057",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which blood type is considered the universal red-cell donor?",
+        "fr": "Quel groupe sanguin est considéré comme donneur universel de globules rouges ?",
+        "ar": "ما فصيلة الدم التي تعد مانحا عاما لكريات الدم الحمراء؟"
+      },
+      "answer": {
+        "en": "O negative",
+        "fr": "O négatif",
+        "ar": "O سالب"
+      }
+    },
+    {
+      "id": "Q058",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the pH of a neutral solution at 25°C?",
+        "fr": "Quel est le pH d'une solution neutre à 25 °C ?",
+        "ar": "ما قيمة الرقم الهيدروجيني لمحلول متعادل عند 25 درجة مئوية؟"
+      },
+      "answer": {
+        "en": "7",
+        "fr": "7",
+        "ar": "7"
+      }
+    },
+    {
+      "id": "Q059",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which scientist proposed the uncertainty principle?",
+        "fr": "Quel scientifique a formulé le principe d'incertitude ?",
+        "ar": "من العالم الذي صاغ مبدأ عدم اليقين؟"
+      },
+      "answer": {
+        "en": "Werner Heisenberg",
+        "fr": "Werner Heisenberg",
+        "ar": "فيرنر هايزنبرغ"
+      }
+    },
+    {
+      "id": "Q060",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the SI unit of electric resistance?",
+        "fr": "Quelle est l'unité SI de la résistance électrique ?",
+        "ar": "ما وحدة قياس المقاومة الكهربائية في النظام الدولي؟"
+      },
+      "answer": {
+        "en": "The ohm",
+        "fr": "L'ohm",
+        "ar": "الأوم"
+      }
+    },
+    {
+      "id": "Q061",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the process by which plants lose water vapor through their leaves?",
+        "fr": "Comment appelle-t-on le processus par lequel les plantes perdent de la vapeur d'eau par leurs feuilles ?",
+        "ar": "ما العملية التي تفقد فيها النباتات بخار الماء عبر أوراقها؟"
+      },
+      "answer": {
+        "en": "Transpiration",
+        "fr": "La transpiration",
+        "ar": "النتح"
+      }
+    },
+    {
+      "id": "Q062",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which element has atomic number 26?",
+        "fr": "Quel élément possède le numéro atomique 26 ?",
+        "ar": "أي عنصر عدده الذري 26؟"
+      },
+      "answer": {
+        "en": "Iron",
+        "fr": "Le fer",
+        "ar": "الحديد"
+      }
+    },
+    {
+      "id": "Q063",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the boundary around a black hole beyond which nothing can escape?",
+        "fr": "Comment s'appelle la frontière d'un trou noir au-delà de laquelle rien ne peut s'échapper ?",
+        "ar": "ما اسم الحد المحيط بالثقب الأسود الذي لا يمكن لشيء تجاوزه إلى الخارج؟"
+      },
+      "answer": {
+        "en": "The event horizon",
+        "fr": "L'horizon des événements",
+        "ar": "أفق الحدث"
+      }
+    },
+    {
+      "id": "Q064",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which vitamin is synthesized in human skin through sunlight exposure?",
+        "fr": "Quelle vitamine est synthétisée par la peau humaine grâce à l'exposition au soleil ?",
+        "ar": "أي فيتامين يصنعه جلد الإنسان عند التعرض لأشعة الشمس؟"
+      },
+      "answer": {
+        "en": "Vitamin D",
+        "fr": "La vitamine D",
+        "ar": "فيتامين د"
+      }
+    },
+    {
+      "id": "Q065",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the enzyme that unwinds DNA during replication?",
+        "fr": "Comment s'appelle l'enzyme qui déroule l'ADN lors de la réplication ?",
+        "ar": "ما اسم الإنزيم الذي يفك التفاف الحمض النووي أثناء التضاعف؟"
+      },
+      "answer": {
+        "en": "Helicase",
+        "fr": "L'hélicase",
+        "ar": "الهيليكاز"
+      }
+    },
+    {
+      "id": "Q066",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the approximate speed of light in vacuum?",
+        "fr": "Quelle est la vitesse approximative de la lumière dans le vide ?",
+        "ar": "ما السرعة التقريبية للضوء في الفراغ؟"
+      },
+      "answer": {
+        "en": "300,000 km/s",
+        "fr": "300 000 km/s",
+        "ar": "300,000 كم/ث"
+      }
+    },
+    {
+      "id": "Q067",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which subatomic particle has no electric charge and is found in the nucleus?",
+        "fr": "Quelle particule subatomique sans charge électrique se trouve dans le noyau ?",
+        "ar": "أي جسيم دون ذري عديم الشحنة ويوجد في النواة؟"
+      },
+      "answer": {
+        "en": "The neutron",
+        "fr": "Le neutron",
+        "ar": "النيوترون"
+      }
+    },
+    {
+      "id": "Q068",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the scientific term for animals that maintain a constant internal body temperature?",
+        "fr": "Quel terme scientifique désigne les animaux qui maintiennent une température corporelle interne relativement constante ?",
+        "ar": "ما المصطلح العلمي للحيوانات التي تحافظ على حرارة جسم داخلية شبه ثابتة؟"
+      },
+      "answer": {
+        "en": "Endotherms",
+        "fr": "Les endothermes",
+        "ar": "ذوات الدم الحار (الكائنات داخلية الحرارة)"
+      }
+    },
+    {
+      "id": "Q069",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which scale measures mineral hardness from 1 to 10?",
+        "fr": "Quelle échelle mesure la dureté des minéraux de 1 à 10 ?",
+        "ar": "أي مقياس يقيس صلابة المعادن من 1 إلى 10؟"
+      },
+      "answer": {
+        "en": "The Mohs scale",
+        "fr": "L'échelle de Mohs",
+        "ar": "مقياس موهس"
+      }
+    },
+    {
+      "id": "Q070",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the main sugar produced by photosynthesis?",
+        "fr": "Quel est le principal sucre produit par la photosynthèse ?",
+        "ar": "ما السكر الرئيسي الناتج عن عملية البناء الضوئي؟"
+      },
+      "answer": {
+        "en": "Glucose",
+        "fr": "Le glucose",
+        "ar": "الجلوكوز"
+      }
+    },
+    {
+      "id": "Q071",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which noble gas has the lowest atomic number?",
+        "fr": "Quel gaz noble possède le plus petit numéro atomique ?",
+        "ar": "أي غاز نبيل له أصغر عدد ذري؟"
+      },
+      "answer": {
+        "en": "Helium",
+        "fr": "L'hélium",
+        "ar": "الهيليوم"
+      }
+    },
+    {
+      "id": "Q072",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What phenomenon explains the apparent bending of light when it passes between media?",
+        "fr": "Quel phénomène explique la déviation apparente de la lumière lorsqu'elle passe d'un milieu à un autre ?",
+        "ar": "ما الظاهرة التي تفسر انحراف الضوء عند انتقاله بين وسطين؟"
+      },
+      "answer": {
+        "en": "Refraction",
+        "fr": "La réfraction",
+        "ar": "الانكسار"
+      }
+    },
+    {
+      "id": "Q073",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which part of the brain is mainly responsible for balance and coordination?",
+        "fr": "Quelle partie du cerveau est principalement responsable de l'équilibre et de la coordination ?",
+        "ar": "أي جزء من الدماغ مسؤول أساسا عن التوازن والتنسيق؟"
+      },
+      "answer": {
+        "en": "The cerebellum",
+        "fr": "Le cervelet",
+        "ar": "المخيخ"
+      }
+    },
+    {
+      "id": "Q074",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the chemical formula of ozone?",
+        "fr": "Quelle est la formule chimique de l'ozone ?",
+        "ar": "ما الصيغة الكيميائية للأوزون؟"
+      },
+      "answer": {
+        "en": "O3",
+        "fr": "O3",
+        "ar": "O3"
+      }
+    },
+    {
+      "id": "Q075",
+      "topic": "science",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which branch of physics studies heat, work, and energy transfer?",
+        "fr": "Quelle branche de la physique étudie la chaleur, le travail et les transferts d'énergie ?",
+        "ar": "أي فرع من الفيزياء يدرس الحرارة والشغل وانتقال الطاقة؟"
+      },
+      "answer": {
+        "en": "Thermodynamics",
+        "fr": "La thermodynamique",
+        "ar": "الديناميكا الحرارية"
+      }
+    },
+    {
+      "id": "Q076",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the value of 7! (7 factorial)?",
+        "fr": "Quelle est la valeur de 7! (factorielle de 7) ?",
+        "ar": "ما قيمة 7! (مضروب 7)؟"
+      },
+      "answer": {
+        "en": "5040",
+        "fr": "5040",
+        "ar": "5040"
+      }
+    },
+    {
+      "id": "Q077",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the derivative of ln(x)?",
+        "fr": "Quelle est la dérivée de ln(x) ?",
+        "ar": "ما مشتقة ln(x)؟"
+      },
+      "answer": {
+        "en": "1/x",
+        "fr": "1/x",
+        "ar": "1/x"
+      }
+    },
+    {
+      "id": "Q078",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the sum of the interior angles of a hexagon?",
+        "fr": "Quelle est la somme des angles intérieurs d'un hexagone ?",
+        "ar": "ما مجموع الزوايا الداخلية للسداسي؟"
+      },
+      "answer": {
+        "en": "720 degrees",
+        "fr": "720 degrés",
+        "ar": "720 درجة"
+      }
+    },
+    {
+      "id": "Q079",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the next prime number after 97?",
+        "fr": "Quel est le nombre premier qui suit 97 ?",
+        "ar": "ما العدد الأولي الذي يأتي بعد 97؟"
+      },
+      "answer": {
+        "en": "101",
+        "fr": "101",
+        "ar": "101"
+      }
+    },
+    {
+      "id": "Q080",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the square root of 0.0009?",
+        "fr": "Quelle est la racine carrée de 0,0009 ?",
+        "ar": "ما الجذر التربيعي للعدد 0.0009؟"
+      },
+      "answer": {
+        "en": "0.03",
+        "fr": "0,03",
+        "ar": "0.03"
+      }
+    },
+    {
+      "id": "Q081",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "If x² - 9 = 0, what are the values of x?",
+        "fr": "Si x² - 9 = 0, quelles sont les valeurs de x ?",
+        "ar": "إذا كان x² - 9 = 0 فما قيم x؟"
+      },
+      "answer": {
+        "en": "3 and -3",
+        "fr": "3 et -3",
+        "ar": "3 و -3"
+      }
+    },
+    {
+      "id": "Q082",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the slope of a line perpendicular to a line with slope 2?",
+        "fr": "Quelle est la pente d'une droite perpendiculaire à une droite de pente 2 ?",
+        "ar": "ما ميل خط عمودي على خط ميله 2؟"
+      },
+      "answer": {
+        "en": "-1/2",
+        "fr": "-1/2",
+        "ar": "-1/2"
+      }
+    },
+    {
+      "id": "Q083",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the area of a circle with radius 4?",
+        "fr": "Quelle est l'aire d'un cercle de rayon 4 ?",
+        "ar": "ما مساحة دائرة نصف قطرها 4؟"
+      },
+      "answer": {
+        "en": "16π",
+        "fr": "16π",
+        "ar": "16π"
+      }
+    },
+    {
+      "id": "Q084",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the least common multiple of 12 and 18?",
+        "fr": "Quel est le plus petit commun multiple de 12 et 18 ?",
+        "ar": "ما المضاعف المشترك الأصغر للعددين 12 و18؟"
+      },
+      "answer": {
+        "en": "36",
+        "fr": "36",
+        "ar": "36"
+      }
+    },
+    {
+      "id": "Q085",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is 2^10?",
+        "fr": "Combien vaut 2^10 ?",
+        "ar": "ما قيمة 2^10؟"
+      },
+      "answer": {
+        "en": "1024",
+        "fr": "1024",
+        "ar": "1024"
+      }
+    },
+    {
+      "id": "Q086",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the probability of rolling a total of 7 with two fair six-sided dice?",
+        "fr": "Quelle est la probabilité d'obtenir un total de 7 avec deux dés équilibrés à six faces ?",
+        "ar": "ما احتمال الحصول على مجموع 7 عند رمي نردين عادلين سداسيي الأوجه؟"
+      },
+      "answer": {
+        "en": "1/6",
+        "fr": "1/6",
+        "ar": "1/6"
+      }
+    },
+    {
+      "id": "Q087",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the median of 3, 5, 8, 11, 20?",
+        "fr": "Quelle est la médiane de 3, 5, 8, 11, 20 ?",
+        "ar": "ما وسيط الأعداد 3، 5، 8، 11، 20؟"
+      },
+      "answer": {
+        "en": "8",
+        "fr": "8",
+        "ar": "8"
+      }
+    },
+    {
+      "id": "Q088",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the value of sin(30°)?",
+        "fr": "Quelle est la valeur de sin(30°) ?",
+        "ar": "ما قيمة sin(30°)؟"
+      },
+      "answer": {
+        "en": "1/2",
+        "fr": "1/2",
+        "ar": "1/2"
+      }
+    },
+    {
+      "id": "Q089",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the determinant of the matrix [[2,3],[1,4]]?",
+        "fr": "Quel est le déterminant de la matrice [[2,3],[1,4]] ?",
+        "ar": "ما محدد المصفوفة [[2,3],[1,4]]؟"
+      },
+      "answer": {
+        "en": "5",
+        "fr": "5",
+        "ar": "5"
+      }
+    },
+    {
+      "id": "Q090",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "If a sequence is arithmetic with first term 5 and common difference 3, what is the 10th term?",
+        "fr": "Si une suite arithmétique a pour premier terme 5 et raison 3, quel est son 10e terme ?",
+        "ar": "إذا كانت متتالية حسابية حدها الأول 5 والفرق 3، فما الحد العاشر؟"
+      },
+      "answer": {
+        "en": "32",
+        "fr": "32",
+        "ar": "32"
+      }
+    },
+    {
+      "id": "Q091",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the integral of 2x with respect to x?",
+        "fr": "Quelle est l'intégrale de 2x par rapport à x ?",
+        "ar": "ما تكامل 2x بالنسبة إلى x؟"
+      },
+      "answer": {
+        "en": "x² + C",
+        "fr": "x² + C",
+        "ar": "x² + C"
+      }
+    },
+    {
+      "id": "Q092",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the decimal form of 5/8?",
+        "fr": "Quelle est l'écriture décimale de 5/8 ?",
+        "ar": "ما الصورة العشرية للكسر 5/8؟"
+      },
+      "answer": {
+        "en": "0.625",
+        "fr": "0,625",
+        "ar": "0.625"
+      }
+    },
+    {
+      "id": "Q093",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "How many diagonals does a decagon have?",
+        "fr": "Combien de diagonales possède un décagone ?",
+        "ar": "كم قطرا في المضلع العشاري؟"
+      },
+      "answer": {
+        "en": "35",
+        "fr": "35",
+        "ar": "35"
+      }
+    },
+    {
+      "id": "Q094",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the value of log10(1000)?",
+        "fr": "Quelle est la valeur de log10(1000) ?",
+        "ar": "ما قيمة log10(1000)؟"
+      },
+      "answer": {
+        "en": "3",
+        "fr": "3",
+        "ar": "3"
+      }
+    },
+    {
+      "id": "Q095",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "If a right triangle has legs 6 and 8, what is the hypotenuse?",
+        "fr": "Si un triangle rectangle a pour côtés de l'angle droit 6 et 8, quelle est l'hypoténuse ?",
+        "ar": "إذا كان ضلعا القائمة في مثلث قائم 6 و8، فما طول الوتر؟"
+      },
+      "answer": {
+        "en": "10",
+        "fr": "10",
+        "ar": "10"
+      }
+    },
+    {
+      "id": "Q096",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is 15% of 240?",
+        "fr": "Combien vaut 15 % de 240 ?",
+        "ar": "كم يساوي 15% من 240؟"
+      },
+      "answer": {
+        "en": "36",
+        "fr": "36",
+        "ar": "36"
+      }
+    },
+    {
+      "id": "Q097",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the sum of the first 20 positive integers?",
+        "fr": "Quelle est la somme des 20 premiers entiers positifs ?",
+        "ar": "ما مجموع أول 20 عددا صحيحا موجبا؟"
+      },
+      "answer": {
+        "en": "210",
+        "fr": "210",
+        "ar": "210"
+      }
+    },
+    {
+      "id": "Q098",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the smallest positive integer divisible by 8, 12, and 15?",
+        "fr": "Quel est le plus petit entier positif divisible par 8, 12 et 15 ?",
+        "ar": "ما أصغر عدد صحيح موجب يقبل القسمة على 8 و12 و15؟"
+      },
+      "answer": {
+        "en": "120",
+        "fr": "120",
+        "ar": "120"
+      }
+    },
+    {
+      "id": "Q099",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the eccentricity of a circle?",
+        "fr": "Quelle est l'excentricité d'un cercle ?",
+        "ar": "ما قيمة الاختلاف المركزي للدائرة؟"
+      },
+      "answer": {
+        "en": "0",
+        "fr": "0",
+        "ar": "0"
+      }
+    },
+    {
+      "id": "Q100",
+      "topic": "mathematics",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the value of cos(60°)?",
+        "fr": "Quelle est la valeur de cos(60°) ?",
+        "ar": "ما قيمة cos(60°)؟"
+      },
+      "answer": {
+        "en": "1/2",
+        "fr": "1/2",
+        "ar": "1/2"
+      }
+    },
+    {
+      "id": "Q101",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country won the first FIFA World Cup in 1930?",
+        "fr": "Quel pays a remporté la première Coupe du monde de la FIFA en 1930 ?",
+        "ar": "أي دولة فازت بأول كأس عالم لكرة القدم سنة 1930؟"
+      },
+      "answer": {
+        "en": "Uruguay",
+        "fr": "L'Uruguay",
+        "ar": "الأوروغواي"
+      }
+    },
+    {
+      "id": "Q102",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which club has won the most UEFA Champions League titles?",
+        "fr": "Quel club a remporté le plus de Ligues des champions de l'UEFA ?",
+        "ar": "أي ناد فاز بأكبر عدد من ألقاب دوري أبطال أوروبا؟"
+      },
+      "answer": {
+        "en": "Real Madrid",
+        "fr": "Le Real Madrid",
+        "ar": "ريال مدريد"
+      }
+    },
+    {
+      "id": "Q103",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who scored the 'Hand of God' goal at the 1986 World Cup?",
+        "fr": "Qui a marqué le but de la « Main de Dieu » lors de la Coupe du monde 1986 ?",
+        "ar": "من سجل هدف «يد الله» في كأس العالم 1986؟"
+      },
+      "answer": {
+        "en": "Diego Maradona",
+        "fr": "Diego Maradona",
+        "ar": "دييغو مارادونا"
+      }
+    },
+    {
+      "id": "Q104",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country won UEFA Euro 2004?",
+        "fr": "Quel pays a remporté l'Euro 2004 ?",
+        "ar": "أي دولة فازت ببطولة أمم أوروبا 2004؟"
+      },
+      "answer": {
+        "en": "Greece",
+        "fr": "La Grèce",
+        "ar": "اليونان"
+      }
+    },
+    {
+      "id": "Q105",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which African country was the first to reach a FIFA World Cup quarter-final?",
+        "fr": "Quel pays africain fut le premier à atteindre les quarts de finale d'une Coupe du monde ?",
+        "ar": "ما أول دولة إفريقية بلغت ربع نهائي كأس العالم؟"
+      },
+      "answer": {
+        "en": "Cameroon",
+        "fr": "Le Cameroun",
+        "ar": "الكاميرون"
+      }
+    },
+    {
+      "id": "Q106",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which player won the Golden Boot at the 2002 FIFA World Cup?",
+        "fr": "Quel joueur a remporté le Soulier d'or de la Coupe du monde 2002 ?",
+        "ar": "من فاز بالحذاء الذهبي في كأس العالم 2002؟"
+      },
+      "answer": {
+        "en": "Ronaldo Nazário",
+        "fr": "Ronaldo Nazário",
+        "ar": "رونالدو نازاريو"
+      }
+    },
+    {
+      "id": "Q107",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country hosted the 2010 FIFA World Cup?",
+        "fr": "Quel pays a accueilli la Coupe du monde 2010 ?",
+        "ar": "أي دولة استضافت كأس العالم 2010؟"
+      },
+      "answer": {
+        "en": "South Africa",
+        "fr": "L'Afrique du Sud",
+        "ar": "جنوب إفريقيا"
+      }
+    },
+    {
+      "id": "Q108",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which club is nicknamed 'The Old Lady'?",
+        "fr": "Quel club est surnommé « La Vieille Dame » ?",
+        "ar": "أي ناد يلقب بـ«السيدة العجوز»؟"
+      },
+      "answer": {
+        "en": "Juventus",
+        "fr": "La Juventus",
+        "ar": "يوفنتوس"
+      }
+    },
+    {
+      "id": "Q109",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who scored the winning goal in the 2010 FIFA World Cup final?",
+        "fr": "Qui a marqué le but de la victoire en finale de la Coupe du monde 2010 ?",
+        "ar": "من سجل هدف الفوز في نهائي كأس العالم 2010؟"
+      },
+      "answer": {
+        "en": "Andrés Iniesta",
+        "fr": "Andrés Iniesta",
+        "ar": "أندريس إنييستا"
+      }
+    },
+    {
+      "id": "Q110",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which national team is known as 'La Albiceleste'?",
+        "fr": "Quelle équipe nationale est surnommée « La Albiceleste » ?",
+        "ar": "أي منتخب يعرف بلقب «الألبيسيليستي»؟"
+      },
+      "answer": {
+        "en": "Argentina",
+        "fr": "L'Argentine",
+        "ar": "الأرجنتين"
+      }
+    },
+    {
+      "id": "Q111",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which stadium is traditionally associated with FC Barcelona?",
+        "fr": "Quel stade est traditionnellement associé au FC Barcelone ?",
+        "ar": "ما الملعب المرتبط تقليديا بنادي برشلونة؟"
+      },
+      "answer": {
+        "en": "Camp Nou",
+        "fr": "Le Camp Nou",
+        "ar": "كامب نو"
+      }
+    },
+    {
+      "id": "Q112",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which English club completed a continental treble in 1999?",
+        "fr": "Quel club anglais a réalisé un triplé continental en 1999 ?",
+        "ar": "أي ناد إنجليزي حقق الثلاثية القارية سنة 1999؟"
+      },
+      "answer": {
+        "en": "Manchester United",
+        "fr": "Manchester United",
+        "ar": "مانشستر يونايتد"
+      }
+    },
+    {
+      "id": "Q113",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which goalkeeper won the Lev Yashin Award at the 2006 World Cup?",
+        "fr": "Quel gardien a remporté le prix Lev Yachine à la Coupe du monde 2006 ?",
+        "ar": "أي حارس فاز بجائزة ليف ياشين في كأس العالم 2006؟"
+      },
+      "answer": {
+        "en": "Gianluigi Buffon",
+        "fr": "Gianluigi Buffon",
+        "ar": "جيانلويجي بوفون"
+      }
+    },
+    {
+      "id": "Q114",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country won the 1992 UEFA European Championship after entering late?",
+        "fr": "Quel pays a remporté l'Euro 1992 après avoir été repêché tardivement ?",
+        "ar": "أي دولة فازت ببطولة أوروبا 1992 بعد دخولها البطولة بشكل متأخر؟"
+      },
+      "answer": {
+        "en": "Denmark",
+        "fr": "Le Danemark",
+        "ar": "الدنمارك"
+      }
+    },
+    {
+      "id": "Q115",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which player scored a hat-trick in the 2022 FIFA World Cup final?",
+        "fr": "Quel joueur a inscrit un triplé en finale de la Coupe du monde 2022 ?",
+        "ar": "من سجل ثلاثية في نهائي كأس العالم 2022؟"
+      },
+      "answer": {
+        "en": "Kylian Mbappé",
+        "fr": "Kylian Mbappé",
+        "ar": "كيليان مبابي"
+      }
+    },
+    {
+      "id": "Q116",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country has won the most Africa Cup of Nations titles?",
+        "fr": "Quel pays a remporté le plus de Coupes d'Afrique des nations ?",
+        "ar": "أي دولة فازت بأكبر عدد من ألقاب كأس أمم إفريقيا؟"
+      },
+      "answer": {
+        "en": "Egypt",
+        "fr": "L'Égypte",
+        "ar": "مصر"
+      }
+    },
+    {
+      "id": "Q117",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which club plays home matches at Anfield?",
+        "fr": "Quel club joue ses matchs à domicile à Anfield ?",
+        "ar": "أي ناد يخوض مبارياته على ملعب أنفيلد؟"
+      },
+      "answer": {
+        "en": "Liverpool",
+        "fr": "Liverpool",
+        "ar": "ليفربول"
+      }
+    },
+    {
+      "id": "Q118",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who was the captain of France when they won the 1998 World Cup?",
+        "fr": "Qui était le capitaine de la France lors de son sacre mondial en 1998 ?",
+        "ar": "من كان قائد منتخب فرنسا عند فوزه بكأس العالم 1998؟"
+      },
+      "answer": {
+        "en": "Didier Deschamps",
+        "fr": "Didier Deschamps",
+        "ar": "ديدييه ديشان"
+      }
+    },
+    {
+      "id": "Q119",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country won the first UEFA European Championship in 1960?",
+        "fr": "Quel pays a remporté le premier Championnat d'Europe de l'UEFA en 1960 ?",
+        "ar": "أي دولة فازت بأول بطولة أمم أوروبا سنة 1960؟"
+      },
+      "answer": {
+        "en": "The Soviet Union",
+        "fr": "L'Union soviétique",
+        "ar": "الاتحاد السوفيتي"
+      }
+    },
+    {
+      "id": "Q120",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which player is nicknamed 'Il Fenomeno'?",
+        "fr": "Quel joueur est surnommé « Il Fenomeno » ?",
+        "ar": "أي لاعب يلقب بـ«الظاهرة»؟"
+      },
+      "answer": {
+        "en": "Ronaldo Nazário",
+        "fr": "Ronaldo Nazário",
+        "ar": "رونالدو نازاريو"
+      }
+    },
+    {
+      "id": "Q121",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which club won the 2005 UEFA Champions League final after coming back from 3-0 down?",
+        "fr": "Quel club a remporté la finale de la Ligue des champions 2005 après avoir été mené 3-0 ?",
+        "ar": "أي ناد فاز بنهائي دوري أبطال أوروبا 2005 بعد تأخره 3-0؟"
+      },
+      "answer": {
+        "en": "Liverpool",
+        "fr": "Liverpool",
+        "ar": "ليفربول"
+      }
+    },
+    {
+      "id": "Q122",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country hosted and won the 1998 FIFA World Cup?",
+        "fr": "Quel pays a accueilli et remporté la Coupe du monde 1998 ?",
+        "ar": "أي دولة استضافت وفازت بكأس العالم 1998؟"
+      },
+      "answer": {
+        "en": "France",
+        "fr": "La France",
+        "ar": "فرنسا"
+      }
+    },
+    {
+      "id": "Q123",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which player was known for the 'Panenka' penalty in the Euro 1976 final?",
+        "fr": "Quel joueur a donné son nom à la célèbre « Panenka » lors de la finale de l'Euro 1976 ?",
+        "ar": "أي لاعب ارتبط اسمه بركلة «بانينكا» في نهائي يورو 1976؟"
+      },
+      "answer": {
+        "en": "Antonín Panenka",
+        "fr": "Antonín Panenka",
+        "ar": "أنتونين بانينكا"
+      }
+    },
+    {
+      "id": "Q124",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which club is associated with the 'Yellow Wall' at Signal Iduna Park?",
+        "fr": "Quel club est associé au « Mur jaune » du Signal Iduna Park ?",
+        "ar": "أي ناد يرتبط بـ«الجدار الأصفر» في سيغنال إيدونا بارك؟"
+      },
+      "answer": {
+        "en": "Borussia Dortmund",
+        "fr": "Le Borussia Dortmund",
+        "ar": "بوروسيا دورتموند"
+      }
+    },
+    {
+      "id": "Q125",
+      "topic": "football",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which nation became the first Arab and African team to reach a FIFA World Cup semi-final?",
+        "fr": "Quelle nation est devenue la première équipe arabe et africaine à atteindre une demi-finale de Coupe du monde ?",
+        "ar": "أي منتخب أصبح أول منتخب عربي وإفريقي يبلغ نصف نهائي كأس العالم؟"
+      },
+      "answer": {
+        "en": "Morocco",
+        "fr": "Le Maroc",
+        "ar": "المغرب"
+      }
+    },
+    {
+      "id": "Q126",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the first surah of the Quran?",
+        "fr": "Quelle est la première sourate du Coran ?",
+        "ar": "ما أول سورة في القرآن الكريم؟"
+      },
+      "answer": {
+        "en": "Al-Fatiha",
+        "fr": "Al-Fatiha",
+        "ar": "سورة الفاتحة"
+      }
+    },
+    {
+      "id": "Q127",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "How many obligatory daily prayers are there in Islam?",
+        "fr": "Combien de prières obligatoires quotidiennes y a-t-il en islam ?",
+        "ar": "كم عدد الصلوات المفروضة في اليوم؟"
+      },
+      "answer": {
+        "en": "Five",
+        "fr": "Cinq",
+        "ar": "خمس"
+      }
+    },
+    {
+      "id": "Q128",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "In which month do Muslims fast from dawn to sunset?",
+        "fr": "Pendant quel mois les musulmans jeûnent-ils de l'aube au coucher du soleil ?",
+        "ar": "في أي شهر يصوم المسلمون من الفجر إلى المغرب؟"
+      },
+      "answer": {
+        "en": "Ramadan",
+        "fr": "Ramadan",
+        "ar": "رمضان"
+      }
+    },
+    {
+      "id": "Q129",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Toward which structure do Muslims face during prayer?",
+        "fr": "Vers quelle structure les musulmans se tournent-ils pendant la prière ?",
+        "ar": "إلى أي بناء يتجه المسلمون أثناء الصلاة؟"
+      },
+      "answer": {
+        "en": "The Kaaba",
+        "fr": "La Kaaba",
+        "ar": "الكعبة"
+      }
+    },
+    {
+      "id": "Q130",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the pilgrimage to Mecca called?",
+        "fr": "Comment s'appelle le pèlerinage à La Mecque ?",
+        "ar": "ما اسم الحج إلى مكة؟"
+      },
+      "answer": {
+        "en": "Hajj",
+        "fr": "Le Hajj",
+        "ar": "الحج"
+      }
+    },
+    {
+      "id": "Q131",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the term for obligatory almsgiving in Islam?",
+        "fr": "Quel est le terme désignant l'aumône obligatoire en islam ?",
+        "ar": "ما اسم الصدقة الواجبة في الإسلام؟"
+      },
+      "answer": {
+        "en": "Zakat",
+        "fr": "La zakat",
+        "ar": "الزكاة"
+      }
+    },
+    {
+      "id": "Q132",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which angel is traditionally identified as bringing revelation to Prophet Muhammad?",
+        "fr": "Quel ange est traditionnellement identifié comme ayant transmis la révélation au prophète Muhammad ?",
+        "ar": "أي ملك ارتبط بنزول الوحي على النبي محمد ﷺ؟"
+      },
+      "answer": {
+        "en": "Jibril (Gabriel)",
+        "fr": "Jibril (Gabriel)",
+        "ar": "جبريل عليه السلام"
+      }
+    },
+    {
+      "id": "Q133",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the Arabic term for the direction of prayer?",
+        "fr": "Quel est le terme arabe désignant la direction de la prière ?",
+        "ar": "ما المصطلح العربي لاتجاه الصلاة؟"
+      },
+      "answer": {
+        "en": "Qibla",
+        "fr": "La qibla",
+        "ar": "القبلة"
+      }
+    },
+    {
+      "id": "Q134",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which city was the destination of the Hijra?",
+        "fr": "Quelle ville fut la destination de l'Hégire ?",
+        "ar": "إلى أي مدينة كانت الهجرة النبوية؟"
+      },
+      "answer": {
+        "en": "Medina",
+        "fr": "Médine",
+        "ar": "المدينة المنورة"
+      }
+    },
+    {
+      "id": "Q135",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the well located near the Kaaba and associated with Hajar and Ismail?",
+        "fr": "Comment s'appelle le puits près de la Kaaba associé à Hajar et Ismaïl ?",
+        "ar": "ما اسم البئر القريب من الكعبة والمرتبط بهاجر وإسماعيل؟"
+      },
+      "answer": {
+        "en": "Zamzam",
+        "fr": "Zamzam",
+        "ar": "زمزم"
+      }
+    },
+    {
+      "id": "Q136",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "How many chapters, or surahs, are in the Quran?",
+        "fr": "Combien de sourates compte le Coran ?",
+        "ar": "كم عدد سور القرآن الكريم؟"
+      },
+      "answer": {
+        "en": "114",
+        "fr": "114",
+        "ar": "114"
+      }
+    },
+    {
+      "id": "Q137",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which surah is the longest in the Quran?",
+        "fr": "Quelle est la plus longue sourate du Coran ?",
+        "ar": "ما أطول سورة في القرآن الكريم؟"
+      },
+      "answer": {
+        "en": "Al-Baqarah",
+        "fr": "Al-Baqara",
+        "ar": "سورة البقرة"
+      }
+    },
+    {
+      "id": "Q138",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the night of special significance in Ramadan called?",
+        "fr": "Comment s'appelle la nuit d'une importance particulière pendant le Ramadan ?",
+        "ar": "ما اسم الليلة ذات المكانة الخاصة في رمضان؟"
+      },
+      "answer": {
+        "en": "Laylat al-Qadr",
+        "fr": "Laylat al-Qadr",
+        "ar": "ليلة القدر"
+      }
+    },
+    {
+      "id": "Q139",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the first month of the Islamic lunar calendar?",
+        "fr": "Quel est le premier mois du calendrier lunaire islamique ?",
+        "ar": "ما أول شهر في التقويم الهجري؟"
+      },
+      "answer": {
+        "en": "Muharram",
+        "fr": "Muharram",
+        "ar": "المحرم"
+      }
+    },
+    {
+      "id": "Q140",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the festival that marks the end of Ramadan?",
+        "fr": "Comment s'appelle la fête qui marque la fin du Ramadan ?",
+        "ar": "ما اسم العيد الذي يأتي بعد انتهاء رمضان؟"
+      },
+      "answer": {
+        "en": "Eid al-Fitr",
+        "fr": "Aïd al-Fitr",
+        "ar": "عيد الفطر"
+      }
+    },
+    {
+      "id": "Q141",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the festival during the Hajj season?",
+        "fr": "Comment s'appelle la fête célébrée pendant la saison du Hajj ?",
+        "ar": "ما اسم العيد الذي يكون في موسم الحج؟"
+      },
+      "answer": {
+        "en": "Eid al-Adha",
+        "fr": "Aïd al-Adha",
+        "ar": "عيد الأضحى"
+      }
+    },
+    {
+      "id": "Q142",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which prophet is traditionally associated with building the Kaaba together with his son Ismail?",
+        "fr": "Quel prophète est traditionnellement associé à la construction de la Kaaba avec son fils Ismaïl ?",
+        "ar": "أي نبي ارتبط ببناء الكعبة مع ابنه إسماعيل؟"
+      },
+      "answer": {
+        "en": "Ibrahim (Abraham)",
+        "fr": "Ibrahim (Abraham)",
+        "ar": "إبراهيم عليه السلام"
+      }
+    },
+    {
+      "id": "Q143",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the sermon delivered during Friday congregational prayer called?",
+        "fr": "Comment s'appelle le sermon prononcé lors de la prière communautaire du vendredi ?",
+        "ar": "ما اسم الخطبة التي تلقى يوم الجمعة؟"
+      },
+      "answer": {
+        "en": "Khutbah",
+        "fr": "La khutba",
+        "ar": "الخطبة"
+      }
+    },
+    {
+      "id": "Q144",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which mosque in Jerusalem is regarded as the third holiest site in Islam?",
+        "fr": "Quelle mosquée de Jérusalem est considérée comme le troisième lieu saint de l'islam ?",
+        "ar": "أي مسجد في القدس يعد ثالث أقدس مسجد في الإسلام؟"
+      },
+      "answer": {
+        "en": "Al-Aqsa Mosque",
+        "fr": "La mosquée Al-Aqsa",
+        "ar": "المسجد الأقصى"
+      }
+    },
+    {
+      "id": "Q145",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the migration from Mecca to Medina?",
+        "fr": "Comment s'appelle la migration de La Mecque à Médine ?",
+        "ar": "ما اسم الهجرة من مكة إلى المدينة؟"
+      },
+      "answer": {
+        "en": "The Hijra",
+        "fr": "L'Hégire",
+        "ar": "الهجرة"
+      }
+    },
+    {
+      "id": "Q146",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which prophet is known in Islamic tradition for interpreting dreams in Egypt?",
+        "fr": "Quel prophète est connu dans la tradition islamique pour l'interprétation des rêves en Égypte ?",
+        "ar": "أي نبي اشتهر في التراث الإسلامي بتأويل الأحلام في مصر؟"
+      },
+      "answer": {
+        "en": "Yusuf (Joseph)",
+        "fr": "Yusuf (Joseph)",
+        "ar": "يوسف عليه السلام"
+      }
+    },
+    {
+      "id": "Q147",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the Arabic term for voluntary charity?",
+        "fr": "Quel est le terme arabe pour l'aumône volontaire ?",
+        "ar": "ما المصطلح العربي للصدقة التطوعية؟"
+      },
+      "answer": {
+        "en": "Sadaqah",
+        "fr": "Sadaqa",
+        "ar": "الصدقة"
+      }
+    },
+    {
+      "id": "Q148",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "How many months are in the Islamic lunar calendar?",
+        "fr": "Combien de mois compte le calendrier lunaire islamique ?",
+        "ar": "كم شهرا في التقويم الهجري القمري؟"
+      },
+      "answer": {
+        "en": "Twelve",
+        "fr": "Douze",
+        "ar": "اثنا عشر"
+      }
+    },
+    {
+      "id": "Q149",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which prophet is associated with the Ark in Islamic tradition?",
+        "fr": "Quel prophète est associé à l'Arche dans la tradition islamique ?",
+        "ar": "أي نبي ارتبط بالسفينة في التراث الإسلامي؟"
+      },
+      "answer": {
+        "en": "Nuh (Noah)",
+        "fr": "Nuh (Noé)",
+        "ar": "نوح عليه السلام"
+      }
+    },
+    {
+      "id": "Q150",
+      "topic": "islamic studies",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the Arabic term for ritual purification before prayer using water?",
+        "fr": "Quel est le terme arabe pour les ablutions rituelles avant la prière ?",
+        "ar": "ما المصطلح العربي للطهارة بالماء قبل الصلاة؟"
+      },
+      "answer": {
+        "en": "Wudu",
+        "fr": "Le wudu",
+        "ar": "الوضوء"
+      }
+    },
+    {
+      "id": "Q151",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'One Hundred Years of Solitude'?",
+        "fr": "Qui a écrit « Cent ans de solitude » ?",
+        "ar": "من كتب «مئة عام من العزلة»؟"
+      },
+      "answer": {
+        "en": "Gabriel García Márquez",
+        "fr": "Gabriel García Márquez",
+        "ar": "غابرييل غارسيا ماركيز"
+      }
+    },
+    {
+      "id": "Q152",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who painted 'Guernica'?",
+        "fr": "Qui a peint « Guernica » ?",
+        "ar": "من رسم لوحة «غيرنيكا»؟"
+      },
+      "answer": {
+        "en": "Pablo Picasso",
+        "fr": "Pablo Picasso",
+        "ar": "بابلو بيكاسو"
+      }
+    },
+    {
+      "id": "Q153",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which Shakespeare play features the characters Rosencrantz and Guildenstern?",
+        "fr": "Quelle pièce de Shakespeare met en scène Rosencrantz et Guildenstern ?",
+        "ar": "في أي مسرحية لشكسبير تظهر شخصيتا روزنكرانتز وغيلدنسترن؟"
+      },
+      "answer": {
+        "en": "Hamlet",
+        "fr": "Hamlet",
+        "ar": "هاملت"
+      }
+    },
+    {
+      "id": "Q154",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'The Brothers Karamazov'?",
+        "fr": "Qui a écrit « Les Frères Karamazov » ?",
+        "ar": "من كتب «الإخوة كارامازوف»؟"
+      },
+      "answer": {
+        "en": "Fyodor Dostoevsky",
+        "fr": "Fiodor Dostoïevski",
+        "ar": "فيودور دوستويفسكي"
+      }
+    },
+    {
+      "id": "Q155",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which artist painted 'The Persistence of Memory'?",
+        "fr": "Quel artiste a peint « La Persistance de la mémoire » ?",
+        "ar": "من رسم لوحة «إصرار الذاكرة»؟"
+      },
+      "answer": {
+        "en": "Salvador Dalí",
+        "fr": "Salvador Dalí",
+        "ar": "سلفادور دالي"
+      }
+    },
+    {
+      "id": "Q156",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who composed 'The Four Seasons'?",
+        "fr": "Qui a composé « Les Quatre Saisons » ?",
+        "ar": "من ألّف «الفصول الأربعة»؟"
+      },
+      "answer": {
+        "en": "Antonio Vivaldi",
+        "fr": "Antonio Vivaldi",
+        "ar": "أنطونيو فيفالدي"
+      }
+    },
+    {
+      "id": "Q157",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which novel begins with the character Ishmael saying, 'Call me Ishmael'?",
+        "fr": "Quel roman commence par la célèbre phrase « Appelez-moi Ismaël » ?",
+        "ar": "أي رواية تبدأ بعبارة «نادني إسماعيل»؟"
+      },
+      "answer": {
+        "en": "Moby-Dick",
+        "fr": "Moby-Dick",
+        "ar": "موبي ديك"
+      }
+    },
+    {
+      "id": "Q158",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'The Stranger' ('L'Étranger')?",
+        "fr": "Qui a écrit « L'Étranger » ?",
+        "ar": "من كتب رواية «الغريب»؟"
+      },
+      "answer": {
+        "en": "Albert Camus",
+        "fr": "Albert Camus",
+        "ar": "ألبير كامو"
+      }
+    },
+    {
+      "id": "Q159",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which art movement is Claude Monet most associated with?",
+        "fr": "À quel mouvement artistique Claude Monet est-il le plus associé ?",
+        "ar": "بأي حركة فنية يرتبط كلود مونيه أساسا؟"
+      },
+      "answer": {
+        "en": "Impressionism",
+        "fr": "L'impressionnisme",
+        "ar": "الانطباعية"
+      }
+    },
+    {
+      "id": "Q160",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who sculpted 'David' during the Italian Renaissance?",
+        "fr": "Qui a sculpté « David » pendant la Renaissance italienne ?",
+        "ar": "من نحت تمثال «داود» في عصر النهضة الإيطالية؟"
+      },
+      "answer": {
+        "en": "Michelangelo",
+        "fr": "Michel-Ange",
+        "ar": "ميكيلانجيلو"
+      }
+    },
+    {
+      "id": "Q161",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'The Divine Comedy'?",
+        "fr": "Qui a écrit « La Divine Comédie » ?",
+        "ar": "من كتب «الكوميديا الإلهية»؟"
+      },
+      "answer": {
+        "en": "Dante Alighieri",
+        "fr": "Dante Alighieri",
+        "ar": "دانتي أليغييري"
+      }
+    },
+    {
+      "id": "Q162",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which author created the detective Hercule Poirot?",
+        "fr": "Quel auteur a créé le détective Hercule Poirot ?",
+        "ar": "من ابتكر شخصية المحقق هيركيول بوارو؟"
+      },
+      "answer": {
+        "en": "Agatha Christie",
+        "fr": "Agatha Christie",
+        "ar": "أغاثا كريستي"
+      }
+    },
+    {
+      "id": "Q163",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who painted 'The Birth of Venus'?",
+        "fr": "Qui a peint « La Naissance de Vénus » ?",
+        "ar": "من رسم لوحة «مولد فينوس»؟"
+      },
+      "answer": {
+        "en": "Sandro Botticelli",
+        "fr": "Sandro Botticelli",
+        "ar": "ساندرو بوتيتشيلي"
+      }
+    },
+    {
+      "id": "Q164",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which Russian author wrote 'War and Peace'?",
+        "fr": "Quel écrivain russe a écrit « Guerre et Paix » ?",
+        "ar": "أي كاتب روسي ألّف «الحرب والسلام»؟"
+      },
+      "answer": {
+        "en": "Leo Tolstoy",
+        "fr": "Léon Tolstoï",
+        "ar": "ليو تولستوي"
+      }
+    },
+    {
+      "id": "Q165",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who composed the opera 'The Magic Flute'?",
+        "fr": "Qui a composé l'opéra « La Flûte enchantée » ?",
+        "ar": "من ألّف أوبرا «الناي السحري»؟"
+      },
+      "answer": {
+        "en": "Wolfgang Amadeus Mozart",
+        "fr": "Wolfgang Amadeus Mozart",
+        "ar": "فولفغانغ أماديوس موزارت"
+      }
+    },
+    {
+      "id": "Q166",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which novel by George Orwell features Big Brother?",
+        "fr": "Quel roman de George Orwell met en scène Big Brother ?",
+        "ar": "أي رواية لجورج أورويل تتضمن شخصية «الأخ الأكبر»؟"
+      },
+      "answer": {
+        "en": "1984",
+        "fr": "1984",
+        "ar": "1984"
+      }
+    },
+    {
+      "id": "Q167",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'Things Fall Apart'?",
+        "fr": "Qui a écrit « Le Monde s'effondre » ?",
+        "ar": "من كتب «الأشياء تتداعى»؟"
+      },
+      "answer": {
+        "en": "Chinua Achebe",
+        "fr": "Chinua Achebe",
+        "ar": "تشينوا أتشيبي"
+      }
+    },
+    {
+      "id": "Q168",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which painter is famous for the ceiling of the Sistine Chapel?",
+        "fr": "Quel peintre est célèbre pour le plafond de la chapelle Sixtine ?",
+        "ar": "أي فنان اشتهر برسم سقف كنيسة سيستينا؟"
+      },
+      "answer": {
+        "en": "Michelangelo",
+        "fr": "Michel-Ange",
+        "ar": "ميكيلانجيلو"
+      }
+    },
+    {
+      "id": "Q169",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'The Name of the Rose'?",
+        "fr": "Qui a écrit « Le Nom de la rose » ?",
+        "ar": "من كتب «اسم الوردة»؟"
+      },
+      "answer": {
+        "en": "Umberto Eco",
+        "fr": "Umberto Eco",
+        "ar": "أومبرتو إيكو"
+      }
+    },
+    {
+      "id": "Q170",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which musical instrument was Frédéric Chopin especially famous for composing for?",
+        "fr": "Pour quel instrument Frédéric Chopin est-il surtout célèbre d'avoir composé ?",
+        "ar": "لأي آلة موسيقية اشتهر فريدريك شوبان بالتأليف؟"
+      },
+      "answer": {
+        "en": "The piano",
+        "fr": "Le piano",
+        "ar": "البيانو"
+      }
+    },
+    {
+      "id": "Q171",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote 'The Metamorphosis'?",
+        "fr": "Qui a écrit « La Métamorphose » ?",
+        "ar": "من كتب «المسخ»؟"
+      },
+      "answer": {
+        "en": "Franz Kafka",
+        "fr": "Franz Kafka",
+        "ar": "فرانز كافكا"
+      }
+    },
+    {
+      "id": "Q172",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which painter created 'Girl with a Pearl Earring'?",
+        "fr": "Quel peintre a réalisé « La Jeune Fille à la perle » ?",
+        "ar": "من رسم لوحة «الفتاة ذات القرط اللؤلؤي»؟"
+      },
+      "answer": {
+        "en": "Johannes Vermeer",
+        "fr": "Johannes Vermeer",
+        "ar": "يوهانس فيرمير"
+      }
+    },
+    {
+      "id": "Q173",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who wrote the epic poem 'Paradise Lost'?",
+        "fr": "Qui a écrit le poème épique « Le Paradis perdu » ?",
+        "ar": "من كتب الملحمة الشعرية «الفردوس المفقود»؟"
+      },
+      "answer": {
+        "en": "John Milton",
+        "fr": "John Milton",
+        "ar": "جون ميلتون"
+      }
+    },
+    {
+      "id": "Q174",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which Spanish author wrote 'Don Quixote'?",
+        "fr": "Quel écrivain espagnol a écrit « Don Quichotte » ?",
+        "ar": "أي كاتب إسباني ألّف «دون كيخوته»؟"
+      },
+      "answer": {
+        "en": "Miguel de Cervantes",
+        "fr": "Miguel de Cervantes",
+        "ar": "ميغيل دي ثيربانتس"
+      }
+    },
+    {
+      "id": "Q175",
+      "topic": "literature and arts",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Who composed the ballet 'Swan Lake'?",
+        "fr": "Qui a composé le ballet « Le Lac des cygnes » ?",
+        "ar": "من ألّف باليه «بحيرة البجع»؟"
+      },
+      "answer": {
+        "en": "Pyotr Ilyich Tchaikovsky",
+        "fr": "Piotr Ilitch Tchaïkovski",
+        "ar": "بيوتر إيليتش تشايكوفسكي"
+      }
+    },
+    {
+      "id": "Q176",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does CPU stand for?",
+        "fr": "Que signifie l'acronyme CPU ?",
+        "ar": "إلى ماذا يرمز الاختصار CPU؟"
+      },
+      "answer": {
+        "en": "Central Processing Unit",
+        "fr": "Central Processing Unit",
+        "ar": "وحدة المعالجة المركزية"
+      }
+    },
+    {
+      "id": "Q177",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which data structure follows the LIFO principle?",
+        "fr": "Quelle structure de données suit le principe LIFO ?",
+        "ar": "أي بنية بيانات تتبع مبدأ LIFO؟"
+      },
+      "answer": {
+        "en": "A stack",
+        "fr": "Une pile",
+        "ar": "المكدس"
+      }
+    },
+    {
+      "id": "Q178",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What protocol is primarily used to securely browse websites?",
+        "fr": "Quel protocole est principalement utilisé pour naviguer sur le Web de manière sécurisée ?",
+        "ar": "ما البروتوكول المستخدم أساسا للتصفح الآمن للمواقع؟"
+      },
+      "answer": {
+        "en": "HTTPS",
+        "fr": "HTTPS",
+        "ar": "HTTPS"
+      }
+    },
+    {
+      "id": "Q179",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does SQL stand for?",
+        "fr": "Que signifie SQL ?",
+        "ar": "إلى ماذا يرمز SQL؟"
+      },
+      "answer": {
+        "en": "Structured Query Language",
+        "fr": "Structured Query Language",
+        "ar": "لغة الاستعلام المهيكلة"
+      }
+    },
+    {
+      "id": "Q180",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which company created the C programming language?",
+        "fr": "Quelle institution a créé le langage C ?",
+        "ar": "أي جهة طورت لغة البرمجة C؟"
+      },
+      "answer": {
+        "en": "Bell Labs",
+        "fr": "Bell Labs",
+        "ar": "مختبرات بيل"
+      }
+    },
+    {
+      "id": "Q181",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which algorithmic complexity is typically associated with binary search?",
+        "fr": "Quelle complexité algorithmique est typiquement associée à la recherche binaire ?",
+        "ar": "ما التعقيد الزمني المعتاد للبحث الثنائي؟"
+      },
+      "answer": {
+        "en": "O(log n)",
+        "fr": "O(log n)",
+        "ar": "O(log n)"
+      }
+    },
+    {
+      "id": "Q182",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does DNS translate domain names into?",
+        "fr": "En quoi le DNS traduit-il les noms de domaine ?",
+        "ar": "إلى ماذا يحول نظام DNS أسماء النطاقات؟"
+      },
+      "answer": {
+        "en": "IP addresses",
+        "fr": "Des adresses IP",
+        "ar": "عناوين IP"
+      }
+    },
+    {
+      "id": "Q183",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which version control system was created by Linus Torvalds?",
+        "fr": "Quel système de gestion de versions a été créé par Linus Torvalds ?",
+        "ar": "ما نظام التحكم في الإصدارات الذي أنشأه لينوس تورفالدس؟"
+      },
+      "answer": {
+        "en": "Git",
+        "fr": "Git",
+        "ar": "Git"
+      }
+    },
+    {
+      "id": "Q184",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the hexadecimal representation of decimal 255?",
+        "fr": "Quelle est la représentation hexadécimale de 255 en décimal ?",
+        "ar": "ما التمثيل الست عشري للعدد العشري 255؟"
+      },
+      "answer": {
+        "en": "FF",
+        "fr": "FF",
+        "ar": "FF"
+      }
+    },
+    {
+      "id": "Q185",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which layer of the OSI model is responsible for routing packets?",
+        "fr": "Quelle couche du modèle OSI est responsable du routage des paquets ?",
+        "ar": "أي طبقة من نموذج OSI مسؤولة عن توجيه الحزم؟"
+      },
+      "answer": {
+        "en": "The Network layer",
+        "fr": "La couche Réseau",
+        "ar": "طبقة الشبكة"
+      }
+    },
+    {
+      "id": "Q186",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What type of database is MongoDB?",
+        "fr": "Quel type de base de données est MongoDB ?",
+        "ar": "ما نوع قاعدة البيانات MongoDB؟"
+      },
+      "answer": {
+        "en": "A document-oriented NoSQL database",
+        "fr": "Une base NoSQL orientée documents",
+        "ar": "قاعدة بيانات NoSQL موجهة للمستندات"
+      }
+    },
+    {
+      "id": "Q187",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does RAM stand for?",
+        "fr": "Que signifie RAM ?",
+        "ar": "إلى ماذا يرمز RAM؟"
+      },
+      "answer": {
+        "en": "Random Access Memory",
+        "fr": "Random Access Memory",
+        "ar": "ذاكرة الوصول العشوائي"
+      }
+    },
+    {
+      "id": "Q188",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which sorting algorithm has an average-case complexity of O(n log n) and is based on divide and conquer?",
+        "fr": "Quel algorithme de tri a une complexité moyenne O(n log n) et repose sur « diviser pour régner » ?",
+        "ar": "أي خوارزمية فرز تعتمد على التقسيم والحل وتعقيدها المتوسط O(n log n)؟"
+      },
+      "answer": {
+        "en": "Merge sort",
+        "fr": "Le tri fusion",
+        "ar": "فرز الدمج"
+      }
+    },
+    {
+      "id": "Q189",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the default port for HTTPS?",
+        "fr": "Quel est le port par défaut de HTTPS ?",
+        "ar": "ما المنفذ الافتراضي لبروتوكول HTTPS؟"
+      },
+      "answer": {
+        "en": "443",
+        "fr": "443",
+        "ar": "443"
+      }
+    },
+    {
+      "id": "Q190",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which markup language is used to structure web pages?",
+        "fr": "Quel langage de balisage sert à structurer les pages Web ?",
+        "ar": "ما لغة الترميز المستخدمة لبناء هيكل صفحات الويب؟"
+      },
+      "answer": {
+        "en": "HTML",
+        "fr": "HTML",
+        "ar": "HTML"
+      }
+    },
+    {
+      "id": "Q191",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does API stand for?",
+        "fr": "Que signifie API ?",
+        "ar": "إلى ماذا يرمز API؟"
+      },
+      "answer": {
+        "en": "Application Programming Interface",
+        "fr": "Application Programming Interface",
+        "ar": "واجهة برمجة التطبيقات"
+      }
+    },
+    {
+      "id": "Q192",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which operating system kernel is used by Android?",
+        "fr": "Quel noyau de système d'exploitation est utilisé par Android ?",
+        "ar": "أي نواة نظام تشغيل يستخدمها أندرويد؟"
+      },
+      "answer": {
+        "en": "The Linux kernel",
+        "fr": "Le noyau Linux",
+        "ar": "نواة لينكس"
+      }
+    },
+    {
+      "id": "Q193",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which cryptographic method uses a public key and a private key?",
+        "fr": "Quelle méthode cryptographique utilise une clé publique et une clé privée ?",
+        "ar": "ما طريقة التشفير التي تستخدم مفتاحا عاما وآخر خاصا؟"
+      },
+      "answer": {
+        "en": "Asymmetric encryption",
+        "fr": "Le chiffrement asymétrique",
+        "ar": "التشفير غير المتماثل"
+      }
+    },
+    {
+      "id": "Q194",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the smallest unit of digital information?",
+        "fr": "Quelle est la plus petite unité d'information numérique ?",
+        "ar": "ما أصغر وحدة للمعلومات الرقمية؟"
+      },
+      "answer": {
+        "en": "A bit",
+        "fr": "Un bit",
+        "ar": "البت"
+      }
+    },
+    {
+      "id": "Q195",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does GPU stand for?",
+        "fr": "Que signifie GPU ?",
+        "ar": "إلى ماذا يرمز GPU؟"
+      },
+      "answer": {
+        "en": "Graphics Processing Unit",
+        "fr": "Graphics Processing Unit",
+        "ar": "وحدة معالجة الرسومات"
+      }
+    },
+    {
+      "id": "Q196",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which protocol is commonly used to transfer files securely over SSH?",
+        "fr": "Quel protocole est couramment utilisé pour transférer des fichiers de manière sécurisée via SSH ?",
+        "ar": "ما البروتوكول الشائع لنقل الملفات بأمان عبر SSH؟"
+      },
+      "answer": {
+        "en": "SFTP",
+        "fr": "SFTP",
+        "ar": "SFTP"
+      }
+    },
+    {
+      "id": "Q197",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is a function that calls itself called?",
+        "fr": "Comment appelle-t-on une fonction qui s'appelle elle-même ?",
+        "ar": "ما اسم الدالة التي تستدعي نفسها؟"
+      },
+      "answer": {
+        "en": "A recursive function",
+        "fr": "Une fonction récursive",
+        "ar": "دالة عودية"
+      }
+    },
+    {
+      "id": "Q198",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which number system uses only 0 and 1?",
+        "fr": "Quel système numérique n'utilise que 0 et 1 ?",
+        "ar": "أي نظام عددي يستخدم 0 و1 فقط؟"
+      },
+      "answer": {
+        "en": "Binary",
+        "fr": "Le binaire",
+        "ar": "النظام الثنائي"
+      }
+    },
+    {
+      "id": "Q199",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does URL stand for?",
+        "fr": "Que signifie URL ?",
+        "ar": "إلى ماذا يرمز URL؟"
+      },
+      "answer": {
+        "en": "Uniform Resource Locator",
+        "fr": "Uniform Resource Locator",
+        "ar": "محدد موقع الموارد الموحد"
+      }
+    },
+    {
+      "id": "Q200",
+      "topic": "technology",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which concept allows multiple virtual machines to run on one physical host?",
+        "fr": "Quel concept permet d'exécuter plusieurs machines virtuelles sur un seul hôte physique ?",
+        "ar": "ما المفهوم الذي يسمح بتشغيل عدة آلات افتراضية على جهاز مادي واحد؟"
+      },
+      "answer": {
+        "en": "Virtualization",
+        "fr": "La virtualisation",
+        "ar": "الافتراضية"
+      }
+    },
+    {
+      "id": "Q201",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet has the shortest day in the Solar System?",
+        "fr": "Quelle planète possède le jour le plus court du Système solaire ?",
+        "ar": "أي كوكب له أقصر يوم في النظام الشمسي؟"
+      },
+      "answer": {
+        "en": "Jupiter",
+        "fr": "Jupiter",
+        "ar": "المشتري"
+      }
+    },
+    {
+      "id": "Q202",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the largest moon of Saturn?",
+        "fr": "Quelle est la plus grande lune de Saturne ?",
+        "ar": "ما أكبر أقمار زحل؟"
+      },
+      "answer": {
+        "en": "Titan",
+        "fr": "Titan",
+        "ar": "تيتان"
+      }
+    },
+    {
+      "id": "Q203",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet is known for the Great Red Spot?",
+        "fr": "Quelle planète est connue pour la Grande Tache rouge ?",
+        "ar": "أي كوكب يشتهر بالبقعة الحمراء العظيمة؟"
+      },
+      "answer": {
+        "en": "Jupiter",
+        "fr": "Jupiter",
+        "ar": "المشتري"
+      }
+    },
+    {
+      "id": "Q204",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the closest star to Earth after the Sun?",
+        "fr": "Quelle est l'étoile la plus proche de la Terre après le Soleil ?",
+        "ar": "ما أقرب نجم إلى الأرض بعد الشمس؟"
+      },
+      "answer": {
+        "en": "Proxima Centauri",
+        "fr": "Proxima du Centaure",
+        "ar": "بروكسيما قنطورس"
+      }
+    },
+    {
+      "id": "Q205",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet has the most prominent ring system?",
+        "fr": "Quelle planète possède le système d'anneaux le plus remarquable ?",
+        "ar": "أي كوكب يمتلك أشهر نظام حلقات؟"
+      },
+      "answer": {
+        "en": "Saturn",
+        "fr": "Saturne",
+        "ar": "زحل"
+      }
+    },
+    {
+      "id": "Q206",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What type of galaxy is the Milky Way?",
+        "fr": "Quel type de galaxie est la Voie lactée ?",
+        "ar": "ما نوع مجرة درب التبانة؟"
+      },
+      "answer": {
+        "en": "A barred spiral galaxy",
+        "fr": "Une galaxie spirale barrée",
+        "ar": "مجرة حلزونية قضيبية"
+      }
+    },
+    {
+      "id": "Q207",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the supermassive black hole at the center of the Milky Way?",
+        "fr": "Comment s'appelle le trou noir supermassif au centre de la Voie lactée ?",
+        "ar": "ما اسم الثقب الأسود فائق الكتلة في مركز درب التبانة؟"
+      },
+      "answer": {
+        "en": "Sagittarius A*",
+        "fr": "Sagittarius A*",
+        "ar": "Sagittarius A*"
+      }
+    },
+    {
+      "id": "Q208",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet rotates on its side with an axial tilt of about 98 degrees?",
+        "fr": "Quelle planète tourne presque couchée, avec une inclinaison axiale d'environ 98 degrés ?",
+        "ar": "أي كوكب يدور شبه مائل على جانبه بزاوية محورية تقارب 98 درجة؟"
+      },
+      "answer": {
+        "en": "Uranus",
+        "fr": "Uranus",
+        "ar": "أورانوس"
+      }
+    },
+    {
+      "id": "Q209",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the brightest star in the night sky?",
+        "fr": "Quelle est l'étoile la plus brillante du ciel nocturne ?",
+        "ar": "ما ألمع نجم في سماء الليل؟"
+      },
+      "answer": {
+        "en": "Sirius",
+        "fr": "Sirius",
+        "ar": "الشعرى اليمانية"
+      }
+    },
+    {
+      "id": "Q210",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet is closest to the Sun?",
+        "fr": "Quelle planète est la plus proche du Soleil ?",
+        "ar": "أي كوكب هو الأقرب إلى الشمس؟"
+      },
+      "answer": {
+        "en": "Mercury",
+        "fr": "Mercure",
+        "ar": "عطارد"
+      }
+    },
+    {
+      "id": "Q211",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is a light-year a measure of?",
+        "fr": "Que mesure une année-lumière ?",
+        "ar": "ما الذي تقيسه السنة الضوئية؟"
+      },
+      "answer": {
+        "en": "Distance",
+        "fr": "Une distance",
+        "ar": "المسافة"
+      }
+    },
+    {
+      "id": "Q212",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which moon of Jupiter is the most volcanically active body in the Solar System?",
+        "fr": "Quelle lune de Jupiter est le corps le plus volcaniquement actif du Système solaire ?",
+        "ar": "أي قمر للمشتري هو أكثر الأجرام نشاطا بركانيا في النظام الشمسي؟"
+      },
+      "answer": {
+        "en": "Io",
+        "fr": "Io",
+        "ar": "آيو"
+      }
+    },
+    {
+      "id": "Q213",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the boundary where the solar wind is stopped by interstellar matter?",
+        "fr": "Comment s'appelle la frontière où le vent solaire est arrêté par le milieu interstellaire ?",
+        "ar": "ما اسم الحد الذي يتوقف عنده تأثير الرياح الشمسية أمام الوسط بين النجمي؟"
+      },
+      "answer": {
+        "en": "The heliopause",
+        "fr": "L'héliopause",
+        "ar": "الهيليوبوز"
+      }
+    },
+    {
+      "id": "Q214",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which dwarf planet lies in the asteroid belt?",
+        "fr": "Quelle planète naine se trouve dans la ceinture d'astéroïdes ?",
+        "ar": "أي كوكب قزم يقع في حزام الكويكبات؟"
+      },
+      "answer": {
+        "en": "Ceres",
+        "fr": "Cérès",
+        "ar": "سيريس"
+      }
+    },
+    {
+      "id": "Q215",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the first artificial satellite launched into orbit?",
+        "fr": "Quel est le nom du premier satellite artificiel lancé en orbite ?",
+        "ar": "ما اسم أول قمر صناعي أطلق إلى المدار؟"
+      },
+      "answer": {
+        "en": "Sputnik 1",
+        "fr": "Spoutnik 1",
+        "ar": "سبوتنيك 1"
+      }
+    },
+    {
+      "id": "Q216",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet has the highest average surface temperature?",
+        "fr": "Quelle planète possède la température moyenne de surface la plus élevée ?",
+        "ar": "أي كوكب له أعلى متوسط حرارة سطحية؟"
+      },
+      "answer": {
+        "en": "Venus",
+        "fr": "Vénus",
+        "ar": "الزهرة"
+      }
+    },
+    {
+      "id": "Q217",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the Sun's spectral type?",
+        "fr": "Quel est le type spectral du Soleil ?",
+        "ar": "ما النوع الطيفي للشمس؟"
+      },
+      "answer": {
+        "en": "G2V",
+        "fr": "G2V",
+        "ar": "G2V"
+      }
+    },
+    {
+      "id": "Q218",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which mission first landed humans on the Moon?",
+        "fr": "Quelle mission a été la première à faire alunir des humains ?",
+        "ar": "ما المهمة التي هبط فيها البشر على القمر لأول مرة؟"
+      },
+      "answer": {
+        "en": "Apollo 11",
+        "fr": "Apollo 11",
+        "ar": "أبولو 11"
+      }
+    },
+    {
+      "id": "Q219",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which constellation contains the star Betelgeuse?",
+        "fr": "Dans quelle constellation se trouve Bételgeuse ?",
+        "ar": "في أي كوكبة يقع نجم منكب الجوزاء؟"
+      },
+      "answer": {
+        "en": "Orion",
+        "fr": "Orion",
+        "ar": "كوكبة الجبار"
+      }
+    },
+    {
+      "id": "Q220",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of Mars's largest moon?",
+        "fr": "Comment s'appelle la plus grande lune de Mars ?",
+        "ar": "ما اسم أكبر أقمار المريخ؟"
+      },
+      "answer": {
+        "en": "Phobos",
+        "fr": "Phobos",
+        "ar": "فوبوس"
+      }
+    },
+    {
+      "id": "Q221",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which law states that planets sweep out equal areas in equal times?",
+        "fr": "Quelle loi affirme que les planètes balaient des aires égales en des temps égaux ?",
+        "ar": "أي قانون ينص على أن الكواكب تمسح مساحات متساوية في أزمنة متساوية؟"
+      },
+      "answer": {
+        "en": "Kepler's second law",
+        "fr": "La deuxième loi de Kepler",
+        "ar": "قانون كبلر الثاني"
+      }
+    },
+    {
+      "id": "Q222",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the approximate age of the Universe?",
+        "fr": "Quel est l'âge approximatif de l'Univers ?",
+        "ar": "ما العمر التقريبي للكون؟"
+      },
+      "answer": {
+        "en": "13.8 billion years",
+        "fr": "13,8 milliards d'années",
+        "ar": "13.8 مليار سنة"
+      }
+    },
+    {
+      "id": "Q223",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which telescope was launched in 2021 as a successor to Hubble for infrared astronomy?",
+        "fr": "Quel télescope lancé en 2021 est devenu un grand successeur de Hubble pour l'astronomie infrarouge ?",
+        "ar": "ما التلسكوب الذي أطلق سنة 2021 كخليفة رئيسي لهابل في رصد الأشعة تحت الحمراء؟"
+      },
+      "answer": {
+        "en": "The James Webb Space Telescope",
+        "fr": "Le télescope spatial James Webb",
+        "ar": "تلسكوب جيمس ويب الفضائي"
+      }
+    },
+    {
+      "id": "Q224",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the term for the apparent shift of a nearby star against distant background stars due to Earth's orbit?",
+        "fr": "Comment appelle-t-on le déplacement apparent d'une étoile proche par rapport aux étoiles lointaines dû à l'orbite terrestre ?",
+        "ar": "ما اسم الإزاحة الظاهرية لنجم قريب بالنسبة للنجوم البعيدة بسبب مدار الأرض؟"
+      },
+      "answer": {
+        "en": "Parallax",
+        "fr": "La parallaxe",
+        "ar": "اختلاف المنظر"
+      }
+    },
+    {
+      "id": "Q225",
+      "topic": "astronomy",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which planet has the largest volcano in the Solar System, Olympus Mons?",
+        "fr": "Sur quelle planète se trouve Olympus Mons, le plus grand volcan du Système solaire ?",
+        "ar": "على أي كوكب يقع جبل أوليمبوس، أكبر بركان في النظام الشمسي؟"
+      },
+      "answer": {
+        "en": "Mars",
+        "fr": "Mars",
+        "ar": "المريخ"
+      }
+    },
+    {
+      "id": "Q226",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the currency of South Korea?",
+        "fr": "Quelle est la monnaie de la Corée du Sud ?",
+        "ar": "ما عملة كوريا الجنوبية؟"
+      },
+      "answer": {
+        "en": "The won",
+        "fr": "Le won",
+        "ar": "الوون"
+      }
+    },
+    {
+      "id": "Q227",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which organization publishes the Human Development Index?",
+        "fr": "Quelle organisation publie l'Indice de développement humain ?",
+        "ar": "أي منظمة تنشر مؤشر التنمية البشرية؟"
+      },
+      "answer": {
+        "en": "The United Nations Development Programme (UNDP)",
+        "fr": "Le Programme des Nations unies pour le développement (PNUD)",
+        "ar": "برنامج الأمم المتحدة الإنمائي"
+      }
+    },
+    {
+      "id": "Q228",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the main language spoken in Brazil?",
+        "fr": "Quelle est la langue principale parlée au Brésil ?",
+        "ar": "ما اللغة الرئيسية في البرازيل؟"
+      },
+      "answer": {
+        "en": "Portuguese",
+        "fr": "Le portugais",
+        "ar": "البرتغالية"
+      }
+    },
+    {
+      "id": "Q229",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which economic term describes a sustained general rise in prices?",
+        "fr": "Quel terme économique désigne une hausse générale et durable des prix ?",
+        "ar": "ما المصطلح الاقتصادي الذي يصف الارتفاع العام والمستمر في الأسعار؟"
+      },
+      "answer": {
+        "en": "Inflation",
+        "fr": "L'inflation",
+        "ar": "التضخم"
+      }
+    },
+    {
+      "id": "Q230",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is famous for the ancient city of Angkor?",
+        "fr": "Quel pays est célèbre pour l'ancienne cité d'Angkor ?",
+        "ar": "أي دولة تشتهر بمدينة أنغكور القديمة؟"
+      },
+      "answer": {
+        "en": "Cambodia",
+        "fr": "Le Cambodge",
+        "ar": "كمبوديا"
+      }
+    },
+    {
+      "id": "Q231",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the currency of Switzerland?",
+        "fr": "Quelle est la monnaie de la Suisse ?",
+        "ar": "ما عملة سويسرا؟"
+      },
+      "answer": {
+        "en": "The Swiss franc",
+        "fr": "Le franc suisse",
+        "ar": "الفرنك السويسري"
+      }
+    },
+    {
+      "id": "Q232",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which organization has its headquarters in Geneva and oversees international public health?",
+        "fr": "Quelle organisation, basée à Genève, supervise la santé publique internationale ?",
+        "ar": "أي منظمة مقرها جنيف وتشرف على الصحة العامة الدولية؟"
+      },
+      "answer": {
+        "en": "The World Health Organization (WHO)",
+        "fr": "L'Organisation mondiale de la santé (OMS)",
+        "ar": "منظمة الصحة العالمية"
+      }
+    },
+    {
+      "id": "Q233",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the world's most widely spoken native language by number of native speakers?",
+        "fr": "Quelle est la langue maternelle la plus parlée au monde en nombre de locuteurs natifs ?",
+        "ar": "ما أكثر لغة أم انتشارا في العالم من حيث عدد المتحدثين الأصليين؟"
+      },
+      "answer": {
+        "en": "Mandarin Chinese",
+        "fr": "Le chinois mandarin",
+        "ar": "الصينية المندرينية"
+      }
+    },
+    {
+      "id": "Q234",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is associated with the traditional tea ceremony known as chanoyu?",
+        "fr": "Quel pays est associé à la cérémonie traditionnelle du thé appelée chanoyu ?",
+        "ar": "أي دولة ترتبط بطقس الشاي التقليدي المعروف باسم تشانويو؟"
+      },
+      "answer": {
+        "en": "Japan",
+        "fr": "Le Japon",
+        "ar": "اليابان"
+      }
+    },
+    {
+      "id": "Q235",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What does GDP stand for?",
+        "fr": "Que signifie PIB en anglais, GDP ?",
+        "ar": "إلى ماذا يرمز GDP؟"
+      },
+      "answer": {
+        "en": "Gross Domestic Product",
+        "fr": "Gross Domestic Product",
+        "ar": "الناتج المحلي الإجمالي"
+      }
+    },
+    {
+      "id": "Q236",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which institution sets monetary policy for the euro area?",
+        "fr": "Quelle institution fixe la politique monétaire de la zone euro ?",
+        "ar": "أي مؤسسة تحدد السياسة النقدية لمنطقة اليورو؟"
+      },
+      "answer": {
+        "en": "The European Central Bank",
+        "fr": "La Banque centrale européenne",
+        "ar": "البنك المركزي الأوروبي"
+      }
+    },
+    {
+      "id": "Q237",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the currency of India?",
+        "fr": "Quelle est la monnaie de l'Inde ?",
+        "ar": "ما عملة الهند؟"
+      },
+      "answer": {
+        "en": "The Indian rupee",
+        "fr": "La roupie indienne",
+        "ar": "الروبية الهندية"
+      }
+    },
+    {
+      "id": "Q238",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which city is home to the headquarters of the United Nations?",
+        "fr": "Dans quelle ville se trouve le siège principal de l'Organisation des Nations unies ?",
+        "ar": "في أي مدينة يقع المقر الرئيسي للأمم المتحدة؟"
+      },
+      "answer": {
+        "en": "New York City",
+        "fr": "New York",
+        "ar": "نيويورك"
+      }
+    },
+    {
+      "id": "Q239",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the term for a market dominated by a single seller?",
+        "fr": "Quel terme désigne un marché dominé par un seul vendeur ?",
+        "ar": "ما المصطلح الذي يصف سوقا يسيطر عليها بائع واحد؟"
+      },
+      "answer": {
+        "en": "Monopoly",
+        "fr": "Un monopole",
+        "ar": "الاحتكار"
+      }
+    },
+    {
+      "id": "Q240",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is the origin of the martial art Taekwondo?",
+        "fr": "De quel pays est originaire le taekwondo ?",
+        "ar": "من أي دولة نشأت رياضة التايكوندو؟"
+      },
+      "answer": {
+        "en": "South Korea",
+        "fr": "La Corée du Sud",
+        "ar": "كوريا الجنوبية"
+      }
+    },
+    {
+      "id": "Q241",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the name of the Japanese art of paper folding?",
+        "fr": "Comment s'appelle l'art japonais du pliage du papier ?",
+        "ar": "ما اسم فن طي الورق الياباني؟"
+      },
+      "answer": {
+        "en": "Origami",
+        "fr": "L'origami",
+        "ar": "الأوريغامي"
+      }
+    },
+    {
+      "id": "Q242",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is home to the ancient city of Timbuktu?",
+        "fr": "Dans quel pays se trouve l'ancienne ville de Tombouctou ?",
+        "ar": "في أي دولة تقع مدينة تمبكتو القديمة؟"
+      },
+      "answer": {
+        "en": "Mali",
+        "fr": "Le Mali",
+        "ar": "مالي"
+      }
+    },
+    {
+      "id": "Q243",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the largest organ in the human body?",
+        "fr": "Quel est le plus grand organe du corps humain ?",
+        "ar": "ما أكبر عضو في جسم الإنسان؟"
+      },
+      "answer": {
+        "en": "The skin",
+        "fr": "La peau",
+        "ar": "الجلد"
+      }
+    },
+    {
+      "id": "Q244",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the currency of Turkey?",
+        "fr": "Quelle est la monnaie de la Turquie ?",
+        "ar": "ما عملة تركيا؟"
+      },
+      "answer": {
+        "en": "The Turkish lira",
+        "fr": "La livre turque",
+        "ar": "الليرة التركية"
+      }
+    },
+    {
+      "id": "Q245",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which philosopher wrote 'The Republic'?",
+        "fr": "Quel philosophe a écrit « La République » ?",
+        "ar": "أي فيلسوف كتب «الجمهورية»؟"
+      },
+      "answer": {
+        "en": "Plato",
+        "fr": "Platon",
+        "ar": "أفلاطون"
+      }
+    },
+    {
+      "id": "Q246",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is famous for the ancient ruins of Persepolis?",
+        "fr": "Quel pays est célèbre pour les ruines antiques de Persépolis ?",
+        "ar": "أي دولة تشتهر بآثار برسبوليس القديمة؟"
+      },
+      "answer": {
+        "en": "Iran",
+        "fr": "L'Iran",
+        "ar": "إيران"
+      }
+    },
+    {
+      "id": "Q247",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "What is the economic term for a prolonged decline in economic activity?",
+        "fr": "Quel terme économique désigne une baisse prolongée de l'activité économique ?",
+        "ar": "ما المصطلح الاقتصادي الذي يصف انخفاضا ممتدا في النشاط الاقتصادي؟"
+      },
+      "answer": {
+        "en": "Recession",
+        "fr": "Une récession",
+        "ar": "الركود"
+      }
+    },
+    {
+      "id": "Q248",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which city is known for the annual Carnival featuring samba schools at the Sambadrome?",
+        "fr": "Quelle ville est célèbre pour son carnaval annuel avec les écoles de samba au Sambadrome ?",
+        "ar": "أي مدينة تشتهر بكرنفال السامبا السنوي في السامبودروم؟"
+      },
+      "answer": {
+        "en": "Rio de Janeiro",
+        "fr": "Rio de Janeiro",
+        "ar": "ريو دي جانيرو"
+      }
+    },
+    {
+      "id": "Q249",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which country is associated with the traditional dish paella?",
+        "fr": "Quel pays est associé au plat traditionnel appelé paella ?",
+        "ar": "أي دولة يرتبط بها طبق الباييلا التقليدي؟"
+      },
+      "answer": {
+        "en": "Spain",
+        "fr": "L'Espagne",
+        "ar": "إسبانيا"
+      }
+    },
+    {
+      "id": "Q250",
+      "topic": "general knowledge",
+      "difficulty": "medium-hard",
+      "question": {
+        "en": "Which international organization is headquartered in Paris and is known for World Heritage sites?",
+        "fr": "Quelle organisation internationale basée à Paris est connue pour les sites du patrimoine mondial ?",
+        "ar": "أي منظمة دولية مقرها باريس وتشتهر بمواقع التراث العالمي؟"
+      },
+      "answer": {
+        "en": "UNESCO",
+        "fr": "L'UNESCO",
+        "ar": "اليونسكو"
+      }
+    }
+  ]
+}

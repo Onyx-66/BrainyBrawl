@@ -1,0 +1,302 @@
+[
+  {
+    "id": "frame_01",
+    "name": {
+      "en": "Frame 1",
+      "fr": "Cadre 1",
+      "ar": "إطار 1"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_01.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 1
+  },
+  {
+    "id": "frame_02",
+    "name": {
+      "en": "Frame 2",
+      "fr": "Cadre 2",
+      "ar": "إطار 2"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_02.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 2
+  },
+  {
+    "id": "frame_03",
+    "name": {
+      "en": "Frame 3",
+      "fr": "Cadre 3",
+      "ar": "إطار 3"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_03.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 3
+  },
+  {
+    "id": "frame_04",
+    "name": {
+      "en": "Frame 4",
+      "fr": "Cadre 4",
+      "ar": "إطار 4"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_04.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 4
+  },
+  {
+    "id": "frame_05",
+    "name": {
+      "en": "Frame 5",
+      "fr": "Cadre 5",
+      "ar": "إطار 5"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_05.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 5
+  },
+  {
+    "id": "frame_06",
+    "name": {
+      "en": "Frame 6",
+      "fr": "Cadre 6",
+      "ar": "إطار 6"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_06.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 6
+  },
+  {
+    "id": "frame_07",
+    "name": {
+      "en": "Frame 7",
+      "fr": "Cadre 7",
+      "ar": "إطار 7"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_07.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 7
+  },
+  {
+    "id": "frame_08",
+    "name": {
+      "en": "Frame 8",
+      "fr": "Cadre 8",
+      "ar": "إطار 8"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_08.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 8
+  },
+  {
+    "id": "frame_09",
+    "name": {
+      "en": "Frame 9",
+      "fr": "Cadre 9",
+      "ar": "إطار 9"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_09.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 9
+  },
+  {
+    "id": "frame_10",
+    "name": {
+      "en": "Frame 10",
+      "fr": "Cadre 10",
+      "ar": "إطار 10"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_10.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 10
+  },
+  {
+    "id": "frame_11",
+    "name": {
+      "en": "Frame 11",
+      "fr": "Cadre 11",
+      "ar": "إطار 11"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_11.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 11
+  },
+  {
+    "id": "frame_12",
+    "name": {
+      "en": "Frame 12",
+      "fr": "Cadre 12",
+      "ar": "إطار 12"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_12.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 12
+  },
+  {
+    "id": "frame_13",
+    "name": {
+      "en": "Frame 13",
+      "fr": "Cadre 13",
+      "ar": "إطار 13"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_13.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 13
+  },
+  {
+    "id": "frame_14",
+    "name": {
+      "en": "Frame 14",
+      "fr": "Cadre 14",
+      "ar": "إطار 14"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_14.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 14
+  },
+  {
+    "id": "frame_15",
+    "name": {
+      "en": "Frame 15",
+      "fr": "Cadre 15",
+      "ar": "إطار 15"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_15.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 15
+  },
+  {
+    "id": "frame_16",
+    "name": {
+      "en": "Frame 16",
+      "fr": "Cadre 16",
+      "ar": "إطار 16"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_16.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 16
+  },
+  {
+    "id": "frame_17",
+    "name": {
+      "en": "Frame 17",
+      "fr": "Cadre 17",
+      "ar": "إطار 17"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_17.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 17
+  },
+  {
+    "id": "frame_18",
+    "name": {
+      "en": "Frame 18",
+      "fr": "Cadre 18",
+      "ar": "إطار 18"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_18.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 18
+  },
+  {
+    "id": "frame_19",
+    "name": {
+      "en": "Frame 19",
+      "fr": "Cadre 19",
+      "ar": "إطار 19"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_19.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 19
+  },
+  {
+    "id": "frame_20",
+    "name": {
+      "en": "Frame 20",
+      "fr": "Cadre 20",
+      "ar": "إطار 20"
+    },
+    "description": {},
+    "asset": "assets/frames/frame_20.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 20
+  }
+]

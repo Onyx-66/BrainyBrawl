@@ -19,23 +19,23 @@ import androidx.compose.ui.unit.dp
 import com.brainybrawl.app.R
 import com.brainybrawl.app.feature.lobby.OnlineMode
 
-@Composable fun ModeBento(selected:OnlineMode?,onSelect:(OnlineMode)->Unit){
+@Composable fun ModeBento(selected:OnlineMode?,bluetooth:Boolean=false,onSelect:(OnlineMode)->Unit){
     OnlineMode.entries.toList().chunked(2).forEach{pair->
         Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(10.dp)){
             pair.forEach{mode->
                 val art=when(mode){OnlineMode.DUEL->"1v1";OnlineMode.DUO->"duo";OnlineMode.SQUAD->"squad";OnlineMode.SOLO->"solo"}
+                val asset=art+if(bluetooth)"_bluetooth" else ""
                 val title=stringResource(when(mode){OnlineMode.DUEL->R.string.duel;OnlineMode.DUO->R.string.duo;OnlineMode.SQUAD->R.string.squad;OnlineMode.SOLO->R.string.solo})
                 val description=stringResource(when(mode){OnlineMode.DUEL->R.string.duel_description;OnlineMode.DUO->R.string.duo_description;OnlineMode.SQUAD->R.string.squad_description;OnlineMode.SOLO->R.string.solo_description})
                 Box(Modifier.weight(1f).aspectRatio(1f).clip(RoundedCornerShape(26.dp))
                     .testTag("mode-${mode.name}").clickable{onSelect(mode)}){
-                    GameArtwork("${art}_card",Modifier.matchParentSize(),ContentScale.FillBounds)
-                    Column(Modifier.fillMaxSize().padding(12.dp),verticalArrangement=Arrangement.spacedBy(4.dp)){
-                        Box(Modifier.fillMaxWidth().weight(1f),contentAlignment=Alignment.Center){GameArtwork("${art}_icon",Modifier.fillMaxSize(.80f).testTag("mode-art-$art"))}
+                    GameArtwork("${asset}_card",Modifier.matchParentSize(),ContentScale.FillBounds)
+                    Column(Modifier.fillMaxSize().padding(12.dp),horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(4.dp)){
+                        Box(Modifier.fillMaxWidth().weight(1f),contentAlignment=Alignment.Center){GameArtwork("${asset}_icon",Modifier.fillMaxSize(.73f).testTag("mode-art-$art"))}
                         Row(verticalAlignment=Alignment.CenterVertically){
-                            Text(title,Modifier.weight(1f),maxLines=1,softWrap=false,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis,style=MaterialTheme.typography.titleMedium.copy(shadow=Shadow(Color(0xFF172051),Offset(0f,3f),4f)),color=Color.White)
+                            Text(title,Modifier.fillMaxWidth(),textAlign=androidx.compose.ui.text.style.TextAlign.Center,maxLines=1,softWrap=false,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis,style=MaterialTheme.typography.titleLarge.copy(shadow=Shadow(Color(0xFF172051),Offset(0f,3f),4f)),color=Color.White)
 
                         }
-                        Text(description,maxLines=2,overflow=androidx.compose.ui.text.style.TextOverflow.Ellipsis,style=MaterialTheme.typography.labelSmall.copy(shadow=Shadow(Color(0xFF172051),Offset(0f,1f),5f)),color=Color.White)
                     }
                     if(selected==mode)Box(Modifier.matchParentSize().border(3.dp,Color.White,RoundedCornerShape(26.dp)))
                 }
@@ -51,6 +51,19 @@ import com.brainybrawl.app.feature.lobby.OnlineMode
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)){
                 Text(stringResource(R.string.offline),style=MaterialTheme.typography.titleLarge,color=Color.White)
                 Text(stringResource(R.string.offline_modes_description),style=MaterialTheme.typography.labelMedium,color=Color.White)
+            }
+        }
+    }
+}
+
+@Composable fun BluetoothModeCard(onClick:()->Unit){
+    Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).testTag("mode-BLUETOOTH").clickable(onClick=onClick)){
+        GameArtwork("bluetooth_card",Modifier.matchParentSize(),ContentScale.FillBounds)
+        Row(Modifier.fillMaxWidth().padding(18.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)){
+            GameArtwork("bluetooth_icon",Modifier.size(72.dp))
+            Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)){
+                Text(stringResource(R.string.bluetooth_play),style=MaterialTheme.typography.titleLarge,color=Color.White)
+                Text(stringResource(R.string.bluetooth_card_description),style=MaterialTheme.typography.labelMedium,color=Color.White)
             }
         }
     }

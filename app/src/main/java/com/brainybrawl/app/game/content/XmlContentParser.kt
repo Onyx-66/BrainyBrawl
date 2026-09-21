@@ -65,7 +65,9 @@ class XmlContentParser {
                         ImageChoice(id(it.getAttribute("id")), it.textContent.also { t -> require(t.isNotBlank()) },
                             it.getAttribute("points").toInt().also { p -> require(p in 0..250) }, it.boolean("correct"))
                     }
-                    require(choices.size == 10 && value("selection_count") == "4" && value("time_limit_seconds") == "30")
+                    val pool=item.children("choices").single().getAttribute("pool")=="true"
+                    if(meta.approval!=Approval.RETIRED)require(if(pool)choices.count{it.correct}>=4&&choices.count{!it.correct}>=6 else choices.size==10&&choices.count{it.correct}==4)
+                    require(value("selection_count") == "4" && value("time_limit_seconds") == "30")
                     val policy = when (value("scoring_policy")) {
                         "all_selected" -> ImageScoringPolicy.ALL_SELECTED
                         "correct_only" -> ImageScoringPolicy.CORRECT_ONLY

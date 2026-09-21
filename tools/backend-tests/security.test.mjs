@@ -610,6 +610,48 @@ try {
     await admin();await db.exec('set role service_role');const requests=(await db.query('select public.admin_deletion_requests() as r')).rows[0].r;
     assert.equal(requests.length,1);assert.equal(requests[0].user_id,ids[42]);assert.equal(requests[0].status,'pending');
   });
+  await check('Learning answers accept multilingual aliases and typos but never approximate numeric values',async()=>{
+    await admin();
+    for(const [input,accepted,expected] of [
+      ['westfalia',['Westphalia','Westfalia'],true],['mali',['The Mali Empire','Mali','مالي'],true],
+      ['constantine',['Constantinople','Constantine'],true],['eiyt',['8','eight','eiyt','huit','ثمانية'],true],
+      ['huit',['8','eight','huit','ثمانية'],true],['٨',['8','eight'],true],
+      ['Gabriel Garcia Marqez',['Gabriel García Márquez','Marquez'],true],
+      ['eighty',['8','eight'],false],['ثمانين',['8','ثمانية'],false],['1067',['1066','one thousand and sixty-six'],false],
+      ['Bali',['Mali'],false],['V',['W'],false],['nothing',['Westphalia'],false]
+    ])assert.equal((await db.query('select private.learning_answer($1,$2) result',[input,JSON.stringify(accepted)])).rows[0].result,expected,input);
+  });
+  await check('Missions use verified progress, cannot be client-granted, and reward each claim once',async()=>{
+    await admin();
+    const winner=(await db.query('select user_id from public.match_results where winner limit 1')).rows[0].user_id;
+    await user(winner);
+    const snapshot=(await db.query('select public.mission_snapshot() rows')).rows[0].rows;
+    assert.equal(snapshot.length,6);assert(snapshot.find(x=>x.id==='win_1').progress>=1);
+    await db.query("select public.claim_mission('win_1')");await db.query("select public.claim_mission('win_1')");
+    assert((await db.query('select public.mission_snapshot() rows')).rows[0].rows.find(x=>x.id==='win_1').claimed);
+    await admin();
+    const ledger=(await db.query("select currency, sum(delta)::integer amount,count(*)::integer count from public.currency_ledger where user_id=$1 and source_event='win_1' group by currency",[winner])).rows;
+    assert.equal(ledger.find(x=>x.currency==='gold').amount,150);assert.equal(ledger.find(x=>x.currency==='flames').amount,1);assert(ledger.every(x=>x.count===1));
+    await user(ids[41]);await assert.rejects(db.query("select public.claim_mission('play_20')"),/mission_incomplete/);
+    await denied("insert into private.mission_claims values($1,'play_20',now())",[ids[41]]);
+  });
+  await check('Image pools lock four correct and six wrong choices per round and reject hidden IDs',async()=>{
+    await admin();
+    const options=Array.from({length:24},(_,i)=>({id:`pool_${i}`,label:`Object ${i}`}));
+    const answers=options.map((o,i)=>({id:o.id,correct:i<12,points:i<12?10:0}));
+    await db.query("insert into public.content_items(id,kind,locale,schema_version,content_version,status,payload) values('pool_test','image_guess','en',1,1,'APPROVED',$1)",[JSON.stringify({options,answer_pool:true,selection_count:4})]);
+    await db.query("insert into private.content_answers(content_id,answer) values('pool_test',$1)",[JSON.stringify({choices:answers,scoring_policy:'correct_only'})]);
+    const m=(await db.query("select m.id,p.user_id from public.matches m join public.match_participants p on p.match_id=m.id where m.mode='duel' and p.eligible limit 1")).rows[0];
+    const r=(await db.query("insert into public.match_rounds(match_id,phase_id,ordinal,content_id,starts_at,answer_opens_at,deadline,status) values($1,(select phase_id from public.match_rounds where match_id=$1 limit 1),999,'pool_test',now()-interval '1 second',now()-interval '1 second',now()+interval '60 seconds','active') returning id",[m.id])).rows[0].id;
+    const idsChosen=(await db.query('select ids from private.image_round_choices where round_id=$1',[r])).rows[0].ids;
+    assert.equal(idsChosen.length,10);assert.equal(idsChosen.filter(id=>answers.find(a=>a.id===id).correct).length,4);
+    const payload=(await db.query("select private.round_display($1,payload,false) data from public.content_items where id='pool_test'",[r])).rows[0].data;
+    assert.equal(payload.options.length,10);assert(!('answer_pool' in payload));
+    const hidden=options.find(o=>!idsChosen.includes(o.id)).id;
+    await user(m.user_id);
+    await assert.rejects(db.query('select public.submit_answer($1,$2,gen_random_uuid(),$3)',[m.id,r,JSON.stringify({choice_ids:[hidden,...idsChosen.slice(0,3)]})]),/invalid_selection/);
+    await db.query('select public.submit_answer($1,$2,gen_random_uuid(),$3)',[m.id,r,JSON.stringify({choice_ids:idsChosen.filter(id=>answers.find(a=>a.id===id).correct)})]);
+  });
   console.log(`Backend verification: ${checks} checks passed. Real PostgreSQL semantics via PGlite; network/Realtime and concurrent connections require separate integration tests.`);
 } catch(error) {
   console.error('BACKEND TEST FAILURE:', error.message, error.detail ?? '', error.where ?? '');

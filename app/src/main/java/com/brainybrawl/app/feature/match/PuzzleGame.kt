@@ -37,6 +37,7 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
     val artwork by rememberArtwork(asset)
     val bitmap=(artwork as? ArtworkState.Ready)?.bitmap
     if(bitmap==null){if(artwork==ArtworkState.Failed)Text(stringResource(R.string.image_unavailable))else LinearProgressIndicator(Modifier.fillMaxWidth());return}
+    val settings by (androidx.compose.ui.platform.LocalContext.current.applicationContext as com.brainybrawl.app.BrainyBrawlApplication).container.settings.state.collectAsState()
     val image=remember(bitmap){bitmap.asImageBitmap()}
     val ordered=remember(board.pieces,asset,userId,solo){board.pieces.filter{solo||it.side==if(seat==0)"LEFT" else "RIGHT"}.shuffled(kotlin.random.Random((asset+userId).hashCode()))}
     val remaining=ordered.filter{tile->board.placements.none{it.pieceId==tile.id}}
@@ -56,12 +57,13 @@ private fun shape(points:List<Point>,width:Float,height:Float)=Path().apply{
                 onDrag={change,amount->change.consume();cursor=(cursor?:change.position)+amount;cursor?.let{onCursor(it.x/size.width,it.y/size.height)}})
         }){
             drawRect(Color.White)
-            drawImage(image,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()),alpha=.25f)
-            board.slots.forEach{slot->
-                val path=shape(slots.getValue(slot.id),size.width,size.height)
-                val placed=board.placements.any{it.slotId==slot.id}
-                if(placed)clipPath(path){drawImage(image,dstSize=IntSize(size.width.toInt(),size.height.toInt()))}
-                drawPath(path,if(placed)Positive else Ink.copy(alpha=.85f),style=Stroke(1.dp.toPx()))
+            if(settings.puzzleGuide)drawImage(image,dstSize=IntSize(size.width.roundToInt(),size.height.roundToInt()),alpha=.18f)
+            val placedIds=board.placements.map{it.slotId}.toSet()
+            board.slots.filter{it.id in placedIds}.forEach{slot->
+                clipPath(shape(slots.getValue(slot.id),size.width,size.height)){drawImage(image,dstSize=IntSize(size.width.toInt(),size.height.toInt()))}
+            }
+            com.brainybrawl.app.game.engine.puzzleEdges(slots,placedIds).forEach{edge->
+                drawLine(if(edge.solved)Color.White else Ink.copy(alpha=.75f),Offset(edge.from.x*size.width,edge.from.y*size.height),Offset(edge.to.x*size.width,edge.to.y*size.height),strokeWidth=(if(edge.solved).65.dp else 1.2.dp).toPx())
             }
             board.attempts.filter{!it.correct}.forEach{attempt->slots[attempt.action["slot_id"]?.jsonPrimitive?.contentOrNull]?.let{drawPath(shape(it,size.width,size.height),Negative.copy(alpha=.65f))}}
             board.cursors.filter{it.userId!=userId}.forEach{drawCircle(Gold,6.dp.toPx(),Offset(it.x*size.width,it.y*size.height))}

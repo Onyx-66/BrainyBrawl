@@ -30,7 +30,7 @@ class NavigationSmokeTest {
         rule.onNodeWithText(rule.activity.getString(R.string.play_offline)).performScrollTo().performClick()
         rule.onNodeWithText(rule.activity.getString(R.string.offline_puzzle)).assertIsDisplayed()
         rule.onNodeWithText(rule.activity.getString(R.string.back_to_modes)).performScrollTo().performClick()
-        rule.onNodeWithText(rule.activity.getString(R.string.choose_mode)).assertIsDisplayed()
+        rule.onNodeWithText(rule.activity.getString(R.string.duo)).assertIsDisplayed()
         rule.onNodeWithText(rule.activity.getString(R.string.duel)).assertIsDisplayed()
     }
 }

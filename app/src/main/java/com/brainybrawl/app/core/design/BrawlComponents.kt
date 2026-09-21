@@ -72,8 +72,8 @@ fun AnswerOption(label: String, selected: Boolean, enabled: Boolean,
         .semantics { role = Role.Checkbox; this.selected = selected }
         .clickable(enabled = enabled, onClick = onClick),
         color = when(result){true->Positive;false->Negative;null->if(selected)MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant},
-        shape = RoundedCornerShape(12.dp),
-        border = BorderStroke(if (selected) 2.dp else 1.dp, MaterialTheme.colorScheme.outline)) {
+        shape = RoundedCornerShape(18.dp),
+        border = BorderStroke(if (selected) 2.dp else 1.dp, if(selected)Cyan else MaterialTheme.colorScheme.outline.copy(alpha=.45f))) {
         Row(Modifier.padding(14.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(if (selected) "\u2713" else "\u25cb", modifier = Modifier.clearAndSetSemantics {})
             Text(label, style = MaterialTheme.typography.bodyLarge,color=if(result!=null)Ink else Color.Unspecified)

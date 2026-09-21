@@ -18,6 +18,9 @@ def main():
         print('PASS own profile, Flame-derived level and server administrator membership')
         store=request('/rest/v1/rpc/store_snapshot',{},token);assert isinstance(store['items'],list)
         print('PASS authenticated store snapshot; catalog items:',len(store['items']))
+        missions=request('/rest/v1/rpc/mission_snapshot',{},token)
+        assert len(missions)==6 and all(0<=m['progress']<=m['target'] for m in missions)
+        print('PASS authenticated mission progress and six reward definitions')
         rankings=request('/rest/v1/rpc/leaderboard',{'p_mode':'duel','p_metric':'win_rate','p_period':'all_time','p_friends':False,'p_limit':50},token)
         assert isinstance(rankings['rows'],list);print('PASS authenticated leaderboard snapshot')
         for path in ('/rest/v1/rpc/profile_snapshot','/rest/v1/rpc/admin_deletion_requests'):

@@ -29,16 +29,11 @@ enum class OfferCurrency(val label:Int,val art:String,val accent:Color,val amoun
 @Composable fun CurrencyOffers(initialCurrency:OfferCurrency=OfferCurrency.GEMS,sectionRequest:Int=0){
     var selected by rememberSaveable(initialCurrency){mutableStateOf(initialCurrency)}
     LaunchedEffect(initialCurrency,sectionRequest){selected=initialCurrency}
+    val context=androidx.compose.ui.platform.LocalContext.current
+    val offers=remember(selected){OfferCatalog.load(context,"currencies",selected.name.lowercase())}
     val locale=LocalConfiguration.current.locales[0]
     val number=remember(locale){NumberFormat.getIntegerInstance(locale)}
     val currency=stringResource(selected.label)
-    Row(Modifier.fillMaxWidth().background(Brush.horizontalGradient(listOf(Color(0xFF352877),Color(0xFF123A65))),RoundedCornerShape(24.dp)).padding(20.dp),verticalAlignment=Alignment.CenterVertically){
-        Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(5.dp)){
-            Text(stringResource(R.string.store_stock_up),style=MaterialTheme.typography.headlineSmall,color=Color.White)
-            Text(stringResource(R.string.store_subtitle),style=MaterialTheme.typography.bodyMedium,color=Color(0xFFD6E4FF))
-        }
-        GameArtwork("store_icon",Modifier.size(76.dp))
-    }
     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
         OfferCurrency.entries.forEach{kind->
             val active=selected==kind
@@ -52,20 +47,22 @@ enum class OfferCurrency(val label:Int,val art:String,val accent:Color,val amoun
     }
     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){
         Text(currency,style=MaterialTheme.typography.titleLarge)
-        Text(stringResource(R.string.store_six_packs),style=MaterialTheme.typography.labelMedium,color=MaterialTheme.colorScheme.onSurfaceVariant)
     }
-    selected.amounts.chunked(2).forEachIndexed{row,amounts->
+    offers.chunked(2).forEachIndexed{row,amounts->
         Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(12.dp)){
-            amounts.forEachIndexed{column,amount->
+            amounts.forEachIndexed{column,offer->
+                val amount=offer.quantity
                 val index=row*2+column
                 Column(Modifier.weight(1f).fillMaxHeight().testTag("offer-${selected.name}-$index")
                     .background(Brush.verticalGradient(listOf(selected.accent.copy(alpha=.22f),Color(0xFF10233F))),RoundedCornerShape(22.dp))
                     .border(1.dp,selected.accent.copy(alpha=.55f),RoundedCornerShape(22.dp)).padding(14.dp),
                     horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)){
-                    Text(stringResource(listOf(R.string.store_pocket,R.string.store_pouch,R.string.store_bundle,R.string.store_chest,R.string.store_vault,R.string.store_treasury)[index]),style=MaterialTheme.typography.labelLarge,color=Color(0xFFE0ECFF))
-                    GameArtwork(selected.art,Modifier.size(64.dp))
+                    Text(offer.name[locale.language]?:offer.name.getValue("en"),style=MaterialTheme.typography.labelLarge,color=Color(0xFFE0ECFF))
+                    GameArtwork(offer.asset.substringAfterLast('/').substringBeforeLast('.'),Modifier.size(64.dp),reference=offer.asset)
                     Text(number.format(amount),style=MaterialTheme.typography.headlineMedium,color=Color.White)
                     Text(currency,style=MaterialTheme.typography.labelMedium,color=selected.accent)
+                    offer.description[locale.language]?.takeIf{it.isNotBlank()}?.let{Text(it,style=MaterialTheme.typography.bodySmall)}
+                    Text(java.text.NumberFormat.getCurrencyInstance(locale).apply{this.currency=java.util.Currency.getInstance(offer.currency)}.format(offer.price),style=MaterialTheme.typography.titleMedium,color=Color.White)
                     Button(onClick={},enabled=false,modifier=Modifier.fillMaxWidth(),colors=ButtonDefaults.buttonColors(disabledContainerColor=Color(0xFF2A3E58),disabledContentColor=Color(0xFFCDDAEB))){
                         Text(stringResource(R.string.store_coming_soon),style=MaterialTheme.typography.labelMedium)
                     }

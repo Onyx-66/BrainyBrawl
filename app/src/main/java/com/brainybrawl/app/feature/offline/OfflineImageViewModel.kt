@@ -17,7 +17,7 @@ class OfflineImageViewModel(private val content:ContentRepository,private val st
   val owner="images:"+stats.currentOwner();val session=UUID.randomUUID().toString()
   task=viewModelScope.launch{
    try{
-    val images=content.load(ContentKind.IMAGE,locale).filterIsInstance<ImageContent>().filter{it.scoringPolicy!=null}.shuffled().take(5)
+    val images=content.load(ContentKind.IMAGE,locale).filterIsInstance<ImageContent>().filter{it.scoringPolicy!=null}.shuffled().take(5).map{it.roundChoices()}
     val time=SystemClock.elapsedRealtime();mutable.value=OfflineImageUi(game=OfflineImages(images,time),now=time)
     while(isActive){
      visible.first{it};val now=SystemClock.elapsedRealtime();mutable.update{it.copy(now=now,game=it.game?.tick(now))}

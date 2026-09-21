@@ -49,7 +49,7 @@ class TeamMiniGameUiTest {
     }
     @Test fun puzzleRendersPackagedArtAndSubmitsOwnedPiecePlacement(){
         val context=androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
-        val puzzle=com.brainybrawl.app.game.content.XmlContentParser().parse(context.assets.open("content/collaborative_puzzle.xml"),com.brainybrawl.app.game.content.ContentKind.PUZZLE).filterIsInstance<com.brainybrawl.app.game.content.PuzzleContent>().first{it.assetRef.endsWith(".png")}
+        val puzzle=com.brainybrawl.app.game.content.XmlContentParser().parse(context.assets.open("content/collaborative_puzzle.xml"),com.brainybrawl.app.game.content.ContentKind.PUZZLE).filterIsInstance<com.brainybrawl.app.game.content.PuzzleContent>().first{it.meta.approval==com.brainybrawl.app.game.content.Approval.APPROVED&&it.assetRef.endsWith(".webp")}
         fun polygon(piece:com.brainybrawl.app.game.content.PuzzlePiece)=piece.polygon.joinToString(" "){"${it.x},${it.y}"}
         val board=PuzzleBoardView(puzzle.pieces.map{PuzzleTile(it.id,it.side,it.rotation,polygon(it),it.assetRef)},puzzle.pieces.map{PuzzleSlot(it.slot,polygon(it))},emptyList(),emptyList(),emptyList())
         val current=androidx.compose.runtime.mutableStateOf(board)
@@ -69,7 +69,7 @@ class TeamMiniGameUiTest {
                 assertEquals("Image opacity",channel(source)*opacity+255*(1-opacity),channel(actual).toFloat(),18f)
             }
         }
-        checkColor(faded,0,0,.25f);checkColor(faded,5,2,.25f);checkColor(faded,11,6,.25f)
+        checkColor(faded,0,0,.18f);checkColor(faded,5,2,.18f);checkColor(faded,11,6,.18f)
         rule.runOnIdle{current.value=board.copy(placements=listOf(PuzzlePlacement(puzzle.pieces.first().id,puzzle.pieces.first().slot,"test-player")))}
         checkColor(rule.onNodeWithTag("puzzle-board").captureToImage().asAndroidBitmap(),0,0,1f)
         rule.runOnIdle{current.value=board}

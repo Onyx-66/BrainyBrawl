@@ -21,8 +21,13 @@ import com.brainybrawl.app.feature.auth.*
     val links by model.accounts.collectAsStateWithLifecycle()
     var editing by remember{mutableStateOf(false)}
     var address by remember(email){mutableStateOf(email.orEmpty())}
+    var expanded by remember{mutableStateOf(false)}
     BrawlPanel(Modifier.fillMaxWidth()){
-        Text(stringResource(R.string.account),style=MaterialTheme.typography.titleLarge)
+        TextButton({expanded=!expanded},Modifier.fillMaxWidth()){
+            Text(stringResource(R.string.account),Modifier.weight(1f),style=MaterialTheme.typography.titleLarge)
+            Text(if(expanded)"−" else "+",style=MaterialTheme.typography.titleLarge)
+        }
+        if(expanded){
         Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(12.dp)){
             NavigationSymbol(NavSymbol.EMAIL)
             Column(Modifier.weight(1f)){
@@ -55,14 +60,14 @@ import com.brainybrawl.app.feature.auth.*
             if(available.any{!model.providerEnabled(it)})Text(stringResource(R.string.providers_later),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
         }
         HorizontalDivider(color=MaterialTheme.colorScheme.outline.copy(alpha=.3f))
-        FilledTonalButton(password,Modifier.fillMaxWidth().heightIn(min=52.dp)){
+        FilledTonalButton(password,Modifier.fillMaxWidth().heightIn(min=52.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=androidx.compose.ui.graphics.Color(0xFF163E62),contentColor=androidx.compose.ui.graphics.Color(0xFFB4EDFF))){
             NavigationSymbol(NavSymbol.PASSWORD);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.change_password),maxLines=1)
         }
-        AccountPrivacy(container,identity,Modifier.fillMaxWidth())
-        FilledTonalButton(logout,Modifier.fillMaxWidth().heightIn(min=52.dp),colors=ButtonDefaults.filledTonalButtonColors(contentColor=MaterialTheme.colorScheme.error)){
+        FilledTonalButton(logout,Modifier.fillMaxWidth().heightIn(min=52.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=androidx.compose.ui.graphics.Color(0xFF492C42),contentColor=androidx.compose.ui.graphics.Color(0xFFFFB6B1))){
             NavigationSymbol(NavSymbol.SIGN_OUT);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.sign_out),maxLines=1)
         }
         if(!editing&&ui.notice in setOf(AuthNotice.REQUEST_FAILED,AuthNotice.NETWORK_ERROR,AuthNotice.REAUTH_REQUIRED))Text(stringResource(if(ui.notice==AuthNotice.REAUTH_REQUIRED)R.string.finish_account_connection else R.string.request_failed),style=MaterialTheme.typography.bodySmall)
+    }
     }
     if(editing)AlertDialog(containerColor=MaterialTheme.colorScheme.surface,onDismissRequest={if(!ui.busy){editing=false;model.consumeNotice()}},title={Text(stringResource(R.string.edit_email))},
         text={Column(verticalArrangement=Arrangement.spacedBy(12.dp)){

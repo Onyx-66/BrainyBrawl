@@ -39,10 +39,7 @@ import com.brainybrawl.app.core.localization.namedString
         }
         val contentDirection=if(game.question.meta.locale=="ar")LayoutDirection.Rtl else LayoutDirection.Ltr
         CompositionLocalProvider(LocalLayoutDirection provides contentDirection){
-        BrawlPanel(Modifier.fillMaxWidth()) {
-            Text(game.question.theme,style=MaterialTheme.typography.labelLarge)
-            Text(game.question.prompt,Modifier.testTag("offline-question"),style=MaterialTheme.typography.headlineSmall)
-        }
+        QuestionPrompt(game.question.theme,game.question.prompt,modifier=Modifier.testTag("offline-question"))
         }
         if(!game.revealed) {
             val reading=state.now<game.window.opensAt
@@ -61,6 +58,7 @@ import com.brainybrawl.app.core.localization.namedString
         }
         if(!game.revealed){
             var reply by remember(game.index){mutableStateOf("")}
+            Text(stringResource(R.string.learning_tip),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
             OutlinedTextField(reply,{reply=it.take(200)},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.answer_any_language))},singleLine=true)
             BrawlButton(stringResource(R.string.submit_answer),{model.answerText(reply)},Modifier.fillMaxWidth(),enabled=reply.isNotBlank())
         }

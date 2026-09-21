@@ -1,0 +1,86 @@
+[
+  {
+    "id": "gems_1",
+    "name": {
+      "en": "Pocket",
+      "fr": "Poche",
+      "ar": "Ø¬ÙŠØ¨"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 80,
+    "price": 0.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "gems_2",
+    "name": {
+      "en": "Pouch",
+      "fr": "Bourse",
+      "ar": "ÙƒÙŠØ³"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 250,
+    "price": 2.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "gems_3",
+    "name": {
+      "en": "Bundle",
+      "fr": "Lot",
+      "ar": "Ø­Ø²Ù…Ø©"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 550,
+    "price": 5.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "gems_4",
+    "name": {
+      "en": "Chest",
+      "fr": "Coffre",
+      "ar": "ØµÙ†Ø¯ÙˆÙ‚"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 1200,
+    "price": 11.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "gems_5",
+    "name": {
+      "en": "Vault",
+      "fr": "RÃ©serve",
+      "ar": "Ø®Ø²Ù†Ø©"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 2600,
+    "price": 23.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "gems_6",
+    "name": {
+      "en": "Treasury",
+      "fr": "TrÃ©sor",
+      "ar": "ÙƒÙ†Ø²"
+    },
+    "description": {},
+    "asset": "assets/icons/gem_icon.png",
+    "quantity": 5500,
+    "price": 49.99,
+    "currency": "USD",
+    "enabled": false
+  }
+]

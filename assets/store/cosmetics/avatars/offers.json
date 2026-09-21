@@ -1,0 +1,152 @@
+[
+  {
+    "id": "avatar_01",
+    "name": {
+      "en": "Avatar 1",
+      "fr": "Avatar 1",
+      "ar": "صورة 1"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_01.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 1
+  },
+  {
+    "id": "avatar_02",
+    "name": {
+      "en": "Avatar 2",
+      "fr": "Avatar 2",
+      "ar": "صورة 2"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_02.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 2
+  },
+  {
+    "id": "avatar_03",
+    "name": {
+      "en": "Avatar 3",
+      "fr": "Avatar 3",
+      "ar": "صورة 3"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_03.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 3
+  },
+  {
+    "id": "avatar_04",
+    "name": {
+      "en": "Avatar 4",
+      "fr": "Avatar 4",
+      "ar": "صورة 4"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_04.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 4
+  },
+  {
+    "id": "avatar_05",
+    "name": {
+      "en": "Avatar 5",
+      "fr": "Avatar 5",
+      "ar": "صورة 5"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_05.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 5
+  },
+  {
+    "id": "avatar_06",
+    "name": {
+      "en": "Avatar 6",
+      "fr": "Avatar 6",
+      "ar": "صورة 6"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_06.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 6
+  },
+  {
+    "id": "avatar_07",
+    "name": {
+      "en": "Avatar 7",
+      "fr": "Avatar 7",
+      "ar": "صورة 7"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_07.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 7
+  },
+  {
+    "id": "avatar_08",
+    "name": {
+      "en": "Avatar 8",
+      "fr": "Avatar 8",
+      "ar": "صورة 8"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_08.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 8
+  },
+  {
+    "id": "avatar_09",
+    "name": {
+      "en": "Avatar 9",
+      "fr": "Avatar 9",
+      "ar": "صورة 9"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_09.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 9
+  },
+  {
+    "id": "avatar_10",
+    "name": {
+      "en": "Avatar 10",
+      "fr": "Avatar 10",
+      "ar": "صورة 10"
+    },
+    "description": {},
+    "asset": "assets/avatars/avatar_10.png",
+    "quantity": 1,
+    "price": 0,
+    "currency": "gold",
+    "enabled": true,
+    "index": 10
+  }
+]

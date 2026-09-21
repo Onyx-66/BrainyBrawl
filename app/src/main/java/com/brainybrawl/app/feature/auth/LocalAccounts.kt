@@ -87,6 +87,13 @@ class LocalAccounts(private val vault:LocalAccountVault){
             save(db.copy(accounts=db.accounts.map{if(it.id==account.id)it.copy(email=normalize(email))else it}))
         }
     }
+    suspend fun renameCurrent(name:String){
+        require(AuthValidation.username(name));initialize();lock.withLock{
+            val id=requireNotNull(db.current)
+            require(db.accounts.none{it.id!=id&&it.username.equals(name,true)})
+            save(db.copy(accounts=db.accounts.map{if(it.id==id)it.copy(username=name)else it}))
+        }
+    }
     suspend fun deleteCurrent(expectedId:String){initialize();lock.withLock{
         val id=requireNotNull(db.current)
         require(id==expectedId)

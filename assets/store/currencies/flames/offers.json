@@ -1,0 +1,86 @@
+[
+  {
+    "id": "flames_1",
+    "name": {
+      "en": "Pocket",
+      "fr": "Poche",
+      "ar": "Ø¬ÙŠØ¨"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 5,
+    "price": 0.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "flames_2",
+    "name": {
+      "en": "Pouch",
+      "fr": "Bourse",
+      "ar": "ÙƒÙŠØ³"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 15,
+    "price": 2.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "flames_3",
+    "name": {
+      "en": "Bundle",
+      "fr": "Lot",
+      "ar": "Ø­Ø²Ù…Ø©"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 35,
+    "price": 5.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "flames_4",
+    "name": {
+      "en": "Chest",
+      "fr": "Coffre",
+      "ar": "ØµÙ†Ø¯ÙˆÙ‚"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 80,
+    "price": 11.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "flames_5",
+    "name": {
+      "en": "Vault",
+      "fr": "RÃ©serve",
+      "ar": "Ø®Ø²Ù†Ø©"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 180,
+    "price": 23.99,
+    "currency": "USD",
+    "enabled": false
+  },
+  {
+    "id": "flames_6",
+    "name": {
+      "en": "Treasury",
+      "fr": "TrÃ©sor",
+      "ar": "ÙƒÙ†Ø²"
+    },
+    "description": {},
+    "asset": "assets/icons/flame_icon.png",
+    "quantity": 400,
+    "price": 49.99,
+    "currency": "USD",
+    "enabled": false
+  }
+]

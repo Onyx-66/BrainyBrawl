@@ -57,8 +57,10 @@ class ModeHeaderUiTest{
  }
  @Test fun bluetoothEntryIsAvailableWithoutAServerAccount(){
   rule.onNodeWithTag("nav-MODES").performClick()
-  rule.onNodeWithText("Bluetooth with friends").performScrollTo().performClick()
-  rule.onNodeWithText("Bluetooth with friends").assertIsDisplayed()
+  rule.onNodeWithTag("mode-BLUETOOTH").performScrollTo().performClick()
+  rule.onNodeWithText("Bluetooth").assertIsDisplayed()
+  rule.onNodeWithTag("mode-OFFLINE").assertDoesNotExist()
+  rule.onNodeWithTag("mode-DUEL").performClick()
   rule.onNodeWithText("Back to modes").performScrollTo().performClick()
   rule.onNodeWithTag("mode-DUEL").performScrollTo().assertIsDisplayed()
  }

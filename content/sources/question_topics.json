@@ -1,0 +1,52 @@
+{
+  "history": {
+    "en": "History",
+    "fr": "Histoire",
+    "ar": "التاريخ"
+  },
+  "geography": {
+    "en": "Geography",
+    "fr": "Géographie",
+    "ar": "الجغرافيا"
+  },
+  "science": {
+    "en": "Science",
+    "fr": "Sciences",
+    "ar": "العلوم"
+  },
+  "mathematics": {
+    "en": "Mathematics",
+    "fr": "Mathématiques",
+    "ar": "الرياضيات"
+  },
+  "football": {
+    "en": "Football",
+    "fr": "Football",
+    "ar": "كرة القدم"
+  },
+  "islamic studies": {
+    "en": "Islamic Studies",
+    "fr": "Culture islamique",
+    "ar": "الثقافة الإسلامية"
+  },
+  "literature and arts": {
+    "en": "Literature And Arts",
+    "fr": "Littérature et arts",
+    "ar": "الأدب والفنون"
+  },
+  "technology": {
+    "en": "Technology",
+    "fr": "Technologie",
+    "ar": "التكنولوجيا"
+  },
+  "astronomy": {
+    "en": "Astronomy",
+    "fr": "Astronomie",
+    "ar": "علم الفلك"
+  },
+  "general knowledge": {
+    "en": "General Knowledge",
+    "fr": "Culture générale",
+    "ar": "الثقافة العامة"
+  }
+}

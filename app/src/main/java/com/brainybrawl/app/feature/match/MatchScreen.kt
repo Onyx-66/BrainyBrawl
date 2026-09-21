@@ -129,11 +129,7 @@ import java.time.Instant
             {x,y->model.cursor(round.id,x,y)})
         is ScrambleBoard->ScrambleGame(round,accepting&&!board.answered){answer->model.mini(round,buildJsonObject{put("answer",answer)})}
         null->{
-            BrawlPanel(Modifier.fillMaxWidth()){
-                Text(round.content.theme,style=MaterialTheme.typography.labelLarge)
-                Text(round.content.prompt,style=MaterialTheme.typography.headlineSmall)
-                if(round.content.specification.isNotBlank())Text(round.content.specification)
-            }
+            QuestionPrompt(round.content.theme,round.content.prompt,round.content.specification)
             var expanded by remember(round.id){mutableStateOf(false)}
             round.content.assetRef?.let{asset->
                 ContentImage(asset,round.content.specification,Modifier.clickable{expanded=true})
@@ -144,7 +140,8 @@ import java.time.Instant
             })}
             if(round.kind=="question_round"){
                 var reply by remember(round.id){mutableStateOf("")}
-                OutlinedTextField(reply,{reply=it.take(200)},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.answer_any_language))},enabled=accepting,singleLine=true)
+                Text(stringResource(R.string.learning_tip),style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+            OutlinedTextField(reply,{reply=it.take(200)},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.answer_any_language))},enabled=accepting,singleLine=true)
                 BrawlButton(stringResource(R.string.submit_answer),{model.submit(round,answer=reply)},Modifier.fillMaxWidth(),enabled=accepting&&reply.isNotBlank())
             }
             if(round.kind=="image_guess")BrawlButton(namedString(R.string.confirm_four,"count" to selected.size),{model.submit(round)},Modifier.fillMaxWidth(),enabled=accepting&&selected.size==4,tone=ActionTone.POSITIVE)

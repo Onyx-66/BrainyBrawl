@@ -12,6 +12,17 @@ import androidx.compose.ui.unit.IntSize
 
 // Visible alpha bounds measured from the supplied originals; files remain untouched.
 private val artworkBounds=mapOf(
+    "currency_count" to Rect(0.022099f,0.116022f,0.977901f,0.864641f),
+    "squad_bluetooth_icon" to Rect(0.098884f,0.141946f,0.891547f,0.837321f),
+    "squad_bluetooth_card" to Rect(0.018341f,0.038278f,0.979266f,0.962520f),
+    "solo_bluetooth_icon" to Rect(0.122931f,0.052009f,0.905437f,0.950355f),
+    "solo_bluetooth_card" to Rect(0.018341f,0.033493f,0.982456f,0.957735f),
+    "duo_bluetooth_icon" to Rect(0.058000f,0.118000f,0.934000f,0.848000f),
+    "duo_bluetooth_card" to Rect(0.015949f,0.031100f,0.984051f,0.961722f),
+    "bluetooth_icon" to Rect(0.201754f,0.059011f,0.801435f,0.946571f),
+    "bluetooth_card" to Rect(0.021563f,0.272642f,0.977763f,0.740566f),
+    "1v1_bluetooth_icon" to Rect(0.116000f,0.102000f,0.882000f,0.868000f),
+    "1v1_bluetooth_card" to Rect(0.019936f,0.034290f,0.980064f,0.948963f),
     "1v1_card" to Rect(0.019936f,0.030303f,0.980861f,0.945774f),
     "1v1_icon" to Rect(0.133333f,0.142105f,0.875439f,0.871930f),
     "coin_count" to Rect(0.023020f,0.131215f,0.976980f,0.853591f),
@@ -37,8 +48,8 @@ private val artworkBounds=mapOf(
     "start_game_icon" to Rect(0.047085f,0.056170f,0.983558f,0.978723f),
     "store_icon" to Rect(0.123636f,0.099650f,0.874909f,0.913462f)
 )
-@Composable fun GameArtwork(name:String,modifier:Modifier=Modifier,contentScale:ContentScale=ContentScale.Fit){
-    val state by rememberArtwork("assets/ui/$name.png")
+@Composable fun GameArtwork(name:String,modifier:Modifier=Modifier,contentScale:ContentScale=ContentScale.Fit,reference:String="assets/${if(name.endsWith("_icon"))"icons" else "ui"}/$name.png"){
+    val state by rememberArtwork(reference)
     (state as? ArtworkState.Ready)?.let{ready->
         val painter=remember(ready.bitmap,name){
             val b=artworkBounds[name]?:Rect(0f,0f,1f,1f)

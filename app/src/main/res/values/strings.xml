@@ -16,7 +16,7 @@
     <string name="duel">1v1</string>
     <string name="duo">Duo</string>
     <string name="squad">Squad</string>
-    <string name="solo">Solo Online</string>
+    <string name="solo">Solo</string>
     <string name="offline">Offline</string>
     <string name="dark_theme">Dark theme</string>
     <string name="continue_action">Continue</string>
@@ -302,7 +302,7 @@
     <string name="user_id">User ID</string>
     <string name="copy_id">Copy user ID</string>
     <string name="id_pending">User ID assigned after online registration</string>
-    <string name="bluetooth_play">Bluetooth with friends</string>
+    <string name="bluetooth_play">Bluetooth</string>
     <string name="bluetooth_description">Nearby, unranked quiz matches. 15 questions · 30 seconds each · 10 points per correct answer. Duo and Squad combine team scores. No internet or account required.</string>
     <string name="bluetooth_unavailable">Bluetooth unavailable</string>
     <string name="bluetooth_hardware">Use a phone with Bluetooth to play with nearby friends.</string>
@@ -325,4 +325,27 @@
     <string name="bluetooth_results">Final scores</string>
     <string name="bluetooth_leave">Leave Bluetooth room</string>
     <string name="nav_profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="achievements">Achievements &amp; missions</string>
+    <string name="bluetooth_card_description">Play with friends without internet</string>
+    <string name="mission_intro">Complete online missions. Claim free coins and flames once per mission.</string>
+    <string name="mission_play_1">Finish your first match</string>
+    <string name="mission_play_5">Finish 5 matches</string>
+    <string name="mission_play_20">Finish 20 matches</string>
+    <string name="mission_win_1">Win your first match</string>
+    <string name="mission_win_5">Win 5 matches</string>
+    <string name="mission_correct_25">Answer 25 questions correctly</string>
+    <string name="claim_reward">Claim reward</string>
+    <string name="reward_claimed">Claimed</string>
+    <string name="mission_locked">Keep playing</string>
+    <string name="mission_online">Connect your account to track missions and collect rewards.</string>
+    <string name="store_currency">Currency</string>
+    <string name="free_offer">Free</string>
+    <string name="use_cosmetic">Use</string>
+    <string name="cosmetic_saved">Appearance saved</string>
+    <string name="keep_screen_awake">Keep screen awake during games</string>
+    <string name="puzzle_guide">Show faint puzzle guide</string>
+    <string name="learning_tip">Spelling mistakes are OK. Answer in English, French or Arabic.</string>
+    <string name="bluetooth_settings">Bluetooth settings</string>
+    <string name="app_version_label">App version</string>
 </resources>

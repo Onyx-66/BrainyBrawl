@@ -39,14 +39,14 @@ class ProfileCustomizationTest{
     }
     @Test fun accountActionsAreGroupedAndDestructiveActionCanBeCancelled(){
         rule.onNodeWithText("Account").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText("Account").performScrollTo().performClick()
         rule.onNodeWithContentDescription("Edit email").performScrollTo().performClick()
         rule.onNodeWithText("Save").assertIsNotEnabled()
         rule.onNodeWithText("Close").performClick()
         rule.onNodeWithText("Connect another platform").performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Google").performScrollTo().assertIsNotEnabled()
         rule.onNodeWithText("Discord").assertIsNotEnabled()
-        rule.onNodeWithText("Delete account").performScrollTo().performClick()
-        rule.onNodeWithText("Cancel").performClick()
+        rule.onNodeWithText("Delete account").assertDoesNotExist()
         Assert.assertNotNull(container.localAccounts.state.value.current)
         rule.onNodeWithText("Sign out").performScrollTo().assertIsDisplayed();capture("account")
         rule.onNodeWithText("Change password").performScrollTo().performClick()
@@ -58,7 +58,7 @@ class ProfileCustomizationTest{
         val size=rule.onNodeWithTag("player-avatar").fetchSemanticsNode().boundsInRoot
         Assert.assertEquals(size.width,size.height,1f)
         capture("arabic")
-        rule.onNodeWithText("الحساب").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText("الحساب").performScrollTo().performClick()
         rule.onNodeWithContentDescription("تعديل البريد الإلكتروني").performScrollTo().assertIsDisplayed()
     }
     @Test fun permanentIdIsVisibleAndCopyableInArabic(){

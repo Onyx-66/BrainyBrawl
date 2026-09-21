@@ -39,12 +39,14 @@ import com.brainybrawl.app.game.content.ContentRepository
     LaunchedEffect(Unit){refresh()}
     val view=LocalView.current
     DisposableEffect(session){onDispose{session.leave()}}
-    DisposableEffect(view,state?.phase){val old=view.keepScreenOn;view.keepScreenOn=state?.phase in setOf("question","reveal");onDispose{view.keepScreenOn=old}}
     BackHandler{session.leave();onExit()}
     Text(stringResource(R.string.bluetooth_play),Modifier.fillMaxWidth(),style=MaterialTheme.typography.headlineMedium)
     Text(stringResource(R.string.bluetooth_description),style=MaterialTheme.typography.bodyMedium)
     if(session.transport.adapter==null){FeedbackPanel(stringResource(R.string.bluetooth_unavailable),stringResource(R.string.bluetooth_hardware));BrawlButton(stringResource(R.string.back_to_modes),onExit);return}
-    if(accessError)Text(stringResource(R.string.bluetooth_permission),color=MaterialTheme.colorScheme.error)
+    if(accessError){
+        Text(stringResource(R.string.bluetooth_permission),color=MaterialTheme.colorScheme.error)
+        TextButton({external.launch(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+context.packageName)))}){Text(stringResource(R.string.settings))}
+    }
     if(!available){
         BrawlButton(stringResource(R.string.bluetooth_enable),{
             if(required.any{ContextCompat.checkSelfPermission(context,it)!=PackageManager.PERMISSION_GRANTED})permission.launch(required)
@@ -53,9 +55,7 @@ import com.brainybrawl.app.game.content.ContentRepository
     }
     if(status in setOf("failed","disconnected","content_failed"))Text(stringResource(if(status=="content_failed")R.string.content_unavailable_detail else R.string.bluetooth_connection_failed),color=MaterialTheme.colorScheme.error)
     if(state==null&&status!="connecting"){
-        NearbyMode.entries.chunked(2).forEach{row->Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
-            row.forEach{item->FilterChip(mode==item,{mode=item},label={Text(stringResource(modeLabel(item)))},modifier=Modifier.weight(1f))}
-        }}
+        Text(stringResource(modeLabel(mode)),style=MaterialTheme.typography.titleLarge)
         BrawlButton(stringResource(R.string.bluetooth_host),{try{session.host(mode);external.launch(Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE).putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300))}catch(_:Exception){session.leave();accessError=true}},Modifier.fillMaxWidth(),enabled=available)
         Text(stringResource(R.string.bluetooth_pair_help),style=MaterialTheme.typography.bodySmall)
         BrawlButton(stringResource(R.string.bluetooth_pair),{try{external.launch(Intent(Settings.ACTION_BLUETOOTH_SETTINGS))}catch(_:Exception){accessError=true}},Modifier.fillMaxWidth())

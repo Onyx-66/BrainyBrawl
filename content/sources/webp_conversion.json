@@ -1,0 +1,554 @@
+[
+  {
+    "source": "assets/puzzles/originals/puzzle_01.png",
+    "asset": "assets/puzzles/puzzle_01.webp",
+    "source_bytes": 2391823,
+    "webp_bytes": 292898,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_02.png",
+    "asset": "assets/puzzles/puzzle_02.webp",
+    "source_bytes": 2952325,
+    "webp_bytes": 469258,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_03.png",
+    "asset": "assets/puzzles/puzzle_03.webp",
+    "source_bytes": 3012768,
+    "webp_bytes": 498060,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_04.png",
+    "asset": "assets/puzzles/puzzle_04.webp",
+    "source_bytes": 2601697,
+    "webp_bytes": 371900,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_05.png",
+    "asset": "assets/puzzles/puzzle_05.webp",
+    "source_bytes": 2802477,
+    "webp_bytes": 424778,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_06.png",
+    "asset": "assets/puzzles/puzzle_06.webp",
+    "source_bytes": 2427544,
+    "webp_bytes": 360636,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_07.png",
+    "asset": "assets/puzzles/puzzle_07.webp",
+    "source_bytes": 2598798,
+    "webp_bytes": 359936,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_08.png",
+    "asset": "assets/puzzles/puzzle_08.webp",
+    "source_bytes": 2641390,
+    "webp_bytes": 359412,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_09.png",
+    "asset": "assets/puzzles/puzzle_09.webp",
+    "source_bytes": 2826322,
+    "webp_bytes": 430894,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_10.png",
+    "asset": "assets/puzzles/puzzle_10.webp",
+    "source_bytes": 2591157,
+    "webp_bytes": 352040,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_11.png",
+    "asset": "assets/puzzles/puzzle_11.webp",
+    "source_bytes": 2017538,
+    "webp_bytes": 186072,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_12.png",
+    "asset": "assets/puzzles/puzzle_12.webp",
+    "source_bytes": 2837964,
+    "webp_bytes": 428192,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_13.png",
+    "asset": "assets/puzzles/puzzle_13.webp",
+    "source_bytes": 2867621,
+    "webp_bytes": 429076,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_14.png",
+    "asset": "assets/puzzles/puzzle_14.webp",
+    "source_bytes": 2739265,
+    "webp_bytes": 408458,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_15.png",
+    "asset": "assets/puzzles/puzzle_15.webp",
+    "source_bytes": 2676744,
+    "webp_bytes": 396700,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_16.png",
+    "asset": "assets/puzzles/puzzle_16.webp",
+    "source_bytes": 3013859,
+    "webp_bytes": 481228,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_17.png",
+    "asset": "assets/puzzles/puzzle_17.webp",
+    "source_bytes": 2255275,
+    "webp_bytes": 284464,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_18.png",
+    "asset": "assets/puzzles/puzzle_18.webp",
+    "source_bytes": 2669844,
+    "webp_bytes": 394572,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_19.png",
+    "asset": "assets/puzzles/puzzle_19.webp",
+    "source_bytes": 2986416,
+    "webp_bytes": 460554,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_20.png",
+    "asset": "assets/puzzles/puzzle_20.webp",
+    "source_bytes": 2760134,
+    "webp_bytes": 402948,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_21.png",
+    "asset": "assets/puzzles/puzzle_21.webp",
+    "source_bytes": 3075882,
+    "webp_bytes": 482782,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_22.png",
+    "asset": "assets/puzzles/puzzle_22.webp",
+    "source_bytes": 1045904,
+    "webp_bytes": 98992,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_23.png",
+    "asset": "assets/puzzles/puzzle_23.webp",
+    "source_bytes": 1030985,
+    "webp_bytes": 95366,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_24.png",
+    "asset": "assets/puzzles/puzzle_24.webp",
+    "source_bytes": 856659,
+    "webp_bytes": 80794,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_25.png",
+    "asset": "assets/puzzles/puzzle_25.webp",
+    "source_bytes": 1335561,
+    "webp_bytes": 130556,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_26.png",
+    "asset": "assets/puzzles/puzzle_26.webp",
+    "source_bytes": 961639,
+    "webp_bytes": 99030,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_27.png",
+    "asset": "assets/puzzles/puzzle_27.webp",
+    "source_bytes": 976673,
+    "webp_bytes": 92394,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_28.png",
+    "asset": "assets/puzzles/puzzle_28.webp",
+    "source_bytes": 1465976,
+    "webp_bytes": 145472,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_29.png",
+    "asset": "assets/puzzles/puzzle_29.webp",
+    "source_bytes": 1025392,
+    "webp_bytes": 97856,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_30.png",
+    "asset": "assets/puzzles/puzzle_30.webp",
+    "source_bytes": 1414718,
+    "webp_bytes": 142652,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_31.png",
+    "asset": "assets/puzzles/puzzle_31.webp",
+    "source_bytes": 1574042,
+    "webp_bytes": 170284,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_32.png",
+    "asset": "assets/puzzles/puzzle_32.webp",
+    "source_bytes": 1181419,
+    "webp_bytes": 111894,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_33.png",
+    "asset": "assets/puzzles/puzzle_33.webp",
+    "source_bytes": 1451513,
+    "webp_bytes": 142800,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_34.png",
+    "asset": "assets/puzzles/puzzle_34.webp",
+    "source_bytes": 1248932,
+    "webp_bytes": 122174,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_35.png",
+    "asset": "assets/puzzles/puzzle_35.webp",
+    "source_bytes": 1299317,
+    "webp_bytes": 127278,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_36.png",
+    "asset": "assets/puzzles/puzzle_36.webp",
+    "source_bytes": 1553744,
+    "webp_bytes": 155682,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_37.png",
+    "asset": "assets/puzzles/puzzle_37.webp",
+    "source_bytes": 1148939,
+    "webp_bytes": 100268,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_38.png",
+    "asset": "assets/puzzles/puzzle_38.webp",
+    "source_bytes": 1509426,
+    "webp_bytes": 153162,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_39.png",
+    "asset": "assets/puzzles/puzzle_39.webp",
+    "source_bytes": 1427130,
+    "webp_bytes": 137148,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_40.png",
+    "asset": "assets/puzzles/puzzle_40.webp",
+    "source_bytes": 1663131,
+    "webp_bytes": 173656,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_41.png",
+    "asset": "assets/puzzles/puzzle_41.webp",
+    "source_bytes": 1317982,
+    "webp_bytes": 131442,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_42.png",
+    "asset": "assets/puzzles/puzzle_42.webp",
+    "source_bytes": 3305166,
+    "webp_bytes": 583790,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_43.png",
+    "asset": "assets/puzzles/puzzle_43.webp",
+    "source_bytes": 3599147,
+    "webp_bytes": 651792,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_44.png",
+    "asset": "assets/puzzles/puzzle_44.webp",
+    "source_bytes": 3354822,
+    "webp_bytes": 611226,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_45.png",
+    "asset": "assets/puzzles/puzzle_45.webp",
+    "source_bytes": 3236551,
+    "webp_bytes": 560614,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_46.png",
+    "asset": "assets/puzzles/puzzle_46.webp",
+    "source_bytes": 3210124,
+    "webp_bytes": 561358,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_47.png",
+    "asset": "assets/puzzles/puzzle_47.webp",
+    "source_bytes": 3118120,
+    "webp_bytes": 541954,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_48.png",
+    "asset": "assets/puzzles/puzzle_48.webp",
+    "source_bytes": 3447297,
+    "webp_bytes": 618706,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/puzzles/originals/puzzle_49.png",
+    "asset": "assets/puzzles/puzzle_49.webp",
+    "source_bytes": 3693077,
+    "webp_bytes": 691234,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/aisleglow_B42.png",
+    "asset": "assets/images/scenes/aisleglow_B42.webp",
+    "source_bytes": 2743697,
+    "webp_bytes": 446820,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/AquaPulse_5364.png",
+    "asset": "assets/images/scenes/AquaPulse_5364.webp",
+    "source_bytes": 2715956,
+    "webp_bytes": 483802,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/boardbliss_F24.png",
+    "asset": "assets/images/scenes/boardbliss_F24.webp",
+    "source_bytes": 2499137,
+    "webp_bytes": 339496,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/campcrest_I49.png",
+    "asset": "assets/images/scenes/campcrest_I49.webp",
+    "source_bytes": 2867899,
+    "webp_bytes": 469582,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/classspark_D31.png",
+    "asset": "assets/images/scenes/classspark_D31.webp",
+    "source_bytes": 2178164,
+    "webp_bytes": 281386,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/CourtBloom_3186.png",
+    "asset": "assets/images/scenes/CourtBloom_3186.webp",
+    "source_bytes": 2917941,
+    "webp_bytes": 467730,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/craftnest_J92.png",
+    "asset": "assets/images/scenes/craftnest_J92.webp",
+    "source_bytes": 2521613,
+    "webp_bytes": 344556,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/DiamondHit_9720.png",
+    "asset": "assets/images/scenes/DiamondHit_9720.webp",
+    "source_bytes": 3054268,
+    "webp_bytes": 482694,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/GoalQuest_1127.png",
+    "asset": "assets/images/scenes/GoalQuest_1127.webp",
+    "source_bytes": 2446310,
+    "webp_bytes": 348648,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/harbormarket_E76.png",
+    "asset": "assets/images/scenes/harbormarket_E76.webp",
+    "source_bytes": 3214491,
+    "webp_bytes": 573934,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/hearthmorn_A17.png",
+    "asset": "assets/images/scenes/hearthmorn_A17.webp",
+    "source_bytes": 2554069,
+    "webp_bytes": 347580,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/IceStrike_4275.png",
+    "asset": "assets/images/scenes/IceStrike_4275.webp",
+    "source_bytes": 2523512,
+    "webp_bytes": 403144,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/lakesidefun_C58.png",
+    "asset": "assets/images/scenes/lakesidefun_C58.webp",
+    "source_bytes": 3301029,
+    "webp_bytes": 572926,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/platformrise_H85.png",
+    "asset": "assets/images/scenes/platformrise_H85.webp",
+    "source_bytes": 2528300,
+    "webp_bytes": 390786,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/RingCraft_8631.png",
+    "asset": "assets/images/scenes/RingCraft_8631.webp",
+    "source_bytes": 2692099,
+    "webp_bytes": 363608,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/shoreplay_G63.png",
+    "asset": "assets/images/scenes/shoreplay_G63.webp",
+    "source_bytes": 2716450,
+    "webp_bytes": 420668,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/SkyHoops_2048.png",
+    "asset": "assets/images/scenes/SkyHoops_2048.webp",
+    "source_bytes": 2514836,
+    "webp_bytes": 369636,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/SnowRush_6453.png",
+    "asset": "assets/images/scenes/SnowRush_6453.webp",
+    "source_bytes": 3046095,
+    "webp_bytes": 491812,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/TrackForge_7542.png",
+    "asset": "assets/images/scenes/TrackForge_7542.webp",
+    "source_bytes": 2818525,
+    "webp_bytes": 447298,
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "source": "assets/images/originals/TurboFinish_1089.png",
+    "asset": "assets/images/scenes/TurboFinish_1089.webp",
+    "source_bytes": 2715219,
+    "webp_bytes": 403708,
+    "width": 1536,
+    "height": 1024
+  }
+]

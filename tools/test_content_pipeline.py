@@ -28,7 +28,7 @@ class ContentValidationTest(unittest.TestCase):
         display,answer=sanitized(item,'image_guess')
         self.assertTrue(all(set(o)=={'id','label'} for o in display['options']))
         self.assertIn('points',answer['choices'][0])
-    def test_all_files(self): self.assertEqual(self.run_validator(),3861)
+    def test_all_files(self): self.assertEqual(self.run_validator(),4818)
     def test_development_content_cannot_be_released(self):
         self.mutate('question_round',lambda r:r[0].set('status','DEV_SAMPLE'))
         with self.assertRaisesRegex(ValueError,'unapproved'): self.run_validator(True)
@@ -60,7 +60,7 @@ class ContentValidationTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'locale'): self.run_validator()
     def test_puzzle_piece_count(self):
         def change(r):
-            pieces=r[0].find('pieces');pieces.remove(pieces[0])
+            item=next(i for i in r if i.get('status')=='APPROVED');pieces=item.find('pieces');pieces.remove(pieces[0])
         self.mutate('collaborative_puzzle',change)
         with self.assertRaisesRegex(ValueError,'puzzle size'): self.run_validator()
     def test_entity_injection(self):
@@ -88,7 +88,8 @@ class ContentValidationTest(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):
             for path in self.directory.glob('*.xml'):
                 tree=ET.parse(path)
-                for item in tree.getroot():item.set('status','REVIEW')
+                for item in tree.getroot():
+                    if item.get('status')!='RETIRED':item.set('status','REVIEW')
                 tree.write(path,encoding='utf-8',xml_declaration=True)
         with self.assertRaisesRegex(ValueError,'No approved'): export_approved(output,self.directory)
         self.assertFalse(output.exists())

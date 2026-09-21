@@ -1,0 +1,237 @@
+{
+  "Q001": [
+    "Westphalia",
+    "Westfalia",
+    "Westphalie",
+    "ويستفاليا",
+    "وستفاليا"
+  ],
+  "Q002": [
+    "Mali",
+    "Empire of Mali",
+    "مالي"
+  ],
+  "Q004": [
+    "Constantine",
+    "Constantinople",
+    "Constantinope",
+    "Constantinopole",
+    "القسطنطينية",
+    "قسطنطينية"
+  ],
+  "Q005": [
+    "Ming",
+    "مينغ"
+  ],
+  "Q007": [
+    "Inca",
+    "Incas",
+    "الإنكا"
+  ],
+  "Q012": [
+    "Wars of the Roses",
+    "War of the Roses",
+    "حرب الوردتين"
+  ],
+  "Q015": [
+    "Cleopatra",
+    "كليوباترا"
+  ],
+  "Q017": [
+    "Ottoman",
+    "Ottomans",
+    "العثمانية"
+  ],
+  "Q022": [
+    "Franz Ferdinand assassination",
+    "Assassination of Franz Ferdinand",
+    "اغتيال فرانز فرديناند"
+  ],
+  "Q023": [
+    "Seljuk",
+    "Seljuks",
+    "السلاجقة"
+  ],
+  "Q033": [
+    "Tigris",
+    "دجلة"
+  ],
+  "Q041": [
+    "Ulan Bator",
+    "Oulan-Bator"
+  ],
+  "Q052": [
+    "Mitochondria",
+    "الميتوكوندريا"
+  ],
+  "Q055": [
+    "Boyle",
+    "بويل"
+  ],
+  "Q057": [
+    "O-",
+    "O negatif",
+    "O سلبي"
+  ],
+  "Q066": [
+    "300000",
+    "300,000",
+    "300000 km/s",
+    "300000 kilometers per second"
+  ],
+  "Q069": [
+    "Mohs",
+    "موس"
+  ],
+  "Q078": [
+    "720",
+    "seven hundred twenty",
+    "سبعمائة وعشرون"
+  ],
+  "Q081": [
+    "±3",
+    "+3 and -3",
+    "3,-3",
+    "3 et -3",
+    "3 و -3"
+  ],
+  "Q083": [
+    "16pi",
+    "16 pi",
+    "16π"
+  ],
+  "Q086": [
+    "one sixth",
+    "un sixième",
+    "سدس"
+  ],
+  "Q087": [
+    "eiyt",
+    "8"
+  ],
+  "Q088": [
+    "half",
+    "one half",
+    "0.5",
+    "un demi",
+    "نصف"
+  ],
+  "Q091": [
+    "x^2+C",
+    "x²+C"
+  ],
+  "Q100": [
+    "half",
+    "one half",
+    "0.5",
+    "un demi",
+    "نصف"
+  ],
+  "Q106": [
+    "Ronaldo",
+    "Ronaldo Nazario"
+  ],
+  "Q120": [
+    "Ronaldo",
+    "Ronaldo Nazario"
+  ],
+  "Q176": [
+    "CPU"
+  ],
+  "Q179": [
+    "SQL"
+  ],
+  "Q181": [
+    "log n",
+    "logarithmic",
+    "logarithmique",
+    "لوغاريتمي"
+  ],
+  "Q182": [
+    "IP",
+    "IP address"
+  ],
+  "Q185": [
+    "Network",
+    "réseau",
+    "الشبكة"
+  ],
+  "Q186": [
+    "Document database",
+    "Document oriented",
+    "NoSQL",
+    "قاعدة بيانات مستندية"
+  ],
+  "Q187": [
+    "RAM"
+  ],
+  "Q191": [
+    "API"
+  ],
+  "Q192": [
+    "Linux"
+  ],
+  "Q195": [
+    "GPU"
+  ],
+  "Q197": [
+    "recursion",
+    "recursive",
+    "récursion",
+    "استدعاء ذاتي"
+  ],
+  "Q199": [
+    "URL"
+  ],
+  "Q206": [
+    "barred spiral",
+    "spirale barrée",
+    "حلزونية ضلعية"
+  ],
+  "Q207": [
+    "Sagittarius A",
+    "القوس A"
+  ],
+  "Q211": [
+    "distance",
+    "مسافة"
+  ],
+  "Q221": [
+    "Kepler second law",
+    "law of equal areas",
+    "قانون المساحات المتساوية"
+  ],
+  "Q222": [
+    "13.8 billion",
+    "13.8 milliards",
+    "13.8 مليار"
+  ],
+  "Q223": [
+    "James Webb",
+    "JWST"
+  ],
+  "Q227": [
+    "UNDP"
+  ],
+  "Q232": [
+    "WHO",
+    "OMS"
+  ],
+  "Q233": [
+    "Mandarin",
+    "المندرينية"
+  ],
+  "Q235": [
+    "GDP",
+    "PIB"
+  ],
+  "Q236": [
+    "ECB",
+    "BCE"
+  ],
+  "Q238": [
+    "New York",
+    "NYC",
+    "نيويورك"
+  ]
+}

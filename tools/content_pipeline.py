@@ -155,6 +155,7 @@ def validate(directory=None,production=False):
             ids.add(key);count+=1
             require(item.get('locale') in ('en','fr','ar','global'),f'{key}: locale')
             require(item.get('status') in STATUSES,f'{key}: approval status')
+            if item.get('status')=='RETIRED': continue
             if production: require(item.get('status')=='APPROVED',f'{key}: unapproved release content')
             fields={f.get('name'):f.text or '' for f in item.findall('field')}
             require(len(fields)==len(item.findall('field')),f'{key}: duplicate field')
@@ -170,7 +171,10 @@ def validate(directory=None,production=False):
             elif kind=='image_guess':
                 has('theme','specification','prompt','explanation','asset_ref','difficulty')
                 options=item.findall('choices/choice')
-                require(len(options)==10 and int(fields['selection_count'])==4 and int(fields['time_limit_seconds'])==30,f'{key}: image contract')
+                pool=item.find('choices').get('pool')=='true'
+                correct=sum(o.get('correct')=='true' for o in options)
+                require((correct>=4 and len(options)-correct>=6) if pool else (len(options)==10 and correct==4),f'{key}: exactly four correct choices or a valid answer pool required')
+                require(int(fields['selection_count'])==4 and int(fields['time_limit_seconds'])==30,f'{key}: image contract')
                 require(all(0<=int(o.get('points','-1'))<=250 for o in options),f'{key}: points')
                 if production: require(fields['scoring_policy'] in ('all_selected','correct_only'),f'{key}: scoring approval')
             elif kind=='collaborative_puzzle':
@@ -189,8 +193,9 @@ def validate(directory=None,production=False):
                     if fields.get('layout_type')=='grid_12x8':
                         expected=[(c/12,r/8),((c+1)/12,r/8),((c+1)/12,(r+1)/8),(c/12,(r+1)/8)]
                         require(len(points)==4 and all(abs(x-a)<1e-8 and abs(y-b)<1e-8 for (x,y),(a,b) in zip(points,expected)),f'{pid}: exact grid geometry')
-                        tile=(ROOT/piece.get('asset_ref','')).resolve()
-                        require(tile.is_relative_to(ROOT/'assets') and tile.is_file() and tile.suffix=='.png',f'{pid}: missing/unsafe tile asset')
+                        if piece.get('asset_ref'):
+                            tile=(ROOT/piece.get('asset_ref')).resolve()
+                            require(tile.is_relative_to(ROOT/'assets') and tile.is_file() and tile.suffix in ('.png','.webp'),f'{pid}: missing/unsafe tile asset')
 
                 require(fields['time_limit_seconds']==('180' if fields.get('layout_type')=='grid_12x8' else '120'),f'{key}: puzzle timer')
             elif kind=='precision_tap':
@@ -234,6 +239,7 @@ def sanitized(item,kind):
         secret={'correct_option_id':next(o.get('id') for o in item.findall('options/option') if o.get('correct')=='true'),'explanation':fields['explanation'],'accepted_answers':[a.text for a in item.findall('acceptedAnswers/answer')] or [next(o.text for o in item.findall('options/option') if o.get('correct')=='true')]}
     elif kind=='image_guess':
         public['prompt']=fields['prompt'];public['selection_count']=4
+        public['answer_pool']=item.find('choices').get('pool')=='true'
         public['options']=[{'id':o.get('id'),'label':o.text} for o in item.findall('choices/choice')]
         secret={'scoring_policy':fields['scoring_policy'],'explanation':fields['explanation'],
                 'choices':[{'id':o.get('id'),'correct':o.get('correct')=='true','points':int(o.get('points'))} for o in item.findall('choices/choice')]}

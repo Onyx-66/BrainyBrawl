@@ -29,7 +29,7 @@ import com.brainybrawl.app.core.localization.namedString
 import kotlinx.coroutines.*
 
 @Composable fun PlayerCard(appearance:AppearanceRepository,id:String,username:String,level:Long,number:Long?=null,
-    currencies:List<Balance> = emptyList(),friends:Int=0,openFriends:()->Unit){
+    currencies:List<Balance> = emptyList(),friends:Int=0,openFriends:()->Unit,onEdit:()->Unit={},openAchievements:()->Unit={}){
     val shape=RoundedCornerShape(28.dp)
     var picker by remember{mutableStateOf<String?>(null)}
     var notice by remember{mutableStateOf<Int?>(null)}
@@ -40,7 +40,10 @@ import kotlinx.coroutines.*
         Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(16.dp)){
             ProfileAvatar(appearance,id,username,Modifier.size(92.dp).testTag("player-avatar"))
             Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(5.dp)){
-                Text(username,style=MaterialTheme.typography.headlineSmall,color=Color.White)
+                Row(verticalAlignment=Alignment.CenterVertically){
+                    Text(username,Modifier.weight(1f),style=MaterialTheme.typography.titleLarge,color=Color.White)
+                    TextButton(onEdit,contentPadding=PaddingValues(4.dp)){Text(stringResource(R.string.edit),color=Cyan)}
+                }
                 PlayerIdRow(number)
             }
         }
@@ -67,6 +70,9 @@ import kotlinx.coroutines.*
         }
         FilledTonalButton(openFriends,Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=Color(0xFF163E62),contentColor=Color.White)){
             NavigationSymbol(NavSymbol.FRIENDS);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.friends),Modifier.weight(1f));Text(friends.toString(),color=Cyan)
+        }
+        FilledTonalButton(openAchievements,Modifier.fillMaxWidth(),shape=RoundedCornerShape(14.dp),colors=ButtonDefaults.filledTonalButtonColors(containerColor=Color(0xFF514125),contentColor=Color(0xFFFFDC7B))){
+            NavigationSymbol(NavSymbol.TROPHY);Spacer(Modifier.width(10.dp));Text(stringResource(R.string.achievements),Modifier.weight(1f))
         }
         notice?.let{Text(stringResource(it),color=Color.White,style=MaterialTheme.typography.bodySmall,modifier=Modifier.testTag("appearance-notice"))}
     }

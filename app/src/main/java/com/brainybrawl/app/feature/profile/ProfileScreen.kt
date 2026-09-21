@@ -28,7 +28,7 @@ fun CurrencyBar(snapshot: ProfileSnapshot) {
     }
 }
 @Composable
-fun ProfileScreen(model: PlayerViewModel, container:com.brainybrawl.app.core.AppContainer,authModel:com.brainybrawl.app.feature.auth.AuthViewModel,friends:()->Unit,password: () -> Unit, logout: () -> Unit) {
+fun ProfileScreen(model: PlayerViewModel, container:com.brainybrawl.app.core.AppContainer,authModel:com.brainybrawl.app.feature.auth.AuthViewModel,achievements:()->Unit,friends:()->Unit,password: () -> Unit, logout: () -> Unit) {
     val state by model.profile.collectAsStateWithLifecycle()
     val ui by model.social.collectAsStateWithLifecycle()
     val identity by container.auth.state.collectAsStateWithLifecycle()
@@ -40,23 +40,10 @@ fun ProfileScreen(model: PlayerViewModel, container:com.brainybrawl.app.core.App
         is PlayerDataState.Ready -> {
             val profile=current.data.profile
             var username by rememberSaveable(profile.username) { mutableStateOf(profile.username) }
-            PlayerCard(container.appearance,profile.id,profile.username,current.data.level,profile.number,current.data.currencies,ui.snapshot.friends.count{it.status=="accepted"},friends)
+            var editing by remember{mutableStateOf(false)}
+            PlayerCard(container.appearance,profile.id,profile.username,current.data.level,profile.number,current.data.currencies,ui.snapshot.friends.count{it.status=="accepted"},friends,{editing=true},achievements)
             (identity as? com.brainybrawl.app.feature.auth.AuthState.SignedIn)?.let{AccountDetailsCard(container,it,authModel,current.data.email,current.data.providers,password,logout)}
-            current.data.modeStats.forEach{stats->BrawlPanel(Modifier.fillMaxWidth()){
-                Text(stringResource(when(stats.mode){"duo"->R.string.duo;"squad"->R.string.squad;"solo"->R.string.solo;else->R.string.duel}),style=MaterialTheme.typography.titleMedium)
-                Text(namedString(R.string.games_played,"count" to stats.played))
-                Text(namedString(R.string.games_won,"count" to stats.wins))
-                Text(namedString(R.string.mode_best,"score" to stats.best))
-            }}
-            ProfileStatPair(stringResource(R.string.played_label) to current.data.played.toString(),stringResource(R.string.wins_label) to current.data.wins.toString())
-            var editing by rememberSaveable{mutableStateOf(false)}
-            BrawlPanel(Modifier.fillMaxWidth()){
-                TextButton({editing=!editing}){Text(stringResource(R.string.edit_profile))}
-                if(editing){
-                    OutlinedTextField(username,{username=it},Modifier.fillMaxWidth(),label={Text(stringResource(R.string.username))},singleLine=true)
-                    BrawlButton(stringResource(R.string.save),{model.rename(username);editing=false},Modifier.fillMaxWidth(),enabled=!ui.busy&&AuthValidation.username(username))
-                }
-            }
+            if(editing) UsernameDialog(username,{editing=false}){model.rename(it);editing=false}
             current.data.inventory.filter{it.kind=="boost"}.takeIf{it.isNotEmpty()}?.let{items->
                 Text(stringResource(R.string.inventory),style=MaterialTheme.typography.titleLarge)
                 items.forEach{Text(com.brainybrawl.app.core.localization.catalogLabel(it.labels,androidx.compose.ui.platform.LocalConfiguration.current.locales[0].language)?:stringResource(R.string.content_unavailable))}

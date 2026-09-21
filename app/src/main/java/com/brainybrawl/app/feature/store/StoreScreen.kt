@@ -1,5 +1,4 @@
 package com.brainybrawl.app.feature.store
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -7,51 +6,66 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.brainybrawl.app.R
 import com.brainybrawl.app.core.design.*
 import com.brainybrawl.app.core.localization.namedString
 import com.brainybrawl.app.core.localization.catalogLabel
-import androidx.compose.ui.platform.LocalConfiguration
+import com.brainybrawl.app.feature.profile.*
+import kotlinx.coroutines.*
+import androidx.compose.ui.graphics.asImageBitmap
 
-@Composable
-fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit,initialCurrency:OfferCurrency=OfferCurrency.GEMS,sectionRequest:Int=0) {
-    val ui by model.ui.collectAsStateWithLifecycle()
-    val locale=LocalConfiguration.current.locales[0].language
-    var vault by rememberSaveable { mutableStateOf(false) }
-    var confirmation by remember { mutableStateOf<StoreItem?>(null) }
-    Text(stringResource(R.string.store),style=MaterialTheme.typography.headlineMedium)
-    CurrencyOffers(initialCurrency,sectionRequest)
-    if(!signedIn)return
-    Text(stringResource(R.string.store_cosmetics),style=MaterialTheme.typography.titleLarge)
-    Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-        FilterChip(!vault,{vault=false},label={Text(stringResource(R.string.catalog))})
-        FilterChip(vault,{vault=true},label={Text(stringResource(R.string.flame_vault))})
+@Composable fun StoreScreen(model:StoreViewModel,signedIn:Boolean,onPurchased:()->Unit,initialCurrency:OfferCurrency=OfferCurrency.GEMS,sectionRequest:Int=0,appearance:AppearanceRepository?=null,userId:String?=null){
+ val ui by model.ui.collectAsStateWithLifecycle();val locale=LocalConfiguration.current.locales[0].language
+ var cosmetics by rememberSaveable{mutableStateOf(false)};var kind by rememberSaveable{mutableStateOf("avatars")}
+ var confirmation by remember{mutableStateOf<StoreItem?>(null)}
+ LaunchedEffect(sectionRequest){if(sectionRequest>0)cosmetics=false}
+ Text(stringResource(R.string.store_stock_up),style=MaterialTheme.typography.headlineMedium)
+ BrawlPanel(Modifier.fillMaxWidth()){
+  Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)){
+   FilterChip(!cosmetics,{cosmetics=false},label={Text(stringResource(R.string.store_currency))},modifier=Modifier.weight(1f))
+   FilterChip(cosmetics,{cosmetics=true},label={Text(stringResource(R.string.store_cosmetics))},modifier=Modifier.weight(1f))
+  }
+  if(!cosmetics)CurrencyOffers(initialCurrency,sectionRequest)
+  else {
+   Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){
+    FilterChip(kind=="avatars",{kind="avatars"},label={Text(stringResource(R.string.avatars))},modifier=Modifier.weight(1f))
+    FilterChip(kind=="frames",{kind="frames"},label={Text(stringResource(R.string.frames))},modifier=Modifier.weight(1f))
+   }
+   CosmeticOffers(kind,appearance,userId)
+   if(signedIn){
+    if(ui.busy)LinearProgressIndicator(Modifier.fillMaxWidth())
+    if(ui.failed)FeedbackPanel(stringResource(R.string.request_failed),stringResource(R.string.purchase_retry),stringResource(R.string.retry),model::refresh)
+    ui.snapshot?.items.orEmpty().filter{it.kind==kind.removeSuffix("s")}.forEach{item->
+     HorizontalDivider()
+     Text(catalogLabel(item.labels,locale)?:stringResource(R.string.content_unavailable),style=MaterialTheme.typography.titleMedium)
+     Text(namedString(R.string.item_price,"amount" to item.price,"currency" to stringResource(when(item.currency){"gold"->R.string.gold;"gems"->R.string.gems;else->R.string.flames})))
+     BrawlButton(stringResource(if(item.owned)R.string.owned else R.string.purchase),{confirmation=item},Modifier.fillMaxWidth(),enabled=!item.owned&&!ui.busy)
     }
-    if(ui.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
-    if(ui.failed) FeedbackPanel(stringResource(R.string.request_failed),stringResource(R.string.purchase_retry),stringResource(R.string.retry),model::refresh)
-    val items=ui.snapshot?.items?.filter { it.vault==vault }
-    if(items!=null && items.isEmpty()) {
-        androidx.compose.foundation.Image(androidx.compose.ui.res.painterResource(R.drawable.bb_state_empty_store),null,Modifier.fillMaxWidth().height(132.dp))
-        Text(stringResource(R.string.empty_store))
-    }
-    items.orEmpty().forEach { item ->
-        val label=catalogLabel(item.labels,locale)
-        BrawlPanel(Modifier.fillMaxWidth()) {
-            Text(label?:stringResource(R.string.content_unavailable),style=MaterialTheme.typography.titleLarge)
-            Text(stringResource(when(item.kind){"avatar"->R.string.avatar;"frame"->R.string.frame;"banner"->R.string.banner;else->R.string.boost}),style=MaterialTheme.typography.titleLarge)
-            Text(namedString(R.string.item_price,"amount" to item.price,"currency" to stringResource(when(item.currency){"gold"->R.string.gold;"gems"->R.string.gems;else->R.string.flames})))
-            BrawlButton(stringResource(if(item.owned) R.string.owned else R.string.purchase),{confirmation=item},Modifier.fillMaxWidth(),enabled=label!=null&&!item.owned&&!ui.busy,tone=if(item.vault)ActionTone.REWARD else ActionTone.PRIMARY)
-        }
-    }
-
-    confirmation?.let { item ->
-        AlertDialog(onDismissRequest={confirmation=null},title={Text(catalogLabel(item.labels,locale)?:stringResource(R.string.confirm_purchase))},
-            text={Text(namedString(R.string.item_price,"amount" to item.price,"currency" to stringResource(when(item.currency){"gold"->R.string.gold;"gems"->R.string.gems;else->R.string.flames})))},
-            confirmButton={TextButton(onClick={model.purchase(item.id);confirmation=null}){Text(stringResource(R.string.purchase))}},
-            dismissButton={TextButton(onClick={confirmation=null}){Text(stringResource(R.string.cancel))}})
-    }
-    LaunchedEffect(ui.snapshot){if(ui.snapshot!=null)onPurchased()}
+   }
+  }
+ }
+ confirmation?.let{item->AlertDialog(onDismissRequest={confirmation=null},title={Text(catalogLabel(item.labels,locale)?:stringResource(R.string.confirm_purchase))},text={Text(namedString(R.string.item_price,"amount" to item.price,"currency" to item.currency))},confirmButton={TextButton({model.purchase(item.id);confirmation=null}){Text(stringResource(R.string.purchase))}},dismissButton={TextButton({confirmation=null}){Text(stringResource(R.string.cancel))}})}
+ LaunchedEffect(ui.snapshot){if(ui.snapshot!=null)onPurchased()}
+}
+@Composable private fun CosmeticOffers(kind:String,appearance:AppearanceRepository?,userId:String?){
+ val context=LocalContext.current;val locale=LocalConfiguration.current.locales[0].language
+ val offers=remember(kind){OfferCatalog.load(context,"cosmetics",kind)};val scope=rememberCoroutineScope()
+ var busy by remember{mutableStateOf(false)};var saved by remember{mutableStateOf(false)};var failed by remember{mutableStateOf(false)}
+ if(saved)Text(stringResource(R.string.cosmetic_saved),color=MaterialTheme.colorScheme.secondary)
+ if(failed)Text(stringResource(R.string.request_failed),color=MaterialTheme.colorScheme.error)
+ offers.chunked(2).forEach{row->Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min),horizontalArrangement=Arrangement.spacedBy(10.dp)){
+  row.forEach{offer->Column(Modifier.weight(1f).fillMaxHeight(),horizontalAlignment=androidx.compose.ui.Alignment.CenterHorizontally){
+   val state by rememberArtwork(offer.asset)
+   (state as? ArtworkState.Ready)?.let{androidx.compose.foundation.Image(androidx.compose.ui.graphics.painter.BitmapPainter(it.bitmap.asImageBitmap()),null,Modifier.size(88.dp))}
+   Text(offer.name[locale]?:offer.name.getValue("en"),style=MaterialTheme.typography.labelLarge)
+   offer.description[locale]?.takeIf{it.isNotBlank()}?.let{Text(it,style=MaterialTheme.typography.bodySmall)}
+   Text(if(offer.price==0.0)stringResource(R.string.free_offer)else "${offer.price} ${offer.currency}",style=MaterialTheme.typography.labelMedium)
+   TextButton({scope.launch{busy=true;failed=false;try{val old=appearance!!.read(userId!!);appearance.select(userId,if(kind=="avatars")old.copy(avatar=offer.index)else old.copy(frame=offer.index));saved=true}catch(e:CancellationException){throw e}catch(_:Exception){failed=true}finally{busy=false}}},enabled=!busy&&offer.enabled&&offer.price==0.0&&appearance!=null&&userId!=null){Text(stringResource(R.string.use_cosmetic))}
+  }}
+ }}
 }
 
 @Composable

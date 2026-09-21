@@ -18,7 +18,7 @@ class OfflinePuzzleViewModel(private val content:ContentRepository,private val s
         val owner="puzzles:"+stats.currentOwner();val session=UUID.randomUUID().toString()
         task=viewModelScope.launch{
             try{
-                val puzzle=content.load(ContentKind.PUZZLE,locale).filterIsInstance<PuzzleContent>().filter{it.pieces.all{p->p.assetRef!=null}}.random()
+                val puzzle=content.load(ContentKind.PUZZLE,locale).filterIsInstance<PuzzleContent>().random()
                 val time=SystemClock.elapsedRealtime();mutable.value=OfflinePuzzleUi(game=OfflinePuzzle(puzzle,time),now=time)
                 while(isActive){
                     visible.first{it};val now=SystemClock.elapsedRealtime();mutable.update{it.copy(now=now,game=it.game?.tick(now))}

@@ -1,87 +1,72 @@
 # Content authoring guide
 
-Work in `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`. Edit the root `content/` and `assets/` folders, never generated files under `app/build/`. Save XML as UTF-8.
+Work in `C:/Users/kossa/AndroidStudioProjects/BrainyBrawl`. Edit `assets/`, `content/` and `content/sources/`; never edit generated `app/build/` files. Save text as UTF-8. English, French and Arabic are supported.
 
-## Common rules
-
-1. Assign permanent unique IDs, such as `IMG_EN_ANIMALS_0101`, `Q_EN_SCIENCE_0101` or `PUZ_LAKE_V2_EN`. Use letters, digits, dots, underscores and hyphens, with no spaces. Change child option IDs too.
-2. Create separate `en`, `fr` and `ar` records. The app uses the selected language without silently substituting English. Translations of one question should share a `concept_id`.
-3. Start with `status="DRAFT"`; change to `APPROVED` after reviewing facts, translations and image rights. Drafts are not playable. `DEV_SAMPLE` is debug-only.
-4. Increment the file's root `contentVersion` when changing the bank; keep `schemaVersion="1"`. Create new versioned IDs when replacing published content instead of overwriting old IDs.
-5. Asset references use forward slashes and exact case, for example `assets/images/red_fox.png`. PNG, JPG, JPEG, WebP and SVG files are packaged automatically.
-
-## Guess the image
-
-1. Put the original picture in `assets/images/`, for example `assets/images/red_fox.png`.
-2. Open `content/image_guess.xml`. Copy a complete existing `<item> ... </item>` block, including `<choices>`, before the final `</content>`.
-3. Set a new item ID, locale and status. Change all ten choice IDs to use the new prefix.
-4. Edit these fields:
-
-| Field | Purpose / example |
-|---|---|
-| `theme` | Broad topic: `Animals` |
-| `specification` | More specific topic: `Forest mammals` |
-| `prompt` | `Which animal is shown?` |
-| `asset_key` | A stable descriptive key, such as `red_fox_0101` |
-| `asset_ref` | The packaged filename: `assets/images/red_fox.png` |
-| `difficulty` | Your editorial difficulty label, such as `standard` |
-| `explanation` | Why the correct answer is correct |
-| `source_url`, `license`, `attribution` | Actual source and permission to use the picture |
-
-5. Supply exactly **10 choices**. Set each choice's label, unique ID, `correct="true"` or `correct="false"`, and `points` from 0 to 250. Update the legacy `option_N`, `correct_N` (1/0) and `points_N` fields to match. The runtime answer definitions come from the `<choices>` nodes.
-6. Keep `selection_count` at **4**, `time_limit_seconds` at **30** and `scoring_policy` at **correct_only**. Players select four candidates; correct selections earn their assigned points and wrong selections earn zero. Four selections do not require exactly four correct choices. Use zero points on wrong choices for clarity.
-7. Add French and Arabic records with unique IDs, translating the topic, subtopic, prompt, choices and explanation. They may share the same image.
-8. Mark reviewed records `APPROVED`, validate and rebuild. Test in **Games → Offline → Guess the image**. Content is sampled, so your new picture may not appear first.
-
-Example of one choice, within a complete ten-choice item:
-
-```xml
-<choice id="IMG_EN_ANIMALS_0101_O1" correct="true" points="10">Red fox</choice>
-```
-
-## Questions
-
-1. Open `content/question_round.xml` and copy a complete item, including `<options>` and `<acceptedAnswers>`.
-2. Give the item and all five options new IDs.
-3. Set `theme` to the topic, `difficulty` to your difficulty label, `question` to the prompt, and `explanation` to the explanation. Update `source_note` with the fact source.
-4. Write exactly **five options**, with exactly **one** `correct="true"`. Update the corresponding `option_1` through `option_5` fields. `correct_option_index` is zero-based: 0 means the first option; 2 means the third.
-5. Keep `time_limit_seconds` at **20** and `base_points` at **1** for the existing question game. Bluetooth has separate 30-second / 10-point friendly rules.
-6. Under `<acceptedAnswers>`, add the correct answer and accepted spelling variants for stages that accept typed input. Do not add incorrect alternatives.
-7. Create `fr` and `ar` translations with unique IDs and a shared `concept_id`. Approve reviewed items and increment `contentVersion`.
-8. Validate, rebuild and test in **Games → Offline → Questions**. Gradle generates the language shards and `questions-index.tsv` automatically; do not edit those generated files.
-
-## Puzzles
-
-1. Put your original in `assets/puzzles/`, for example `assets/puzzles/mountain_lake.png`. Use a simple filename without spaces.
-2. Use a landscape **3:2** image divisible into **12 columns × 8 rows** of equal square pieces. **1536 × 1024** and **1200 × 800** are valid examples. The cutter preserves pixels and rejects incompatible sizes rather than resizing or cropping them.
-3. Install the authoring dependency once:
+## One-time setup
 
 ```powershell
-python -m pip install -r tools/asset-requirements.txt
+python -m pip install --target .local/python -r tools/asset-requirements.txt
 ```
 
-4. Cut the original:
+Pillow makes WebP copies and num2words adds written-number answer aliases. Original PNGs stay in the `originals` folders and are excluded from the APK. Keep permanent content IDs: when replacing a published question or image, assign a new ID and retire the previous record so match history remains readable.
 
-```powershell
-python tools/puzzle_image_cutter.py assets/puzzles/mountain_lake.png
-```
+## Add an image guessing round
 
-This creates `assets/puzzles/mountain_lake_parts/` containing `mountain_lake_Part_1.png` through `mountain_lake_Part_96.png`, numbered left to right, then top to bottom. Existing exports are not overwritten.
+1. Put the PNG in `assets/images/originals/`, for example `C01_Kitchen.png`. Use a simple filename with no spaces.
+2. Open `assets/images/correct_answers.txt`. Copy an existing row and fill its four columns: unique image ID, filename without extension, original filename, and **every possible correct answer** separated by commas. For example:
 
-5. Register the puzzle using the new helper, after reviewing art, topics and translations:
+   ```text
+   C01 | C01_Kitchen | C01_Kitchen.png | man, cat, table, bread
+   ```
 
-```powershell
-python tools/add_puzzle_content.py assets/puzzles/mountain_lake.png --id PUZ_MOUNTAIN_LAKE_0101 --theme-en "Mountain lakes" --theme-fr "Lacs de montagne" --theme-ar "بحيرات جبلية" --license "Original owner artwork" --attribution "Your name" --source-url "project://assets/puzzles/mountain_lake.png" --approve
-```
+   Include all visible concepts, even if you would not choose them as one of the four answers. The complete pool is what prevents a fifth correct answer being offered as a distractor.
+3. Add new concepts to `content/sources/image_vocabulary.tsv`. Each line is `English aliases separated by commas|French label|Arabic label`. Reuse existing concepts instead of creating singular/plural or synonym duplicates. Example:
 
-Replace the sample rights and attribution with the actual information. Omit `--approve` to save drafts for review first.
+   ```text
+   cat,cats|chat|قطة
+   ```
 
-6. The helper appends three records, ending in `_EN`, `_FR` and `_AR`, to `content/collaborative_puzzle.xml`. It creates all 96 piece references, exact coordinates, 48 pieces per side and a **180-second** timer. It refuses duplicate IDs and missing tiles. Edit each record's `theme` field to change its topic later. The current puzzle board displays the artwork; a topic field does not create a topic-selection screen.
-7. Validate, rebuild and test in **Games → Offline → Puzzle**. The reference image now appears at **25% opacity**, while placed pieces remain fully opaque. This rendering setting is in `PuzzleGame.kt`; the original picture and tile files are unchanged.
+   One image needs at least four distinct concepts. Every image must have at least six genuinely absent concepts available as distractors. Review the picture and its full possible-answer list, including background objects.
+4. Generate the optimized images and records:
+
+   ```powershell
+   python tools/import_visual_content.py
+   python tools/import_image_pools.py
+   ```
+
+   The visual importer also refreshes the numbered puzzle pack described below. It preserves originals. Image records are generated for all three languages with IDs such as `SCENE_C01_EN`.
+5. In `content/image_guess.xml`, find those three IDs. Edit `theme` for the broad topic, `specification` for the subtopic, and `prompt` / `explanation` for the instruction. The importer defaults to Observation and the image ID. Re-running it resets these generated fields, so keep a copy of custom editorial changes or apply them after importing.
+6. Review the generated `content/sources/image_pools.json`: a wrong concept must never describe the image. The generator excludes the complete correct pool, its vocabulary aliases and overlapping generic labels. Editorial review is still needed for concepts missing from your source list.
+7. Validate, build and test through **Games → Offline → Guess the image**.
+
+Each round samples **four correct choices and six wrong choices**, shuffles the ten, and allows exactly four selections. Online players receive the same locked selection for that round. Unselected correct concepts never become wrong options. For hand-authored XML, use `<choices pool="true">` with at least four correct and six incorrect choices. A fixed, non-pool round must have exactly ten choices and exactly four correct.
+
+## Add or edit a question
+
+The supplied 250-question source is `content/sources/questions_250.json`. Its translated topics live in `question_topics.json`; explicit accepted alternatives live in `question_aliases.json`.
+
+1. To correct that supplied pack, edit the relevant `question`, `answer` and `topic` in the JSON. Add meaningful short forms and alternate spellings under that question ID in `question_aliases.json`.
+2. Run `python tools/import_question_pack.py`. It rebuilds that 250-question pack in all three languages and expands aliases across the existing bank. It expects 250 source questions; to append unrelated questions use the XML steps below.
+3. To add a new question, copy a full approved item in `content/question_round.xml`. Give it a new permanent ID, such as `Q_SCIENCE_0101_EN`, and new option IDs. Start with `status="DRAFT"`.
+4. Edit `theme`, `difficulty`, `question`, `explanation`, `source_note` and `concept_id`. Use the same `concept_id` for all translations.
+5. Supply five options with exactly one correct option. Keep the legacy `option_1` through `option_5` fields consistent; `correct_option_index` starts at zero. Keep the current 20-second timer and one base point.
+6. Add `<acceptedAnswers><answer>...</answer></acceptedAnswers>` with the answer in **all three languages**, common abbreviations, meaningful short names, and written/numeric forms. Copy the same accepted set into the English, French and Arabic records.
+7. Review facts and translations, set the three records to `APPROVED`, increase the root `contentVersion`, validate and build.
+
+Typed answers ignore case, accents, extra spacing, Arabic diacritics and Arabic/Persian digit shapes. Bounded spelling matching handles common insertions, omissions, substitutions and swapped letters. Authored aliases accept context-specific forms such as Mali, Westfalia and Constantine. Number questions accept authored words or digits (including the requested `eiyt` alias for eight). Different digits and known different number words remain incorrect. Avoid adding broad aliases that could also mean a different answer.
+
+## Add a puzzle
+
+1. Place the PNG in `assets/puzzles/originals/`, using the next number, such as `puzzle_50.png`. The current layout is **12 columns × 8 rows**, with 96 pieces. Use **1536 × 1024** or another 3:2 image for square pieces.
+2. Run `python tools/import_visual_content.py`. It creates `assets/puzzles/puzzle_50.webp` and three XML records, `PZ_PUZZLE_50_EN/FR/AR`. This importer treats the numbered pack as the current collection and retires older non-pack records while preserving their definitions.
+3. In `content/collaborative_puzzle.xml`, edit `difficulty` and add translated `theme` fields if desired. Topic metadata does not create a topic-selection screen. Review `source_url`, `license` and `attribution`; replace the owner-art default when using a different source.
+4. Validate, build and test **Games → Offline → Puzzle**. All internet puzzle modes use the same board renderer.
+
+The app crops pieces directly from the WebP using the normalized polygons in XML; separate piece PNGs are unnecessary. A thin white border surrounds each placed piece or connected group. Shared internal borders disappear as neighbours are placed. The guide is 18% opaque and can be switched off in Settings.
+
+The older `puzzle_image_cutter.py` and `add_puzzle_content.py` remain available for custom exact PNG tile workflows. Their generated `_parts` directories are excluded from this APK configuration; use the new full-image path for the current pack.
 
 ## Validate and build
-
-Run from the project root:
 
 ```powershell
 python tools/content_pipeline.py validate
@@ -90,28 +75,16 @@ $env:JAVA_HOME = 'C:/Program Files/Android/Android Studio/jbr'
 ./gradlew.bat testDebugUnitTest assembleDebug --console=plain
 ```
 
-The production check requires all records to be approved. Ordinary validation can be used while drafts remain in progress. The installable development APK is `app/build/outputs/apk/debug/app-debug.apk`.
+Production validation requires publishable records to be approved; retired records remain for history. The APK is `app/build/outputs/apk/debug/app-debug.apk`. Install it with `adb install -r` to preserve existing app data. Content is sampled, so a new item may not appear first.
 
-## Internet matches
+## Make new content available in internet matches
 
-Rebuilding the APK updates bundled offline/Bluetooth content and packaged art. Internet matches also need matching, reviewed server records. This UI/Bluetooth update does not change production content.
+A new APK updates practice and Bluetooth content. Internet matches also need the matching server records. Ship/install the APK with new artwork before publishing its online records, because an older APK does not contain new packaged images.
 
-1. Choose the exact new IDs to publish. Keep existing published IDs immutable.
-2. Create an export containing **only the new IDs**. The generic export command exports the whole bank and must not be replayed against an already populated server. Save this example as `.local/export_new_content.py`, replace the example IDs, then run `python .local/export_new_content.py` from the project root:
+1. Run `python tools/publish_content_update.py` for a read-only preview. It validates the bank, prepares only IDs missing from the configured backend, lists retired records and reports alias updates.
+2. Review `.local/backend/content-1.0.8.sql`, the XML changes and the target configured in your private `.env`. Keep credentials out of Git.
+3. Apply reviewed backend migrations first through `tools/deploy_backend.py` if schema changes are pending.
+4. During a period with no active matches, publish with `python tools/publish_content_update.py --apply --confirmed-project YOUR_PROJECT_REF`. The operation is atomic, refuses active matches, preserves historical records and updates existing question aliases. Use the actual project reference, never a password.
+5. Verify the new languages and image rounds. Correct-answer keys remain private on the server.
 
-```python
-from pathlib import Path
-import sys
-import xml.etree.ElementTree as ET
-sys.path.insert(0, 'tools')
-from content_pipeline import export_approved, KINDS
-wanted = {'IMG_EN_ANIMALS_0101', 'IMG_FR_ANIMALS_0101', 'IMG_AR_ANIMALS_0101'}
-all_ids = {item.get('id') for kind in KINDS
-           for item in ET.parse(Path('content') / (kind + '.xml')).getroot()}
-assert wanted <= all_ids, 'A requested new ID is missing'
-export_approved(Path('.local/new-content.sql'), exclude_ids=all_ids-wanted)
-```
-
-3. Review `.local/new-content.sql` and apply it through the project's authorized database migration process. Correct answers remain in `private.content_answers`, separate from public display content. ID conflicts intentionally fail rather than overwrite existing matches.
-4. Distribute the APK containing the new images before enabling their server records. Art references currently point to packaged files; older APKs do not receive new images from a database update alone.
-5. Test each supported language. Topic fields describe content; they do not add a new game mode or topic selector automatically.
+Store editing has its own guide at `assets/store/README.md`.
