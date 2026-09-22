@@ -27,7 +27,7 @@
     <string name="flames">Flames</string>
     <string name="feature_pending">This feature is being prepared.</string>
     <string name="login">Log in</string>
-    <string name="register">Create account</string>
+    <string name="register">Sign up</string>
     <string name="recover_password">Recover password</string>
     <string name="change_password">Change password</string>
     <string name="auth_description">Join the Brainy Brawl community.</string>
@@ -39,8 +39,8 @@
     <string name="play_offline">Play offline</string>
     <string name="sign_out">Sign out</string>
     <string name="online_unavailable">Online play is unavailable</string>
-    <string name="backend_not_configured">Online services are not connected in this build. Offline play is available.</string>
-    <string name="verify_email">Check your email to verify your account before signing in.</string>
+    <string name="backend_not_configured">Online services are not available yet.</string>
+    <string name="verify_email">Check your email and verify your account.</string>
     <string name="recovery_sent">If an account exists, a recovery link has been sent. After opening it, use Change password in your profile.</string>
     <string name="password_updated">Your password has been updated.</string>
     <string name="invalid_auth_input">Check your email, username (3–24 letters, numbers or underscores), and password (at least 8 characters).</string>
